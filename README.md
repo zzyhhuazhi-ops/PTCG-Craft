@@ -2,6 +2,8 @@
 
 # PTCG Craft
 
+本人是 PTCG Craft 的开发者，现使用 MC 百科账号「zz幽魂」（UID：1558481）申请成为开发者
+
 **在 Minecraft 中收集、展示与对战宝可梦卡牌。**
 
 [![Release](https://img.shields.io/github/v/release/zzyhhuazhi-ops/PTCG-Craft?style=flat-square&color=5865F2)](https://github.com/zzyhhuazhi-ops/PTCG-Craft/releases/latest)
