@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "version": "pokemon-family-vmax-tera-v1",
+  "checkedDate": "2026-10-07",
+  "implementationVersion": "0.6.7-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Arcanine ex（Rainier 卡号 sv1_en_032）",
+      "url": "https://limitlesstcg.com/cards/SVI/32",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Limitless card page read 2026-10-07",
+      "supportsZh": "太晶宝可梦卡上印着规则 “Tera - As long as this Pokémon is on your Bench, prevent all damage done to this Pokémon by attacks (both yours and your opponent's).”：在备战区时双方的招式伤害都被防止，在战斗位时没有这个保护。这张卡的 PTCG Live 格式码是 “1èţ”；同系列 Spidops ex（SVI 19，格式码 “1è”）的卡面没有太晶规则，PTCGCardCN 据此按格式码里的 “ţ” 标记 TERA。"
+    },
+    {
+      "title": "Regigigas（Rainier 卡号 sv8-5_en_086，招式 Jewel Breaker）",
+      "url": "https://limitlesstcg.com/cards/PRE/86",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Limitless card page used by PTCGCardCN for this card's English image (Rainier sv8-5 → Limitless PRE); English card text from the Rainier card database 2026-10-07",
+      "supportsZh": "“If your opponent's Active Pokémon is a Tera Pokémon, this attack does 230 more damage.”：条件 IS_TERA。"
+    },
+    {
+      "title": "Doctor（Rainier 卡号 swsh6_en_134）",
+      "url": "https://limitlesstcg.com/cards/CRE/134",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Limitless card page used by PTCGCardCN for this card's English image (Rainier swsh6 → Limitless CRE); English card text from the Rainier card database 2026-10-07",
+      "supportsZh": "“Draw 2 cards. If your opponent's Active Pokémon is a Pokémon VMAX, draw 2 more cards.”：条件 IS_VMAX。"
+    }
+  ],
+  "dataContractZh": "新条件 IS_VMAX、IS_TERA（只接受 target），读卡牌数据的 pokemonFamilies 里的 VMAX、TERA 标记，登记到所有接受宝可梦种类条件的入口（与 IS_LEGACY_EX 相同）。PTCGCardCN 生成数据时：名称以 VMAX 结尾的写 VMAX（同时带 V），PTCG Live 格式码含 “ţ” 的写 TERA。",
+  "serverAuthorityZh": "太晶规则由服务器在计算招式伤害时执行：受伤的宝可梦不在战斗位、且最上面的卡带 TERA 标记，伤害记为 0。选择备战目标的招式、任选／全体对方宝可梦、伤害后的备战伤害（含己方备战区）都经过这一判断。它是卡牌自身的规则，不是“对方战斗宝可梦身上的效果”，所以 “This attack's damage isn't affected by any effects on your opponent's Active Pokémon” 不会绕过它。伤害指示物（不是伤害）照常放置。",
+  "limitations": [
+    "模组自带的手工审核卡没有写 pokemonFamilies，不会被当作太晶宝可梦。",
+    "“If you have any Tera Pokémon on your Bench” 等需要按区域统计的写法还没有接入。"
+  ]
+}

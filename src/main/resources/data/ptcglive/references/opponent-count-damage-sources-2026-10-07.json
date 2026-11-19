@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "version": "opponent-count-damage-v1",
+  "checkedDate": "2026-10-07",
+  "implementationVersion": "0.6.7-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Shiftry-GX — Sun & Moon Celestial Storm 14/168（Extrasensory）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm7/14/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-07 (pokemon.com page blocked automated reading)",
+      "supportsZh": "招式印刷伤害 90+，“If you have the same number of cards in your hand as your opponent, this attack does 90 more damage.”：计算伤害时双方手牌张数相同就追加 90 点（再算弱点抵抗）。"
+    }
+  ],
+  "dataContractZh": "数据写法不变：conditional 条件 {\"type\":\"HAND_SIZE\",\"target\":\"SELF\",\"compare_to\":\"OPPONENT\",\"comparison\":\"EQUALS\"} 包住 ON_ATTACK 的 damage。",
+  "serverAuthorityZh": "原来只有攻击后（AFTER_ATTACK）和训练家的上下文能取对手数量，伤害计算（ON_ATTACK）的上下文没有，数据能通过校验但结算时会出错。现在伤害计算上下文也由服务器提供对手的公开数量。",
+  "limitations": []
+}

@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "version": "player-shared-usage-v1",
+  "checkedDate": "2026-10-03",
+  "implementationVersion": "0.6.0-development",
+  "sources": [
+    {
+      "title": "Pokémon Trading Card Game Rules (PAR historical reference)",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/par_rulebook_en.pdf",
+      "region": "international; historical mechanic reference",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "PAR / 2023 copyright / 41 pages; not a verified latest 2026 edition",
+      "pagesReviewed": [
+        16,
+        25,
+        31
+      ],
+      "sha256": "CD526F74614ECFC8AA09C641B03ABC53AAD2F261F028EFAA5B402811FDB86B23",
+      "retrievalStatus": "web text and complete relevant cached PDF pages visually read 2026-10-03",
+      "supportsZh": "VSTAR特性和攻击共用玩家整局一次资格；GX攻击另有玩家整局一次资格，与场上宝可梦数量无关。混乱失败使本次攻击不发生。",
+      "inferenceZh": "混乱失败不消耗攻击资格，是把攻击不发生与使用一次规则合并解释的实现；本次没有声称找到专门的国际个别裁定。免伤发生在攻击使用之后，不退还使用资格。"
+    },
+    {
+      "title": "Official newer MEG rulebook path",
+      "url": "https://www.pokemon.com/static-assets/content-assets/cms2/pdf/trading-card-game/rulebook/meg_rulebook_en.pdf",
+      "region": "international",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": null,
+      "retrievalStatus": "direct page iframe only; latest edition not obtained",
+      "supportsZh": "不据此声称最新全文已读；保留已有2026规则更新，不覆盖地区或历史合法性。"
+    },
+    {
+      "title": "Pidgeot ex — Quick Search, Obsidian Flames",
+      "url": "https://asia.pokemon-card.com/hk-en/card-search/detail/9105/",
+      "region": "Hong Kong English; card wording example only",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "official card database snapshot checked 2026-10-03",
+      "retrievalStatus": "official card body read",
+      "supportsZh": "特性文本有跨来源的同名特性每回合共享次数，不能只检查一只宝可梦的使用标记。",
+      "limitationsZh": "本轮不新增真实卡绑定；香港英文文字示例不充当国际或简中赛制合法性依据。"
+    }
+  ],
+  "implementationZh": [
+    "SharedUsageLimit JSON以group/period声明玩家共享资格；SharedUsageLedger仅在服务器对局保留，不依赖卡片实例或界面按钮。",
+    "同组跨不同宝可梦和特性ID共用；周期TURN/GAME可配置，同组周期冲突在战斗目录构造拒绝。GX仅攻击且整局，VSTAR主动特性和攻击共用整局组。",
+    "完整合法性/条件预检通过后、首次实际结算前记次；续接暂停与后半段错误不得退还，非法使用/未满足条件/可选触发放弃不消耗。",
+    "旧主动操作码、旧私有检索、组合特性及附能自动触发共用玩家资格；同批多触发消耗后过滤同组余项。",
+    "攻击在消耗随机/资格之前校验全部目标；混乱失败不使用资格，实际攻击伤害为零也使用。攻击替换组合程序时保留usageLimit。",
+    "双方面板公开GX/VSTAR已用状态，不公开隐藏卡或随机种子；练习席位和双方互不串号。"
+  ],
+  "limitationsZh": [
+    "新建对局会有全新资格，但服务器跨进程重启续局尚未实现；不把进程内刷新当成持久恢复。",
+    "使用次数额外奖励/恢复、复制攻击/工具授予VSTAR、VSTAR被动或自动触发以及历史Poké-Power机制仍需后续独立规则审核；不按名字或卡牌家族自动猜测usageLimit。",
+    "当前ACTIVE特性仍保留已有每来源每回合限制，玩家共享资格是额外约束；任意次主动特性等框架仍待扩展。",
+    "攻击可暂停交互、全事件生命周期、所有动态防护与全卡审核尚未完成；真实审核绑定仍39张，未做Live行为对照。",
+    "仅0.6.0开发线变化，已安装人工测试0.5.19不变，最终统一大版本交付。"
+  ]
+}

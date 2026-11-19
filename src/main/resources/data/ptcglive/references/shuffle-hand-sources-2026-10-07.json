@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "version": "shuffle-hand-v1",
+  "checkedDate": "2026-10-07",
+  "implementationVersion": "0.6.7-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Rainier card database — attack text “Shuffle your hand into your deck. Then, draw N cards.”",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/pal_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "English card text from the Rainier (Pokémon TCG Live) card database, checked 2026-10-07; rule for card effects from the official rulebook",
+      "supportsZh": "招式（约 12 张只差这一处，如 me2-5 102）“Shuffle your hand into your deck. Then, draw N cards.”：先把自己的整副手牌洗回牌库，再抽 N 张。这是招式效果而不是费用：手牌为空时没有牌可洗回，后面的抽牌照常。"
+    }
+  ],
+  "dataContractZh": "新效果 shuffle_hand：不接受参数；目标 SELF/HAND/DECK 表示来源控制者，OPPONENT_ACTIVE 表示对手（与 draw 相同的玩家约定）。后面的 “Then, draw N cards.” 用已有的 draw。",
+  "serverAuthorityZh": "服务器把该玩家整副手牌放回牌库并用可重放随机源洗牌（与训练家用的 shuffleHandIntoDeckByEffect 相同）；手牌为空时这一步不做事。",
+  "limitations": [
+    "“双方各自把手牌洗回牌库”等写法由两次 shuffle_hand（SELF 与 OPPONENT_ACTIVE）表达，转换工具尚未收录。"
+  ]
+}

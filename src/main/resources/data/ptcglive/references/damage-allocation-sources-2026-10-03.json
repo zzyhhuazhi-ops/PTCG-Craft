@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "version": "composed-damage-allocation-v1",
+  "checkedDate": "2026-10-03",
+  "region": "international",
+  "implementationVersion": "0.6.0-development",
+  "sources": [
+    {
+      "title": "Sableye — Lost Origin 070 — Official Card Database",
+      "url": "https://www.pokemon.com/uk/pokemon-tcg/pokemon-cards/ss-series/swsh11/70",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Lost Origin / swsh11 / 70",
+      "retrievalStatus": "official search index read; direct request returned cache miss",
+      "supportsZh": "官方检索结果分别显示 Lost Mine 的放逐区数量前提，以及把12个指示物任意分配至对方宝可梦的文本。",
+      "limitationsZh": "仅用于通用分配数据语义示例。此攻击尚未接入暂停分配、攻击效果免疫与完整前提；没有宣称该真实卡已经实现，也未据此确认卡池合法性或发行日期。"
+    },
+    {
+      "title": "Pokémon Trading Card Game Rules — PAR",
+      "url": "https://www.pokemon.com/static-assets/content-assets/cms2/pdf/trading-card-game/rulebook/par_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "PAR; historical rulebook, not a current 2026 full-text verification",
+      "retrievalStatus": "official search index excerpt; previously reviewed edition recorded separately in opening sources",
+      "supportsZh": "一个伤害指示物表示10点伤害；放置指示物不是再次执行弱点／抵抗计算。",
+      "limitationsZh": "不把历史文字概括解释为可以绕过所有具体效果免疫；本次实际接线仅为组合训练家，攻击／特性分配仍拒绝。没有本轮全文下载或版面核验。"
+    }
+  ],
+  "contract": {
+    "effect": "damage_counter",
+    "distribution": "EXACT",
+    "requiredFields": ["amount", "distribution", "target_scope", "min_targets", "max_targets"],
+    "target": ["SELECT_OWN_POKEMON", "SELECT_OPPONENT_POKEMON"],
+    "budgetRange": [1, 60],
+    "scopeZh": "所属方须与 target 一致，可限定战斗位、备战区或全场；本版本不支持双方混合分配。",
+    "partialZh": "同一效果无候选则跳过；目标少于声明下限时按实际候选缩减下限，有候选时仍须恰好分配总额。额外使用前提必须独立声明，不能把成本或使用条件隐含到此参数中。"
+  },
+  "compatibilityZh": [
+    "沿用服务器精确总额分配原语；草案不造成伤害、不消耗随机、不公开给对手。提交统一复核每个目标、去重、总额及范围，整卡文本完成才进入击倒。",
+    "延用同一个 EffectContinuation，交互类型明确区分区域选牌与指示物分配；每步与原卡身份绑定。",
+    "支持 Item／Supporter 的条件、硬币、Repeat、Choice 与区域检索混合；攻击及主动／自动特性中的等待迁移尚未完成。",
+    "没有读取、Hook、操作或修改 PTCG Live；真实双客户端可视／断线恢复及重启后队列恢复尚未验证。",
+    "未新增真实卡可玩映射；本次使用非真实卡夹具测试，真实已审核绑定仍为39张。"
+  ]
+}

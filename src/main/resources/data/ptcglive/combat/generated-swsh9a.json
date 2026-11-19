@@ -1,0 +1,778 @@
+{
+  "schemaVersion": 1,
+  "dataVersion": "ptcgcardcn-swsh9a-2026.10.14",
+  "region": "international",
+  "noteZh": "PTCGCardCN 0.1.0 由 Rainier（PTCG Live 客户端卡牌数据库）自动转换；审核策略 rainier-db。详见 reports/conversion-report.json。",
+  "cards": [
+    {
+      "id": "swsh9a_en_003",
+      "kind": "POKEMON",
+      "hitPoints": 110,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "me4_en_016",
+      "weakness": {
+        "type": "LIGHTNING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Octillery",
+      "evolvesFromName": "Remoraid",
+      "pokemonType": "WATER",
+      "attacks": [
+        {
+          "id": "waterfall",
+          "nameZh": "攀瀑",
+          "energyCost": {
+            "WATER": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 50,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED"
+        }
+      ],
+      "abilities": [
+        {
+          "id": "rapid-strike-search",
+          "nameZh": "连击搜索",
+          "kind": "ACTIVATED_ONCE_PER_TURN",
+          "effects": [
+            {
+              "type": "search_deck",
+              "target": "DECK",
+              "amount": 1,
+              "minimum": 0,
+              "battle_style": "RAPID_STRIKE",
+              "reveal": true
+            }
+          ],
+          "usageLimit": {
+            "group": "rapid-strike-search",
+            "period": "TURN"
+          },
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "swsh9a_en_005",
+      "kind": "POKEMON",
+      "hitPoints": 130,
+      "retreatCost": 3,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Zekrom",
+      "pokemonType": "LIGHTNING",
+      "attacks": [
+        {
+          "id": "slash",
+          "nameZh": "劈开",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 30,
+          "damageType": "LIGHTNING",
+          "effectSupport": "SUPPORTED"
+        },
+        {
+          "id": "wild-shock",
+          "nameZh": "疯狂冲击",
+          "energyCost": {
+            "LIGHTNING": 2,
+            "COLORLESS": 1
+          },
+          "baseDamage": 130,
+          "damageType": "LIGHTNING",
+          "effectSupport": "SUPPORTED",
+          "conditions": [
+            {
+              "target": "DEFENDER",
+              "condition": "PARALYZED"
+            }
+          ],
+          "selfDamage": 60
+        }
+      ]
+    },
+    {
+      "id": "swsh9a_en_007",
+      "kind": "POKEMON",
+      "hitPoints": 70,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "METAL",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Dedenne",
+      "pokemonType": "PSYCHIC",
+      "attacks": [
+        {
+          "id": "dede-flash",
+          "nameZh": "咚咚闪光",
+          "energyCost": {
+            "PSYCHIC": 1
+          },
+          "baseDamage": 20,
+          "damageType": "PSYCHIC",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "印刷伤害 20+ 带 +，但没有识别出加成来源；未识别的效果：if your opponent has exactly 1 prize card remaining, this attack does 60 more damage, and"
+        }
+      ]
+    },
+    {
+      "id": "swsh9a_en_011",
+      "kind": "POKEMON",
+      "hitPoints": 70,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Eevee",
+      "pokemonType": "COLORLESS",
+      "attacks": [
+        {
+          "id": "vee-search",
+          "nameZh": "伊布搜索",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "COLORLESS",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：search your deck for up to 3 pokemon {v_atk}, reveal them, and put them into your hand. then, shuffle your deck"
+        },
+        {
+          "id": "stampede",
+          "nameZh": "踩",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 20,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "swsh9a_en_013",
+      "kind": "POKEMON",
+      "hitPoints": 200,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Boltund V",
+      "pokemonType": "LIGHTNING",
+      "attacks": [
+        {
+          "id": "electrify",
+          "nameZh": "输电",
+          "energyCost": {
+            "LIGHTNING": 1
+          },
+          "baseDamage": 0,
+          "damageType": "LIGHTNING",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "attach_energy",
+                  "source": "DECK",
+                  "target": "SELECT_OWN_POKEMON",
+                  "target_scope": "OWN_BENCH",
+                  "amount": 2,
+                  "minimum": 0,
+                  "basic_energy_only": true,
+                  "energy_type": "LIGHTNING",
+                  "distribution": "ANY"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bolt-storm",
+          "nameZh": "雷电风暴",
+          "energyCost": {
+            "LIGHTNING": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 10,
+          "damageType": "LIGHTNING",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "damage_per_energy",
+              "target": "ALL_OWN_POKEMON",
+              "energy_type": "LIGHTNING",
+              "amount": 30
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "swsh9a_en_015",
+      "kind": "POKEMON",
+      "hitPoints": 310,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "sd100_cn_191",
+      "weakness": {
+        "type": "METAL",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 3,
+      "pokemonName": "Sylveon VMAX",
+      "evolvesFromName": "Sylveon V",
+      "pokemonType": "PSYCHIC",
+      "attacks": [
+        {
+          "id": "precious-touch",
+          "nameZh": "珍贵一触",
+          "energyCost": {
+            "PSYCHIC": 1
+          },
+          "baseDamage": 0,
+          "damageType": "PSYCHIC",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：if you do, heal 120 damage from that pokemon"
+        },
+        {
+          "id": "max-harmony",
+          "nameZh": "极巨和弦",
+          "energyCost": {
+            "COLORLESS": 3
+          },
+          "baseDamage": 70,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "damage_per_pokemon",
+              "target": "OWN_BENCH",
+              "amount": 30,
+              "count_mode": "DISTINCT_TYPES"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "swsh9a_en_017",
+      "kind": "POKEMON",
+      "hitPoints": 300,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "sd100_cn_197",
+      "weakness": {
+        "type": "DARKNESS",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "FIGHTING",
+        "amount": 30
+      },
+      "prizeCards": 3,
+      "pokemonName": "Mimikyu VMAX",
+      "evolvesFromName": "Mimikyu V",
+      "pokemonType": "PSYCHIC",
+      "attacks": [
+        {
+          "id": "ominous-numbers",
+          "nameZh": "超自然数字",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 0,
+          "damageType": "PSYCHIC",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：if you played acerola's premonition from your hand during this turn, place 13 damage counters instead"
+        },
+        {
+          "id": "max-shadow",
+          "nameZh": "极巨暗影",
+          "energyCost": {
+            "PSYCHIC": 2
+          },
+          "baseDamage": 120,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "discard_random_hand",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 1
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "swsh9a_en_018",
+      "kind": "POKEMON",
+      "hitPoints": 220,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "PSYCHIC",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Single Strike Urshifu V",
+      "pokemonType": "FIGHTING",
+      "attacks": [
+        {
+          "id": "laser-focus",
+          "nameZh": "磨砺",
+          "energyCost": {
+            "FIGHTING": 1
+          },
+          "baseDamage": 0,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "attach_energy",
+                  "source": "DECK",
+                  "target": "SELF",
+                  "target_scope": "OWN_FIELD",
+                  "amount": 2,
+                  "minimum": 0,
+                  "basic_energy_only": true,
+                  "energy_type": "FIGHTING"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "impact-blow",
+          "nameZh": "冲击重拳",
+          "energyCost": {
+            "FIGHTING": 2,
+            "COLORLESS": 1
+          },
+          "baseDamage": 180,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "cannotUseSameAttackDuringNextTurn": true
+        }
+      ]
+    },
+    {
+      "id": "swsh9a_en_019",
+      "kind": "POKEMON",
+      "hitPoints": 330,
+      "retreatCost": 3,
+      "evolvesFromDefinitionId": "swsh9a_en_018",
+      "weakness": {
+        "type": "PSYCHIC",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 3,
+      "pokemonName": "Single Strike Urshifu VMAX",
+      "evolvesFromName": "Single Strike Urshifu V",
+      "pokemonType": "FIGHTING",
+      "attacks": [
+        {
+          "id": "beatdown",
+          "nameZh": "正拳突刺",
+          "energyCost": {
+            "COLORLESS": 3
+          },
+          "baseDamage": 100,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED"
+        },
+        {
+          "id": "g-max-one-blow",
+          "nameZh": "超极巨夺命一击",
+          "energyCost": {
+            "FIGHTING": 3,
+            "COLORLESS": 1
+          },
+          "baseDamage": 270,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "discardAllAttachedEnergyAfterAttack": true,
+          "ignoresActiveDefenderDamageEffects": true
+        }
+      ]
+    },
+    {
+      "id": "swsh9a_en_020",
+      "kind": "POKEMON",
+      "hitPoints": 220,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "PSYCHIC",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Rapid Strike Urshifu V",
+      "pokemonType": "FIGHTING",
+      "attacks": [
+        {
+          "id": "strafe",
+          "nameZh": "折返瞬击",
+          "energyCost": {
+            "FIGHTING": 1
+          },
+          "baseDamage": 30,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "choice",
+                  "optional": true,
+                  "effects": [
+                    {
+                      "type": "switch",
+                      "target": "SELECT_OWN_POKEMON"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hundred-furious-blows",
+          "nameZh": "百裂突进",
+          "energyCost": {
+            "FIGHTING": 2,
+            "COLORLESS": 1
+          },
+          "baseDamage": 150,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "swsh9a_en_021",
+      "kind": "POKEMON",
+      "hitPoints": 330,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "swsh9a_en_020",
+      "weakness": {
+        "type": "PSYCHIC",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 3,
+      "pokemonName": "Rapid Strike Urshifu VMAX",
+      "evolvesFromName": "Rapid Strike Urshifu V",
+      "pokemonType": "FIGHTING",
+      "attacks": [
+        {
+          "id": "gale-thrust",
+          "nameZh": "疾风突刺",
+          "energyCost": {
+            "FIGHTING": 1
+          },
+          "baseDamage": 30,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "BECAME_ACTIVE_THIS_TURN",
+                  "target": "SELF"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "damage",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 120
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "g-max-rapid-flow",
+          "nameZh": "超极巨流水连击",
+          "energyCost": {
+            "FIGHTING": 2,
+            "COLORLESS": 1
+          },
+          "baseDamage": 120,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "discardAllAttachedEnergyAfterAttack": true,
+          "damageTarget": "OPPONENT_ANY",
+          "targetCount": 2
+        }
+      ]
+    },
+    {
+      "id": "swsh9a_en_022",
+      "kind": "POKEMON",
+      "hitPoints": 200,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Umbreon V",
+      "pokemonType": "DARKNESS",
+      "attacks": [
+        {
+          "id": "mean-look",
+          "nameZh": "黑色目光",
+          "energyCost": {
+            "DARKNESS": 1
+          },
+          "baseDamage": 30,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "prevent_retreat",
+                  "target": "OPPONENT_ACTIVE"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "moonlight-blade",
+          "nameZh": "月光之刃",
+          "energyCost": {
+            "DARKNESS": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 80,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "DAMAGE_COUNTER_COUNT",
+                  "target": "SELF",
+                  "value": 1
+                }
+              ],
+              "effects": [
+                {
+                  "type": "damage",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 80
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "swsh9a_en_023",
+      "kind": "POKEMON",
+      "hitPoints": 310,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "swsh9a_en_022",
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 3,
+      "pokemonName": "Umbreon VMAX",
+      "evolvesFromName": "Umbreon V",
+      "pokemonType": "DARKNESS",
+      "attacks": [
+        {
+          "id": "max-darkness",
+          "nameZh": "极巨恶霸",
+          "energyCost": {
+            "DARKNESS": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 160,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED"
+        }
+      ],
+      "abilities": [
+        {
+          "id": "dark-signal",
+          "nameZh": "黑暗信号",
+          "kind": "TRIGGERED",
+          "eventPolicy": {
+            "trigger": "ON_EVOLVE",
+            "watch": "SELF",
+            "source": "HAND",
+            "optional": true,
+            "usage": "NONE"
+          },
+          "triggers": [
+            {
+              "trigger": "ON_EVOLVE",
+              "conditions": [
+                {
+                  "type": "TURN_STATE",
+                  "target": "SELF",
+                  "value": "ACTOR_TURN"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "gust",
+                  "target": "SELECT_OPPONENT_POKEMON"
+                }
+              ]
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "swsh9a_en_029",
+      "kind": "POKEMON",
+      "hitPoints": 330,
+      "retreatCost": 3,
+      "evolvesFromDefinitionId": "swsh9a_en_018",
+      "weakness": {
+        "type": "PSYCHIC",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 3,
+      "pokemonName": "Single Strike Urshifu VMAX",
+      "evolvesFromName": "Single Strike Urshifu V",
+      "pokemonType": "FIGHTING",
+      "attacks": [
+        {
+          "id": "beatdown",
+          "nameZh": "正拳突刺",
+          "energyCost": {
+            "COLORLESS": 3
+          },
+          "baseDamage": 100,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED"
+        },
+        {
+          "id": "g-max-one-blow",
+          "nameZh": "超极巨夺命一击",
+          "energyCost": {
+            "FIGHTING": 3,
+            "COLORLESS": 1
+          },
+          "baseDamage": 270,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "discardAllAttachedEnergyAfterAttack": true,
+          "ignoresActiveDefenderDamageEffects": true
+        }
+      ]
+    },
+    {
+      "id": "swsh9a_en_030",
+      "kind": "POKEMON",
+      "hitPoints": 330,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "swsh9a_en_020",
+      "weakness": {
+        "type": "PSYCHIC",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 3,
+      "pokemonName": "Rapid Strike Urshifu VMAX",
+      "evolvesFromName": "Rapid Strike Urshifu V",
+      "pokemonType": "FIGHTING",
+      "attacks": [
+        {
+          "id": "gale-thrust",
+          "nameZh": "疾风突刺",
+          "energyCost": {
+            "FIGHTING": 1
+          },
+          "baseDamage": 30,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "BECAME_ACTIVE_THIS_TURN",
+                  "target": "SELF"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "damage",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 120
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "g-max-rapid-flow",
+          "nameZh": "超极巨流水连击",
+          "energyCost": {
+            "FIGHTING": 2,
+            "COLORLESS": 1
+          },
+          "baseDamage": 120,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "discardAllAttachedEnergyAfterAttack": true,
+          "damageTarget": "OPPONENT_ANY",
+          "targetCount": 2
+        }
+      ]
+    }
+  ]
+}

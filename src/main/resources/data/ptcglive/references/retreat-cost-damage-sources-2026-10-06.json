@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "version": "retreat-cost-damage-v1",
+  "checkedDate": "2026-10-06",
+  "implementationVersion": "0.6.4-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Sharpedo — Sun & Moon 82/149（Aqua Impact）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm1/82/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; page text read 2026-10-06",
+      "supportsZh": "招式文字“This attack does 20 more damage for each Colorless in your opponent's Active Pokémon's Retreat Cost.”：按对方战斗宝可梦撤退费里的无色能量个数追加伤害。同句式见于 Mega Chandelure ex（me5，每个 50）、Carracosta（sm11）等，全库约 34 张。"
+    },
+    {
+      "title": "Pokémon Trading Card Game Rules — Scarlet & Violet Rulebook (Retreat; damage calculation order)",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/pal_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English rulebook PDF; text extracted and checked 2026-10-06",
+      "supportsZh": "撤退时按撤退费里每个无色符号弃 1 个能量；伤害计算先处理招式文字修正的基础伤害，再算弱点、抵抗力。本依据读取的是攻击时对方战斗宝可梦当前的撤退费（含工具、场地和临时效果的增减），追加伤害位于弱点之前。"
+    }
+  ],
+  "dataContractZh": "damageModifiers 新增 basis DEFENDER_RETREAT_COST：每 1 点当前撤退费为 1 单位，amountPerUnit 为 10 的倍数，可配 maximumUnits。只能用于伤害目标为 OPPONENT_ACTIVE 的招式。",
+  "serverAuthorityZh": "服务器在同一攻击快照里读取对方战斗宝可梦的当前撤退费（BattlefieldState.activeRetreatCost，含工具／场地减费与临时增减，下限 0），客户端不能提供或改写。",
+  "limitations": [
+    "只覆盖对方战斗宝可梦；“自己的撤退费”“备战宝可梦的撤退费”等写法尚未接入。"
+  ]
+}

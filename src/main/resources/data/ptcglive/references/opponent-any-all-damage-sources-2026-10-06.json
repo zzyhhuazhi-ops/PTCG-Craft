@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "version": "opponent-any-all-damage-v1",
+  "checkedDate": "2026-10-06",
+  "implementationVersion": "0.6.4-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Dartrix — Sun & Moon 10/149（Sharp Blade Quill）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm1/10/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-06 (pokemon.com page blocked automated reading)",
+      "supportsZh": "招式文字“This attack does N damage to 1 of your opponent's Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)”：攻击方从对方战斗宝可梦和备战宝可梦中任选；选战斗宝可梦时照常计算弱点抵抗，选备战宝可梦时不计。同句式见于 Alolan Dugtrio、Alolan Ninetales-GX、Raboot、Fezandipiti ex 等约 173 张（另有“to 2 of your opponent's Pokémon”等写法）。"
+    },
+    {
+      "title": "Vanilluxe — Sun & Moon Guardians Rising 35/145（Hail）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm2/35/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-06 (pokemon.com page blocked automated reading)",
+      "supportsZh": "招式文字“This attack does N damage to each of your opponent's Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)”：对方战斗宝可梦与每只备战宝可梦各受 N 点伤害，只有战斗宝可梦计算弱点抵抗。同句式见于 Lilligant、Noivern-GX、Articuno 等约 59 张。"
+    },
+    {
+      "title": "Pokémon Trading Card Game Rules — Scarlet & Violet Rulebook（Attacking: check Weakness and Resistance）",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/pal_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English rulebook PDF; text extracted and checked 2026-10-06",
+      "supportsZh": "规则书：弱点与抵抗力只对对方战斗宝可梦计算，“Don't apply Weakness and Resistance for Benched Pokémon!”；卡牌要你做的事超过场上现有数量时，就处理现有的（对手场上宝可梦少于印刷目标数时，打全部现有宝可梦）。"
+    }
+  ],
+  "dataContractZh": "AttackDefinition.DamageTarget 新增 OPPONENT_ANY（targetCount 1–6，由攻击方选对方战斗或备战宝可梦）与 ALL_OPPONENT_POKEMON（targetCount 0，对方战斗位加全部备战位）。这两种目标暂不接受 DEFENDER 特殊状态、伤害修正（damageModifiers）和 ON_ATTACK 伤害组件；可以与 ignoresWeaknessAndResistance、ignoresResistance、AFTER_ATTACK 程序组合。",
+  "serverAuthorityZh": "服务器核对所选目标都在对方场上、互不重复、数量等于 min(印刷目标数, 对方场上宝可梦数)；逐目标结算伤害：当前战斗宝可梦套用弱点与抵抗力，备战宝可梦不套用；之后对每个目标各自读取防护、减伤和持续修正，再统一处理击倒、奖赏与替补。卡桌按服务器状态给出每一种合法目标组合，客户端不能自行指定其它目标。",
+  "limitations": [
+    "任选／全体目标招式的“追加伤害”（damageModifiers、ON_ATTACK 组件）和对受击对象施加特殊状态尚未接入，相关卡继续标为未支持。",
+    "复制（copy_attack）这类招式暂不支持，因为复制流程还没有目标选择。"
+  ]
+}

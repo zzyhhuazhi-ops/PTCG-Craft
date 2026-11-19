@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-16",
+  "scope": "ME4 Mega Greninja ex plus identical ME Black Star Promo; no artwork, BREAK or JAR.",
+  "cardIds": [
+    "me4_en_022",
+    "me4_en_100",
+    "me4_en_116",
+    "me4_en_122",
+    "mebsp_en_081"
+  ],
+  "ruleReferences": [
+    {
+      "url": "https://asia.pokemon-card.com/ph/card-search/detail/25307/",
+      "facts": "Stage2 Mega Greninja ex from Frogadier,350HP Water,Lightning weakness2,no resistance,retreat1. Mortal Shuriken Active-only once-per-turn Basic Water hand cost then six opposing counters; Ninja Spinner WW120+ optional return one Water and add80. Official page icon URLs verify Water and Lightning."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%82%B2%E3%83%83%E3%82%B3%E3%82%A6%E3%82%AC&regulation_faq_main_item1=XY",
+      "facts": "Official FAQ permits80 bonus for Thievul Skill Thief copy even with no Water to return; bonus applies against Banette effect immunity; attached Bubble Water and Neo Upper may return. Bubble Water in hand cannot pay Basic Water Ability cost. Battle Colosseum prevents Ability counters on Bench."
+    }
+  ],
+  "reviewedSemantics": [
+    "Mortal Shuriken is a root ONCE_PER_TURN activation gated by IS_ACTIVE SELF; first root step pays one Basic Water from own hand, then places six counters on one declared opposing Pokemon. Existing typed activation-cost and target protections retained.",
+    "Emit explicit trigger conditions for activated once-per-turn converter programs when provided. Existing entries without root conditions retain their prior serialization.",
+    "Ninja Spinner chooses optional opt_in before damage, adds80 during damage, then returns one currently supplied Water Energy unit after damage. Whole physical multi-unit Energy returns; bonus does not require a successful return per official copied-attack FAQ.",
+    "No new engine component needed. Retain WW120+,350HP Water,Lightning weakness2,no resistance,retreat1,Stage2 named Frogadier evolution and Mega three prizes across all five prints."
+  ],
+  "localPrintAudit": {
+    "path": "outputs/rules-20261012/batch82-raw-metadata.json",
+    "sameArchetype": -1072484539,
+    "sameRulesAndProfile": true,
+    "abilityNameZh": "必杀手里剑",
+    "attackNameZh": "忍者飞旋"
+  },
+  "deferredInteractions": [
+    {
+      "cardId": "sv5_en_162",
+      "name": "Neo Upper Energy",
+      "reason": "Older SV card remains unsupported. Synthetic two-unit flexible Energy tests the relevant whole-card return mechanics without claiming the real card is complete or enabling it out of order."
+    },
+    {
+      "cardId": "me2_en_085",
+      "name": "Battle Colosseum",
+      "reason": "Older Mega set Stadium remains unsupported; generic opposing Ability effect guard tests counters prevention now, real Stadium Bench guard interaction deferred until its set."
+    }
+  ],
+  "validationAtReview": {
+    "pythonTests": 584,
+    "catalogLoad": "passed",
+    "actualCardRegressions": "passed",
+    "fullCheck": "pending; see final batch82 docs for terminal result"
+  }
+}

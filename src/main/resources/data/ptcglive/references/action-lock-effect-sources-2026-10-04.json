@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "version": "action-lock-effects-v1",
+  "checkedDate": "2026-10-04",
+  "implementationVersion": "0.6.0-development",
+  "region": "international historical reference",
+  "sources": [
+    {
+      "title": "Pokémon TCG: Platinum—Arceus Official Card-Dex",
+      "url": "https://assets.pokemon.com/assets/cms/pdf/tcg/carddex/Arceus.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English Card-Dex PDF",
+      "verification": "Toxicroak's Corner states that the Defending Pokémon cannot retreat during the opponent's next turn.",
+      "supportsZh": "用于可组合 prevent_retreat 的“指定公开宝可梦、至来源玩家下回合开始前不能普通撤退”基础持续效果。"
+    },
+    {
+      "title": "Pokémon TCG Errata — Skuntank (Diamond & Pearl—Stormfront)",
+      "url": "https://play.pokemon.com/en-us/resources/documents/tcg-errata/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official Play! Pokémon errata page",
+      "verification": "Skuntank's erratum says that a selected Defending Pokémon's attack does nothing during the opponent's next turn and that the effect ends if it is no longer Active.",
+      "supportsZh": "用于 prevent_attack 的攻击前服务器拒绝与“换到备战区即清除攻击效果”边界；不据此猜测任何未审核整卡的其它文字或时序。"
+    }
+  ],
+  "retrievalLimitations": [
+    "No PTCG Live behavior, community discussion, Japanese local ruling or Chinese translation is used as an international rules authority.",
+    "The cited cards are historical modeling examples; this record does not certify their complete text, format legality or any current Standard status."
+  ],
+  "implementationLimits": [
+    "prevent_attack and prevent_retreat accept one server-verified public in-play Pokémon and have no free-form duration argument; they expire at the source controller's next turn start through the shared continuous-effect lifecycle.",
+    "Both operations recheck card-effect protection on the target before writing the lock. Normal retreat and attack availability are enforced by the authoritative battlefield, while forced switching remains separate from prevent_retreat.",
+    "The components are available to reviewed resumable trainer, activated Ability, attack and automatic triggered-source programs. Automatic resolution uses the current turn only for server execution authority; duration is bound separately to the printed source controller.",
+    "Named-attack-only locks, coin-gated cancellation, alternate durations, multi-target distributions, replacement effects and unaudited real-card bindings remain unsupported."
+  ]
+}

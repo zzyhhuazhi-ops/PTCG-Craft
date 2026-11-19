@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "scope": "Newest-first ME5: Vikavolt and Zarude plus two identical undated Mega alternate/promo Zarude prints; named attached Energy identity query. Artwork and true BREAK excluded.",
+  "ruleReferences": [
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50244/regu/all",
+      "facts": "Vikavolt QuickDive50, GigaRailgun260 fails without named Voltaic Energy on this Pokemon."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50273/regu/all",
+      "facts": "Zarude OverheadThrow30+ownBench30; ShadowyWhip100+70 if own Bench has Shadowy Energy."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50299/regu/all",
+      "facts": "Voltaic Lightning Energy identity; runtime source me5_en_084 already supported."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50300/regu/all",
+      "facts": "Shadowy Darkness Energy identity; runtime source me5_en_083 already supported."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E7%89%B9%E6%AE%8A%E3%82%A8%E3%83%8D%E3%83%AB%E3%82%AE%E3%83%BC&page=3&regulation=all&regulation_faq_main_item1=all",
+      "facts": "Haxorus can KO target with SpecialEnergy under Temple of Sinnoh; category remains after effect override, not direct namedEnergy/Vikavolt ruling."
+    }
+  ],
+  "evidence": [
+    {
+      "cardId": "me5_en_026",
+      "name": "Giga Railgun",
+      "textEn": "If this Pokémon has no Voltaic <sprite name=\"lightning\" tint=1> Energy attached, this attack does nothing.",
+      "textZh": "如果这只宝可梦身上没有附加「伏特<sprite name=\"lightning\" tint=1>能量」的话，则这个招式失败。",
+      "mapping": {
+        "rules": [
+          "damage-if-attached-voltaic-lightning-card"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [
+          {
+            "type": "conditional",
+            "conditions": [
+              {
+                "type": "ENERGY_COUNT",
+                "target": "SELF",
+                "count_mode": "CARDS",
+                "definition_ids": "me5_en_084",
+                "value": 1,
+                "comparison": ">="
+              }
+            ],
+            "effects": [
+              {
+                "type": "damage",
+                "target": "OPPONENT_ACTIVE",
+                "amount": 260
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5_en_056",
+      "name": "Shadowy Whip",
+      "textEn": "If your Benched Pokémon have any Shadowy <sprite name=\"darkness\" tint=1> Energy attached, this attack does 70 more damage.",
+      "textZh": "如果自己的备战宝可梦身上附有「暗影<sprite name=\"darkness\" tint=1>能量」的话，则追加造成70伤害。",
+      "mapping": {
+        "rules": [
+          "more-if-own-bench-shadowy-darkness-card"
+        ],
+        "fields": {
+          "baseDamage": 100
+        },
+        "program": [
+          {
+            "type": "damage",
+            "target": "OPPONENT_ACTIVE",
+            "amount": 70,
+            "conditions": [
+              {
+                "type": "ENERGY_COUNT",
+                "target": "OWN_BENCH",
+                "count_mode": "CARDS",
+                "definition_ids": "me5_en_083",
+                "value": 1,
+                "comparison": ">="
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "mealt_en_009",
+      "name": "Shadowy Whip",
+      "textEn": "If your Benched Pokémon have any Shadowy <sprite name=\"darkness\" tint=1> Energy attached, this attack does 70 more damage.",
+      "textZh": "如果自己的备战宝可梦身上附有「暗影<sprite name=\"darkness\" tint=1>能量」的话，则追加造成70伤害。",
+      "mapping": {
+        "rules": [
+          "more-if-own-bench-shadowy-darkness-card"
+        ],
+        "fields": {
+          "baseDamage": 100
+        },
+        "program": [
+          {
+            "type": "damage",
+            "target": "OPPONENT_ACTIVE",
+            "amount": 70,
+            "conditions": [
+              {
+                "type": "ENERGY_COUNT",
+                "target": "OWN_BENCH",
+                "count_mode": "CARDS",
+                "definition_ids": "me5_en_083",
+                "value": 1,
+                "comparison": ">="
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "mebsp_en_088",
+      "name": "Shadowy Whip",
+      "textEn": "If your Benched Pokémon have any Shadowy <sprite name=\"darkness\" tint=1> Energy attached, this attack does 70 more damage.",
+      "textZh": "如果自己的备战宝可梦身上附有「暗影<sprite name=\"darkness\" tint=1>能量」的话，则追加造成70伤害。",
+      "mapping": {
+        "rules": [
+          "more-if-own-bench-shadowy-darkness-card"
+        ],
+        "fields": {
+          "baseDamage": 100
+        },
+        "program": [
+          {
+            "type": "damage",
+            "target": "OPPONENT_ACTIVE",
+            "amount": 70,
+            "conditions": [
+              {
+                "type": "ENERGY_COUNT",
+                "target": "OWN_BENCH",
+                "count_mode": "CARDS",
+                "definition_ids": "me5_en_083",
+                "value": 1,
+                "comparison": ">="
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    }
+  ]
+}

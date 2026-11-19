@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-18",
+  "scope": "超级艾路雷朵ex按实际攻击者没有伤害指示物时追加伤害; no artwork, BREAK or JAR.",
+  "cardIds": [
+    "me4_en_048"
+  ],
+  "ruleReferences": [
+    {
+      "url": "https://asia.pokemon-card.com/my/card-search/detail/25239/",
+      "kind": "Official actual English Mega Gallade ex",
+      "status": "opened",
+      "facts": "Stage2,350HP,Fighting; Gale Slash F50+ adds150 when actual attacker has no damage counters; Marvelous Edge FFC240; Psychic weaknessx2,noResistance,retreat2; J; evolves from Kirlia."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/49716/regu/all",
+      "kind": "Official corresponding Japanese M-P068",
+      "status": "opened",
+      "facts": "Corroborates Stage2/350HP/both attacks; Mega ex Knock Out awards3 prizes."
+    },
+    {
+      "url": "https://www.pokemon-card.com/ex/m3/index.html",
+      "kind": "Official product explanation",
+      "status": "search result read",
+      "facts": "Describes one Fighting energy Gale Slash early, switching to Marvelous Edge once damage counters are present; supporting interpretation only."
+    }
+  ],
+  "reviewedSemantics": [
+    "Prefer existing DAMAGE_COUNTER_COUNT SELF exact0 conditional extra150; verify condition predicate evaluator/preflight in actual attack context. No new engine assumed.",
+    "Narrow mapper exact Gale Slash, F cost,50+ and exact full normalized sentence without reminders. All raw name/sentence matches must be reviewed before accepting scope.",
+    "Use current actual attacker damage, not full-HP comparison or remembered damage history. A healed-to-zero attacker regains bonus; copied attack checks actual copying Pokemon.",
+    "Damage condition evaluated after BEFORE_ATTACK and before hit; normal weakness/resistance/damage modifiers/protection remain. No dynamic count should read defender or Bench damage.",
+    "Stage2 evolution should follow supported actual Ralts/Kirlia normal path, not hardcoded arbitrary parent ID; do not activate older unsupported evolution dependencies."
+  ],
+  "schema": {
+    "galeSlash": {
+      "id": "gale-slash",
+      "nameZh": "快手斩",
+      "energyCost": {
+        "FIGHTING": 1
+      },
+      "baseDamage": 50,
+      "damageType": "FIGHTING",
+      "effectSupport": "SUPPORTED",
+      "effects": [
+        {
+          "type": "damage",
+          "target": "OPPONENT_ACTIVE",
+          "amount": 150,
+          "conditions": [
+            {
+              "type": "DAMAGE_COUNTER_COUNT",
+              "target": "SELF",
+              "value": 0,
+              "comparison": "=="
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "localPrintAudit": {
+    "files": 109,
+    "rows": 25598,
+    "matches": [
+      {
+        "file": "me4.json",
+        "rawId": "me4_48",
+        "name": "Mega Gallade ex",
+        "number": "48",
+        "archetypeID": -61577975,
+        "row": {
+          "EN Format": "2èê",
+          "EN Type": "F",
+          "EN Attack Name": "Gale Slash",
+          "EN Attack Name 2": "Marvelous Edge",
+          "EN Attack Name 3": "",
+          "EN Attack Name 4": "",
+          "EN Attack Text": "If this Pokémon has no damage counters on it, this attack does 150 more damage.",
+          "EN Attack Text 2": "",
+          "EN Attack Text 3": "",
+          "EN Attack Text 4": "",
+          "EN Cost": "F",
+          "EN Cost 2": "FFC",
+          "EN Cost 3": "",
+          "EN Cost 4": "",
+          "EN Card Name": "Mega Gallade ex",
+          "LocalizedCardName": "Mega Gallade ex",
+          "EN Card #": "48",
+          "longFormID": "MegaGalladeex_me4_48_std_DoubleRareM_SvUltra_Etched",
+          "EN Expansion Denominator": "86",
+          "extraSearchText": "mega gallade ex gale slash if this pokemon has no damage counters on it, this attack does 150 more damage. marvelous edge",
+          "CompSea Rarity Code": "2R-M",
+          "Dust Rarity Code": "2R-M",
+          "Loc Rarity Code": "2R",
+          "HP": 350,
+          "Retreat": 2,
+          "Damage": "50+",
+          "Damage 2": "240",
+          "Damage 3": "",
+          "Damage 4": "",
+          "EN Weakness Type": "P",
+          "Weakness Amount": "2",
+          "EN Resistance Type": "",
+          "Resistance Amount": "",
+          "EN Evolves From": "Kirlia",
+          "Ultra Beast?": "",
+          "variant": 0,
+          "Regulations symbol": "J",
+          "Release Date": "2026-05-21T17:00:00.0000000Z",
+          "OA Release Date": 46163.708333333336,
+          "archetypeID": -61577975,
+          "cardID": "me4_48",
+          "category": 1,
+          "quantity": 0,
+          "baseEvolution": "Ralts_2049",
+          "evolvesInto": "",
+          "Group ID": "",
+          "Craftable": true,
+          "CraftableDateUnixTime": 1779382800,
+          "attackType1": null,
+          "attackType2": null,
+          "attackType3": null,
+          "attackType4": null,
+          "attackID0": -801747633,
+          "attackID1": -611018296,
+          "attackID2": null,
+          "attackID3": null,
+          "Foil Effect": "SvUltra",
+          "Foil Mask": "Etched",
+          "CompSea Card Number": "048",
+          "Variant Suffix": "",
+          "setCode": "ME4",
+          "seriesCode": "ME",
+          "Set Suffix": "4",
+          "HiddenUntilOwned": false
+        }
+      }
+    ]
+  },
+  "evidenceLimitations": [
+    "No specific FAQ retrieved; not a claim that no FAQ exists."
+  ],
+  "testLimitations": [
+    "Actual Gallade/Ralts/Kirlia profiles unchanged. Other opponent/energy/Tool fixtures synthetic. BEFORE/AFTER phase variants are explicitly synthetic copies of actual conditional program.",
+    "Runtime used unchanged87 engine and429 copied87 resources, only048 activated in isolated directory. It does not claim validation of90 paired-play engine. Formal test/full check after90 required."
+  ],
+  "validationAtReview": {
+    "pythonTests": 652,
+    "catalogLoad": "passed",
+    "actualCardAndComponentRegressions": "passed",
+    "fullCheck": "pending; see final batch91 docs for terminal result"
+  },
+  "mapperScope": "Exact Gale Slash, F cost,50+, full normalized body without reminders. Existing zero-counter SELF condition; no engine change or other card activation.",
+  "faqSearch": {
+    "attempts": [
+      {
+        "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%A1%E3%82%AC%E3%82%A8%E3%83%AB%E3%83%AC%E3%82%A4%E3%83%89ex&regulation_header_search_item1=all",
+        "result": "tool internal error"
+      },
+      {
+        "url": "https://asia.pokemon-card.com/my/rules/search/?keyword=Mega+Gallade+ex",
+        "result": "official card Q&A link followed, tool cache miss"
+      }
+    ],
+    "claim": "No specific FAQ retrieved; not a claim that no FAQ exists."
+  }
+}

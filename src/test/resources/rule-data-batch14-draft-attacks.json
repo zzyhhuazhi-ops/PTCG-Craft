@@ -1,0 +1,43 @@
+{
+  "scope": "Unmodified generated attack draft; unresolved Hyper Blower keeps the complete card unsupported. Test resources only.",
+  "cards": [
+    {
+      "id": "sv4_en_056",
+      "attacks": [
+        {
+          "id": "refrigerated-stream",
+          "nameZh": "冷却喷射",
+          "energyCost": {
+            "WATER": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 80,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "conditional",
+                  "conditions": [
+                    {
+                      "type": "IS_EVOLVED",
+                      "target": "OPPONENT_ACTIVE"
+                    }
+                  ],
+                  "effects": [
+                    {
+                      "type": "prevent_attack",
+                      "target": "OPPONENT_ACTIVE"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

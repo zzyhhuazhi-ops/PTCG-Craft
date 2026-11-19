@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "version": "condition-strength-v1",
+  "checkedDate": "2026-10-07",
+  "implementationVersion": "0.6.7-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Pokémon Trading Card Game Rules — Scarlet & Violet Rulebook（Pokémon Checkup: Poisoned and Burned）",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/pal_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English rulebook PDF; checked 2026-10-07",
+      "supportsZh": "宝可梦检查时，中毒放 1 个伤害指示物、灼伤放 2 个；宝可梦回到备战区或进化时特殊状态解除。卡文 “instead of 1” 只改变这只宝可梦这次中毒的数量。"
+    },
+    {
+      "title": "Crobat（Rainier 卡号 sm1_en_056，招式 Triple Poison）",
+      "url": "https://limitlesstcg.com/cards/SUM/56",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Limitless card page used by PTCGCardCN for this card's English image (Rainier sm1 → Limitless SUM); English card text from the Rainier card database 2026-10-07",
+      "supportsZh": "“Your opponent's Active Pokémon is now Poisoned. Put 3 damage counters instead of 1 on that Pokémon between turns.”：这次中毒在宝可梦检查时放 3 个伤害指示物。"
+    },
+    {
+      "title": "Toxicroak ex（Rainier 卡号 sv1_en_131，招式 Toxic Ripper）",
+      "url": "https://limitlesstcg.com/cards/SVI/131",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Limitless card page used by PTCGCardCN for this card's English image (Rainier sv1 → Limitless SVI); English card text from the Rainier card database 2026-10-07",
+      "supportsZh": "新写法 “During Pokémon Checkup, put 6 damage counters on that Pokémon instead of 1.”，意思相同。"
+    },
+    {
+      "title": "Gligar（Rainier 卡号 sv4_en_091，招式 Toxic）",
+      "url": "https://limitlesstcg.com/cards/PAR/91",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Limitless card page used by PTCGCardCN for this card's English image (Rainier sv4 → Limitless PAR); English card text from the Rainier card database 2026-10-07",
+      "supportsZh": "掷硬币正面时才中毒，同样 “put 2 damage counters … instead of 1”：强度写在 coin_flip 正面分支里的 poison 上。"
+    }
+  ],
+  "dataContractZh": "poison / burn 新增可选参数 counters：宝可梦检查时放的伤害指示物个数（中毒 2–10 个，灼伤 3–10 个；省略时按规则书的 1 个 / 2 个）。",
+  "serverAuthorityZh": "服务器在宝可梦身上记下这次中毒（灼伤）的强度，宝可梦检查时按强度放伤害指示物；强度随特殊状态一起存在，回到备战区、进化或治愈后再次中毒时，按新的这次重新计算。",
+  "limitations": [
+    "已经中毒的宝可梦再次中毒时，实现按“新的中毒取代旧的”处理（强度也换成新的这次）；此点未找到可引用的官方原文，如有裁定不同再调整。",
+    "特性写的持续加重（“Put 2 damage counters instead of 1 on your opponent's Burned Pokémon between turns.”）不用本组件。"
+  ]
+}

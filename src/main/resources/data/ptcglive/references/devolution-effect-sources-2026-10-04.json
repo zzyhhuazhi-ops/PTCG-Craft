@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "version": "devolution-effect-v1",
+  "checkedDate": "2026-10-04",
+  "implementationVersion": "0.6.0-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Pokémon Trading Card Game Rules — Scarlet & Violet—Paldea Evolved edition",
+      "url": "https://assets.pokemon.com/assets/cms2-sv-se/pdf/trading-card-game/rulebook/par_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English rulebook PDF",
+      "verification": "The evolution section states that attached cards and damage counters stay with a Pokémon through an evolution, while Special Conditions and other attack effects end.",
+      "supportsZh": "用于退化后仍由同一场上对象保留伤害与附着卡、并清除异常状态和持续影响的通用结算边界；规则书该段直接描述进化，本实现不会把它冒充为所有退化卡文。"
+    },
+    {
+      "title": "Golurk V — Evolving Skies 70/203",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/ss-series/swsh7/70/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English card database entry",
+      "verification": "Rewind Beam says to devolve the opponent's Active evolved Pokémon by putting its highest Stage Evolution card into that opponent's hand.",
+      "supportsZh": "用于 `devolve` 组件的最高进化牌回到该卡实际拥有者手牌、且只对已进化目标有效的基础数据契约。"
+    },
+    {
+      "title": "Devolution Spray — XY—Fates Collide 95/124",
+      "url": "https://www.pokemon.com/uk/pokemon-tcg/pokemon-cards/series/xy10/95/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English card database entry",
+      "verification": "The Item text independently uses the same highest-Stage-Evolution-to-hand devolution operation and adds a card-specific evolve-again restriction.",
+      "supportsZh": "用于确认该操作可作为可组合的通用 Effect；“本回合不能再进化”等额外文本不由本基础组件假设，须另以审核持续效果数据表达。"
+    }
+  ],
+  "retrievalLimitations": [
+    "No PTCG Live behavior, community ruling, Japanese local ruling or Chinese translation is used as international rules authority.",
+    "This record does not certify any historical card's complete wording, format legality or all devolution-related replacement effects."
+  ],
+  "implementationLimits": [
+    "Supports one currently evolved, public in-play Pokémon target; it removes exactly its highest Evolution card to that card owner's hand.",
+    "Damage counters and attached cards remain with the same in-play Pokémon identity. Special Conditions, protection and other continuous effects on that Pokémon clear through the battlefield's existing evolution/devolution checkpoint.",
+    "The server rechecks target identity, current evolution state and effect protection. A Basic target, a protected target, malformed parameters or an unaudited multi-target distribution never silently resolves.",
+    "The reusable prevent_evolution component can express the Devolution Spray-style same-turn evolution restriction after this operation, but no real card receives that binding without its own audited text and timing data.",
+    "Multi-target devolution distributions, replacement effects and full last-known-information interactions remain unsupported until separately audited."
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "version": "retaliation-v1",
+  "checkedDate": "2026-10-07",
+  "implementationVersion": "0.6.7-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Pokémon Trading Card Game Rules — Scarlet & Violet Rulebook（effects of attacks end when the Pokémon is moved to the Bench or evolves）",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/pal_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English rulebook PDF; checked 2026-10-07",
+      "supportsZh": "招式施加在宝可梦身上的效果，在这只宝可梦回到备战区或进化时消失；所以换下场、进化后不再反伤。"
+    },
+    {
+      "title": "Sableye（Rainier 卡号 sm11_en_133，招式 Mirror Gem）",
+      "url": "https://limitlesstcg.com/cards/UNM/133",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Limitless card page used by PTCGCardCN for this card's English image (Rainier sm11 → Limitless UNM); English card text from the Rainier card database 2026-10-07",
+      "supportsZh": "“During your opponent's next turn, if this Pokémon is damaged by an attack (even if it is Knocked Out), put 8 damage counters on the Attacking Pokémon.”：对手下个回合用招式伤害这只宝可梦时，在攻击的宝可梦身上放 8 个伤害指示物；这只宝可梦被击倒也照样放。"
+    },
+    {
+      "title": "Alolan Sandslash（Rainier 卡号 sm5_en_029，招式 Spike Armor）",
+      "url": "https://limitlesstcg.com/cards/UPR/29",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Limitless card page used by PTCGCardCN for this card's English image (Rainier sm5 → Limitless UPR); English card text from the Rainier card database 2026-10-07",
+      "supportsZh": "同一写法（“even if this Pokémon is Knocked Out”，6 个）。"
+    },
+    {
+      "title": "Mabosstiff（Rainier 卡号 sv2_en_143，招式 Comeuppance）",
+      "url": "https://limitlesstcg.com/cards/PAL/143",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Limitless card page used by PTCGCardCN for this card's English image (Rainier sv2 → Limitless PAL); English card text from the Rainier card database 2026-10-07",
+      "supportsZh": "“… put damage counters on the Attacking Pokémon equal to the damage done to this Pokémon.”：放与这只宝可梦受到的伤害相同数量的伤害指示物（每 10 点 1 个）。"
+    }
+  ],
+  "dataContractZh": "新效果 retaliate：target 只能是 SELF（使用招式的宝可梦），参数二选一：amount（伤害指示物个数，1–30）或 mode DAMAGE_DONE（与受到的伤害相同数量）；只能在攻击的 AFTER_ATTACK 结算，训练家不能用。",
+  "serverAuthorityZh": "服务器把持续效果 RETALIATION 挂在使用招式的宝可梦上（它已离开战斗位时不挂），拥有者是使用招式的玩家，到其下个回合开始时失效；换下场、进化时随其他攻击效果清除。对手之后的攻击结算完毕、捕获受伤反应时，凡是带这个效果且受到这次攻击伤害（大于 0）的宝可梦——即使这次伤害会把它击倒——都在攻击的宝可梦身上放伤害指示物（攻击的宝可梦已离场则不放；对它有“防止对手招式效果”的防护时不放）。放指示物造成的击倒与这次攻击的击倒一起统一检查、给奖。",
+  "limitations": [
+    "特性、宝可梦道具、特殊能量上的同类写法（“If this Pokémon is in the Active Spot and is damaged by an attack …”）是持续的被动效果，不用本组件。",
+    "反伤在受伤反应捕获时直接结算，不和同时触发的受伤特性一起排序。"
+  ]
+}

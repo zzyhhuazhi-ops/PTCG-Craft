@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-12",
+  "scope": "131 newly recognized components (94 attacks, 8 abilities and 29 Trainers), 94 fully supported additional cards; no previous supported program or metadata changes.",
+  "sources": [
+    {
+      "title": "Serperior Leaf Storm and Bouffalant Revenge",
+      "url": "https://assets.pokemon.com/assets/cms/pdf/tcg/carddex/black_white.pdf",
+      "checkedFacts": "Typed whole-field healing and opponent attack-damage KO during the preceding turn."
+    },
+    {
+      "title": "Eevee Palette of Friends",
+      "url": "https://assets.pokemon.com/assets/cms2-ru-ru/pdf/trading-card-game/tcg_sun_moon_5_card_translation.pdf",
+      "checkedFacts": "Counts distinct types among own Benched Pokemon."
+    },
+    {
+      "title": "Torterra ex Forest March",
+      "url": "https://www.pokemon.com/uk/features/scarlet-violet-temporal-forces-triple-play-torterra-ex-feraligatr-and-incineroar-ex",
+      "checkedFacts": "Counts own Grass Pokemon in play."
+    },
+    {
+      "title": "Clemont Quick Wit",
+      "url": "https://asia.pokemon-card.com/sg/card-search/detail/16808/",
+      "checkedFacts": "Heals all own Lightning Pokemon."
+    },
+    {
+      "title": "Pokemon Center Lady",
+      "url": "https://asia.pokemon-card.com/sg/card-search/detail/21715/",
+      "checkedFacts": "Healing and recovery from all Special Conditions share the selected own Pokemon."
+    },
+    {
+      "title": "Max Potion",
+      "url": "https://assets.pokemon.com/assets/cms2-ru-ru/pdf/trading-card-game/tcg_sun_moon_2_card_translation.pdf",
+      "checkedFacts": "Discard all Energy from the actual healed target only if healing occurred."
+    },
+    {
+      "title": "Advanced Players Rulebook section E-19",
+      "url": "https://asia.pokemon-card.com/hk-en/wp-content/uploads/sites/6/2022/08/advanced-manual_EN.pdf",
+      "checkedFacts": "Max Potion may heal a damaged Pokemon without Energy; a failed first action cannot perform only the following If you do action."
+    },
+    {
+      "title": "Bianca Devotion",
+      "url": "https://www.pokemon.com/us/strategy/pokemon-tcg-scarlet-violet-surging-sparks-battle-pass-deck-strategies",
+      "checkedFacts": "Full heal requires no more than 30 remaining HP."
+    },
+    {
+      "title": "Toedscruel Eerie Tentacles",
+      "url": "https://asia.pokemon-card.com/sg/card-search/detail/5596/",
+      "checkedFacts": "Optional transfer of one physical opponent Active Energy card to an opponent Benched Pokemon."
+    }
+  ],
+  "boundaries": [
+    "Live queries use the current top card; dual types match once per Pokemon and distinct-type count uses a union. Older definitions without printed type metadata use the authoritative combat profile.",
+    "A preselected target cannot be substituted during potential-effect analysis; wrong typed targets are rejected before consuming a card.",
+    "Healing and status recovery share the selected target. A healed Bench target does not clear Special Conditions from an unrelated Active Pokemon. Applying Special Conditions to Bench Pokemon remains rejected.",
+    "Full healing discards Energy only from actual recipients. Pokemon with 30 HP remaining qualify for Bianca; 40 HP do not.",
+    "Prize effects count remaining rather than taken Prizes. Revenge requires opponent attack damage on the preceding turn, excluding damage counters.",
+    "Unsupported extra clauses, unrelated abilities and structural uncertainties remain unsupported."
+  ]
+}

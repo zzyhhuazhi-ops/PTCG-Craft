@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "version": "move-damage-counter-v1",
+  "checkedDate": "2026-10-04",
+  "implementationVersion": "0.6.0-development",
+  "region": "international-historical-reference",
+  "sources": [
+    {
+      "title": "Pokémon TCG: HS—Triumphant official Card-Dex",
+      "url": "https://assets.pokemon.com/assets/cms/pdf/tcg/carddex/hs_triumphant.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official historical Card-Dex PDF",
+      "verification": "Darkrai & Cresselia LEGEND's Moon's Invite moves damage counters from the opponent's Pokémon to another of that opponent's Pokémon in any way the player likes.",
+      "supportsZh": "作为公开来源与公开目的地之间移动既有伤害指示物的历史卡文建模例子；不表示该历史卡已经可在本模组对战。"
+    },
+    {
+      "title": "Play! Pokémon Competitive Pokémon Rules and Formats",
+      "url": "https://play.pokemon.com/en-us/resources/rules/?category=tcg",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official resources index, retrieved 2026-10-04",
+      "verification": "The official index provides maintained entry points for rulebooks, tournament rules, legality notices and errata.",
+      "supportsZh": "用于持续核验当前规则包；索引页本身不被当作历史单卡的完整时序裁定。"
+    }
+  ],
+  "retrievalLimitations": [
+    "No PTCG Live behavior, Chinese translation, image or community source is used as rule authority.",
+    "The Card-Dex is used as a historical international text example, not a current Standard legality assertion.",
+    "Every real card remains unavailable until its complete official text, timing and legality are audited."
+  ],
+  "implementationLimits": [
+    "Supports one exact public source and one exact public destination per effect step, including a server-bound destination from an enclosing selection.",
+    "The server verifies source counters, current in-play identities and both card-effect protections before moving any counter, then uses the shared KO resolver.",
+    "Does not implement multi-source allocation, multi-destination distribution, replacement effects, last-known information, card-specific prevention exceptions, or the historical Darkrai & Cresselia LEGEND card."
+  ]
+}

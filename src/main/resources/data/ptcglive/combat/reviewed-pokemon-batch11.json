@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "dataVersion": "2026-11-05",
+  "cards": [
+    {
+      "id": "sm4_en_038",
+      "kind": "POKEMON",
+      "hitPoints": 130,
+      "retreatCost": 0,
+      "evolvesFromDefinitionId": "sm4_en_037",
+      "weakness": {
+        "type": "DARKNESS",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "FIGHTING",
+        "amount": 20
+      },
+      "prizeCards": 1,
+      "pokemonName": "Gengar",
+      "evolvesFromName": "Haunter",
+      "pokemonType": "PSYCHIC",
+      "attacks": [
+        {
+          "id": "fade-to-black",
+          "nameZh": "暗黑",
+          "energyCost": {
+            "PSYCHIC": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 70,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED",
+          "conditions": [
+            {
+              "target": "DEFENDER",
+              "condition": "CONFUSED"
+            }
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "id": "gnawing-curse",
+          "nameZh": "侵蚀咒术",
+          "kind": "TRIGGERED",
+          "eventPolicy": {
+            "trigger": "ON_ENERGY_ATTACHED",
+            "target": "OPPONENT_FIELD",
+            "source": "HAND",
+            "cause": "ANY",
+            "targetHandOnly": true,
+            "optional": false,
+            "usage": "NONE"
+          },
+          "triggers": [
+            {
+              "trigger": "ON_ENERGY_ATTACHED",
+              "conditions": [],
+              "effects": [
+                {
+                  "type": "damage_counter",
+                  "target": "TRIGGER_POKEMON",
+                  "amount": 2
+                }
+              ]
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "smalt_en_076",
+      "kind": "POKEMON",
+      "hitPoints": 130,
+      "retreatCost": 0,
+      "evolvesFromDefinitionId": "me2-5_en_124",
+      "weakness": {
+        "type": "DARKNESS",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "FIGHTING",
+        "amount": 20
+      },
+      "prizeCards": 1,
+      "pokemonName": "Gengar",
+      "evolvesFromName": "Haunter",
+      "pokemonType": "PSYCHIC",
+      "attacks": [
+        {
+          "id": "fade-to-black",
+          "nameZh": "暗黑",
+          "energyCost": {
+            "PSYCHIC": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 70,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED",
+          "conditions": [
+            {
+              "target": "DEFENDER",
+              "condition": "CONFUSED"
+            }
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "id": "gnawing-curse",
+          "nameZh": "侵蚀咒术",
+          "kind": "TRIGGERED",
+          "eventPolicy": {
+            "trigger": "ON_ENERGY_ATTACHED",
+            "target": "OPPONENT_FIELD",
+            "source": "HAND",
+            "cause": "ANY",
+            "targetHandOnly": true,
+            "optional": false,
+            "usage": "NONE"
+          },
+          "triggers": [
+            {
+              "trigger": "ON_ENERGY_ATTACHED",
+              "conditions": [],
+              "effects": [
+                {
+                  "type": "damage_counter",
+                  "target": "TRIGGER_POKEMON",
+                  "amount": 2
+                }
+              ]
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    }
+  ]
+}

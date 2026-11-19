@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "version": "opponent-attack-lock-v1",
+  "checkedDate": "2026-10-09",
+  "implementationVersion": "0.6.8-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Slowbro — Sun & Moon Guardians Rising 49/145（Amnesia）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm2/49/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-09",
+      "supportsZh": "“Choose 1 of your opponent's Active Pokémon's attacks. That Pokémon can't use that attack during your opponent's next turn.”：选对方战斗宝可梦的一个招式，在对手的下个回合，那只宝可梦不能使用这个招式。"
+    },
+    {
+      "title": "Morpeko — Sword & Shield Rebel Clash 73/192（Torment）",
+      "url": "https://limitlesstcg.com/cards/RCL/73",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Card text as printed (Limitless card page); cross-checked against the Rainier card database 2026-10-09",
+      "supportsZh": "现行语序 “During your opponent's next turn, that Pokémon can't use that attack.”，意思相同。"
+    },
+    {
+      "title": "Pokémon TCG Rulebook — effects of attacks on a Pokémon",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/rules",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official rulebook (moving to the Bench or evolving removes effects of attacks)",
+      "supportsZh": "那只宝可梦回到备战区或进化时，这个效果消失。"
+    }
+  ],
+  "dataContractZh": "新效果 lock_opponent_attack（target 只能是 OPPONENT_ACTIVE，不带参数），只在攻击的 AFTER_ATTACK 结算。含这个效果的招式宣告时必须带上要锁定的对方招式（ServerMatch.attackLockingOpponentAttack，选项来自 opponentAttackLockOptions：对方战斗宝可梦的印刷招式）；对方战斗宝可梦没有招式时不带。",
+  "serverAuthorityZh": "服务器在宣告时核对所选招式确实属于当前对方战斗宝可梦，并记下那只宝可梦的入场序号；伤害后如果它仍是对方战斗宝可梦，就挂上按招式名称的锁（ATTACK_ID_LOCK，拥有者是攻击方，到其下个回合开始时失效；换下场、进化时清除；“防止招式效果”的防护会挡住）。对战桌按对方的每个招式各给一个“攻击：… → 锁定对方招式：…”选项，与复制招式相同。",
+  "limitations": [
+    "选择在宣告时做，而不是在伤害后：只要伤害前没有换掉对方战斗宝可梦，两者结果相同；伤害前换位的招式不会和这个效果写在一起。",
+    "复制带这个效果的招式时没有选择入口，会被拒绝。"
+  ]
+}

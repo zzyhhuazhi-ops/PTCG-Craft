@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "version": "next-turn-damage-boost-v1",
+  "checkedDate": "2026-10-09",
+  "implementationVersion": "0.6.8-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Sandaconda — Sword & Shield 109/202（Coil）",
+      "url": "https://limitlesstcg.com/cards/SSH/109",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Card text as printed (Limitless card page); cross-checked against the Rainier card database 2026-10-09",
+      "supportsZh": "“During your next turn, this Pokémon's attacks do 120 more damage to your opponent's Active Pokémon (before applying Weakness and Resistance).”：只在自己的下个回合、只对对方战斗宝可梦，在弱点抵抗力之前追加。"
+    },
+    {
+      "title": "Persian — Sun & Moon Burning Shadows 102/147（Screech）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm3/102/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-09",
+      "supportsZh": "“During your next turn, the Defending Pokémon takes 60 more damage from attacks (after applying Weakness and Resistance).”：攻击方的下个回合，防守宝可梦受到的招式伤害在弱点抵抗力之后增加。"
+    },
+    {
+      "title": "Pokémon TCG Rulebook — effects of attacks on a Pokémon",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/rules",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official rulebook (moving to the Bench or evolving removes effects of attacks)",
+      "supportsZh": "宝可梦回到备战区或进化时，招式施加在它身上的效果全部消失。"
+    }
+  ],
+  "dataContractZh": "新效果 boost_attack_damage（target 只能是 SELF）与 increase_damage_taken（target 只能是 OPPONENT_ACTIVE），只接受 amount（10–1000，10 的倍数），只在攻击的 AFTER_ATTACK 结算。",
+  "serverAuthorityZh": "新持续效果 ATTACK_DAMAGE_BONUS / DAMAGE_TAKEN_INCREASE（拥有者是攻击方，只在拥有者下个回合生效，那个回合结束时失效；换下场、进化时随其他招式效果清除）。追加伤害在攻击方持续修正之后、弱点抵抗力之前，只加给对方战斗宝可梦；多受伤害在弱点抵抗力和减伤之后，只在招式有伤害时加，“无视对方战斗宝可梦身上效果”的招式不读它。“防止招式效果”的防护会挡住多受伤害的施加。",
+  "limitations": [
+    "“下个回合这只宝可梦的某个招式多 N 点”（指定招式名）不在本组件内。"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-12",
+  "sources": [{
+    "title": "Guzzlord-GX — Crimson Invasion 116/111",
+    "url": "https://www.pokemon.com/uk/pokemon-tcg/pokemon-cards/series/sm4/116/",
+    "accessStatus": "Official English card text retrieved from indexed page",
+    "supportsZh": "Glutton-GX 通过本次招式伤害击倒对方宝可梦时，多拿两张奖赏；不限定基础宝可梦。GX 整局使用限制另由现有组件处理。"
+  }, {
+    "title": "Crobat — Silver Tempest, official Asia card database",
+    "url": "https://asia.pokemon-card.com/my/card-search/detail/3283/",
+    "accessStatus": "Official English card text retrieved",
+    "supportsZh": "Critical Bite 可选择对方场上一只宝可梦，包括备战区；通过本次伤害击倒时多拿两张奖赏。"
+  }],
+  "implementation": "extra_prize_on_attack_ko now accepts explicit basic_only:false; retains current attack-damage KO ledger",
+  "regressions": ["tests/UnrestrictedAttackPrizeTest.java", "tests/StarterDeck100ExtraPrizeTest.java"],
+  "limitations": ["没有扩展持续奖赏修正、按族群限定或额外能量替代奖赏数量。"]
+}

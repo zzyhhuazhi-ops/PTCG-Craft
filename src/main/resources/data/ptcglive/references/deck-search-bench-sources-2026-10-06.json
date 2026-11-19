@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "version": "deck-search-bench-v1",
+  "checkedDate": "2026-10-06",
+  "implementationVersion": "0.6.4-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Nest Ball — Sun & Moon 123/149",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm1/123/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-06 (pokemon.com page blocked automated reading)",
+      "supportsZh": "物品文字“Search your deck for a Basic Pokémon and put it onto your Bench. Then, shuffle your deck.”；招式写法“Call for Family: Search your deck for up to 2 Basic Pokémon and put them onto your Bench.”见于 Numel、Mantine、Mawile 等，合计约 88 张。"
+    },
+    {
+      "title": "Pokémon Trading Card Game Rules — Scarlet & Violet Rulebook（Bench; up to X）",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/pal_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English rulebook PDF; text extracted and checked 2026-10-06",
+      "supportsZh": "规则书：备战区最多 5 只宝可梦；牌库是隐藏信息，指定条件（基础宝可梦）的检索可以找不到。所以只能放到还有空位为止，可以一张都不放，牌库照常洗牌；备战区已满时什么都不做。"
+    }
+  ],
+  "dataContractZh": "search_deck 新增 destination:\"BENCH\"，必须同时声明 card_category POKEMON 与 basic_pokemon_only true，不能带 reveal（放到备战区本来就公开）。省略 destination 时照旧放入手牌。",
+  "serverAuthorityZh": "服务器发出的选择最多只有当前空备战位那么多张；提交时复用已有的 putBasicPokemonFromOwnDeckToBenchByEffect，再次核对基础宝可梦、备战位和牌库身份，放置后洗牌一次并触发登场事件。备战区已满时跳过这一步，后续文字照常结算。",
+  "limitations": [
+    "只覆盖自己的牌库放到自己的备战区；放到对手备战区、从弃牌区放上场等写法使用各自的组件。"
+  ]
+}

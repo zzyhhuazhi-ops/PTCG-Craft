@@ -1,0 +1,38 @@
+import dev.hua.ptcglive.engine.*;
+import dev.hua.ptcglive.engine.effect.*;
+import dev.hua.ptcglive.engine.field.*;
+import dev.hua.ptcglive.rules.*;
+import java.util.*;
+
+public final class NonPokemonBatch34Test {
+    static final UUID A=GeneratedRuleBatch8Test.A,B=GeneratedRuleBatch8Test.B;
+    static void check(boolean ok,String why){if(!ok)throw new AssertionError(why);}
+    static CardInstance card(ServerMatch m,UUID owner,String id){return DynamicPassiveModifierTest.hand(m,owner,id);}
+    static TrainerProfile profile(String id){return NonPokemonBatch2Test.DATA.trainer(id).orElseThrow();}
+    static GeneratedRuleBatch28Test.Config config(String id){var c=new GeneratedRuleBatch28Test.Config();c.trainer=profile(id);return c;}
+    static void play(ServerMatch m){m.playTrainer(A,card(m,A,"trainer").instanceId(),null);}
+    static void equip(ServerMatch m,UUID owner){m.attachToolByEffect(A,owner,EffectSourceZone.HAND,card(m,owner,"trainer").instanceId(),owner,m.activePokemonView(owner).pokemonId());}
+    static void settle(ServerMatch m){NonPokemonBatch2Test.settle(m);}
+    public static void main(String[] args){bangle();gyms();vest();charm();robe();cassius();recon();lance();System.out.println("NonPokemonBatch34Test passed: legacy EX distinction, named stadiums for both players, physical Special Energy guard, possessed Abilities, status cure/prevention, complete stack shuffle, Ultra Beast draw and conditional any-stage Dragon placement");}
+    static void bangle(){for(PokemonFamily own:List.of(PokemonFamily.EX,PokemonFamily.EX_LEGACY,PokemonFamily.GX))for(PokemonFamily other:List.of(PokemonFamily.EX,PokemonFamily.EX_LEGACY)){
+        var c=config("bw10_en_088");c.ownFamilies=Set.of(own);c.defenderFamilies=Set.of(other);c.weakness=true;var m=GeneratedRuleBatch28Test.fixture(c);equip(m,A);m.attack(A,"hit");check(m.activePokemonView(B).damage()==(own!=PokemonFamily.EX_LEGACY&&other==PokemonFamily.EX_LEGACY?260:200),"Silver Bangle confused legacy and modern ex");
+    }
+        var c=config("bw10_en_088");c.defenderFamilies=Set.of(PokemonFamily.EX_LEGACY);c.attack=GeneratedRuleBatch8Test.hit(100,true);var m=GeneratedRuleBatch28Test.fixture(c);equip(m,A);m.attack(A,"hit");check(m.benchPokemonView(B).getFirst().damage()==100,"Silver Bangle modified Bench damage");
+    }
+    static void gyms(){for(String id:List.of("sm11-5_en_054","sm11-5_en_061"))for(boolean match:List.of(false,true)){
+        var c=config(id);String name=id.equals("sm11-5_en_054")?"Onix":"Starmie";c.names=Map.of("attacker",name+(match?"-GX":""),"defender",name+(match?"-GX":""));var m=GeneratedRuleBatch28Test.fixture(c);play(m);m.attack(A,"hit");m.attack(B,"hit");int expected=match?(id.equals("sm11-5_en_054")?60:140):100;check(m.activePokemonView(A).damage()==expected&&m.activePokemonView(B).damage()==expected,"Named Gym did not apply equally to both owners");
+    }}
+    static void vest(){for(boolean special:List.of(false,true)){
+        var m=GeneratedRuleBatch8Test.fixture(List.of(),EnergyType.GRASS,EnergyType.GRASS,profile("xy8_en_133"),GeneratedRuleBatch8Test.hit(100,false));equip(m,A);
+        m.attachEnergyByEffect(A,B,EffectSourceZone.HAND,card(m,B,special?"special":"energy").instanceId(),B,m.activePokemonView(B).pokemonId());m.endTurn(A);m.attack(B,"hit");check(m.activePokemonView(A).damage()==(special?60:100),"Assault Vest ignored physical Special Energy");
+    }}
+    static void charm(){for(PokemonFamily family:List.of(PokemonFamily.GX,PokemonFamily.EX_LEGACY,PokemonFamily.EX))for(boolean ability:List.of(false,true))for(EnergyType type:List.of(EnergyType.FAIRY,EnergyType.GRASS)){
+        var c=config("sm10_en_171");c.ownFamilies=Set.of(family);c.defenderTypes=Set.of(type);if(ability)c.ownAbility=GeneratedRuleBatch8Test.ability("sm2_en_059");var m=GeneratedRuleBatch28Test.fixture(c);equip(m,B);if(ability)m.disableAbilityEffectsByEffect(A,A,m.activePokemonView(A).pokemonId());m.attack(A,"hit");check(m.activePokemonView(B).damage()==(ability&&type==EnergyType.FAIRY&&family!=PokemonFamily.EX?0:100),"Fairy Charm family/type/possession filter");
+    }}
+    static void robe(){var m=GeneratedRuleBatch8Test.fixture(List.of(),EnergyType.GRASS,EnergyType.GRASS,profile("xy3_en_099"),GeneratedRuleBatch8Test.hit(100,false));m.applySpecialConditionByEffect(A,A,SpecialCondition.POISONED);m.applySpecialConditionByEffect(A,A,SpecialCondition.BURNED);equip(m,A);check(m.activePokemonView(A).conditions().isEmpty(),"Robe did not remove existing conditions");for(SpecialCondition condition:SpecialCondition.values())m.applySpecialConditionByEffect(A,A,condition);check(m.activePokemonView(A).conditions().isEmpty(),"Robe allowed a Special Condition");m.disableToolEffectsByEffect(A,A,m.activePokemonView(A).pokemonId());m.applySpecialConditionByEffect(A,A,SpecialCondition.POISONED);check(m.activePokemonView(A).conditions().contains(SpecialCondition.POISONED),"Disabled Robe retained immunity");}
+    static void cassius(){var m=GeneratedRuleBatch8Test.fixture(List.of(),EnergyType.GRASS,EnergyType.GRASS,profile("xy1_en_115"),GeneratedRuleBatch8Test.hit(10,false));UUID host=m.benchPokemonView(A).getFirst().pokemonId();var evo=card(m,A,"evolved");m.evolve(A,host,evo.instanceId());var energy=card(m,A,"special");var tool=card(m,A,"tool");m.attachEnergy(A,energy.instanceId(),host);m.attachToolByEffect(A,A,EffectSourceZone.HAND,tool.instanceId(),A,host);play(m);var q=m.effectPokemonPrompt(A);m.chooseEffectPokemon(A,q.resolutionId(),q.step(),host);settle(m);check(m.benchPokemonView(A).isEmpty()&&m.privateView(A).deck().containsAll(List.of(evo,energy,tool))&&m.privateView(A).discard().stream().noneMatch(c->List.of(evo,energy,tool).contains(c)),"Cassius failed complete evolved stack shuffle");}
+    static void recon(){for(int count:List.of(0,2)){var c=config("sm6_en_114");c.ownFamilies=Set.of(PokemonFamily.ULTRA_BEAST);var m=GeneratedRuleBatch28Test.fixture(c);int hand=m.privateView(A).hand().size();play(m);var q=m.effectCardPrompt(A);check(q.candidates().stream().allMatch(x->m.cardDefinition(x.definitionId()).pokemonFamilies().contains(PokemonFamily.ULTRA_BEAST)),"Ultra Recon offered non-Beasts");m.submitEffectCards(A,q.resolutionId(),q.step(),q.candidates().stream().limit(count).map(CardInstance::instanceId).toList());settle(m);check(m.privateView(A).hand().size()==hand-1-count+3*count,"Ultra Recon draw mismatched actual discard");}}
+    static ServerMatch lanceGame(){var c=config("sm7-5_en_061");c.ownTypes=Set.of(EnergyType.DRAGON);c.evolvedTypes=Set.of(EnergyType.DRAGON);var m=GeneratedRuleBatch28Test.fixture(c);check(!m.canPlayTrainer(A,card(m,A,"trainer").instanceId(),null),"Lance ignored previous KO condition");m.endTurn(A);m.knockOutPokemonByEffect(B,A,m.benchPokemonView(A).getFirst().pokemonId());UnrestrictedAttackPrizeTest.take(m,B);m.endTurn(B);var evolution=card(m,A,"evolved");m.discardHandCardsByEffect(A,A,List.of(evolution.instanceId()));m.recoverDiscardCardsByEffect(A,A,new ServerMatch.CardSelectionPolicy(1,1,CardCategory.POKEMON,null,false,Set.of()),List.of(evolution.instanceId()),CardEffectDestination.DECK_TOP);return m;}
+    static void lance(){var m=lanceGame();play(m);var q=m.effectCardPrompt(A);check(q.candidates().stream().allMatch(c->m.cardDefinition(c.definitionId()).pokemonTypes().contains(EnergyType.DRAGON)),"Lance offered non-Dragon");var evolution=q.candidates().stream().filter(c->c.definitionId().equals("evolved")).findFirst().orElseThrow();m.submitEffectCards(A,q.resolutionId(),q.step(),List.of(evolution.instanceId()));settle(m);check(m.benchPokemonView(A).stream().anyMatch(p->p.topCardId().equals("evolved")),"Lance refused direct evolution placement");}
+}
+

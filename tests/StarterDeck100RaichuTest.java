@@ -1,0 +1,13 @@
+import dev.hua.ptcglive.engine.*;
+import java.util.*;
+
+public final class StarterDeck100RaichuTest {
+    static final UUID A=StarterDeck100PokemonTest.A,B=StarterDeck100PokemonTest.B;
+    static String id(int n){return StarterDeck100PokemonTest.id(n);}
+    static void check(boolean ok,String why){StarterDeck100PokemonTest.check(ok,why);}
+    public static void main(String[] args){bothFields();empty();thunderbolt();simultaneous();System.out.println("StarterDeck100RaichuTest passed: both fields V/VMAX-only, Active weakness and Bench exclusion, own Lucky exclusion, empty field and simultaneous KOs");}
+    static void bothFields(){var m=StarterDeck100PokemonTest.game(128,81,id(1),id(413));var own=StarterDeck100PokemonTest.hand(m,id(1));m.playBasicPokemonToBench(A,own.instanceId());StarterDeck100EnergyTest.attach(m,A,A,id(413),own.instanceId());var ownNormal=m.benchPokemonView(A).stream().filter(p->!p.pokemonId().equals(PokemonIdentityTestSupport.logical(m,A,own.instanceId()))).findFirst().orElseThrow().pokemonId();m.endTurn(A);StarterDeck100GuardTest.prepareOpponent(m,81,0);m.endTurn(B);StarterDeck100PokemonTest.charge(m,0);int hand=m.privateView(A).hand().size();m.attack(A,"big-sparking");check(m.activePokemonView(A).damage()==0&&StarterDeck100PokemonTest.view(m,A,ownNormal).damage()==0,"ordinary Pokemon hit");check(StarterDeck100PokemonTest.view(m,A,own.instanceId()).damage()==50,"own V not hit");check(m.activePokemonView(B).damage()==100&&m.benchPokemonView(B).getFirst().damage()==50,"Active weakness or Bench immunity wrong");check(m.privateView(A).hand().size()==hand,"own damage activated opponent-only Lucky Energy");}
+    static void empty(){var m=StarterDeck100PokemonTest.game(128,139);StarterDeck100PokemonTest.attack(m,0);check(m.lastAttack().finalDamage()==0&&m.activePokemonView(A).damage()==0&&m.activePokemonView(B).damage()==0,"no V/GX must do no damage without illegal empty choice");}
+    static void thunderbolt(){var m=StarterDeck100PokemonTest.game(128);StarterDeck100PokemonTest.attack(m,1);check(m.lastAttack().finalDamage()==180&&m.activePokemonView(A).attachedEnergyIds().isEmpty(),"Thunderbolt damage/discard");}
+    static void simultaneous(){var m=StarterDeck100PokemonTest.game(128,1,id(1));var own=StarterDeck100PokemonTest.hand(m,id(1));m.playBasicPokemonToBench(A,own.instanceId());m.placeDamageCountersByEffect(A,A,own.instanceId(),17);var opp=m.benchPokemonView(B).getFirst().pokemonId();m.placeDamageCountersByEffect(A,B,opp,17);StarterDeck100PokemonTest.attack(m,0);StarterDeck100CombatTest.settleKnockouts(m);check(m.publicView().get(A).prizeCount()==4&&m.publicView().get(B).prizeCount()==4,"both sides did not get their simultaneous V KO prizes");}
+}

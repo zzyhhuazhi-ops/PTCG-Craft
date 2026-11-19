@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-14",
+  "scope": "2 newly recognized components, 2 fully supported cards. Prior supported programs and metadata unchanged.",
+  "source": "Rainier English card text included verbatim per component; conversion input matched by stable card ID.",
+  "ruleReferences": [
+    {
+      "url": "https://www.pokemon-card.com/info/2022/05/images/Ruleguide_ver3.pdf",
+      "usedFor": "C-11: direct deck/discard placement, available Bench slots and full Bench attack resolution."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E9%80%80%E5%8C%96%E3%82%B9%E3%83%97%E3%83%AC%E3%83%BC&page=4&regulation_faq_main=",
+      "usedFor": "Official Devolution Spray FAQ: directly placed Evolution cards cannot devolve without a lower card; actual evolved stacks, including Baby Evolution, can."
+    }
+  ],
+  "evidence": [
+    {
+      "cardId": "me5-5_en_109",
+      "component": "attack",
+      "name": "Booming Call",
+      "textEn": "Put up to 3 <sprite name=\"dragon\" tint=1> Pokémon from your discard pile onto your Bench.",
+      "textZh": "选择自己弃牌区中最多3张<sprite name=\"dragon\" tint=1>宝可梦，放于备战区。",
+      "mapping": {
+        "rules": [
+          "dragon-discard-bench-all-stages"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "search_discard_pile",
+                "target": "DISCARD",
+                "amount": 3,
+                "minimum": 0,
+                "card_category": "POKEMON",
+                "pokemon_types": "DRAGON",
+                "allow_evolution": true,
+                "destination": "BENCH"
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_156",
+      "component": "attack",
+      "name": "Booming Call",
+      "textEn": "Put up to 3 <sprite name=\"dragon\" tint=1> Pokémon from your discard pile onto your Bench.",
+      "textZh": "选择自己弃牌区中最多3张<sprite name=\"dragon\" tint=1>宝可梦，放于备战区。",
+      "mapping": {
+        "rules": [
+          "dragon-discard-bench-all-stages"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "search_discard_pile",
+                "target": "DISCARD",
+                "amount": 3,
+                "minimum": 0,
+                "card_category": "POKEMON",
+                "pokemon_types": "DRAGON",
+                "allow_evolution": true,
+                "destination": "BENCH"
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    }
+  ]
+}

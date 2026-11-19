@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "version": "all-attached-energy-v1",
+  "checkedDate": "2026-10-04",
+  "implementationVersion": "0.6.3-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Raichu — Generations 27/83",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/g1/27/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; indexed text checked 2026-10-04",
+      "supportsZh": "Thunderbolt 的英文卡文“Discard all Energy attached to this Pokémon.”是弃置该宝可梦全部附着能量的官方机制例，用于 discard_energy(all:true)；不代表该整卡已经审核为可玩。"
+    },
+    {
+      "title": "Wally’s Compassion — Mega Evolution 186/132",
+      "url": "https://www.pokemon.com/uk/pokemon-tcg/pokemon-cards/series/me01/186",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; indexed text checked 2026-10-04",
+      "supportsZh": "该卡的条件文本在治疗后将目标宝可梦的全部附着能量回到手牌，是 return_energy(all:true) 的机制例；治疗是否实际成功和卡牌类别／目标限制仍须由同一效果程序及单卡审核表达。"
+    }
+  ],
+  "dataContractZh": "discard_energy 或 return_energy 可使用 target=CHOSEN_POKEMON、OWN_ACTIVE、OPPONENT_ACTIVE、OWN_BENCH、OPPONENT_BENCH、ALL_OWN_POKEMON、ALL_OPPONENT_POKEMON 之一，并以 all:true 表示该范围中每只当前目标的全部已附着能量。all:true 不得同时携带 amount、minimum 或 destination_scope；move_energy 明确不接受 all:true。",
+  "serverAuthorityZh": "服务器在效果实际到达该步骤时重新解析当前公开目标与每张附着能量，逐宿主检查效果防护，再将所有实例按实际拥有者弃置或回到实际拥有者手牌。客户端不提交能量实例、数量、目标或结果；all:true 不创建选牌事务，也不保留可被后续状态变化复用的候选列表。",
+  "limitations": [
+    "本组件只表达不区分能量类型的“全部附着能量”。“全部基本能量”“全部某属性能量”“任意数量”等文字必须继续使用带筛选的选择组件或新增经过审核的通用筛选参数，不能错误套用 all:true。",
+    "回手机制例中的治疗成功条件、特定宝可梦类别与其它文本不是本组件的隐式行为；未审核整卡不会仅凭本组件设为可玩。",
+    "未将 PTCG Live、社区、日本、亚洲或 Pocket 行为混入国际规则包。"
+  ]
+}

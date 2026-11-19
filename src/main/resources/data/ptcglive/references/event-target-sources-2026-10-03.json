@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "version": "event-pokemon-binding-v2-source-identity",
+  "checkedDate": "2026-10-03",
+  "implementationVersion": "0.6.0-development",
+  "sources": [
+    {
+      "title": "Pyukumuku — Sun & Moon 47/149",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm1/47",
+      "region": "international English",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "official card database sm1/47",
+      "retrievalStatus": "official indexed card text read 2026-10-03",
+      "supportsZh": "反击文字指向实际攻击者，而不是用当前战斗位替代该对象；必须由服务器原攻击事件绑定。卡文机制示例，不自动启用这张真实卡。"
+    },
+    {
+      "title": "Huntail — Destined Rivals 55/182",
+      "url": "https://www.pokemon.com/uk/pokemon-tcg/pokemon-cards/series/sv10/55/",
+      "region": "international English",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "official card database sv10/55",
+      "retrievalStatus": "official indexed card text read 2026-10-03",
+      "supportsZh": "击倒事件的监听来源可以与被击倒对象不同；应分别保存监听者、触发宝可梦和攻击者。此轮没有实现该卡的完整能量回收替代效果，也没有绑定真实卡。"
+    },
+    {
+      "title": "February 2026 Rule Book Updates - What you need to know!",
+      "url": "https://professorprogram.pokemon.com/news/11473085",
+      "region": "international Play! Pokémon",
+      "publishedDate": "2026-02-26",
+      "effectiveDate": null,
+      "documentVersion": "official Professor Community 11473085",
+      "retrievalStatus": "official full body read 2026-10-03",
+      "supportsZh": "原卡文字完整结束后处理其它触发，击倒与附能多个效果排序由当前玩家决定，回合间由下一玩家决定。因延后触发必须保存事件当时的对象而不是在界面确认时猜测。",
+      "dateNoteZh": "页首2月26日与正文昨天2月20日不一致；生效日保留null。"
+    }
+  ],
+  "implementationZh": [
+    "v2补齐SELF来源的拥有者、实体卡UUID和本次入场序号。已捕获来源不可重绑；同一卡回手后重进场不接受旧SELF回复／指示物，但原已捕获的玩家级抽牌继续。该身份隔离是延后队列的工程保障，不声称官方对所有复杂离场卡文作了统一裁定。",
+    "2026-10-03再次阅读Professor文章全文，并用拳海参官方索引交叉检查来源与实际攻击者的区别。本阶段未获得更广泛的最后已知状态裁定，因此没有放开延后读取旧宝可梦状态的条件，也没有增加真实卡绑定。",
+    "通用TRIGGER_POKEMON和ATTACKING_POKEMON使用EffectEventBindings；事件发生时保存拥有者、实例UUID和入场序号，解析时与当前场地共同验证。",
+    "附能、受伤与攻击伤害击倒接入对象绑定；击倒watch可选SELF、OWN_FIELD、OPPONENT_FIELD、ANY_FIELD，省略仍为SELF。activeOnly限定被击倒对象，OPPONENT_ATTACK_DAMAGE相对监听者的拥有者判断。",
+    "触发条件对真实事件对象求值并锁定结果；后续确认不重新检查已捕获条件。目标离场或同一卡重进场时不转移至新实例；玩家目标类抽牌仍作用于已确定的拥有者。",
+    "同一事件的公开提示提供触发对象与实际攻击者，不提供入场序号账本、效果程序、手牌、牌库顺序或奖赏内容。中文操作标注战斗／备战对象，已离场对象明确标注。"
+  ],
+  "limitationsZh": [
+    "未实现完整离场最后已知状态；后续Effect条件需要读取旧对象的宝可梦状态时仍拒绝。受伤来源在原攻击文字完成前离场不转移其事件给新实例；相关复杂离场攻击组合仍未启用。",
+    "回合间没有唯一触发宝可梦，附能及ANY原因击倒不保证存在攻击者，对这些无绑定入口明确拒绝相应目标。主动卡牌／训练家入口不能使用自动事件目标。",
+    "同一卡离场再入场、换位与待决窗口中的部分单位测试使用专用测试夹具直接修改服务器场地以验证身份语义；不表示这些具体攻击文字或客户端任意改场操作已经开放。",
+    "仍缺动态工具／场地／能量来源、能量回收替代、多步自动触发交互、复制攻击及跨进程恢复。无新增真实卡审核绑定，无Live实机对照，不是双客户端可视化验收。"
+  ]
+}

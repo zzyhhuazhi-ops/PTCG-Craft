@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "version": "persistent-source-triggers-v1",
+  "checkedDate": "2026-10-03",
+  "implementationVersion": "0.6.0-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "February 2026 Rule Book Updates - What you need to know!",
+      "url": "https://professorprogram.pokemon.com/news/11473085",
+      "publishedDate": "2026-02-26",
+      "effectiveDate": null,
+      "documentVersion": "official Professor Community 11473085",
+      "verification": "Full official HTML body read on 2026-10-03, including sections on triggered-effect order and complete original effect first",
+      "supportsZh": "沿用原卡效果整段结束后再处理其它卡触发的顺序；回合内击倒／附能由当前玩家排序，回合间由下一玩家排序。不能以此推定所有未记载的单卡时序。",
+      "dateNoteZh": "页首发布日期为2026-02-26，正文将生效日描述为昨天／February 20th，存在冲突，未擅自确定精确生效日期。"
+    },
+    {
+      "title": "Rocky Helmet - Scarlet & Violet 193/198",
+      "url": "https://www.pokemon.com/uk/pokemon-tcg/pokemon-cards/series/sv01/193",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "official international card database SVI 193",
+      "verification": "official indexed card text, title, subtype and printing number obtained on 2026-10-03",
+      "supportsZh": "工具可在战斗位宿主受对手攻击伤害后，对实际攻击者放置伤害指示物，宿主即将击倒也要处理。用于验证通用受伤事件及真实来源类型，不等于本轮已审核整张卡和历史合法性。"
+    },
+    {
+      "title": "Jet Energy - Surging Sparks 252/191",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv08/252/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "official international card database SSP 252",
+      "verification": "official indexed energy text and printing number obtained on 2026-10-03",
+      "supportsZh": "存在限定此张能量卡本身从手牌附着的触发，不能错误监听此后其它能量附着。本阶段实现sourceCardOnly谓词；并未因此声称完整支持此卡的备战限定换位。"
+    },
+    {
+      "title": "Froslass and Munkidori Strategy: Iteration and Improvement",
+      "url": "https://www.pokemon.com/uk/strategy/froslass-and-munkidori-strategy-iteration-and-improvement",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "official international strategy article; Lugia VSTAR section",
+      "verification": "official indexed relevant strategy paragraph obtained on 2026-10-03; exact publication date not verified",
+      "supportsZh": "官方策略提及使用Temple of Sinnoh关闭Gift Energy，用于交叉核对能量其它效果被关闭时不能继续监听事件。未把策略摘要当作Gift Energy完整卡文，也未用固定抽七张近似其效果。"
+    }
+  ],
+  "implementationZh": [
+    "AutomaticEffectDefinition是特性与持续卡自动程序的共同契约；CardTriggerDefinition仅保存数据，不为每张卡建立Java类或新的CustomEffect。",
+    "Tool、Stadium、Special Energy通过automaticEffects配置事件策略、程序、限次与可选确认；支持受限ON_ENERGY_ATTACHED、ON_DAMAGE、ON_KNOCKOUT、ON_POKEMON_CHECKUP。场地无宿主，不允许宿主受伤策略、SELF宿主条件或宿主效果。",
+    "复用既有队列、事件绑定、效果来源防护、私人候选、可恢复Choice和玩家共享限次；真实来源仍为TRAINER或ENERGY，不伪装成ABILITY或RULE。",
+    "工具失效与场地关闭特殊能量效果会阻止新捕获；已经捕获的程序遵循既有整卡续接和固定宿主身份。附着卡有独立入场序号，场内移动不重置次数，离场重新附着产生新序号。玩家共享整局次数不随入场刷新。",
+    "sourceCardOnly仅能量来源的附能事件可用。未知字段、重复程序ID、场地无效SELF、未支持的复制攻击等程序在加载时拒绝，不执行半段。",
+    "公开触发顺序及续接DTO加入来源类别；卡桌显示工具／能量可选使用与放弃，原宝可梦特性回放标识保持兼容。"
+  ],
+  "limitationsZh": [
+    "来源失效的完整依赖图、任意覆盖冲突、动态HP、工具容量下降的超量处理仍待实现。",
+    "尚不是完整最后已知状态或离场替代系统；场地未支持无宿主ON_DAMAGE映射，也未自动扩展到其它尚未核验事件。",
+    "特殊能量零供能、附着限制、相对奖赏比较、完整Rule Box条件，以及所有真实触发卡绑定仍未完成。",
+    "本轮合成测试不能增加真实卡审核计数，仍39张；Registry仍42类，未新增CustomEffect。",
+    "未读取或操作PTCG Live，未宣称行为实测差异；没有引用官方域名下的社区用户评论作为官方裁定。",
+    "实际Minecraft Fabric无窗口协议测试不等于两名真实登录客户端验收；四项用户主阶段未全部完成，不发JAR。"
+  ]
+}

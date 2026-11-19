@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "version": "special-energy-host-restriction-v1",
+  "checkedDate": "2026-10-03",
+  "implementationVersion": "0.6.0-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Triple Acceleration Energy — Unbroken Bonds 190",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm10/190/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database UNB190",
+      "verification": "Official indexed card text retrieved on checkedDate",
+      "supportsZh": "进化宿主附着限制与宿主不符时自弃是独立条款；条件不满足的供能需要可表示为零。回合末自弃尚未接入，不据此启用整卡。"
+    },
+    {
+      "title": "Strong Energy — Fates Collide 115",
+      "url": "https://www.pokemon.com/uk/pokemon-tcg/pokemon-cards/series/xy10/115/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database FCO115",
+      "verification": "Official indexed card text retrieved on checkedDate",
+      "supportsZh": "宿主属性限制与非斗属性时自弃条款支持参数化pokemon_types筛选；本轮只核对通用宿主约束，不启用整卡或推断所有效果附能覆盖规则。"
+    },
+    {
+      "title": "Temple of Sinnoh — Astral Radiance 155",
+      "url": "https://www.pokemon.com/uk/pokemon-tcg/pokemon-cards/series/swsh10/155",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database ASR155",
+      "verification": "Official indexed card text retrieved on checkedDate",
+      "supportsZh": "场地仅作用于已附着的特殊能量，改变供给并关闭其它效果。由该范围与附着限制卡文推导：手中卡的出牌检查与附着后的持续自弃不能共用被场地覆盖的档案。",
+      "inference": true
+    }
+  ],
+  "crossValidationOnly": [
+    {
+      "title": "Pokemon TCG Live Known Issues Tracker (Updated 06/11/26)",
+      "url": "https://community.pokemon.com/en-us/discussion/23664/pokemon-tcg-live-known-issues-tracker-updated-05-14-26",
+      "author": "TPCi_GlowingMoon, Administrator",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "lastUpdatedDate": "2026-06-11",
+      "documentVersion": "Official staff issue tracker; retrieved title/date, not a tournament ruling",
+      "verification": "Read official staff-authored HTML; not a community user's answer",
+      "supportsZh": "官方记录涉及效果把受限特殊能量附到不符合限制的对象，以及附能反应与弃置的顺序问题。此信息触发兼容性待办，不能代替国际赛事裁定；本轮这类覆盖明确未支持。"
+    }
+  ],
+  "priorRuleReferences": ["typed-energy-count-sources-2026-10-03.json", "dynamic-energy-provision-sources-2026-10-03.json"],
+  "dataContractZh": "attachmentRule含stages(BASIC/EVOLUTION)、pokemon_types和独立discard_if_invalid；省略规则兼容原数据。手动附能读印刷限制；已附着自弃读有效来源。当前效果附能入口只接受宿主有效的组合，未核验覆盖明确拒绝。energyUnits显式空数组表示零供能，空类型单位仍非法。",
+  "limitations": [
+    "No complete real-card binding added; Triple Acceleration Energy end-of-turn discard remains missing",
+    "Effect attachment to a host outside printed restrictions and its reaction/discard timing require further official international ruling verification",
+    "Relative Prizes, Rule Box and affiliation restrictions, attachment costs, Energy-dependent provision and type-changing effects remain incomplete",
+    "No latest Rulebook/Handbook PDF verified this turn; no Japanese/Asia/Pocket rule merged into international",
+    "No PTCG Live application access, hook or modification; staff issue tracker is only cross-validation, not evidence of current observed gameplay"
+  ]
+}

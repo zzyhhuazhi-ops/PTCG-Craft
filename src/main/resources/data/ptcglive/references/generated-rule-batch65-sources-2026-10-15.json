@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "scope": "Newest-first ME5: both Misty's Vitality prints, complete attachment/shuffle then turn end. Artwork and true BREAK excluded.",
+  "ruleReferences": [
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50294/regu/all",
+      "facts": "Misty Supporter: up to4 Basic Water Energy from own deck to one own Pokemon, shuffle; using the card ends own turn. Inline Water icon is omitted by page text extraction; local bilingual card text and official FAQ identify Basic Water."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%82%AB%E3%82%B9%E3%83%9F%E3%81%AE%E5%85%83%E6%B0%97&regulation_header_search_item1=all",
+      "facts": "Direct official Misty FAQ: turn still ends when zero Basic Water Energy are selected."
+    },
+    {
+      "url": "https://www.pokemon-card.com/assets/document/advanced_manual.pdf",
+      "facts": "B-03 Supporter declaration conditions/no-effect legality; H hidden deck search and D-04/D-05 selections. Preserve existing rejection for actually empty deck; allowing fail-to-find in a nonempty hidden deck is distinct. Empty-deck application is an inference from general rules, not a card-specific FAQ."
+    }
+  ],
+  "evidence": [
+    {
+      "cardId": "me5_en_080",
+      "textEn": "Search your deck for up to 4 Basic <sprite name=\"water\" tint=1> Energy cards and attach them to 1 of your Pokémon. Then, shuffle your deck. Your turn ends.",
+      "textZh": "如果使用了这张卡牌的话，则自己的回合结束。选择自己牌库中最多4张「基本<sprite name=\"water\" tint=1>能量」，附着于自己的1只宝可梦身上。并重洗牌库。",
+      "mapping": {
+        "rules": [
+          "trainer-basic-water-deck-attach-four-one-host-end-turn"
+        ],
+        "fields": {
+          "endsTurn": true
+        },
+        "program": [
+          {
+            "type": "attach_energy",
+            "target": "SELECT_OWN_POKEMON",
+            "source": "DECK",
+            "amount": 4,
+            "minimum": 0,
+            "target_scope": "OWN_FIELD",
+            "basic_energy_only": true,
+            "energy_type": "WATER"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5_en_111",
+      "textEn": "Search your deck for up to 4 Basic <sprite name=\"water\" tint=1> Energy cards and attach them to 1 of your Pokémon. Then, shuffle your deck. Your turn ends.",
+      "textZh": "如果使用了这张卡牌的话，则自己的回合结束。选择自己牌库中最多4张「基本<sprite name=\"water\" tint=1>能量」，附着于自己的1只宝可梦身上。并重洗牌库。",
+      "mapping": {
+        "rules": [
+          "trainer-basic-water-deck-attach-four-one-host-end-turn"
+        ],
+        "fields": {
+          "endsTurn": true
+        },
+        "program": [
+          {
+            "type": "attach_energy",
+            "target": "SELECT_OWN_POKEMON",
+            "source": "DECK",
+            "amount": 4,
+            "minimum": 0,
+            "target_scope": "OWN_FIELD",
+            "basic_energy_only": true,
+            "energy_type": "WATER"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    }
+  ]
+}

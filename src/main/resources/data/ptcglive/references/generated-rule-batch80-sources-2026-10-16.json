@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-16",
+  "scope": "ME4 Octillery; no artwork, BREAK or JAR.",
+  "cardIds": [
+    "me4_en_017"
+  ],
+  "ruleReferences": [
+    {
+      "url": "https://asia.pokemon-card.com/my/card-search/detail/25208/",
+      "facts": "Stage1 Octillery from Remoraid,110HP,Water,retreat2. Jet of Ink W30: defending Pokemon next opponent turn must flip2 coins, any tails prevents attack. Tantrum WC120 leaves attacker Confused."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%82%AA%E3%82%AF%E3%82%BF%E3%83%B3&regulation_faq_main_item1=all",
+      "facts": "Official Octillery ink-gate/Victini FAQ: attempt-gate coins are not coins of the attack being used and cannot be retried through Victory Star. Existing gate-before-Confusion ordering must be retained."
+    }
+  ],
+  "reviewedSemantics": [
+    "Narrow attack_coin_gate flips:2 extension, all-heads success. Existing no-arg1-coin mode stays valid; invalid target/extra fields now reject at schema parse.",
+    "Roll both printed attempt coins even if first tails. On any tails stop before Confusion and attack body, end turn once. These coins cannot use attack-body retry. Existing legal-cost and authoritative declaration checks precede all flips.",
+    "Keep legacy persisted continuous-effect count0 as one flip, use2 for two flips. Retain same-owner replacement, normal next-source-turn expiry and switch/evolution/leave clearing. Effect immunity blocks application; KO replacement does not inherit gate.",
+    "Preserve actual Remoraid evolution,110HP,retreat2,Lightning weakness,one prize,W30 Jet of Ink and WC120 Tantrum with self-Confusion."
+  ],
+  "validationAtReview": {
+    "pythonTests": 574,
+    "catalogLoad": "passed",
+    "actualCardAndComponentRegressions": "passed",
+    "fullCheck": "pending; see final batch80 docs for terminal result"
+  }
+}

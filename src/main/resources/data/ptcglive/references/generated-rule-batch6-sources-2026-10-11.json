@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "version": "generated-rule-batch6-v1",
+  "checkedDate": "2026-10-11",
+  "implementationVersion": "0.6.19-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Lurantis-GX — official Sun & Moon card translation PDF (English and Russian)",
+      "url": "https://assets.pokemon.com/assets/cms2-ru-ru/pdf/trading-card-game/tcg_sun_moon_card_translation.pdf",
+      "supportsZh": "Chloroscythe-GX 按自身提供的草能量数量计算倍数伤害，保留整局一次 GX 限制。",
+      "accessStatus": "English card text retrieved"
+    },
+    {
+      "title": "Lunala — official Guardians Rising card translation PDF (English and Russian)",
+      "url": "https://assets.pokemon.com/assets/cms2-ru-ru/pdf/trading-card-game/tcg_sun_moon_2_card_translation.pdf",
+      "supportsZh": "Shatter Shot 按自身超能能量数量计算倍数伤害；Wings of the Moone 伤害后把自身全部能量任意分配给己方备战宝可梦。",
+      "accessStatus": "English card text retrieved"
+    },
+    {
+      "title": "Granbull — official Lost Thunder strategy",
+      "url": "https://www.pokemon.com/us/strategy/shake-up-your-deck-with-sun-moon-lost-thunder",
+      "supportsZh": "All Out 的追加伤害要求自己的手牌为空，不能把手牌非空或对方手牌为空当作符合条件。",
+      "accessStatus": "Official strategy text retrieved; numeric values cross-checked with Rainier SM8_138"
+    },
+    {
+      "title": "Gyarados — XY Evolutions 34/108",
+      "url": "https://www.pokemon.com/uk/pokemon-tcg/pokemon-cards/series/xy12/34/",
+      "supportsZh": "Dragon Rage 掷两枚硬币，有任一反面就没有伤害；仅整段无其他效果的该写法纳入转换。",
+      "accessStatus": "Official card text retrieved"
+    },
+    {
+      "title": "Palafin — Paldean Fates 225/91",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv4pt5/225",
+      "supportsZh": "Justice Kick 只有本回合从备战区换到战斗位才造成印刷伤害；未换上仍可宣告，零伤害后结束回合。",
+      "accessStatus": "Official card text retrieved"
+    },
+    {
+      "title": "Jolteon-EX — official Spring Regionals strategy",
+      "url": "https://www.pokemon.com/us/strategy/tcg-winter-regional-championships-preview-2016",
+      "supportsZh": "Flash Ray 防止基础宝可梦的攻击伤害。详细期间与只防伤害的限定按 Rainier XY9-5_28 卡文及既有 SD100 Blockface 组件核对。",
+      "accessStatus": "Official strategy text retrieved; direct card page returned only an iframe"
+    },
+    {
+      "title": "Stoutland V — Battle Styles, official Asia card database",
+      "url": "https://asia.pokemon-card.com/sg/card-search/detail/1263/",
+      "supportsZh": "Double Dip Fangs 仅在本次招式伤害击倒对方基础宝可梦时多拿一张奖赏，不适用于效果击倒、中毒检查或随后发生的击倒。",
+      "accessStatus": "Official card text retrieved"
+    }
+  ],
+  "conversionScopeZh": "复用已有组件，不修改 ServerMatch 或 engine/effect。62 张卡由 UNSUPPORTED 升为 SUPPORTED，逐卡列表见 docs/rule-data-batch6-20261011.json。转换输入共 14233 张（含 16 张原有手工卡）；生成定义 14217 张。",
+  "regressions": [
+    "tests/GeneratedRuleBatch6Test.java",
+    "tools/PTCGCardCN/tests/test_rule_data_batch6.py",
+    "tests/StarterDeck100GuardTest.java",
+    "tests/StarterDeck100DistributedMoveTest.java",
+    "tests/StarterDeck100ExtraPrizeTest.java",
+    "tests/TypedEnergyCountTest.java"
+  ],
+  "limitations": [
+    "Evolution 攻击者防护仍不支持；现有 AttackSourceFilter 没有 EVOLUTION。",
+    "额外奖赏仅匹配 Basic 限定，任意宝可梦或 GX/EX/MEGA 限定仍不支持。",
+    "does nothing 仅整段只有伤害与门槛时转为条件伤害；带抽牌、弃能等后续效果时保持未支持。",
+    "特殊能量按当前实际提供的单位计数，不能把每张能量卡固定当成一个单位。",
+    "Rainier 数据含未发行或没有物品的系列；支持标记不等于已发行、赛事合法或可取得实体卡。",
+    "本记录不是每张卡的逐图人工核验或客户端实战验收。"
+  ]
+}

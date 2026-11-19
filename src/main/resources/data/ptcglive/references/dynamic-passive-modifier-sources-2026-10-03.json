@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "version": "dynamic-passive-modifiers-v1",
+  "checkedDate": "2026-10-03",
+  "implementationVersion": "0.6.0-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Pokémon Trading Card Game Rules - Paradox Rift, Full details of attacking, page 20",
+      "url": "https://www.pokemon.com/static-assets/content-assets/cms2/pdf/trading-card-game/rulebook/par_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "PAR historical international rulebook; not represented as newest 2026 full rulebook",
+      "verification": "cached official PDF, page 20 re-rendered with Poppler and complete page visually reviewed on 2026-10-03",
+      "localCache": "tmp/pdfs/par_rulebook_en.pdf",
+      "supportsZh": "第2步处理攻击方修正及零伤害停止，第3/4步处理弱点/抵抗，第5步继续处理受伤方来源，第6步才按最终结果放置指示物。抵抗后的负中间值不能提前归零；先前已停止的零伤害攻击不被后续增伤复活。"
+    },
+    {
+      "title": "February 2026 Rule Book Updates - What you need to know!",
+      "url": "https://professorprogram.pokemon.com/news/11473085",
+      "publishedDate": "2026-02-26",
+      "effectiveDate": null,
+      "documentVersion": "official Professor Community 11473085",
+      "verification": "full official HTML body read 2026-10-03",
+      "supportsZh": "保持原效果整段结束后再处理其它触发的既有顺序；持续修正查询本身不生成新触发。此文章不是全部持续效果或单卡裁定的证据。",
+      "dateNoteZh": "标题发布日期与正文日期冲突，未自行推定生效日期。"
+    },
+    {
+      "title": "Air Balloon - Ascended Heroes 181/217",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/me2pt5/181",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "official international card database printing ME2pt5 181",
+      "verification": "official search index contains complete relevant retreat text; direct card-page requests returned validation iframe",
+      "supportsZh": "附着工具的撤退费用修正是持续来源的官方文本示例；没有据此新增此印刷、轮替合法性或真实卡审核绑定。"
+    },
+    {
+      "title": "Arceus VSTAR, Charizard VSTAR, and More Come to the Pokémon TCG",
+      "url": "https://www.pokemon.com/uk/pokemon-news/arceus-vstar-charizard-vstar-and-more-come-to-the-pokemon-tcg",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "official international Brilliant Stars product feature",
+      "verification": "official search index exposes Double Turbo Energy explanation; direct HTML returns validation iframe",
+      "supportsZh": "特殊能量可以同时提供多个能量单位并持续降低附着宝可梦的攻击伤害。测试使用合成数据，不据此宣称这张真实卡的全套参数已核验。"
+    },
+    {
+      "title": "Pokémon TCG: Scarlet & Violet Top Competitive Cards",
+      "url": "https://www.pokemon.com/us/features/pokemon-tcg-scarlet-and-violet-top-competitive-cards",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "existing Beach Court source carried from persistent-trainer-sources-2026-09-30.json",
+      "verification": "prior official search-index evidence retained; this turn direct recheck returned validation iframe",
+      "supportsZh": "仅保留已有海滩场地数据的来源记录；未冒称本轮重新读取全文或新增地区裁定。"
+    }
+  ],
+  "implementationZh": [
+    "PASSIVE + Condition + retreat_cost_modifier / attack_damage_modifier / tool_capacity组成只读持续程序。目标范围相对来源控制者，条件SELF明确指当前被修正宝可梦。",
+    "旧工具及基础撤退场地数据通过适配器进入同一个查询层，既有真实数据与同名/每回合场地限制不变。",
+    "当前场上工具、场地、附着能量每次按真实来源重新计算，工具失效、来源移动/回手/弃置、进化或条件变化无需清除缓存。",
+    "攻击方伤害修正在弱点抵抗前，受伤方修正在之后；遵守原有伤害防护和忽略防守效果规则。零伤害不凭修正产生伤害，指示物不走伤害修正。",
+    "持续来源使用TRAINER或ENERGY归因，并经过现有OTHER_EFFECTS保护层；ANY_CARD覆盖能量，不把能量伪装成规则或特性。",
+    "工具容量是附着许可的最大值，不累计多个容量值；伤害与撤退数值按来源相加。特殊能量仍复用固定供能/费用支付；持续条件ENERGY_COUNT读取供能单位。"
+  ],
+  "limitationsZh": [
+    "尚无动态供能类型/单位替换、工具/场地/能量的自动触发动作、复杂来源关闭依赖图、任意来源对象条件、持续HP修改和容量下降时由卡文要求的超量工具选择弃置。没有静默放行这些文本。",
+    "持续条件当前只访问被修正宝可梦SELF及其拥有者的公开计数；尚不代表全部条件目标/全部动态规则已支持。",
+    "新增三种组件不是新增真实卡绑定；已审核真实卡仍39，13000余卡全库转换与地区历年核验仍未完成。",
+    "未读取PTCG Live，没有Live实机对照或真实双登录客户端验收；不混用日本或简中当地规则。"
+  ]
+}

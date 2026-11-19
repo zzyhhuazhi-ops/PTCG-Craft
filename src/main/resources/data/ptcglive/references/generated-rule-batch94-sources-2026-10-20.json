@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-20",
+  "cardIds": [
+    "me4_en_061"
+  ],
+  "ruleReferences": [
+    {
+      "url": "https://asia.pokemon-card.com/sg/card-search/detail/25252/",
+      "kind": "Official English actual Metagross",
+      "status": "opened",
+      "facts": "Stage2,180HP,Metal; Bounce Back M60 opponent chooses replacement; Metallic Hammer MMMC150+ optional discard3Metal for +150; retreat3, Fireweak2, Grassresist30. Card body matches local raw row."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50143/regu/all",
+      "kind": "Official Japanese actual Metagross M4 059/083",
+      "status": "opened",
+      "facts": "Corresponding printed Metal-energy discard and +150, plus forced opponent replacement. HTML textual extraction omits inline energy icons; English body explicitly includes {M} and local raw provides costs."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%A1%E3%82%BF%E3%83%AA%E3%83%83%E3%82%AF%E3%83%8F%E3%83%B3%E3%83%9E%E3%83%BC&regulation_faq_main_item1=all",
+      "kind": "Direct actual Metallic Hammer FAQ",
+      "status": "opened, one result lines81-84",
+      "facts": "Slowking Seek Inspiration copying this attack with no attached Metal can opt in and add150. If any Metal is attached, it must discard Metal. No stable individual FAQ ID was exposed; exact attack-name endpoint is retained."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%AA%E3%83%90%E3%83%BC%E3%82%B5%E3%83%AB%E3%82%A8%E3%83%8D%E3%83%AB%E3%82%AE%E3%83%BC&regulation_faq_main_item1=all",
+      "kind": "Official analogous Reversal Energy unit/discard FAQ",
+      "status": "opened",
+      "facts": "Gaia Punk may discard one Reversal Energy currently supplying3all-type units for its3Lightning Energy instruction. Analogous unit/physical-card distinction, not a second Metallic Hammer FAQ."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/details.php?id=9597",
+      "kind": "Official analogous energy-unit selection FAQ",
+      "status": "opened exact FAQ9597; lines81-84",
+      "facts": "Watchog two-Energy discard can select a Basic plus Double Colorless physical card; selecting units moves whole cards. Supports existing whole-card overshoot behavior, not a new Metagross ruling."
+    },
+    {
+      "url": "https://www.pokemon-card.com/assets/document/advanced_manual.pdf",
+      "version": "3.4, 2025-08-01",
+      "C03": "printed pp24-25: own Active is switched out without ordinary retreat cost/conditions",
+      "C04": "printed pp25-26, extracted lines657-667: opponent Active receives effect; protected incoming Bench can still switch in",
+      "C05": "printed p26, extracted lines680-689: selected opponent Bench receives effect; protected outgoing Active does not block",
+      "level": "Direct official general-rule FAQ, independently reopened; not an actual Metagross-specific FAQ"
+    }
+  ],
+  "reviewedSemantics": [
+    "more1 is accepted optional intent with0/1value; never actual discarded card/unit count. Same binding gates150bonus and afterdamage mandatory-as-possible Metaldiscard.",
+    "Bounce Back card program, printed profile and evolution metadata are retained; no older-card activation. General switching recipient semantics are corrected by the separately reviewed engine change below.",
+    "Existing attack loader merges top-level effects as ON_ATTACK. Converter Result.triggers serializes only BEFORE/AFTER; no converter/loader extension. BOUND_COUNT value1 uses existing default threshold comparison.",
+    "Private explicit recipient enum. Every reviewed production caller classifies printed operation, only the selected recipient is checked by unchanged origin-aware preventCardEffect. Public3arg hook now documented ACTIVE. Success movement/events/bind behavior and invalid target validation unchanged."
+  ],
+  "schema": {
+    "effects": [
+      {
+        "type": "conditional",
+        "conditions": [
+          {
+            "type": "BOUND_COUNT",
+            "bind": "more1",
+            "value": 1
+          }
+        ],
+        "effects": [
+          {
+            "type": "damage",
+            "target": "OPPONENT_ACTIVE",
+            "amount": 150
+          }
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "trigger": "BEFORE_ATTACK",
+        "effects": [
+          {
+            "type": "choice",
+            "optional": true,
+            "effects": [
+              {
+                "type": "opt_in",
+                "bind": "more1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "trigger": "AFTER_ATTACK",
+        "effects": [
+          {
+            "type": "conditional",
+            "conditions": [
+              {
+                "type": "BOUND_COUNT",
+                "bind": "more1",
+                "value": 1
+              }
+            ],
+            "effects": [
+              {
+                "type": "discard_energy",
+                "target": "SELF",
+                "energy_type": "METAL",
+                "count_mode": "UNITS",
+                "amount": 3,
+                "minimum": 3
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "note": "Existing attack loader merges top-level effects as ON_ATTACK. Converter Result.triggers serializes only BEFORE/AFTER; no converter/loader extension. BOUND_COUNT value1 uses existing default threshold comparison."
+  },
+  "evidenceLimitations": [
+    "Only one direct actual Metallic Hammer FAQ found. Energy-unit and phase extrapolations are identified separately.",
+    "Isolated final engine and actual Metagross tests passed, including the corrected switch-recipient matrix; formal production validation remains pending chronological integration.",
+    "Draft work did not modify production/build resources or create a JAR."
+  ],
+  "testLimitations": [
+    "Initial fixture-only correction and prior successful attempt2 remain historical evidence. Later C-04 audit exposed a true engine defect; independent red probe2 preserved. Correct expectations now pass full actual94 on immutable94 switch-target repair; no production edits here.",
+    "682 Python tests and the full109-database converter audit belong to the converter/root reports; this note does not claim rerunning them.",
+    "The zero-Metal opt-in is a direct actual FAQ; partial-unit resolution, whole-card overshoot and phase order use separately identified analogous/general rules."
+  ],
+  "actualCoverage": [
+    "Actual Stage2 HP180, Metal, Fire weakness x2, Grass resistance -30, retreat3, one Prize, regulation J; no Ability; M60 Bounce Back and MMMC150+ Metallic Hammer. Normal actual059→060→061 and059→094→061 evolution with same-turn Stage2 rejection.",
+    "Printed Hammer rejects missing Metal, wrong Metal and missing fourth unit before optional choice. Decline150 or accept300, then weakness/resistance; no RNG consumption. Intent binding is independent of actual discarded units.",
+    "Explicit synthetic C-cost opponent-Bench copier borrows real Metagross unchanged. Both choices tested with0/1/2/3/4 Metal units on actual attacker. Zero still deals300 without a discard prompt;1/2 discard all available;3/4 discard3. Opponent donor retains its own3 Metal.",
+    "Wrong actor, spectator, invalid option, stale step, wrong type, own other host, hand-only card, foreign donor, zero/insufficient/duplicate/over3 selection and replayed choices all reject atomically. Issued candidate set exactly matches eligible attached physical cards. Private hand/deck identities and executable programs stay hidden.",
+    "Explicit synthetic two-Metal-unit Energy plus Basic or another double counts2+1 or2+2 units while discarding entire selected cards. Less than3 units is rejected when3 or more are available.",
+    "Actual supported Reversal Energy on evolved non-rule-box Metagross with more Prizes supplies3 Metal from one card. Damage300 precedes its single-card discard. Live Prize deficit and equalization update an already-attached card. Inactive Colorless fallback pays the fourth attack unit, is excluded from Metal selection, and remains attached.",
+    "Defender DAMAGE_ONLY/EFFECTS_ONLY protection separates damage from own SELF discard. Lethal300 is visible while attached Energy and Prizes remain pending; discard completes before KO, Prize taking and replacement.",
+    "Opt-in binding resets after attack completion: accept300 and discard, then next-turn decline150 without another discard.",
+    "Actual Bounce Back deals60 before opponent chooses only their Bench. Actor/spectator/stale/Active-target forgery rejects; former Active retains60 damage and clears Poison; replacement is undamaged. No Bench still resolves60. Damage protection permits switching; effects protection prevents movement after the issued public choice is completed.",
+    "Actual Bounce Back C-04 2x2 oldActive/selectedBench EFFECTS_ONLY guard matrix and explicit synthetic gust C-05 reciprocal matrix PASS. Force-switch checks only oldActive; gust only selectedBench; both controller choices and protected candidate selection are authoritative."
+  ],
+  "validationScope": "Reviewed immutable draft component and actual-card runs passed; combined production validation documented in docs/rule-data-batch93-96-20261020.json. No per-batch full-check claim.",
+  "previouslySupportedBehaviorChanges": [
+    {
+      "kind": "General switch effect recipient correction",
+      "programDataChanged": false,
+      "behavior": "Shared switching helper tested both outgoing Active and incoming Bench protection. C04 Bounce Back incorrectly failed for protected Bench, while C05 gust incorrectly failed for protected outgoing Active. Private explicit recipient enum. Every reviewed production caller classifies printed operation, only the selected recipient is checked by unchanged origin-aware preventCardEffect. Public3arg hook now documented ACTIVE. Success movement/events/bind behavior and invalid target validation unchanged.",
+      "potentialRelatedSupportedNodes": {
+        "scope": "auditor current SUPPORTED node inventory, not number of changed match outcomes",
+        "force_switch": 104,
+        "gust": 91,
+        "switch": 220,
+        "legacy_SWITCH_OPPONENT_ACTIVE": {
+          "total": 23,
+          "fixture": 1,
+          "Boss": 19,
+          "Lysandre": 3
+        },
+        "legacy_SWITCH_ACTIVE": 17,
+        "retreatActualNodes": 0
+      },
+      "limit": "Node inventory is potential reach, not a count of changed matches. Existing component expectations were not modified."
+    }
+  ],
+  "switchRecipientContract": {
+    "enum": "private SwitchEffectTarget { ACTIVE, SELECTED_BENCH }",
+    "publicCompatibility": "3-argument server-only method keeps signature; explicitly C03/C04 ACTIVE semantics. Previously checked BOTH; correcting behavior is intended. No inference from chooser, executor or affected owner.",
+    "productionCalls": {
+      "ServerEffectExecutionContext switch": "ACTIVE",
+      "ServerEffectExecutionContext force_switch": "ACTIVE",
+      "ServerEffectExecutionContext retreat FREE": "ACTIVE; only card-effect movement, ordinary retreat unchanged",
+      "ServerEffectExecutionContext gust": "SELECTED_BENCH",
+      "legacy TrainerEffect.SWITCH_ACTIVE": "ACTIVE",
+      "legacy TrainerEffect.SWITCH_OPPONENT_ACTIVE": "SELECTED_BENCH; server validates actor-selected opponent Bench (Boss/Lysandre), despite legacy name"
+    },
+    "implementation": "Keep all turn, combat, current Active and current Bench target validation. Choose exactly one affected physical/logical in-play target then existing preventCardEffect using original EffectOrigin. Only on success call battlefield movement, sync, ON_SWITCH capture, replay, HP settling, trigger drain and return true. Existing count bind receives actual boolean success.",
+    "unchanged": [
+      "selection authority and issued candidates",
+      "no filtering or reinterpreting protected Bench as illegal choices",
+      "stale target rejection",
+      "source-kind/relation protection logic",
+      "ordinary retreat cost/quota/conditions",
+      "Battlefield implementation",
+      "network/client/schema/cards/combat data",
+      "copied attacks retain actual originating controller"
+    ]
+  }
+}

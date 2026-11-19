@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-16",
+  "scope": "ME4 and identical ME Black Star Promo Ampharos; no artwork, BREAK or JAR.",
+  "cardIds": [
+    "me4_en_029",
+    "me4_en_090",
+    "mebsp_en_075"
+  ],
+  "ruleReferences": [
+    {
+      "url": "https://asia.pokemon-card.com/sg/card-search/detail/25220/",
+      "kind": "Official English actual card",
+      "status": "Opened successfully",
+      "facts": "Chaos Rising Ampharos,160HP Stage2 from Flaaffy, Synchro Pulse same-hands SELF attack +80 to opposing Active before Weakness/Resistance; LC140 Flashing Bolt next-own-turn same-attack prohibition; Fighting weakness2,no resistance,retreat2,markJ. Linked energy symbol images individually confirmed Lightning,Colorless,Fighting."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50113/regu/all",
+      "kind": "Official Japanese corresponding base card",
+      "status": "Opened successfully",
+      "facts": "M4 029/083 corroborates Synchro Pulse and Flashing Bolt profile/text."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50187/regu/XY",
+      "kind": "Official Japanese illustration reprint",
+      "status": "Opened successfully",
+      "facts": "M4 088/083 has the same rule body. English ME4 number090 identity is established by local raw data; Japanese and English card numbers differ."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%A9%E3%83%83%E3%82%AD%E3%83%BC%E3%83%A1%E3%83%83%E3%83%88&regulation_faq_main_item1=all",
+      "kind": "Official actual Synchro Pulse FAQ, not an analogue",
+      "status": "Opened successfully",
+      "questionParaphrase": "With initially equal hand counts, does Ampharos using Flashing Bolt receive Synchro Pulse +80 when the defending Active holds Lucky Helmet?",
+      "answerParaphrase": "Yes. Lucky Helmet draws after attack damage, so that later hand-count change does not remove the bonus.",
+      "appliesTo": [
+        "live damage checkpoint",
+        "reaction draw happens after damage",
+        "no retroactive damage revision"
+      ]
+    },
+    {
+      "url": "https://www.pokemon-card.com/assets/document/advanced_manual.pdf",
+      "kind": "Official general rules v3.4; supporting general evidence, not an Ampharos-specific FAQ",
+      "sections": [
+        "I A-01 printed pages5-6",
+        "I A-02 printed pages6-7",
+        "II B-04 printed page19",
+        "II C-07 printed page27",
+        "II D-13 suppression example printed page36"
+      ],
+      "facts": "Determine base damage, then attacker bonuses, then Weakness/Resistance. Multiple applicable attacker bonuses add. Zero-base damage ends calculation before ordinary boosts. Counter placement is a non-damage effect. Automatic Abilities operate without declaration. Damage reactions follow damage. Removed Abilities do not function; the example restores them when suppression ends."
+    }
+  ],
+  "reviewedSemantics": [
+    "This strengthens attacks used by THIS Ampharos only. It is not a field aura for all of the controller's Active Pokemon.",
+    "Evaluate current hand counts when attack damage is calculated, after before-damage effects and before damage-received reactions. An already calculated damage amount is not revised when Lucky Helmet subsequently draws cards.",
+    "No separate Active-only source condition is printed. SELF scopes the modifier to the Ability holder as actual attacking Pokemon; normally that Pokemon is Active. Do not introduce source_active_only or root IS_ACTIVE. A Benched Ampharos does not boost another attacker.",
+    "Multiple Ampharos do not give a common attacker +160/+240: each modifier affects its own holder. Independent applicable modifiers on the attacking holder add normally. There is no shared once-per-turn flag or nonstacking group in the text.",
+    "The bonus is absent while this holder's Ability is suppressed and returns when suppression ends if current hands match. This is the existing suppression-aware passive path, not a permanent status installed when Ampharos evolves.",
+    "No increase to damage-counter placement, self damage, opponent Bench damage, or other Pokemon's attacks. An attack with zero determined base damage does not become damaging solely from this ordinary +80 modifier.",
+    "No cost, manual activation, target selection, use quota or player opt-out. Do not expose private hand identities; only existing public counts are needed."
+  ],
+  "localPrintAudit": {
+    "name": "Ampharos",
+    "nameZh": "电龙",
+    "archetypeId": 1997487627,
+    "rawCardIds": [
+      "me4_29",
+      "me4_90",
+      "mebsp_75"
+    ],
+    "printed": {
+      "stage": 2,
+      "evolvesFromName": "Flaaffy",
+      "hitPoints": 160,
+      "type": "LIGHTNING",
+      "weakness": "FIGHTING x2",
+      "resistance": null,
+      "retreat": 2,
+      "prizes": 1,
+      "regulation": "J",
+      "ruleBox": false
+    },
+    "evolution": {
+      "basic": "me4_en_027",
+      "stage1": "me4_en_028",
+      "basicName": "Mareep",
+      "stage1Name": "Flaaffy",
+      "preEvolutionsAlreadySupported": true,
+      "note": "ME4 prints use me4_en_028 as representative evolution ID. Promo's current representative is bw6_en_039, but evolvesFromName Flaaffy is authoritative. Test normal named evolution of all three from ME4 Flaaffy; do not activate the older BW print."
+    },
+    "exactRulePrintEvidence": "The full conversion report contains exactly these three Synchro Pulse components, and all three combatDraft bodies are identical after removing id and evolvesFromDefinitionId. Local raw ME4 and MEBSP rows confirm the same text and profile; foil artwork variants are not additional combat IDs.",
+    "localReleaseDateRaw": "2026-05-21T17:00:00.0000000Z",
+    "rawSources": [
+      "D:/我的mod/rainier-localization-chinese/rainier-localization-chinese (1)/card-databases/me4.json",
+      "D:/我的mod/rainier-localization-chinese/rainier-localization-chinese (1)/card-databases/mebsp.json"
+    ],
+    "reportSource": "outputs/rules-20261012/batch82/reports/conversion-report.json",
+    "reportSha256": "132faafc9a23cfcf3b7acb20f432feb2d61d87b42e99509ba2876ef5e26ab754"
+  },
+  "evidenceLimitations": [
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%82%B7%E3%83%B3%E3%82%AF%E3%83%AD%E3%83%91%E3%83%AB%E3%82%B9&regulation_faq_main_item1=all",
+      "result": "Direct exact-Ability FAQ query failed with tool InternalError. Recovered the actual Ampharos ruling through the Lucky Helmet FAQ query."
+    },
+    {
+      "url": "https://asia.pokemon-card.com/sg/rules/search/?keyword=Ampharos",
+      "result": "Official English Q&A link returned cache miss; no claim of an English FAQ was made."
+    },
+    {
+      "result": "No standalone official English ME Black Star Promo075 card page was found. Its exact identity/profile is confirmed in local raw/report data; common printed rule body is corroborated by the official ordinary and illustration cards."
+    },
+    {
+      "result": "No additional Ampharos-specific FAQ for0/0, suppression, multiple holders, Bench or damage counters was located. These conclusions are explicitly printed-scope/general-rule inferences."
+    },
+    {
+      "result": "The manual's suppression example uses another Ability and is an analogue for generic removal/restoration only. It is not an Ampharos-specific suppression ruling."
+    }
+  ],
+  "deferredInteractions": [
+    {
+      "cardIds": [
+        "sv6_en_158",
+        "xy7_en_077"
+      ],
+      "name": "Lucky Helmet",
+      "reason": "Actual older prints remain unsupported. The official Ampharos timing FAQ is verified with an explicitly synthetic ON_DAMAGE Tool drawing two cards; no actual Lucky Helmet support is claimed."
+    }
+  ],
+  "testLimitations": [
+    "Before-damage hand changes, mixed target and zero-damage cases use a separate synthetic borrower with exactly the real parsed Synchro Pulse ability and an explicit synthetic attack-borrowing grant. Actual Ampharos profiles are unchanged."
+  ],
+  "validationAtReview": {
+    "pythonTests": 598,
+    "catalogLoad": "passed",
+    "actualCardRegressions": "passed",
+    "fullCheck": "pending; see final batch85 docs for terminal result"
+  }
+}

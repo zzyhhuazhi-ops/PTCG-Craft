@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-14",
+  "scope": "Newest-first ME5 energized and named Bench Pokemon counts; artwork and true BREAK excluded",
+  "source": "Exact Rainier card component text, stable IDs, primary printed rules and actual server regressions",
+  "ruleReferences": [
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50230/regu/all",
+      "usedFor": "Armarouge printed40 base plus40 per own Benched Pokemon with the required attached Energy. The Rainier English card text explicitly supplies the Fire sprite. Count hosts once, using live Basic/Special Energy provision, not physical card count or unit total."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50235/regu/all",
+      "usedFor": "Relicanth printed10 base plus30 per own Benched Pokemon whose current printed name includes Antique. Printed top-card names only; no unprinted Rule-Box, stage or physical card-category exclusion."
+    },
+    {
+      "url": "https://www.pokemon.com/uk/pokemon-tcg/pokemon-cards/series/sv03/22/",
+      "usedFor": "Toedscruel ex Colony Rush is printed80 plus40 per own Benched Pokemon with Grass Energy. Its attack text uses the same exact generic predicate; its Protective Mycelium Ability is not enabled by this batch, so all three cards remain UNSUPPORTED."
+    }
+  ],
+  "evidence": [
+    {
+      "cardId": "me5_en_012",
+      "component": "attack",
+      "name": "Flame Legion",
+      "textEn": "This attack does 40 more damage for each of your Benched Pokémon that has any <sprite name=\"fire\" tint=1> Energy attached.",
+      "textZh": "追加造成自己的身上附有<sprite name=\"fire\" tint=1>能量的备战宝可梦数量×40伤害。",
+      "mapping": {
+        "rules": [
+          "energized-bench-pokemon-damage"
+        ],
+        "fields": {
+          "baseDamage": 40
+        },
+        "program": [
+          {
+            "type": "damage_per_pokemon",
+            "target": "OWN_BENCH",
+            "amount": 40,
+            "attached_energy_type": "FIRE"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5_en_017",
+      "component": "attack",
+      "name": "Fossil Beatdown",
+      "textEn": "This attack does 30 more damage for each of your Benched Pokémon that has \"Antique\" in its name.",
+      "textZh": "追加造成名字中带有「陈旧的」的自己的备战宝可梦数量×30伤害。",
+      "mapping": {
+        "rules": [
+          "antique-named-bench-damage"
+        ],
+        "fields": {
+          "baseDamage": 10
+        },
+        "program": [
+          {
+            "type": "damage_per_pokemon",
+            "target": "OWN_BENCH",
+            "amount": 30,
+            "name_contains": "Antique"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5_en_086",
+      "component": "attack",
+      "name": "Flame Legion",
+      "textEn": "This attack does 40 more damage for each of your Benched Pokémon that has any <sprite name=\"fire\" tint=1> Energy attached.",
+      "textZh": "追加造成自己的身上附有<sprite name=\"fire\" tint=1>能量的备战宝可梦数量×40伤害。",
+      "mapping": {
+        "rules": [
+          "energized-bench-pokemon-damage"
+        ],
+        "fields": {
+          "baseDamage": 40
+        },
+        "program": [
+          {
+            "type": "damage_per_pokemon",
+            "target": "OWN_BENCH",
+            "amount": 40,
+            "attached_energy_type": "FIRE"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "sv3_en_022",
+      "component": "attack",
+      "name": "Colony Rush",
+      "textEn": "This attack does 40 more damage for each of your Benched Pokémon that has any <sprite name=\"grass\" tint=1> Energy attached.",
+      "textZh": "追加造成自己备战区中附着了<sprite name=\"grass\" tint=1>能量的宝可梦数量×40伤害。",
+      "mapping": {
+        "rules": [
+          "energized-bench-pokemon-damage"
+        ],
+        "fields": {
+          "baseDamage": 80
+        },
+        "program": [
+          {
+            "type": "damage_per_pokemon",
+            "target": "OWN_BENCH",
+            "amount": 40,
+            "attached_energy_type": "GRASS"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "sv4-5_en_005",
+      "component": "attack",
+      "name": "Colony Rush",
+      "textEn": "This attack does 40 more damage for each of your Benched Pokémon that has any <sprite name=\"grass\" tint=1> Energy attached.",
+      "textZh": "追加造成自己备战区中附着了<sprite name=\"grass\" tint=1>能量的宝可梦数量×40伤害。",
+      "mapping": {
+        "rules": [
+          "energized-bench-pokemon-damage"
+        ],
+        "fields": {
+          "baseDamage": 80
+        },
+        "program": [
+          {
+            "type": "damage_per_pokemon",
+            "target": "OWN_BENCH",
+            "amount": 40,
+            "attached_energy_type": "GRASS"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "sv4-5_en_213",
+      "component": "attack",
+      "name": "Colony Rush",
+      "textEn": "This attack does 40 more damage for each of your Benched Pokémon that has any <sprite name=\"grass\" tint=1> Energy attached.",
+      "textZh": "追加造成自己备战区中附着了<sprite name=\"grass\" tint=1>能量的宝可梦数量×40伤害。",
+      "mapping": {
+        "rules": [
+          "energized-bench-pokemon-damage"
+        ],
+        "fields": {
+          "baseDamage": 80
+        },
+        "program": [
+          {
+            "type": "damage_per_pokemon",
+            "target": "OWN_BENCH",
+            "amount": 40,
+            "attached_energy_type": "GRASS"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    }
+  ],
+  "recognizedButWholeCardUnsupported": [
+    "sv3_en_022",
+    "sv4-5_en_005",
+    "sv4-5_en_213"
+  ]
+}

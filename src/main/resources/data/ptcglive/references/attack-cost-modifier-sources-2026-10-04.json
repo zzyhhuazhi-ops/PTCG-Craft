@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "version": "attack-cost-modifier-v1",
+  "checkedDate": "2026-10-04",
+  "implementationVersion": "0.6.0-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Elemental Badge — Evolving Skies 147 official card page",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/swsh7/147",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official card database entry",
+      "verification": "Checked through the official card-database search result; it describes reducing an applicable attack's Colorless cost.",
+      "supportsZh": "作为“攻击费用只减少无色符号、仍保留带属性费用”的通用持续修正建模用例；不表示此真实卡已完成整卡审核。"
+    },
+    {
+      "title": "Trevenant — XY Black Star Promos XY94 official card page",
+      "url": "https://www.pokemon.com/uk/pokemon-tcg/pokemon-cards/series/xyp/XY94/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official card database entry",
+      "verification": "Checked through the official card-database search result; it describes increasing an opponent attack's Colorless cost.",
+      "supportsZh": "作为“攻击费用增加无色符号”的通用持续修正建模用例；不表示此真实卡已完成整卡审核。"
+    },
+    {
+      "title": "Pokémon TCG Rulebook — Paradox Rift edition (historical)",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/par_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "PAR English historical rulebook",
+      "verification": "Historical project reference only; it is not represented as the current complete rulebook.",
+      "supportsZh": "用于能量费用中带属性符号须被对应能量满足、无色符号是通用费用的既有边界；本轮不把该历史PDF当成2026完整裁定。"
+    }
+  ],
+  "retrievalLimitations": [
+    "No current comprehensive official ruling for every card-specific dynamic cost expression was newly obtained.",
+    "No PTCG Live behavior or log is treated as rules authority.",
+    "No Japanese, Asian or community source is mixed into the international ruleset."
+  ],
+  "implementationLimits": [
+    "Supports fixed live integer changes from audited Tool, Stadium and Special Energy passive programs, applied only to the printed COLORLESS part of an attack cost.",
+    "A reduction can never remove a typed requirement; an increase adds only COLORLESS requirement. All calculation is server-side and shared by affordability and declaration.",
+    "Card-specific dynamic calculations, alternative payment, named attack restrictions and unaudited real-card programs remain unsupported and reject rather than being guessed."
+  ]
+}

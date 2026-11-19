@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "version": "ability-activation-frequency-v1",
+  "checkedDate": "2026-10-03",
+  "implementationVersion": "0.6.0-development",
+  "sources": [
+    {
+      "title": "Baxcalibur — Super Cold, Paldea Evolved",
+      "url": "https://www.pokemon.com/uk/pokemon-tcg/pokemon-cards/series/sv02/210/",
+      "region": "international English",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "official indexed card text checked 2026-10-03",
+      "retrievalStatus": "official search index contains Ability wording; direct page returns iframe only",
+      "supportsZh": "特性文本明确允许自己回合中任意次附着指定基础能量；不能把所有主动特性都限为一次。"
+    },
+    {
+      "title": "Baxcalibur — Super Cold, official card database",
+      "url": "https://asia.pokemon-card.com/sg/card-search/detail/6872/",
+      "region": "Singapore English; card wording example only",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "official card database body read 2026-10-03",
+      "retrievalStatus": "full card text body available",
+      "supportsZh": "复核国际官网索引中的任意次特性文字。这里只证明声明频率的需求，不作为国际／简中赛制卡池依据，也未启用本卡。"
+    },
+    {
+      "title": "Ascended Heroes FAQ",
+      "url": "https://professorprogram.pokemon.com/news/11464646",
+      "region": "international Play! Pokémon",
+      "publishedDate": "2026-02-11",
+      "effectiveDate": null,
+      "documentVersion": "official Professor Community FAQ article 11464646",
+      "retrievalStatus": "official article body read 2026-10-03",
+      "supportsZh": "Heliolisk的每回合一次适用于每只各自的特性，多只宝可梦可以各使用；不应误变成玩家全局每回合一次。",
+      "dateNoteZh": "文章包含产品上市／比赛合法日期，但不是此通用机制的新生效日；未混用这些日期。"
+    },
+    {
+      "title": "February 2026 Rule Book Updates — What you need to know!",
+      "url": "https://professorprogram.pokemon.com/news/11473085",
+      "region": "international Play! Pokémon",
+      "publishedDate": "2026-02-26",
+      "effectiveDate": null,
+      "documentVersion": "official Professor Community update article 11473085",
+      "retrievalStatus": "official body reread 2026-10-03",
+      "supportsZh": "原效果完成后才处理其它卡牌触发；任意次附能复用已有整卡检查点，不抢先插入附能触发。",
+      "dateNoteZh": "正文昨天2月20日与页首2月26日冲突，精确生效日保留null。"
+    }
+  ],
+  "implementationZh": [
+    "kind支持ACTIVATED_UNLIMITED、ACTIVATED_ONCE_PER_TURN、ACTIVATED_ONCE_PER_GAME；旧数据省略kind时仍每回合一次。新数据明确类型，不从卡名或效果文字猜测。",
+    "组合默认入口分别ON_ACTIVATE、ONCE_PER_TURN、ONCE_PER_GAME；类型与程序入口不符时由共用ActivatedAbilityRules在开局／GUI／执行拒绝。",
+    "整局一次必须声明玩家GAME共享组；GX/VSTAR仍使用已有玩家账本，不用在场实例次数代替玩家次数。任意次只放宽本来源频率，不取消额外共享组、回合、失效、目标或效果资格。",
+    "生命周期保存正在运行的游标；未完成或后半段失败的游标仍占用本次发动，不能靠假造新回合重放前缀，整局结束才清除失败游标。",
+    "旧纯抽牌与抽后有条件洗回自身的空牌库路径对齐既有EffectPotential无作用门槛；本项为现有服务器统一使用资格的工程一致性修复，不声称找到新的专项官方空牌库裁定。"
+  ],
+  "limitationsZh": [
+    "没有新增Baxcalibur或Heliolisk真实卡绑定；真实审核绑定仍39张。示例只验证可复用机制，不代替逐卡审核。",
+    "本阶段不实现效果授予的额外次数／次数恢复、任意数值上限、复制或获得他卡特性、历史Poké-Power、对手回合主动发动或完整触发生命周期。",
+    "进程内刷新和练习换席不等于跨进程恢复；真实双登录客户端及Live对照尚未完成。",
+    "当前0.5.19未修改，源码0.6.0统一开发线，最终统一大版本构建安装。"
+  ]
+}

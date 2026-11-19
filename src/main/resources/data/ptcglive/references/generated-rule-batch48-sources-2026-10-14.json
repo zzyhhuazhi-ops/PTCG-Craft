@@ -1,0 +1,271 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-14",
+  "scope": "11 newly recognized components, 8 fully supported card printings, including two current ME5-5 cards and six identical-text variants. Three Conkeldurr V Counter components improve while those cards remain unsupported due to their other attack. Prior supported programs and metadata unchanged.",
+  "source": "Rainier English card text included verbatim per component; conversion input matched by stable card ID.",
+  "ruleReferences": [
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%82%A8%E3%83%BC%E3%82%B9%E3%83%90%E3%83%BC%E3%83%B3VMAX&regulation_faq_main_item1=all",
+      "usedFor": "Official same Counter text rulings: healing retains bonus, Bench damage counts after promotion, evolution/devolution and re-evolution clear the prior damage information, attack-effect removal does not clear it, consecutive opponent turns use only the latest one. Applying the same text semantics to the current Lycanroc and other English aliases."
+    },
+    {
+      "url": "https://www.pokemon-card.com/assets/document/advanced_manual.pdf",
+      "usedFor": "Actual attack damage differs from placed damage counters and Checkup. Resolve base damage first, then ordinary attack modifiers, weakness/resistance and defender effects."
+    }
+  ],
+  "evidence": [
+    {
+      "cardId": "me2_en_004",
+      "component": "attack",
+      "name": "Juggernaut Horn",
+      "textEn": "If this Pokémon was damaged by an attack during your opponent's last turn, this attack does that much more damage.",
+      "textZh": "追加造成与这只宝可梦在上一个对手的回合所受到的招式的伤害相同数值的伤害。",
+      "mapping": {
+        "rules": [
+          "actual-previous-opponent-turn-attack-damage"
+        ],
+        "fields": {
+          "baseDamage": 100
+        },
+        "program": [
+          {
+            "type": "damage_from_last_opponent_attack",
+            "target": "SELF"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me2_en_108",
+      "component": "attack",
+      "name": "Juggernaut Horn",
+      "textEn": "If this Pokémon was damaged by an attack during your opponent's last turn, this attack does that much more damage.",
+      "textZh": "追加造成与这只宝可梦在上一个对手的回合所受到的招式的伤害相同数值的伤害。",
+      "mapping": {
+        "rules": [
+          "actual-previous-opponent-turn-attack-damage"
+        ],
+        "fields": {
+          "baseDamage": 100
+        },
+        "program": [
+          {
+            "type": "damage_from_last_opponent_attack",
+            "target": "SELF"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_085",
+      "component": "attack",
+      "name": "Counter",
+      "textEn": "If this Pokémon was damaged by an attack during your opponent's last turn, this attack does that much more damage.",
+      "textZh": "追加造成与这只宝可梦在上一个对手的回合所受到的招式的伤害相同数值的伤害。",
+      "mapping": {
+        "rules": [
+          "actual-previous-opponent-turn-attack-damage"
+        ],
+        "fields": {
+          "baseDamage": 10
+        },
+        "program": [
+          {
+            "type": "damage_from_last_opponent_attack",
+            "target": "SELF"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_138",
+      "component": "attack",
+      "name": "Counter",
+      "textEn": "If this Pokémon was damaged by an attack during your opponent's last turn, this attack does that much more damage.",
+      "textZh": "追加造成与这只宝可梦在上一个对手的回合所受到的招式的伤害相同数值的伤害。",
+      "mapping": {
+        "rules": [
+          "actual-previous-opponent-turn-attack-damage"
+        ],
+        "fields": {
+          "baseDamage": 10
+        },
+        "program": [
+          {
+            "type": "damage_from_last_opponent_attack",
+            "target": "SELF"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "swsh2_en_036",
+      "component": "attack",
+      "name": "Counter",
+      "textEn": "If this Pokémon was damaged by an attack during your opponent's last turn, this attack does that much more damage.",
+      "textZh": "追加造成在上一个对手的回合，这只宝可梦所受到的招式的伤害相同数值的伤害。",
+      "mapping": {
+        "rules": [
+          "actual-previous-opponent-turn-attack-damage"
+        ],
+        "fields": {
+          "baseDamage": 30
+        },
+        "program": [
+          {
+            "type": "damage_from_last_opponent_attack",
+            "target": "SELF"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "swsh2_en_194",
+      "component": "attack",
+      "name": "Counter",
+      "textEn": "If this Pokémon was damaged by an attack during your opponent's last turn, this attack does that much more damage.",
+      "textZh": "追加造成在上一个对手的回合，这只宝可梦所受到的招式的伤害相同数值的伤害。",
+      "mapping": {
+        "rules": [
+          "actual-previous-opponent-turn-attack-damage"
+        ],
+        "fields": {
+          "baseDamage": 30
+        },
+        "program": [
+          {
+            "type": "damage_from_last_opponent_attack",
+            "target": "SELF"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "swsh4-5_en_019",
+      "component": "attack",
+      "name": "Counter",
+      "textEn": "If this Pokémon was damaged by an attack during your opponent's last turn, this attack does that much more damage.",
+      "textZh": "追加造成在上一个对手的回合，这只宝可梦所受到的招式的伤害相同数值的伤害。",
+      "mapping": {
+        "rules": [
+          "actual-previous-opponent-turn-attack-damage"
+        ],
+        "fields": {
+          "baseDamage": 30
+        },
+        "program": [
+          {
+            "type": "damage_from_last_opponent_attack",
+            "target": "SELF"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "swsh8_en_006",
+      "component": "attack",
+      "name": "Counter",
+      "textEn": "If this Pokémon was damaged by an attack during your opponent's last turn, this attack does that much more damage.",
+      "textZh": "追加造成在上一个对手的回合，这只宝可梦所受到的招式的伤害相同数值的伤害。",
+      "mapping": {
+        "rules": [
+          "actual-previous-opponent-turn-attack-damage"
+        ],
+        "fields": {
+          "baseDamage": 20
+        },
+        "program": [
+          {
+            "type": "damage_from_last_opponent_attack",
+            "target": "SELF"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "swsh10-5_en_040",
+      "component": "attack",
+      "name": "Counter",
+      "textEn": "If this Pokémon was damaged by an attack during your opponent's last turn, this attack does that much more damage.",
+      "textZh": "追加造成在上一个对手的回合，这只宝可梦所受到的招式的伤害相同数值的伤害。",
+      "mapping": {
+        "rules": [
+          "actual-previous-opponent-turn-attack-damage"
+        ],
+        "fields": {
+          "baseDamage": 20
+        },
+        "program": [
+          {
+            "type": "damage_from_last_opponent_attack",
+            "target": "SELF"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "swsh10-5_en_073",
+      "component": "attack",
+      "name": "Counter",
+      "textEn": "If this Pokémon was damaged by an attack during your opponent's last turn, this attack does that much more damage.",
+      "textZh": "追加造成在上一个对手的回合，这只宝可梦所受到的招式的伤害相同数值的伤害。",
+      "mapping": {
+        "rules": [
+          "actual-previous-opponent-turn-attack-damage"
+        ],
+        "fields": {
+          "baseDamage": 20
+        },
+        "program": [
+          {
+            "type": "damage_from_last_opponent_attack",
+            "target": "SELF"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "swsh10-5_en_074",
+      "component": "attack",
+      "name": "Counter",
+      "textEn": "If this Pokémon was damaged by an attack during your opponent's last turn, this attack does that much more damage.",
+      "textZh": "追加造成在上一个对手的回合，这只宝可梦所受到的招式的伤害相同数值的伤害。",
+      "mapping": {
+        "rules": [
+          "actual-previous-opponent-turn-attack-damage"
+        ],
+        "fields": {
+          "baseDamage": 20
+        },
+        "program": [
+          {
+            "type": "damage_from_last_opponent_attack",
+            "target": "SELF"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    }
+  ]
+}

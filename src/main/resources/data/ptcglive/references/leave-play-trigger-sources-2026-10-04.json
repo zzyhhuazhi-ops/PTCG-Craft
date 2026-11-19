@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "version": "leave-play-trigger-v2",
+  "checkedDate": "2026-10-04",
+  "implementationVersion": "0.6.0-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Pokémon TCG Rulebook — HS Triumphant edition (historical)",
+      "url": "https://assets.pokemon.com/assets/cms/pdf/tcg/rulebooks/HS-Triumphant_Rulebook.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Historical English rulebook",
+      "verification": "Official search result states that an Active Pokémon that leaves play for a non-Knock-Out reason must be replaced from the Bench or its player loses.",
+      "supportsZh": "用于非击倒战斗位离场后仍须替补或因场上无宝可梦失败的基础边界；不被当作当前完整优先级裁定。"
+    },
+    {
+      "title": "Pokémon Trading Card Game Rules — Sun & Moon 2 edition (historical)",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/sm2_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Historical English rulebook",
+      "verification": "Official search result describes attached cards moving to their owner's discard pile when a Pokémon leaves through normal Knock Out handling unless card text says otherwise.",
+      "supportsZh": "用于“离场整叠及附着卡的目的地由原卡文决定、默认击倒是弃牌”的现有服务器分层；本轮回手／洗回不依赖它猜测具体卡文。"
+    },
+    {
+      "title": "Play! Pokémon Rules & Resources — Pokémon TCG",
+      "url": "https://www.pokemon.com/us/play-pokemon/about/card-dex/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official rules resource index",
+      "verification": "Checked official current resource index; it links the Rulebook, Tournament Rules Handbook, errata and banned list.",
+      "supportsZh": "记录国际正式资料入口；本轮没有把未取得的完整当前优先级文本伪装成已核验。"
+    },
+    {
+      "title": "Klawf ex — Obsidian Flames 120/227",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv03/120/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English card database entry",
+      "verification": "Counterattacking Pincer says its damage reaction applies even if Klawf ex is Knocked Out.",
+      "supportsZh": "说明服务器不能仅因来源已离场就静默丢弃已经捕获的卡文反应；本条不把击倒反应等同于非击倒离场的完整裁定，也不启用该真实整卡。"
+    }
+  ],
+  "retrievalLimitations": [
+    "No current official comprehensive priority or last-known-information ruling for every leave-play interaction was newly obtained.",
+    "No PTCG Live behavior or log is treated as rules authority.",
+    "No Japanese, Asian or community source is mixed into the international ruleset."
+  ],
+  "implementationLimits": [
+    "Supports ON_LEAVE_PLAY for surviving Pokémon, Tool, Stadium and Special Energy sources after a reviewed non-Knock-Out return, shuffle or discard effect resolves its move.",
+    "A Pokémon Ability watching only its own ON_LEAVE_PLAY event is captured before removal and may resolve after departure only when every later step is source-independent: draw or private-zone selection/transfer with an explicit HAND, DECK, DISCARD or LOST_ZONE target. The captured owner and exact in-play entry are retained; no mutable Pokémon facts are retained.",
+    "HP, damage, attachments, status, position, trigger-Pokémon actions, direct field effects, source discard, re-entry substitution, replacement effects and full last-known information remain unsupported and reject. Knock Out remains ON_KNOCKOUT."
+  ]
+}

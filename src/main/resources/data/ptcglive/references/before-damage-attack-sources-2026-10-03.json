@@ -1,0 +1,45 @@
+{
+  "schemaVersion":1,
+  "version":"attack-before-damage-continuation-v1",
+  "checkedDate":"2026-10-03",
+  "implementationVersion":"0.6.0-development",
+  "region":"international",
+  "sources":[
+    {
+      "title":"Gorebyss — Destined Rivals 56/182",
+      "url":"https://www.pokemon.com/uk/pokemon-tcg/pokemon-cards/series/sv10/56/",
+      "publishedDate":null,
+      "effectiveDate":null,
+      "documentVersion":"Official international card database SV10 56",
+      "verification":"Official indexed card text read on checkedDate; direct page returned iframe shell",
+      "supportsZh":"伤害前可从手牌给自己附着任意数量基本水能量，再按自身水能量计算攻击伤害；证明费用检查和伤害前效果、伤害取值必须分阶段。具体水能量单位计数仍待补齐，不将该卡整卡自动标为支持。"
+    },
+    {
+      "title":"Luvdisc — HS Triumphant 39/103",
+      "url":"https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/hgss4/39",
+      "publishedDate":null,
+      "effectiveDate":null,
+      "documentVersion":"Official international card database HGSS4 39; historical card",
+      "verification":"Official indexed card text retrieved on checkedDate",
+      "supportsZh":"Distorted Wave在伤害前移除防守方一个伤害指示物；回复不能错误安排在攻击伤害后。本条不核验当前Standard合法性或整卡绑定。"
+    },
+    {
+      "title":"Pokemon TCG Triple Play: Powerful Decks Featuring Blissey V from Chilling Reign",
+      "url":"https://www.pokemon.com/us/features/pokemon-tcg-triple-play-powerful-decks-featuring-blissey-v-from-sword-shield-chilling-reign",
+      "publishedDate":null,
+      "effectiveDate":null,
+      "documentVersion":"Official international strategy article; Sword and Shield era",
+      "verification":"Official indexed strategy text read on checkedDate",
+      "supportsZh":"闪电鸟V在造成伤害前移除弱点守护能量会改变之后弱点计算。此例用于确认阶段需读取新场上事实；尚未把其移能、弱点守护或全部卡文标为实现。"
+    }
+  ],
+  "priorRuleReferences":["attack-continuation-sources-2026-10-03.json","field-state-boundary-sources-2026-10-03.json"],
+  "dataContractZh":"攻击数据BEFORE_ATTACK表示已合法宣告并通过混乱后的卡文伤害前阶段，不是宣告费用、不提供缺失能量来发起攻击，也不是任意卡的自动BEFORE_ATTACK事件监听；ON_ATTACK用于伤害计算，AFTER_ATTACK用于伤害后文本。",
+  "limitations":[
+    "No newly verified latest Rulebook PDF or PTCG Live behavior; historical regional sources are not merged",
+    "No shared coin result or selected-object binding across separate trigger programs",
+    "Pre-damage departure/attack-target rebinding and direct-KO-plus-departure across stages rejected before mutation",
+    "CopyAttackEffect, generic attachment removal, typed energy counting and persistent crash restoration remain incomplete",
+    "Synthetic tests do not create new audited full real-card bindings"
+  ]
+}

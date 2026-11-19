@@ -1,0 +1,502 @@
+{
+  "schemaVersion": 1,
+  "dataVersion": "2026-11-05",
+  "cards": [
+    {
+      "id": "swsh10_en_054",
+      "kind": "POKEMON",
+      "hitPoints": 260,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "swsh10_en_053",
+      "weakness": {
+        "type": "DARKNESS",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "FIGHTING",
+        "amount": 30
+      },
+      "prizeCards": 2,
+      "pokemonName": "Hisuian Typhlosion VSTAR",
+      "evolvesFromName": "Hisuian Typhlosion V",
+      "pokemonType": "PSYCHIC",
+      "attacks": [
+        {
+          "id": "hollow-flame",
+          "nameZh": "幽魂火焰",
+          "energyCost": {
+            "PSYCHIC": 2,
+            "COLORLESS": 1
+          },
+          "baseDamage": 180,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "damage_counter",
+                  "target": "SELECT_OPPONENT_POKEMON",
+                  "amount": 3,
+                  "distribution": "EXACT",
+                  "target_scope": "OPPONENT_BENCH",
+                  "min_targets": 1,
+                  "max_targets": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "shimmering-star",
+          "nameZh": "阳炎星耀",
+          "energyCost": {
+            "PSYCHIC": 1
+          },
+          "baseDamage": 0,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "conditional",
+                  "conditions": [
+                    {
+                      "type": "DAMAGE_COUNTER_COUNT",
+                      "target": "OPPONENT_ACTIVE",
+                      "value": 4,
+                      "comparison": "=="
+                    }
+                  ],
+                  "effects": [
+                    {
+                      "type": "knock_out",
+                      "target": "OPPONENT_ACTIVE"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "usageLimit": {
+            "group": "vstar-power",
+            "period": "GAME"
+          }
+        }
+      ]
+    },
+    {
+      "id": "swsh10_en_193",
+      "kind": "POKEMON",
+      "hitPoints": 260,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "swsh10_en_053",
+      "weakness": {
+        "type": "DARKNESS",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "FIGHTING",
+        "amount": 30
+      },
+      "prizeCards": 2,
+      "pokemonName": "Hisuian Typhlosion VSTAR",
+      "evolvesFromName": "Hisuian Typhlosion V",
+      "pokemonType": "PSYCHIC",
+      "attacks": [
+        {
+          "id": "hollow-flame",
+          "nameZh": "幽魂火焰",
+          "energyCost": {
+            "PSYCHIC": 2,
+            "COLORLESS": 1
+          },
+          "baseDamage": 180,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "damage_counter",
+                  "target": "SELECT_OPPONENT_POKEMON",
+                  "amount": 3,
+                  "distribution": "EXACT",
+                  "target_scope": "OPPONENT_BENCH",
+                  "min_targets": 1,
+                  "max_targets": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "shimmering-star",
+          "nameZh": "阳炎星耀",
+          "energyCost": {
+            "PSYCHIC": 1
+          },
+          "baseDamage": 0,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "conditional",
+                  "conditions": [
+                    {
+                      "type": "DAMAGE_COUNTER_COUNT",
+                      "target": "OPPONENT_ACTIVE",
+                      "value": 4,
+                      "comparison": "=="
+                    }
+                  ],
+                  "effects": [
+                    {
+                      "type": "knock_out",
+                      "target": "OPPONENT_ACTIVE"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "usageLimit": {
+            "group": "vstar-power",
+            "period": "GAME"
+          }
+        }
+      ]
+    },
+    {
+      "id": "swsh10_en_196",
+      "kind": "POKEMON",
+      "hitPoints": 270,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "swsh10_en_087",
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Kleavor VSTAR",
+      "evolvesFromName": "Kleavor V",
+      "pokemonType": "FIGHTING",
+      "attacks": [
+        {
+          "id": "axe-break",
+          "nameZh": "破坏之斧",
+          "energyCost": {
+            "FIGHTING": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 120,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "select_pokemon",
+                  "target": "SELECT_OPPONENT_POKEMON",
+                  "pokemon_families": "V",
+                  "position": "BENCH",
+                  "effects": [
+                    {
+                      "type": "bench_damage",
+                      "target": "CHOSEN_POKEMON",
+                      "amount": 60
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "rampaging-star",
+          "nameZh": "狂暴星耀",
+          "energyCost": {
+            "FIGHTING": 1
+          },
+          "baseDamage": 0,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "damage_per_discard_card",
+              "target": "SELF",
+              "amount": 30,
+              "card_category": "POKEMON"
+            }
+          ],
+          "usageLimit": {
+            "group": "vstar-power",
+            "period": "GAME"
+          }
+        }
+      ]
+    },
+    {
+      "id": "swshbsp_en_193",
+      "kind": "POKEMON",
+      "hitPoints": 170,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "me2-5_en_131",
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Galarian Obstagoon",
+      "evolvesFromName": "Galarian Linoone",
+      "pokemonType": "DARKNESS",
+      "attacks": [
+        {
+          "id": "rampaging-kick",
+          "nameZh": "狂暴重踢",
+          "energyCost": {
+            "DARKNESS": 2,
+            "COLORLESS": 1
+          },
+          "baseDamage": 180,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "discard_energy",
+                  "target": "SELF",
+                  "amount": 2,
+                  "minimum": 2,
+                  "energy_type": "DARKNESS",
+                  "count_mode": "UNITS"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "swshbsp_en_214",
+      "kind": "POKEMON",
+      "hitPoints": 270,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "swshbsp_en_213",
+      "weakness": {
+        "type": "PSYCHIC",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Lucario VSTAR",
+      "evolvesFromName": "Lucario V",
+      "pokemonType": "FIGHTING",
+      "attacks": [
+        {
+          "id": "fighting-knuckle",
+          "nameZh": "激战拳斗",
+          "energyCost": {
+            "FIGHTING": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 120,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "IS_V",
+                  "target": "OPPONENT_ACTIVE"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "damage",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 120
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "aura-star",
+          "nameZh": "星耀波导",
+          "energyCost": {
+            "FIGHTING": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "damage_per_energy",
+              "target": "ALL_OPPONENT_POKEMON",
+              "amount": 70
+            }
+          ],
+          "usageLimit": {
+            "group": "vstar-power",
+            "period": "GAME"
+          }
+        }
+      ]
+    },
+    {
+      "id": "swshbsp_en_249",
+      "kind": "POKEMON",
+      "hitPoints": 270,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "swshbsp_en_248",
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Kleavor VSTAR",
+      "evolvesFromName": "Kleavor V",
+      "pokemonType": "FIGHTING",
+      "attacks": [
+        {
+          "id": "axe-break",
+          "nameZh": "破坏之斧",
+          "energyCost": {
+            "FIGHTING": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 120,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "select_pokemon",
+                  "target": "SELECT_OPPONENT_POKEMON",
+                  "pokemon_families": "V",
+                  "position": "BENCH",
+                  "effects": [
+                    {
+                      "type": "bench_damage",
+                      "target": "CHOSEN_POKEMON",
+                      "amount": 60
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "rampaging-star",
+          "nameZh": "狂暴星耀",
+          "energyCost": {
+            "FIGHTING": 1
+          },
+          "baseDamage": 0,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "damage_per_discard_card",
+              "target": "SELF",
+              "amount": 30,
+              "card_category": "POKEMON"
+            }
+          ],
+          "usageLimit": {
+            "group": "vstar-power",
+            "period": "GAME"
+          }
+        }
+      ]
+    },
+    {
+      "id": "swshbsp_en_291",
+      "kind": "POKEMON",
+      "hitPoints": 270,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "swshbsp_en_213",
+      "weakness": {
+        "type": "PSYCHIC",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Lucario VSTAR",
+      "evolvesFromName": "Lucario V",
+      "pokemonType": "FIGHTING",
+      "attacks": [
+        {
+          "id": "fighting-knuckle",
+          "nameZh": "激战拳斗",
+          "energyCost": {
+            "FIGHTING": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 120,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "IS_V",
+                  "target": "OPPONENT_ACTIVE"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "damage",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 120
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "aura-star",
+          "nameZh": "星耀波导",
+          "energyCost": {
+            "FIGHTING": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "damage_per_energy",
+              "target": "ALL_OPPONENT_POKEMON",
+              "amount": 70
+            }
+          ],
+          "usageLimit": {
+            "group": "vstar-power",
+            "period": "GAME"
+          }
+        }
+      ]
+    }
+  ]
+}

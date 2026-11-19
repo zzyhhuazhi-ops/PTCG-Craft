@@ -1,0 +1,13 @@
+对战操作检查范围（2026-11-06）
+
+battle-operation-scope.json 固定本次交付的 6,668 个卡牌印刷编号：
+朱紫及之后宝可梦 4,326 张，所有非宝可梦 2,342 张。
+来源：已核对的 outputs/release-0.8.2-final-scope-audit.json 中
+requiredPokemon 与 requiredNonPokemon 两组；以发行系列判定范围，不以赛制标记判定。
+添加新卡后应重新核对并更新此清单，不能把未进入测试的卡宣称为已覆盖。
+
+battleOperationAccessibilityTest 对这份清单逐卡使用现有合成局面，运行四档 AI，
+检查服务器发出的操作是否有玩家入口，以及操作后的选择能否继续结算。
+这不是所有卡组、交互组合或完整真实对局的穷举，也不证明每段卡文都符合官方裁定。
+battleSpecialActionTest 使用实际封印石、场上物品、弃牌区特性和魔尼尼效果，
+验证入口、权限、过期操作、次数、卡牌去向、奖赏与后续结算，已纳入 check。

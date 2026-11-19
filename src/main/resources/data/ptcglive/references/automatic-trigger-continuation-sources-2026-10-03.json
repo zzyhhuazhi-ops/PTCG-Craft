@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "version": "automatic-trigger-continuation-v1",
+  "checkedDate": "2026-10-03",
+  "implementationVersion": "0.6.0-development",
+  "sources": [
+    {
+      "title": "February 2026 Rule Book Updates - What you need to know!",
+      "url": "https://professorprogram.pokemon.com/news/11473085",
+      "region": "international Play! Pokémon",
+      "publishedDate": "2026-02-26",
+      "effectiveDate": null,
+      "documentVersion": "official Professor Community 11473085",
+      "retrievalStatus": "full official body read 2026-10-03",
+      "dateNoteZh": "页面发布日期与正文昨天2月20日冲突；不推定具体生效日。",
+      "supportsZh": "原卡／效果的整段结算完成后再执行由它产生的其它触发；回合内与回合间的触发排序规则继续适用；非攻击效果的数量下限不能照搬攻击效果。"
+    }
+  ],
+  "implementationZh": [
+    "主动特性、训练家、攻击和自动特性复用EffectContinuation；自动特性的入口条件已在事件捕获时锁定，不在方案选择后重新触发。",
+    "EffectLifecycleDispatcher.beginCaptured在首个副作用前保留使用资格与程序；暂停／失败不释放资格，不允许通过旧请求重放已完成的前缀。",
+    "四类已接入事件支持Choice、Repeat、CoinFlip，以及现有区域检索、弃置、回收、附能目标和指示物分配交互。每项候选、身份、数量、随机结果仍由服务器生成校验。",
+    "选择由特性拥有者进行，展示仍由对应对手确认；排序者与选择者、当前回合玩家是不同概念。等待期间仍锁住普通动作，不提前击倒或推进回合。",
+    "附能所产生的新触发排在当前自动特性的完整后续文字之后；嵌套硬币结果、来源及事件对象在选择中保留。"
+  ],
+  "limitationsZh": [
+    "这不是所有自动特性／所有卡文已经支持；通用单目标独立选择、进化检索替代、多来源复杂交互、动态工具／场地／特殊能量触发、完整最后已知状态及跨进程恢复仍待实现。",
+    "数量上下限、筛选及是否公开展示仍须由已审核卡牌数据明确声明，不从攻击文字猜测。未新增真实卡审核绑定。",
+    "未读取、Hook或操作PTCG Live，无新增实机对照日志。无窗口Fabric正式消息用例不等同两名真实登录客户端可视验收。"
+  ]
+}

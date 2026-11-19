@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-14",
+  "scope": "1 newly recognized component, 1 fully supported current ME5-5 card. Prior supported programs and metadata unchanged.",
+  "source": "Rainier English card text included verbatim per component; conversion input matched by stable card ID.",
+  "ruleReferences": [
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?page=9&regulation=all&sc_group_id=206",
+      "usedFor": "Official Elemental Blast ruling: a Rainbow Energy is discarded for one of the three required typed units; a multi-unit physical card remains indivisible."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?page=7&sc_group_id=206",
+      "usedFor": "Three Rainbow Energy cards pay the three different typed units for Elemental Blast. One all-type unit cannot be reused for each requirement."
+    },
+    {
+      "url": "https://www.pokemon-card.com/assets/document/advanced_manual.pdf",
+      "usedFor": "Resolve text in order, do as much as possible when the effect cannot be fully followed, and use the nearest available number. Apply those rules to the maximum simultaneously satisfiable different typed units rather than three independent counts."
+    }
+  ],
+  "evidence": [
+    {
+      "cardId": "me5-5_en_121",
+      "component": "attack",
+      "name": "Elemental Blast",
+      "textEn": "Discard a <sprite name=\"fire\" tint=1> Energy, a <sprite name=\"water\" tint=1> Energy, and a <sprite name=\"lightning\" tint=1> Energy from this Pokémon.",
+      "textZh": "选择这只宝可梦身上附着的<sprite name=\"fire\" tint=1><sprite name=\"water\" tint=1><sprite name=\"lightning\" tint=1>能量各1个，放于弃牌区。",
+      "mapping": {
+        "rules": [
+          "joint-fire-water-lightning-unit-discard"
+        ],
+        "fields": {
+          "baseDamage": 250
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "discard_energy",
+                "target": "SELF",
+                "amount": 3,
+                "minimum": 3,
+                "count_mode": "UNITS",
+                "energy_types": "FIRE|WATER|LIGHTNING"
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    }
+  ]
+}

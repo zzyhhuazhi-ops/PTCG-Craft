@@ -1,0 +1,3135 @@
+{
+  "schemaVersion": 1,
+  "dataVersion": "ptcgcardcn-sm7-5-2026.10.14",
+  "region": "international",
+  "noteZh": "PTCGCardCN 0.1.0 由 Rainier（PTCG Live 客户端卡牌数据库）自动转换；审核策略 rainier-db。详见 reports/conversion-report.json。",
+  "cards": [
+    {
+      "id": "sm7-5_en_001",
+      "kind": "POKEMON",
+      "hitPoints": 70,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Charmander",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "fire-fang",
+          "nameZh": "火焰牙",
+          "energyCost": {
+            "FIRE": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 20,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "conditions": [
+            {
+              "target": "DEFENDER",
+              "condition": "BURNED"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_004",
+      "kind": "POKEMON",
+      "hitPoints": 60,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Torchic",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "singe",
+          "nameZh": "致焦",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "conditions": [
+            {
+              "target": "DEFENDER",
+              "condition": "BURNED",
+              "coinCondition": {
+                "flips": 1,
+                "requiredHeads": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_005",
+      "kind": "POKEMON",
+      "hitPoints": 80,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "sm7-5_en_004",
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Combusken",
+      "evolvesFromName": "Torchic",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "lunge",
+          "nameZh": "猛扑",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 0,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "coinDamage": {
+            "flips": 1,
+            "perHeads": 60
+          }
+        }
+      ],
+      "abilities": [
+        {
+          "id": "natural-cure",
+          "nameZh": "自然回复",
+          "kind": "TRIGGERED",
+          "eventPolicy": {
+            "trigger": "ON_ENERGY_ATTACHED",
+            "target": "SELF",
+            "source": "HAND",
+            "cause": "ANY",
+            "optional": false,
+            "usage": "NONE",
+            "ownHandOnly": true
+          },
+          "triggers": [
+            {
+              "trigger": "ON_ENERGY_ATTACHED",
+              "conditions": [],
+              "effects": [
+                {
+                  "type": "clear_status",
+                  "target": "SELF",
+                  "statuses": "ALL"
+                }
+              ]
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_006",
+      "kind": "POKEMON",
+      "hitPoints": 150,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "sm7-5_en_005",
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Blaziken",
+      "evolvesFromName": "Combusken",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "fire-stream",
+          "nameZh": "火焰湍流",
+          "energyCost": {
+            "FIRE": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 90,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "discard_energy",
+                  "target": "SELF",
+                  "amount": 1,
+                  "minimum": 1,
+                  "energy_type": "FIRE",
+                  "count_mode": "UNITS"
+                },
+                {
+                  "type": "bench_damage",
+                  "amount": 20,
+                  "target": "OPPONENT_BENCH"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "id": "firestarter",
+          "nameZh": "点燃",
+          "kind": "ACTIVATED_ONCE_PER_TURN",
+          "effects": [
+            {
+              "type": "attach_energy",
+              "source": "DISCARD",
+              "target": "SELECT_OWN_POKEMON",
+              "target_scope": "OWN_BENCH",
+              "amount": 1,
+              "minimum": 1,
+              "basic_energy_only": true,
+              "energy_type": "FIRE"
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_007",
+      "kind": "POKEMON",
+      "hitPoints": 90,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Victini {*}",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "infinity",
+          "nameZh": "无限",
+          "energyCost": {
+            "FIRE": 2
+          },
+          "baseDamage": 0,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "damage_per_discard_card",
+              "target": "SELF",
+              "amount": 20,
+              "card_category": "ENERGY",
+              "basic_energy_only": true
+            }
+          ],
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "recover_all_discard",
+                  "target": "DISCARD",
+                  "destination": "DECK_SHUFFLED",
+                  "card_category": "ENERGY",
+                  "basic_energy_only": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_008",
+      "kind": "POKEMON",
+      "hitPoints": 70,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Darumaka",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "damage-rush",
+          "nameZh": "伤害冲刺",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 10,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "coin_flip",
+              "until": "TAILS",
+              "effects": [
+                {
+                  "type": "repeat_per_heads",
+                  "effects": [
+                    {
+                      "type": "damage",
+                      "target": "OPPONENT_ACTIVE",
+                      "amount": 30
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_009",
+      "kind": "POKEMON",
+      "hitPoints": 130,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "sm7-5_en_008",
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Darmanitan",
+      "evolvesFromName": "Darumaka",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "heat-assist",
+          "nameZh": "高温辅助",
+          "energyCost": {
+            "FIRE": 1
+          },
+          "baseDamage": 0,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "attach_energy",
+                  "source": "HAND",
+                  "target": "SELECT_OWN_POKEMON",
+                  "target_scope": "OWN_FIELD",
+                  "amount": 3,
+                  "minimum": 0,
+                  "basic_energy_only": true,
+                  "energy_type": "FIRE",
+                  "distribution": "ANY"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "darmani-hands",
+          "nameZh": "达摩连弹",
+          "energyCost": {
+            "FIRE": 2,
+            "COLORLESS": 1
+          },
+          "baseDamage": 30,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "coinDamage": {
+            "flips": 4,
+            "perHeads": 50
+          }
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_010",
+      "kind": "POKEMON",
+      "hitPoints": 110,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Heatmor",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "singe",
+          "nameZh": "灼热",
+          "energyCost": {
+            "FIRE": 1
+          },
+          "baseDamage": 0,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "conditions": [
+            {
+              "target": "DEFENDER",
+              "condition": "BURNED"
+            }
+          ]
+        },
+        {
+          "id": "charring-breath",
+          "nameZh": "焦炭之息",
+          "energyCost": {
+            "FIRE": 2
+          },
+          "baseDamage": 120,
+          "damageType": "FIRE",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：if your opponent's active pokemon isn't burned, this attack does nothing"
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_011",
+      "kind": "POKEMON",
+      "hitPoints": 180,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Reshiram-GX",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "flame-charge",
+          "nameZh": "蓄能焰袭",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "attach_energy",
+                  "source": "DECK",
+                  "target": "SELF",
+                  "target_scope": "OWN_FIELD",
+                  "amount": 2,
+                  "minimum": 0,
+                  "basic_energy_only": true,
+                  "energy_type": "FIRE"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "scorching-column",
+          "nameZh": "灼热之柱",
+          "energyCost": {
+            "FIRE": 3,
+            "COLORLESS": 1
+          },
+          "baseDamage": 110,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "conditions": [
+            {
+              "target": "DEFENDER",
+              "condition": "BURNED"
+            }
+          ]
+        },
+        {
+          "id": "vermilion-gx",
+          "nameZh": "朱红印记GX",
+          "energyCost": {
+            "FIRE": 3,
+            "COLORLESS": 1
+          },
+          "baseDamage": 180,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "attach_energy",
+                  "source": "HAND",
+                  "target": "SELECT_OWN_POKEMON",
+                  "target_scope": "OWN_FIELD",
+                  "amount": 5,
+                  "minimum": 0,
+                  "basic_energy_only": true,
+                  "energy_type": "FIRE",
+                  "distribution": "ANY"
+                }
+              ]
+            }
+          ],
+          "usageLimit": {
+            "group": "gx-attack",
+            "period": "GAME"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_012",
+      "kind": "POKEMON",
+      "hitPoints": 60,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Litten",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "fury-swipes",
+          "nameZh": "乱抓",
+          "energyCost": {
+            "FIRE": 1
+          },
+          "baseDamage": 0,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "coinDamage": {
+            "flips": 3,
+            "perHeads": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_013",
+      "kind": "POKEMON",
+      "hitPoints": 60,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Salandit",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "call-for-family",
+          "nameZh": "呼朋引伴",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "search_deck",
+                  "target": "DECK",
+                  "amount": 1,
+                  "minimum": 0,
+                  "card_category": "POKEMON",
+                  "basic_pokemon_only": true,
+                  "destination": "BENCH"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dig-claws",
+          "nameZh": "亮爪",
+          "energyCost": {
+            "FIRE": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 20,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_014",
+      "kind": "POKEMON",
+      "hitPoints": 110,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "sm7-5_en_013",
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Salazzle",
+      "evolvesFromName": "Salandit",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "ring-of-fire",
+          "nameZh": "火焰圈",
+          "energyCost": {
+            "FIRE": 1
+          },
+          "baseDamage": 20,
+          "damageType": "FIRE",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：it can't retreat during your opponent's next turn"
+        },
+        {
+          "id": "flamethrower",
+          "nameZh": "喷射火焰",
+          "energyCost": {
+            "FIRE": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 80,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "discardSelectedAttachedEnergyAfterAttack": 1
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_015",
+      "kind": "POKEMON",
+      "hitPoints": 40,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Horsea",
+      "pokemonType": "WATER",
+      "attacks": [
+        {
+          "id": "splatter",
+          "nameZh": "水花四溅",
+          "energyCost": {
+            "WATER": 1
+          },
+          "baseDamage": 20,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "damageTarget": "OPPONENT_ANY",
+          "targetCount": 1
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_016",
+      "kind": "POKEMON",
+      "hitPoints": 50,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Horsea",
+      "pokemonType": "WATER",
+      "attacks": [
+        {
+          "id": "hydro-pump",
+          "nameZh": "水炮",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 10,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "damage_per_energy",
+              "target": "SELF",
+              "energy_type": "WATER",
+              "amount": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_017",
+      "kind": "POKEMON",
+      "hitPoints": 90,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "sm7-5_en_015",
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Seadra",
+      "evolvesFromName": "Horsea",
+      "pokemonType": "WATER",
+      "attacks": [
+        {
+          "id": "hydro-pump",
+          "nameZh": "水炮",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 10,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "damage_per_energy",
+              "target": "SELF",
+              "energy_type": "WATER",
+              "amount": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_018",
+      "kind": "POKEMON",
+      "hitPoints": 230,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "sm7-5_en_017",
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Kingdra-GX",
+      "evolvesFromName": "Seadra",
+      "pokemonType": "WATER",
+      "attacks": [
+        {
+          "id": "hydro-pump",
+          "nameZh": "水炮",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 10,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "damage_per_energy",
+              "target": "SELF",
+              "energy_type": "WATER",
+              "amount": 50
+            }
+          ]
+        },
+        {
+          "id": "reverse-thrust",
+          "nameZh": "逆向喷射",
+          "energyCost": {
+            "WATER": 1
+          },
+          "baseDamage": 30,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "switch",
+                  "target": "SELECT_OWN_POKEMON"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "maelstrom-gx",
+          "nameZh": "大漩涡GX",
+          "energyCost": {
+            "WATER": 1
+          },
+          "baseDamage": 40,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "damageTarget": "ALL_OPPONENT_POKEMON",
+          "targetCount": 0,
+          "usageLimit": {
+            "group": "gx-attack",
+            "period": "GAME"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_019",
+      "kind": "POKEMON",
+      "hitPoints": 30,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "LIGHTNING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Magikarp",
+      "pokemonType": "WATER",
+      "attacks": [
+        {
+          "id": "water-splash",
+          "nameZh": "水花飞溅",
+          "energyCost": {
+            "WATER": 1
+          },
+          "baseDamage": 10,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "coinDamage": {
+            "flips": 1,
+            "perHeads": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_021",
+      "kind": "POKEMON",
+      "hitPoints": 120,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Lapras",
+      "pokemonType": "WATER",
+      "attacks": [
+        {
+          "id": "aqua-bullet",
+          "nameZh": "水之子弹",
+          "energyCost": {
+            "WATER": 1
+          },
+          "baseDamage": 20,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "bench_damage",
+                  "amount": 20,
+                  "target": "SELECT_OPPONENT_POKEMON"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hydro-pump",
+          "nameZh": "水炮",
+          "energyCost": {
+            "COLORLESS": 3
+          },
+          "baseDamage": 70,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "damage_per_energy",
+              "target": "SELF",
+              "energy_type": "WATER",
+              "amount": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_022",
+      "kind": "POKEMON",
+      "hitPoints": 60,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Totodile",
+      "pokemonType": "WATER",
+      "attacks": [
+        {
+          "id": "leer",
+          "nameZh": "瞪眼",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "conditions": [
+            {
+              "target": "DEFENDER",
+              "condition": "PARALYZED",
+              "coinCondition": {
+                "flips": 1,
+                "requiredHeads": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "fury-swipes",
+          "nameZh": "乱抓",
+          "energyCost": {
+            "WATER": 1
+          },
+          "baseDamage": 0,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "coinDamage": {
+            "flips": 3,
+            "perHeads": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_023",
+      "kind": "POKEMON",
+      "hitPoints": 90,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "sm7-5_en_022",
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Croconaw",
+      "evolvesFromName": "Totodile",
+      "pokemonType": "WATER",
+      "attacks": [
+        {
+          "id": "tackle",
+          "nameZh": "撞击",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 30,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED"
+        },
+        {
+          "id": "sweep-away",
+          "nameZh": "卷入",
+          "energyCost": {
+            "WATER": 2,
+            "COLORLESS": 1
+          },
+          "baseDamage": 90,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "discard_top_deck",
+                  "target": "SELF",
+                  "amount": 3
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_025",
+      "kind": "POKEMON",
+      "hitPoints": 70,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Wooper",
+      "pokemonType": "WATER",
+      "attacks": [
+        {
+          "id": "ram",
+          "nameZh": "冲撞",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 10,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED"
+        },
+        {
+          "id": "rain-splash",
+          "nameZh": "泼水",
+          "energyCost": {
+            "WATER": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 20,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_026",
+      "kind": "POKEMON",
+      "hitPoints": 120,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "sm7-5_en_025",
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Quagsire",
+      "evolvesFromName": "Wooper",
+      "pokemonType": "WATER",
+      "attacks": [
+        {
+          "id": "hydro-pump",
+          "nameZh": "水炮",
+          "energyCost": {
+            "COLORLESS": 3
+          },
+          "baseDamage": 60,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "damage_per_energy",
+              "target": "SELF",
+              "energy_type": "WATER",
+              "amount": 20
+            }
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "id": "wash-out",
+          "nameZh": "冲刷",
+          "kind": "ACTIVATED_UNLIMITED",
+          "effects": [
+            {
+              "type": "move_energy",
+              "target": "OWN_BENCH",
+              "amount": 1,
+              "minimum": 1,
+              "energy_type": "WATER",
+              "destination_scope": "OWN_ACTIVE"
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_027",
+      "kind": "POKEMON",
+      "hitPoints": 90,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Corsola",
+      "pokemonType": "WATER",
+      "attacks": [
+        {
+          "id": "bubble-shoot",
+          "nameZh": "泡沫射击",
+          "energyCost": {
+            "WATER": 1
+          },
+          "baseDamage": 0,
+          "damageType": "WATER",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：this attack does 20 damage times the amount of {water} energy attached to this pokemon to 1 of your opponent's pokemon"
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_028",
+      "kind": "POKEMON",
+      "hitPoints": 30,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Feebas",
+      "pokemonType": "WATER",
+      "attacks": [
+        {
+          "id": "rain-splash",
+          "nameZh": "泼水",
+          "energyCost": {
+            "WATER": 1
+          },
+          "baseDamage": 10,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED"
+        }
+      ],
+      "abilities": [
+        {
+          "id": "submerge",
+          "nameZh": "下潜",
+          "kind": "PASSIVE",
+          "effect": {
+            "opcode": "PASSIVE_PREVENT_ATTACK_DAMAGE_WHILE_BENCHED",
+            "amount": 0
+          },
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_029",
+      "kind": "POKEMON",
+      "hitPoints": 120,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "sm7-5_en_028",
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Milotic",
+      "evolvesFromName": "Feebas",
+      "pokemonType": "WATER",
+      "attacks": [
+        {
+          "id": "aurora-wave",
+          "nameZh": "极光波",
+          "energyCost": {
+            "WATER": 1
+          },
+          "baseDamage": 30,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "conditions": [
+            {
+              "target": "DEFENDER",
+              "condition": "CONFUSED"
+            }
+          ]
+        },
+        {
+          "id": "aqua-split",
+          "nameZh": "水流分裂",
+          "energyCost": {
+            "WATER": 3
+          },
+          "baseDamage": 40,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "bench_damage",
+                  "amount": 40,
+                  "target": "SELECT_OPPONENT_POKEMON",
+                  "target_count": 2
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_032",
+      "kind": "POKEMON",
+      "hitPoints": 60,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Trapinch",
+      "pokemonType": "FIGHTING",
+      "attacks": [
+        {
+          "id": "mini-earthquake",
+          "nameZh": "迷你地震",
+          "energyCost": {
+            "FIGHTING": 1
+          },
+          "baseDamage": 20,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "bench_damage",
+                  "target": "OWN_BENCH",
+                  "amount": 10
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_034",
+      "kind": "POKEMON",
+      "hitPoints": 60,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FAIRY",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Dratini",
+      "pokemonType": "DRAGON",
+      "attacks": [
+        {
+          "id": "wrap",
+          "nameZh": "紧束",
+          "energyCost": {
+            "LIGHTNING": 1
+          },
+          "baseDamage": 10,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "conditions": [
+            {
+              "target": "DEFENDER",
+              "condition": "PARALYZED",
+              "coinCondition": {
+                "flips": 1,
+                "requiredHeads": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_035",
+      "kind": "POKEMON",
+      "hitPoints": 70,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FAIRY",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Dratini",
+      "pokemonType": "DRAGON",
+      "attacks": [
+        {
+          "id": "tail-whap",
+          "nameZh": "摆尾拍击",
+          "energyCost": {
+            "WATER": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 30,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_036",
+      "kind": "POKEMON",
+      "hitPoints": 100,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "sm7-5_en_034",
+      "weakness": {
+        "type": "FAIRY",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Dragonair",
+      "evolvesFromName": "Dratini",
+      "pokemonType": "DRAGON",
+      "attacks": [
+        {
+          "id": "dragon-tail",
+          "nameZh": "龙尾",
+          "energyCost": {
+            "COLORLESS": 3
+          },
+          "baseDamage": 0,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "coinDamage": {
+            "flips": 2,
+            "perHeads": 60
+          }
+        },
+        {
+          "id": "waterfall",
+          "nameZh": "攀瀑",
+          "energyCost": {
+            "WATER": 1,
+            "LIGHTNING": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 80,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_037",
+      "kind": "POKEMON",
+      "hitPoints": 250,
+      "retreatCost": 3,
+      "evolvesFromDefinitionId": "sm7-5_en_036",
+      "weakness": {
+        "type": "FAIRY",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Dragonite-GX",
+      "evolvesFromName": "Dragonair",
+      "pokemonType": "DRAGON",
+      "attacks": [
+        {
+          "id": "dragon-claw",
+          "nameZh": "龙爪",
+          "energyCost": {
+            "LIGHTNING": 1
+          },
+          "baseDamage": 70,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED"
+        },
+        {
+          "id": "giga-impact",
+          "nameZh": "终极冲击",
+          "energyCost": {
+            "WATER": 1,
+            "LIGHTNING": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 200,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "prevent_attack",
+                  "target": "SELF",
+                  "duration": "SOURCE_NEXT_TURN_END"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dragonporter-gx",
+          "nameZh": "龙转乾坤GX",
+          "energyCost": {
+            "COLORLESS": 3
+          },
+          "baseDamage": 0,
+          "damageType": "DRAGON",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：put 3 {dragon} pokemon from your discard pile onto your bench"
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_038",
+      "kind": "POKEMON",
+      "hitPoints": 80,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "sm7-5_en_032",
+      "weakness": {
+        "type": "FAIRY",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Vibrava",
+      "evolvesFromName": "Trapinch",
+      "pokemonType": "DRAGON",
+      "attacks": [
+        {
+          "id": "sonic-edge",
+          "nameZh": "音波刀锋",
+          "energyCost": {
+            "FIGHTING": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 50,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "ignoresActiveDefenderDamageEffects": true
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_040",
+      "kind": "POKEMON",
+      "hitPoints": 80,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "sm7-5_en_056",
+      "weakness": {
+        "type": "FAIRY",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Altaria",
+      "evolvesFromName": "Swablu",
+      "pokemonType": "DRAGON",
+      "attacks": [
+        {
+          "id": "pierce",
+          "nameZh": "突刺",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 20,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED"
+        }
+      ],
+      "abilities": [
+        {
+          "id": "fight-song",
+          "nameZh": "战歌",
+          "kind": "PASSIVE",
+          "effects": [
+            {
+              "type": "attack_damage_modifier",
+              "target": "ALL_OWN_POKEMON",
+              "amount": 20,
+              "direction": "DEALT",
+              "opponent_active_only": true,
+              "conditions": [
+                {
+                  "type": "IS_TYPE",
+                  "target": "SELF",
+                  "pokemon_type": "DRAGON"
+                }
+              ]
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_041",
+      "kind": "POKEMON",
+      "hitPoints": 200,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "sm7-5_en_056",
+      "weakness": {
+        "type": "FAIRY",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Altaria-GX",
+      "evolvesFromName": "Swablu",
+      "pokemonType": "DRAGON",
+      "attacks": [
+        {
+          "id": "bright-tone",
+          "nameZh": "嘹亮音调",
+          "energyCost": {
+            "FAIRY": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 50,
+          "damageType": "DRAGON",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：during your opponent's next turn, prevent all damage done to this pokemon by attacks from pokemon {gx_atk} and pokemon {ex_atk}"
+        },
+        {
+          "id": "sonic-edge",
+          "nameZh": "音速之刃",
+          "energyCost": {
+            "WATER": 1,
+            "FAIRY": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 110,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "ignoresActiveDefenderDamageEffects": true
+        },
+        {
+          "id": "euphoria-gx",
+          "nameZh": "欣喜若狂GX",
+          "energyCost": {
+            "FAIRY": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "conditions": [
+            {
+              "target": "DEFENDER",
+              "condition": "ASLEEP"
+            }
+          ],
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "heal",
+                  "target": "ALL_OWN_POKEMON",
+                  "mode": "ALL"
+                }
+              ]
+            }
+          ],
+          "usageLimit": {
+            "group": "gx-attack",
+            "period": "GAME"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_042",
+      "kind": "POKEMON",
+      "hitPoints": 60,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FAIRY",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Bagon",
+      "pokemonType": "DRAGON",
+      "attacks": [
+        {
+          "id": "risky-kick",
+          "nameZh": "踢",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "coinDamage": {
+            "flips": 1,
+            "perHeads": 10
+          }
+        },
+        {
+          "id": "dragon-eye",
+          "nameZh": "龙眼",
+          "energyCost": {
+            "FIRE": 1,
+            "WATER": 1
+          },
+          "baseDamage": 20,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "conditions": [
+            {
+              "target": "DEFENDER",
+              "condition": "ASLEEP"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_044",
+      "kind": "POKEMON",
+      "hitPoints": 250,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "sm7_en_105",
+      "weakness": {
+        "type": "FAIRY",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Salamence-GX",
+      "evolvesFromName": "Shelgon",
+      "pokemonType": "DRAGON",
+      "attacks": [
+        {
+          "id": "bright-flame",
+          "nameZh": "红莲火焰",
+          "energyCost": {
+            "FIRE": 1,
+            "WATER": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 200,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "discardSelectedAttachedEnergyAfterAttack": 2
+        },
+        {
+          "id": "flame-jet-gx",
+          "nameZh": "浴火飞行GX",
+          "energyCost": {
+            "FIRE": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 120,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "damageTarget": "OPPONENT_ANY",
+          "targetCount": 1,
+          "usageLimit": {
+            "group": "gx-attack",
+            "period": "GAME"
+          }
+        }
+      ],
+      "abilities": [
+        {
+          "id": "dragon-lift",
+          "nameZh": "巨龙飞驰",
+          "kind": "PASSIVE",
+          "effects": [
+            {
+              "type": "free_retreat",
+              "target": "ALL_OWN_POKEMON",
+              "conditions": [
+                {
+                  "type": "NOT",
+                  "conditions": [
+                    {
+                      "type": "OR",
+                      "conditions": [
+                        {
+                          "type": "IS_GX",
+                          "target": "SELF"
+                        },
+                        {
+                          "type": "IS_LEGACY_EX",
+                          "target": "SELF"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_045",
+      "kind": "POKEMON",
+      "hitPoints": 110,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FAIRY",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Druddigon",
+      "pokemonType": "DRAGON",
+      "attacks": [
+        {
+          "id": "dragon-claw",
+          "nameZh": "龙爪",
+          "energyCost": {
+            "FIRE": 1,
+            "WATER": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 100,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED"
+        }
+      ],
+      "abilities": [
+        {
+          "id": "rough-skin",
+          "nameZh": "粗糙皮肤",
+          "kind": "TRIGGERED",
+          "eventPolicy": {
+            "trigger": "ON_DAMAGE",
+            "from": "OPPONENT_ATTACK",
+            "activeOnly": true,
+            "lethalOnly": false,
+            "optional": false,
+            "usage": "NONE"
+          },
+          "triggers": [
+            {
+              "trigger": "ON_DAMAGE",
+              "conditions": [],
+              "effects": [
+                {
+                  "type": "damage_counter",
+                  "target": "ATTACKING_POKEMON",
+                  "amount": 3
+                }
+              ]
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_046",
+      "kind": "POKEMON",
+      "hitPoints": 130,
+      "retreatCost": 3,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FAIRY",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Zekrom",
+      "pokemonType": "DRAGON",
+      "attacks": [
+        {
+          "id": "shred",
+          "nameZh": "撕裂",
+          "energyCost": {
+            "LIGHTNING": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 70,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "ignoresActiveDefenderDamageEffects": true
+        },
+        {
+          "id": "bolt-strike",
+          "nameZh": "雷击",
+          "energyCost": {
+            "LIGHTNING": 2,
+            "COLORLESS": 2
+          },
+          "baseDamage": 150,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "coin_flip",
+                  "flips": 1,
+                  "tails": [
+                    {
+                      "type": "self_damage",
+                      "target": "SELF",
+                      "amount": 50
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_047",
+      "kind": "POKEMON",
+      "hitPoints": 130,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FAIRY",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Kyurem",
+      "pokemonType": "DRAGON",
+      "attacks": [
+        {
+          "id": "outrage",
+          "nameZh": "逆鳞",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 20,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "damageModifiers": [
+            {
+              "basis": "ATTACKER_DAMAGE_COUNTERS",
+              "amountPerUnit": 10
+            }
+          ]
+        },
+        {
+          "id": "frost-spear",
+          "nameZh": "冰霜长矛",
+          "energyCost": {
+            "WATER": 2,
+            "COLORLESS": 1
+          },
+          "baseDamage": 100,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "bench_damage",
+                  "amount": 20,
+                  "target": "SELECT_OPPONENT_POKEMON"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_048",
+      "kind": "POKEMON",
+      "hitPoints": 190,
+      "retreatCost": 3,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FAIRY",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "White Kyurem-GX",
+      "pokemonType": "DRAGON",
+      "attacks": [
+        {
+          "id": "shred",
+          "nameZh": "撕裂",
+          "energyCost": {
+            "FIRE": 1
+          },
+          "baseDamage": 40,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "ignoresActiveDefenderDamageEffects": true
+        },
+        {
+          "id": "raging-blade",
+          "nameZh": "愤怒之刃",
+          "energyCost": {
+            "FIRE": 1,
+            "WATER": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 80,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "DAMAGE_COUNTER_COUNT",
+                  "target": "SELF",
+                  "value": 1
+                }
+              ],
+              "effects": [
+                {
+                  "type": "damage",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 80
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dragon-nova-gx",
+          "nameZh": "飞龙新星GX",
+          "energyCost": {
+            "FIRE": 2,
+            "WATER": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 200,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "conditions": [
+            {
+              "target": "DEFENDER",
+              "condition": "BURNED"
+            },
+            {
+              "target": "DEFENDER",
+              "condition": "PARALYZED"
+            }
+          ],
+          "usageLimit": {
+            "group": "gx-attack",
+            "period": "GAME"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_049",
+      "kind": "POKEMON",
+      "hitPoints": 130,
+      "retreatCost": 3,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FAIRY",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Zygarde",
+      "pokemonType": "DRAGON",
+      "attacks": [
+        {
+          "id": "rumble",
+          "nameZh": "大地轰鸣",
+          "energyCost": {
+            "FIGHTING": 1
+          },
+          "baseDamage": 20,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "prevent_retreat",
+                  "target": "OPPONENT_ACTIVE"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "raging-blade",
+          "nameZh": "愤怒之刃",
+          "energyCost": {
+            "FIGHTING": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 60,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "DAMAGE_COUNTER_COUNT",
+                  "target": "SELF",
+                  "value": 1
+                }
+              ],
+              "effects": [
+                {
+                  "type": "damage",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 60
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_050",
+      "kind": "POKEMON",
+      "hitPoints": 110,
+      "retreatCost": 3,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FAIRY",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Turtonator",
+      "pokemonType": "DRAGON",
+      "attacks": [
+        {
+          "id": "explosive-jet",
+          "nameZh": "爆炎喷射",
+          "energyCost": {
+            "FIRE": 3
+          },
+          "baseDamage": 0,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "damage_per_bound",
+              "target": "OPPONENT_ACTIVE",
+              "bind": "discarded1",
+              "amount": 50
+            }
+          ],
+          "triggers": [
+            {
+              "trigger": "BEFORE_ATTACK",
+              "effects": [
+                {
+                  "type": "plan_energy_discard",
+                  "target": "ALL_OWN_POKEMON",
+                  "bind": "discarded1",
+                  "amount": 60,
+                  "minimum": 0,
+                  "energy_type": "FIRE"
+                }
+              ]
+            },
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "commit_energy_discard",
+                  "ref": "discarded1"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_051",
+      "kind": "POKEMON",
+      "hitPoints": 120,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FAIRY",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Drampa",
+      "pokemonType": "DRAGON",
+      "attacks": [
+        {
+          "id": "dragon-wisdom",
+          "nameZh": "龙之智慧",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 20,
+          "damageType": "DRAGON",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：attach a basic energy card from your discard pile to 1 of your {dragon} pokemon"
+        },
+        {
+          "id": "hyper-voice",
+          "nameZh": "巨声",
+          "energyCost": {
+            "COLORLESS": 3
+          },
+          "baseDamage": 80,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_052",
+      "kind": "POKEMON",
+      "hitPoints": 60,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FAIRY",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Jangmo-o",
+      "pokemonType": "DRAGON",
+      "attacks": [
+        {
+          "id": "rigidify",
+          "nameZh": "硬直",
+          "energyCost": {
+            "LIGHTNING": 1
+          },
+          "baseDamage": 0,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "damageReductionFromOpponentNextTurn": 20
+        },
+        {
+          "id": "dragon-claw",
+          "nameZh": "龙爪",
+          "energyCost": {
+            "FIGHTING": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 20,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_053",
+      "kind": "POKEMON",
+      "hitPoints": 90,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "sm7-5_en_052",
+      "weakness": {
+        "type": "FAIRY",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Hakamo-o",
+      "evolvesFromName": "Jangmo-o",
+      "pokemonType": "DRAGON",
+      "attacks": [
+        {
+          "id": "guard-press",
+          "nameZh": "防守压制",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 30,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "damageReductionFromOpponentNextTurn": 30
+        },
+        {
+          "id": "dragon-claw",
+          "nameZh": "龙爪",
+          "energyCost": {
+            "LIGHTNING": 1,
+            "FIGHTING": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 70,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_054",
+      "kind": "POKEMON",
+      "hitPoints": 160,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "sm7-5_en_053",
+      "weakness": {
+        "type": "FAIRY",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Kommo-o",
+      "evolvesFromName": "Hakamo-o",
+      "pokemonType": "DRAGON",
+      "attacks": [
+        {
+          "id": "guard-press",
+          "nameZh": "防守压制",
+          "energyCost": {
+            "LIGHTNING": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 60,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "damageReductionFromOpponentNextTurn": 30
+        },
+        {
+          "id": "raging-uppercut",
+          "nameZh": "愤怒冲天劈",
+          "energyCost": {
+            "FIGHTING": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 90,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "DAMAGE_COUNTER_COUNT",
+                  "target": "SELF",
+                  "value": 8,
+                  "comparison": ">="
+                }
+              ],
+              "effects": [
+                {
+                  "type": "damage",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 120
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_055",
+      "kind": "POKEMON",
+      "hitPoints": 120,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Kangaskhan",
+      "pokemonType": "COLORLESS",
+      "attacks": [
+        {
+          "id": "fetch",
+          "nameZh": "孩子跑腿",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "draw",
+                  "amount": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "headbutt",
+          "nameZh": "头锤",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 30,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED"
+        },
+        {
+          "id": "one-two-punch",
+          "nameZh": "亲子重拳",
+          "energyCost": {
+            "COLORLESS": 3
+          },
+          "baseDamage": 60,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED",
+          "coinDamage": {
+            "flips": 1,
+            "perHeads": 30
+          }
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_056",
+      "kind": "POKEMON",
+      "hitPoints": 50,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "LIGHTNING",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "FIGHTING",
+        "amount": 20
+      },
+      "prizeCards": 1,
+      "pokemonName": "Swablu",
+      "pokemonType": "COLORLESS",
+      "attacks": [
+        {
+          "id": "collect",
+          "nameZh": "招来",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "draw",
+                  "amount": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "peck",
+          "nameZh": "啄",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 20,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_057",
+      "kind": "POKEMON",
+      "hitPoints": 50,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "LIGHTNING",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "FIGHTING",
+        "amount": 20
+      },
+      "prizeCards": 1,
+      "pokemonName": "Swablu",
+      "pokemonType": "COLORLESS",
+      "attacks": [
+        {
+          "id": "sing",
+          "nameZh": "唱歌",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED",
+          "conditions": [
+            {
+              "target": "DEFENDER",
+              "condition": "ASLEEP"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_065",
+      "kind": "POKEMON",
+      "hitPoints": 180,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Reshiram-GX",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "flame-charge",
+          "nameZh": "蓄能焰袭",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "attach_energy",
+                  "source": "DECK",
+                  "target": "SELF",
+                  "target_scope": "OWN_FIELD",
+                  "amount": 2,
+                  "minimum": 0,
+                  "basic_energy_only": true,
+                  "energy_type": "FIRE"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "scorching-column",
+          "nameZh": "灼热之柱",
+          "energyCost": {
+            "FIRE": 3,
+            "COLORLESS": 1
+          },
+          "baseDamage": 110,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "conditions": [
+            {
+              "target": "DEFENDER",
+              "condition": "BURNED"
+            }
+          ]
+        },
+        {
+          "id": "vermilion-gx",
+          "nameZh": "朱红印记GX",
+          "energyCost": {
+            "FIRE": 3,
+            "COLORLESS": 1
+          },
+          "baseDamage": 180,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "attach_energy",
+                  "source": "HAND",
+                  "target": "SELECT_OWN_POKEMON",
+                  "target_scope": "OWN_FIELD",
+                  "amount": 5,
+                  "minimum": 0,
+                  "basic_energy_only": true,
+                  "energy_type": "FIRE",
+                  "distribution": "ANY"
+                }
+              ]
+            }
+          ],
+          "usageLimit": {
+            "group": "gx-attack",
+            "period": "GAME"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_066",
+      "kind": "POKEMON",
+      "hitPoints": 230,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "sm7-5_en_017",
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Kingdra-GX",
+      "evolvesFromName": "Seadra",
+      "pokemonType": "WATER",
+      "attacks": [
+        {
+          "id": "hydro-pump",
+          "nameZh": "水炮",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 10,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "damage_per_energy",
+              "target": "SELF",
+              "energy_type": "WATER",
+              "amount": 50
+            }
+          ]
+        },
+        {
+          "id": "reverse-thrust",
+          "nameZh": "逆向喷射",
+          "energyCost": {
+            "WATER": 1
+          },
+          "baseDamage": 30,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "switch",
+                  "target": "SELECT_OWN_POKEMON"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "maelstrom-gx",
+          "nameZh": "大漩涡GX",
+          "energyCost": {
+            "WATER": 1
+          },
+          "baseDamage": 40,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "damageTarget": "ALL_OPPONENT_POKEMON",
+          "targetCount": 0,
+          "usageLimit": {
+            "group": "gx-attack",
+            "period": "GAME"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_067",
+      "kind": "POKEMON",
+      "hitPoints": 250,
+      "retreatCost": 3,
+      "evolvesFromDefinitionId": "sm7-5_en_036",
+      "weakness": {
+        "type": "FAIRY",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Dragonite-GX",
+      "evolvesFromName": "Dragonair",
+      "pokemonType": "DRAGON",
+      "attacks": [
+        {
+          "id": "dragon-claw",
+          "nameZh": "龙爪",
+          "energyCost": {
+            "LIGHTNING": 1
+          },
+          "baseDamage": 70,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED"
+        },
+        {
+          "id": "giga-impact",
+          "nameZh": "终极冲击",
+          "energyCost": {
+            "WATER": 1,
+            "LIGHTNING": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 200,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "prevent_attack",
+                  "target": "SELF",
+                  "duration": "SOURCE_NEXT_TURN_END"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dragonporter-gx",
+          "nameZh": "龙转乾坤GX",
+          "energyCost": {
+            "COLORLESS": 3
+          },
+          "baseDamage": 0,
+          "damageType": "DRAGON",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：put 3 {dragon} pokemon from your discard pile onto your bench"
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_068",
+      "kind": "POKEMON",
+      "hitPoints": 200,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "sm7-5_en_056",
+      "weakness": {
+        "type": "FAIRY",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Altaria-GX",
+      "evolvesFromName": "Swablu",
+      "pokemonType": "DRAGON",
+      "attacks": [
+        {
+          "id": "bright-tone",
+          "nameZh": "嘹亮音调",
+          "energyCost": {
+            "FAIRY": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 50,
+          "damageType": "DRAGON",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：during your opponent's next turn, prevent all damage done to this pokemon by attacks from pokemon {gx_atk} and pokemon {ex_atk}"
+        },
+        {
+          "id": "sonic-edge",
+          "nameZh": "音速之刃",
+          "energyCost": {
+            "WATER": 1,
+            "FAIRY": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 110,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "ignoresActiveDefenderDamageEffects": true
+        },
+        {
+          "id": "euphoria-gx",
+          "nameZh": "欣喜若狂GX",
+          "energyCost": {
+            "FAIRY": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "conditions": [
+            {
+              "target": "DEFENDER",
+              "condition": "ASLEEP"
+            }
+          ],
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "heal",
+                  "target": "ALL_OWN_POKEMON",
+                  "mode": "ALL"
+                }
+              ]
+            }
+          ],
+          "usageLimit": {
+            "group": "gx-attack",
+            "period": "GAME"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_071",
+      "kind": "POKEMON",
+      "hitPoints": 180,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Reshiram-GX",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "flame-charge",
+          "nameZh": "蓄能焰袭",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "attach_energy",
+                  "source": "DECK",
+                  "target": "SELF",
+                  "target_scope": "OWN_FIELD",
+                  "amount": 2,
+                  "minimum": 0,
+                  "basic_energy_only": true,
+                  "energy_type": "FIRE"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "scorching-column",
+          "nameZh": "灼热之柱",
+          "energyCost": {
+            "FIRE": 3,
+            "COLORLESS": 1
+          },
+          "baseDamage": 110,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "conditions": [
+            {
+              "target": "DEFENDER",
+              "condition": "BURNED"
+            }
+          ]
+        },
+        {
+          "id": "vermilion-gx",
+          "nameZh": "朱红印记GX",
+          "energyCost": {
+            "FIRE": 3,
+            "COLORLESS": 1
+          },
+          "baseDamage": 180,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "attach_energy",
+                  "source": "HAND",
+                  "target": "SELECT_OWN_POKEMON",
+                  "target_scope": "OWN_FIELD",
+                  "amount": 5,
+                  "minimum": 0,
+                  "basic_energy_only": true,
+                  "energy_type": "FIRE",
+                  "distribution": "ANY"
+                }
+              ]
+            }
+          ],
+          "usageLimit": {
+            "group": "gx-attack",
+            "period": "GAME"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_072",
+      "kind": "POKEMON",
+      "hitPoints": 200,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "sm7-5_en_056",
+      "weakness": {
+        "type": "FAIRY",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Altaria-GX",
+      "evolvesFromName": "Swablu",
+      "pokemonType": "DRAGON",
+      "attacks": [
+        {
+          "id": "bright-tone",
+          "nameZh": "嘹亮音调",
+          "energyCost": {
+            "FAIRY": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 50,
+          "damageType": "DRAGON",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：during your opponent's next turn, prevent all damage done to this pokemon by attacks from pokemon {gx_atk} and pokemon {ex_atk}"
+        },
+        {
+          "id": "sonic-edge",
+          "nameZh": "音速之刃",
+          "energyCost": {
+            "WATER": 1,
+            "FAIRY": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 110,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "ignoresActiveDefenderDamageEffects": true
+        },
+        {
+          "id": "euphoria-gx",
+          "nameZh": "欣喜若狂GX",
+          "energyCost": {
+            "FAIRY": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "conditions": [
+            {
+              "target": "DEFENDER",
+              "condition": "ASLEEP"
+            }
+          ],
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "heal",
+                  "target": "ALL_OWN_POKEMON",
+                  "mode": "ALL"
+                }
+              ]
+            }
+          ],
+          "usageLimit": {
+            "group": "gx-attack",
+            "period": "GAME"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_073",
+      "kind": "POKEMON",
+      "hitPoints": 250,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "sm7_en_105",
+      "weakness": {
+        "type": "FAIRY",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Salamence-GX",
+      "evolvesFromName": "Shelgon",
+      "pokemonType": "DRAGON",
+      "attacks": [
+        {
+          "id": "bright-flame",
+          "nameZh": "红莲火焰",
+          "energyCost": {
+            "FIRE": 1,
+            "WATER": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 200,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "discardSelectedAttachedEnergyAfterAttack": 2
+        },
+        {
+          "id": "flame-jet-gx",
+          "nameZh": "浴火飞行GX",
+          "energyCost": {
+            "FIRE": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 120,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "damageTarget": "OPPONENT_ANY",
+          "targetCount": 1,
+          "usageLimit": {
+            "group": "gx-attack",
+            "period": "GAME"
+          }
+        }
+      ],
+      "abilities": [
+        {
+          "id": "dragon-lift",
+          "nameZh": "巨龙飞驰",
+          "kind": "PASSIVE",
+          "effects": [
+            {
+              "type": "free_retreat",
+              "target": "ALL_OWN_POKEMON",
+              "conditions": [
+                {
+                  "type": "NOT",
+                  "conditions": [
+                    {
+                      "type": "OR",
+                      "conditions": [
+                        {
+                          "type": "IS_GX",
+                          "target": "SELF"
+                        },
+                        {
+                          "type": "IS_LEGACY_EX",
+                          "target": "SELF"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_074",
+      "kind": "POKEMON",
+      "hitPoints": 190,
+      "retreatCost": 3,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FAIRY",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "White Kyurem-GX",
+      "pokemonType": "DRAGON",
+      "attacks": [
+        {
+          "id": "shred",
+          "nameZh": "撕裂",
+          "energyCost": {
+            "FIRE": 1
+          },
+          "baseDamage": 40,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "ignoresActiveDefenderDamageEffects": true
+        },
+        {
+          "id": "raging-blade",
+          "nameZh": "愤怒之刃",
+          "energyCost": {
+            "FIRE": 1,
+            "WATER": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 80,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "DAMAGE_COUNTER_COUNT",
+                  "target": "SELF",
+                  "value": 1
+                }
+              ],
+              "effects": [
+                {
+                  "type": "damage",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 80
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dragon-nova-gx",
+          "nameZh": "飞龙新星GX",
+          "energyCost": {
+            "FIRE": 2,
+            "WATER": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 200,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "conditions": [
+            {
+              "target": "DEFENDER",
+              "condition": "BURNED"
+            },
+            {
+              "target": "DEFENDER",
+              "condition": "PARALYZED"
+            }
+          ],
+          "usageLimit": {
+            "group": "gx-attack",
+            "period": "GAME"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sm7-5_en_078",
+      "kind": "POKEMON",
+      "hitPoints": 190,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FAIRY",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Ultra Necrozma-GX",
+      "pokemonType": "DRAGON",
+      "attacks": [
+        {
+          "id": "photon-geyser",
+          "nameZh": "光子喷涌",
+          "energyCost": {
+            "PSYCHIC": 1,
+            "METAL": 1
+          },
+          "baseDamage": 20,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "damage_per_bound",
+              "target": "OPPONENT_ACTIVE",
+              "bind": "discarded1",
+              "amount": 80
+            }
+          ],
+          "triggers": [
+            {
+              "trigger": "BEFORE_ATTACK",
+              "effects": [
+                {
+                  "type": "plan_energy_discard",
+                  "target": "SELF",
+                  "bind": "discarded1",
+                  "all": true,
+                  "card_kind": "BASIC",
+                  "energy_type": "PSYCHIC"
+                }
+              ]
+            },
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "commit_energy_discard",
+                  "ref": "discarded1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sky-scorching-light-gx",
+          "nameZh": "终焉之光GX",
+          "energyCost": {
+            "PSYCHIC": 1,
+            "METAL": 1
+          },
+          "baseDamage": 0,
+          "damageType": "DRAGON",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：you can use this attack only if the total of both players' remaining prize cards is 6 or less. put 6 damage counters on each of your opponent's pokemon"
+        }
+      ]
+    }
+  ]
+}

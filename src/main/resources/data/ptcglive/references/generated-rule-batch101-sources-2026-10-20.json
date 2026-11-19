@@ -1,0 +1,34 @@
+{
+  "batch": 101,
+  "checkedAt": "2026-10-20",
+  "cards": [
+    "me4_en_074"
+  ],
+  "officialSources": [
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/48484",
+      "facts": "Adversity Policy: attached Pokemon in the Active Spot with Weakness to the opponent Active Pokemon type draws 3 cards when damaged by an opponent Pokemon attack, even if it is Knocked Out."
+    }
+  ],
+  "reuseDecision": {
+    "accepted": [
+      "existing automatic tool event policies",
+      "existing draw effect",
+      "existing active/opponent attack damage event"
+    ],
+    "rejected": [
+      "BREAK combat behavior",
+      "bench or non-attack damage triggers"
+    ]
+  },
+  "implementation": {
+    "effect": "adversity-policy",
+    "event": "ON_DAMAGE from OPPONENT_ATTACK",
+    "predicate": "attached Pokemon active; opponent Active type equals attached Pokemon weakness; lethal damage still matches",
+    "snapshot": "capture opponent Active Pokemon type when attack damage event is created"
+  },
+  "validation": [
+    "converter overlay generated SUPPORTED card and TRAINER combat entry",
+    "Java sources compiled directly; tests and real-game regression intentionally deferred until all cards are complete"
+  ]
+}

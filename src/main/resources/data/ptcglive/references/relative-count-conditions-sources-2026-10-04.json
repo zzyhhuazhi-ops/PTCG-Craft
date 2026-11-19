@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "version": "relative-count-conditions-v1",
+  "checkedDate": "2026-10-04",
+  "implementationVersion": "0.6.0-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Rosa's Encouragement — Perfect Order 114 official card page",
+      "url": "https://www.pokemon.com/uk/pokemon-tcg/pokemon-cards/series/me03/114/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official card database entry",
+      "verification": "The official card text restricts use to when its player has more Prize cards remaining than the opponent.",
+      "supportsZh": "作为“己方与对方剩余奖赏卡比较”通用条件的卡文建模用例；不表示该真实卡已完成整卡审核或已启用。"
+    },
+    {
+      "title": "Garchomp — Unified Minds 114 official card page",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm11/114",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official card database entry",
+      "verification": "The official card text has an attack-damage condition based on having more Prize cards remaining than the opponent.",
+      "supportsZh": "作为相对奖赏条件可用于持续伤害修正和攻击程序的用例；不表示该真实卡已经通过完整规则、合法性和资料审核。"
+    },
+    {
+      "title": "Play! Pokémon Competitive Pokémon Rules and Formats",
+      "url": "https://play.pokemon.com/en-us/resources/rules/?category=tcg",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official resources index, retrieved 2026-10-04",
+      "verification": "The official index provides the maintained entry points for rulebooks, tournament rules, legality notices and errata.",
+      "supportsZh": "用于规则包与卡文持续核验；索引页本身不被当作相对奖赏条件的完整逐项裁定。"
+    }
+  ],
+  "retrievalLimitations": [
+    "No PTCG Live behavior or log is used as rule authority.",
+    "No Japanese, Asian, Pocket or community source is mixed into the international ruleset.",
+    "Every real card remains unavailable until its full official text, timing and legality are audited."
+  ],
+  "implementationLimits": [
+    "Supports player-zone BENCH_COUNT, HAND_SIZE, PRIZE_COUNT and DISCARD_COUNT conditions with compare_to=OPPONENT, all computed by the server.",
+    "Supports a second explicitly public compare_target for numeric conditions; hidden zones, client-selected targets and ambiguous value-plus-target data reject before resolution.",
+    "This is a reusable condition component only. It does not itself implement Rosa's Encouragement, Garchomp, Counter Gain, Reversal Energy, Rule Box restrictions or multi-host Energy allocation."
+  ]
+}

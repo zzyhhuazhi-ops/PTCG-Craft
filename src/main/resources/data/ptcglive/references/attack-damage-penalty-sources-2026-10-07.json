@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "version": "attack-damage-penalty-v1",
+  "checkedDate": "2026-10-07",
+  "implementationVersion": "0.6.7-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Pokémon Trading Card Game Rules — Scarlet & Violet Rulebook（effects of attacks end when the Pokémon is moved to the Bench or evolves）",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/pal_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English rulebook PDF; checked 2026-10-07",
+      "supportsZh": "攻击施加在宝可梦身上的效果，在这只宝可梦回到备战区（撤退、交换）或进化时消失。所以“防守宝可梦”的减伤效果只跟着当时的战斗宝可梦，换下场或进化就没有了。"
+    },
+    {
+      "title": "Stoutland — Sun & Moon 105/149（Ferocious Bellow）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm1/105/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-07 (pokemon.com page blocked automated reading)",
+      "supportsZh": "“During your opponent's next turn, the Defending Pokémon's attacks do 50 less damage (before applying Weakness and Resistance).”：在对手的下个回合，防守宝可梦的招式伤害先减 50，再计算弱点和抵抗力。"
+    },
+    {
+      "title": "Lunatone — XY 63/146（Moonblast）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/xy1/63/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-07 (pokemon.com page blocked automated reading)",
+      "supportsZh": "旧写法 “During your opponent's next turn, any damage done by attacks from the Defending Pokémon is reduced by 20 (before applying Weakness and Resistance).”，与上一条意思相同。Rainier 里这两种写法的提示语全部是 “before applying”。"
+    }
+  ],
+  "dataContractZh": "新效果 reduce_attack_damage：target 只能是 OPPONENT_ACTIVE（攻击时的防守宝可梦），只接受 amount（10–1000，10 的倍数），只能在攻击的 AFTER_ATTACK 结算。",
+  "serverAuthorityZh": "服务器把持续效果 ATTACK_DAMAGE_PENALTY 挂在对方当时的战斗宝可梦上，拥有者是攻击方，到攻击方下个回合开始时失效；换下场、进化时随其他攻击效果一起清除。这只宝可梦之后攻击时，伤害在攻击方持续修正之后、弱点和抵抗力之前减去这个数（不低于 0）；对备战宝可梦造成的攻击伤害同样减少。“防止攻击效果”的防护可以挡住这个效果的施加。",
+  "limitations": [
+    "特性写法 “As long as this Pokémon is your Active Pokémon, your opponent's Active Pokémon's attacks do N less damage” 是持续被动效果，不用本组件。",
+    "攻击者对自己造成的伤害（自伤）不减少。"
+  ]
+}

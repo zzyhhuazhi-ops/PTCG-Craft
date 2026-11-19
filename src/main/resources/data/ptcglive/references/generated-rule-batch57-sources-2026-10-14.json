@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-14",
+  "scope": "Newest-first ME5 damage-source guards; identical existing Bastiodon promo included. Artwork and true BREAK excluded.",
+  "ruleReferences": [
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50279/regu/XY",
+      "usedFor": "Bastiodon Ancient Bulwark printed source position and scope. The exact same English ability text and attack are present in both ME5 prints and the existing mebsp_en_085 promo."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50226",
+      "usedFor": "Heatran Lava Wall:120 printed damage and next opposing turn protection from damage by Burned attackers only."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%88%E3%83%AA%E3%83%87%E3%83%97%E3%82%B9&page=1&regulation=all",
+      "usedFor": "Ancient Bulwark uses supplied Energy units at damage time. Inferno X and Gaia Impact discard afterwards. Ignition provides3 on Evolution. Before-damage gust changes source position. Attacker Hide n Sneak does not negate protection applied to defenders."
+    },
+    {
+      "url": "https://www.pokemon-card.com/assets/document/advanced_manual.pdf",
+      "usedFor": "Advanced Rules3.4 pp5-6: explicit before-damage effects, then damage calculation including attacker modifiers, then other effects. Basis for retaining actual attacker facts and damage-dealt modifiers for secondary Bench damage across ordinary Energy discards."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/48835",
+      "usedFor": "N s Darmanitan Flamebody Cannon deals90 to Active and one Bench and discards attached Energy. All three existing English prints tested with their unchanged cost and with actual Double Turbo Energy."
+    }
+  ],
+  "evidence": [
+    {
+      "cardId": "me5_en_007",
+      "component": "attack",
+      "name": "Lava Wall",
+      "textEn": "During your opponent's next turn, prevent all damage done to this Pokémon by attacks from Burned Pokémon.",
+      "textZh": "在下一个对手的回合，这只宝可梦不会受到处于灼伤状态的宝可梦的招式的伤害。",
+      "mapping": {
+        "rules": [
+          "burned-attacker-damage-guard"
+        ],
+        "fields": {
+          "baseDamage": 120
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "prevent_damage",
+                "target": "SELF",
+                "source": "ATTACK",
+                "from": "OPPONENT",
+                "scope": "DAMAGE_ONLY",
+                "duration": "OPPONENT_TURN_END",
+                "attacker_status": "BURNED"
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5_en_062",
+      "component": "ability",
+      "name": "Ancient Bulwark",
+      "textEn": "As long as this Pokémon is on your Bench, prevent all damage done to each of your Pokémon by attacks from your opponent's Pokémon that have 2 or less Energy attached.",
+      "textZh": "只要这只宝可梦在备战区，自己所有宝可梦不会受到对手身上附着的能量为2个及以下的宝可梦的招式的伤害。",
+      "mapping": {
+        "rules": [
+          "ability-benched-source-low-energy-damage-guard"
+        ],
+        "fields": {
+          "abilityKind": "PASSIVE"
+        },
+        "program": [
+          {
+            "type": "passive_attack_guard",
+            "target": "ALL_OWN_POKEMON",
+            "mode": "PREVENT",
+            "source_position": "BENCH",
+            "attacker_energy_max": 2
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5_en_093",
+      "component": "ability",
+      "name": "Ancient Bulwark",
+      "textEn": "As long as this Pokémon is on your Bench, prevent all damage done to each of your Pokémon by attacks from your opponent's Pokémon that have 2 or less Energy attached.",
+      "textZh": "只要这只宝可梦在备战区，自己所有宝可梦不会受到对手身上附着的能量为2个及以下的宝可梦的招式的伤害。",
+      "mapping": {
+        "rules": [
+          "ability-benched-source-low-energy-damage-guard"
+        ],
+        "fields": {
+          "abilityKind": "PASSIVE"
+        },
+        "program": [
+          {
+            "type": "passive_attack_guard",
+            "target": "ALL_OWN_POKEMON",
+            "mode": "PREVENT",
+            "source_position": "BENCH",
+            "attacker_energy_max": 2
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "mebsp_en_085",
+      "component": "ability",
+      "name": "Ancient Bulwark",
+      "textEn": "As long as this Pokémon is on your Bench, prevent all damage done to each of your Pokémon by attacks from your opponent's Pokémon that have 2 or less Energy attached.",
+      "textZh": "只要这只宝可梦在备战区，自己所有宝可梦不会受到对手身上附着的能量为2个及以下的宝可梦的招式的伤害。",
+      "mapping": {
+        "rules": [
+          "ability-benched-source-low-energy-damage-guard"
+        ],
+        "fields": {
+          "abilityKind": "PASSIVE"
+        },
+        "program": [
+          {
+            "type": "passive_attack_guard",
+            "target": "ALL_OWN_POKEMON",
+            "mode": "PREVENT",
+            "source_position": "BENCH",
+            "attacker_energy_max": 2
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    }
+  ]
+}

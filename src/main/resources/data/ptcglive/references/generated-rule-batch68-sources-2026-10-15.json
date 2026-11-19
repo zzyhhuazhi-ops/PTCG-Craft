@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "scope": "Newest-first ME5 Miraidon Photon Cord and identical Mega promo printing. Artwork and true BREAK excluded.",
+  "ruleReferences": [
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50246/regu/all",
+      "facts": "M5 Miraidon120HP, Photon Cord moves up to2 Basic Lightning from self to one own Bench when Active KO by opposing Pokemon attack damage; Thunder90 self30. HTML strips Lightning icon; local bilingual and FAQ explicit Lightning."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%9F%E3%83%A9%E3%82%A4%E3%83%89%E3%83%B3&regulation_faq_main_item1=all",
+      "facts": "Direct official FAQ: opponent Cranidos Push Down damage KO triggers; own Thunder recoil KO does not; Mega Darkrai Abyss Eye direct-effect KO does not."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%82%A4%E3%83%8E%E3%83%A0%E3%83%BC&regulation_faq_main_item1=all",
+      "facts": "Official Piloswine Push Down FAQ explicitly describes forced switch of damage-KO Froslass to Bench before its KO reaction still applies."
+    }
+  ],
+  "evidence": [
+    {
+      "cardId": "me5_en_028",
+      "name": "Photon Cord",
+      "textEn": "If this Pokémon is in the Active Spot and is Knocked Out by damage from an attack from your opponent's Pokémon, move up to 2 Basic <sprite name=\"lightning\" tint=1> Energy cards from this Pokémon to 1 of your Benched Pokémon.",
+      "textZh": "这只宝可梦在战斗场上受到对手的宝可梦的招式的伤害而昏厥时，选择最多2张这只宝可梦身上附着的「基本<sprite name=\"lightning\" tint=1>能量」，转附于1只备战宝可梦身上。",
+      "fields": {
+        "abilityKind": "TRIGGERED",
+        "abilityEventPolicy": {
+          "trigger": "ON_KNOCKOUT",
+          "cause": "OPPONENT_ATTACK_DAMAGE",
+          "watch": "SELF",
+          "activeOnly": true,
+          "optional": false,
+          "usage": "NONE"
+        },
+        "abilityTriggerConditions": []
+      },
+      "program": [
+        {
+          "type": "move_energy",
+          "target": "SELF",
+          "amount": 2,
+          "minimum": 0,
+          "energy_type": "LIGHTNING",
+          "card_kind": "BASIC",
+          "count_mode": "CARDS",
+          "destination_scope": "OWN_BENCH"
+        }
+      ]
+    },
+    {
+      "cardId": "mebsp_en_082",
+      "name": "Photon Cord",
+      "textEn": "If this Pokémon is in the Active Spot and is Knocked Out by damage from an attack from your opponent's Pokémon, move up to 2 Basic <sprite name=\"lightning\" tint=1> Energy cards from this Pokémon to 1 of your Benched Pokémon.",
+      "textZh": "这只宝可梦在战斗场上受到对手的宝可梦的招式的伤害而昏厥时，选择最多2张这只宝可梦身上附着的「基本<sprite name=\"lightning\" tint=1>能量」，转附于1只备战宝可梦身上。",
+      "fields": {
+        "abilityKind": "TRIGGERED",
+        "abilityEventPolicy": {
+          "trigger": "ON_KNOCKOUT",
+          "cause": "OPPONENT_ATTACK_DAMAGE",
+          "watch": "SELF",
+          "activeOnly": true,
+          "optional": false,
+          "usage": "NONE"
+        },
+        "abilityTriggerConditions": []
+      },
+      "program": [
+        {
+          "type": "move_energy",
+          "target": "SELF",
+          "amount": 2,
+          "minimum": 0,
+          "energy_type": "LIGHTNING",
+          "card_kind": "BASIC",
+          "count_mode": "CARDS",
+          "destination_scope": "OWN_BENCH"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "source": "Unmodified attack objects from outputs/rules-20261012/batch12/reports/conversion-report.json combatDraft; unresolved abilities keep these whole cards out of the combat catalog.",
+  "cards": [
+    {
+      "id": "sm11_en_071",
+      "attacks": [
+        {
+          "id": "miraculous-duo-gx",
+          "nameZh": "奇迹双子GX",
+          "energyCost": {
+            "PSYCHIC": 2,
+            "COLORLESS": 1
+          },
+          "baseDamage": 200,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "conditional",
+                  "conditions": [
+                    {
+                      "type": "HAS_EXTRA_ATTACK_ENERGY",
+                      "target": "SELF",
+                      "value": 1
+                    }
+                  ],
+                  "effects": [
+                    {
+                      "type": "heal",
+                      "target": "ALL_OWN_POKEMON",
+                      "mode": "ALL"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "usageLimit": {
+            "group": "gx-attack",
+            "period": "GAME"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sm12_en_001",
+      "attacks": [
+        {
+          "id": "forest-dump",
+          "nameZh": "森林抛掷",
+          "energyCost": {
+            "GRASS": 1,
+            "COLORLESS": 3
+          },
+          "baseDamage": 160,
+          "damageType": "GRASS",
+          "effectSupport": "SUPPORTED"
+        },
+        {
+          "id": "solar-plant-gx",
+          "nameZh": "花蛇添足GX",
+          "energyCost": {
+            "COLORLESS": 3
+          },
+          "baseDamage": 50,
+          "damageType": "GRASS",
+          "effectSupport": "SUPPORTED",
+          "damageTarget": "ALL_OPPONENT_POKEMON",
+          "targetCount": 0,
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "conditional",
+                  "conditions": [
+                    {
+                      "type": "HAS_EXTRA_ATTACK_ENERGY",
+                      "target": "SELF",
+                      "value": 2
+                    }
+                  ],
+                  "effects": [
+                    {
+                      "type": "heal",
+                      "target": "ALL_OWN_POKEMON",
+                      "mode": "ALL"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "usageLimit": {
+            "group": "gx-attack",
+            "period": "GAME"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4156 @@
+plugins {
+    id 'fabric-loom' version '1.7.4'
+    id 'maven-publish'
+}
+version = providers.gradleProperty('modVersion').getOrElse('0.8.6')
+
+tasks.register('battleAnimationEngineTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'dev.hua.ptcglive.client.BattleAnimationEngineTest'
+}
+tasks.named('check') { dependsOn 'battleAnimationEngineTest' }
+
+tasks.register('electricImpactTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'dev.hua.ptcglive.client.ElectricImpactTest'
+}
+tasks.named('check') { dependsOn 'electricImpactTest' }
+
+
+tasks.register('battleSpecialActionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'BattleSpecialActionTest'
+    maxHeapSize = '2g'
+    systemProperty 'ptcglive.auditDir', findProperty('auditDir') ?: 'outputs/battle-operation-audit'
+    jvmArgs '-Dfile.encoding=UTF-8', '-Dstdout.encoding=UTF-8', '-Dstderr.encoding=UTF-8'
+}
+tasks.named('check') { dependsOn 'battleSpecialActionTest' }
+
+tasks.register('ruleContinuationMatrixTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'RuleContinuationMatrixTest'
+    maxHeapSize = '2g'
+    systemProperty 'ptcglive.auditDir', findProperty('auditDir') ?: 'outputs/rule-continuation-audit'
+    jvmArgs '-Dfile.encoding=UTF-8', '-Dstdout.encoding=UTF-8', '-Dstderr.encoding=UTF-8'
+}
+tasks.named('check') { dependsOn 'ruleContinuationMatrixTest' }
+
+// Explicit release audit: all four AI difficulties, issued options and continuations.
+tasks.register('battleOperationAccessibilityTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'BattleOperationAccessibilityTest'
+    maxHeapSize = '2g'
+    systemProperty 'ptcglive.auditDir', findProperty('auditDir') ?: 'outputs/battle-operation-audit'
+    systemProperty 'ptcglive.scopeFile', findProperty('scopeFile') ?: 'tests/fixtures/battle-operation-scope.json'
+    systemProperty 'ptcglive.cardFilter', findProperty('cardFilter') ?: ''
+    jvmArgs '-Dfile.encoding=UTF-8', '-Dstdout.encoding=UTF-8', '-Dstderr.encoding=UTF-8'
+}
+
+tasks.register('rarityClassificationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'RarityClassificationTest'
+}
+tasks.named('check') { dependsOn 'rarityClassificationTest' }
+
+tasks.register('cardHistoryTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'CardHistoryTest'
+}
+tasks.named('check') { dependsOn 'cardHistoryTest' }
+
+tasks.register('cardFrameOrientationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'dev.hua.ptcglive.client.CardFrameOrientationTest'
+}
+tasks.named('check') { dependsOn 'cardFrameOrientationTest' }
+tasks.register('spectatorScreenTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'SpectatorScreenTest'
+}
+tasks.named('check') { dependsOn 'spectatorScreenTest' }
+
+tasks.register('newbieDeckTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'NewbieDeckTest'
+    jvmArgs '-Dfile.encoding=UTF-8', '-Dstdout.encoding=UTF-8', '-Dstderr.encoding=UTF-8'
+}
+tasks.named('check') { dependsOn 'newbieDeckTest' }
+
+tasks.register('retreatEnergyChoiceTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'RetreatEnergyChoiceTest'
+}
+tasks.named('check') { dependsOn 'retreatEnergyChoiceTest' }
+
+tasks.register('releaseUpdateTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ReleaseUpdateTest'
+}
+tasks.named('check') { dependsOn 'releaseUpdateTest' }
+
+tasks.register('collectionAcquisitionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'CollectionAcquisitionTest'
+}
+tasks.named('check') { dependsOn 'collectionAcquisitionTest' }
+
+tasks.register('mewRuleRepairTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'MewRuleRepairTest'
+}
+tasks.named('check') { dependsOn 'mewRuleRepairTest' }
+
+tasks.register('battleSelectionRepairTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'BattleSelectionRepairTest'
+}
+tasks.named('check') { dependsOn 'battleSelectionRepairTest' }
+
+tasks.register('slowkingOperationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'SlowkingOperationTest'
+}
+tasks.named('check') { dependsOn 'slowkingOperationTest' }
+
+tasks.register('copyAttackPresentationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'CopyAttackPresentationTest'
+}
+tasks.named('check') { dependsOn 'copyAttackPresentationTest' }
+
+tasks.register('battleCardPanelTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'BattleCardPanelTest'
+}
+tasks.named('check') { dependsOn 'battleCardPanelTest' }
+
+tasks.register('modernRuleRepairTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ModernRuleRepairTest'
+}
+tasks.named('check') { dependsOn 'modernRuleRepairTest' }
+
+tasks.register('modernRuleRepair2Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ModernRuleRepair2Test'
+}
+tasks.named('check') { dependsOn 'modernRuleRepair2Test' }
+
+tasks.register('modernCopyRepairTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ModernCopyRepairTest'
+}
+tasks.named('check') { dependsOn 'modernCopyRepairTest' }
+
+tasks.register('modernRuleRepair3Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ModernRuleRepair3Test'
+}
+tasks.named('check') { dependsOn 'modernRuleRepair3Test' }
+
+tasks.register('modernDeckWindowRepairTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ModernDeckWindowRepairTest'
+}
+tasks.named('check') { dependsOn 'modernDeckWindowRepairTest' }
+
+tasks.register('modernEnergyRepairTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ModernEnergyRepairTest'
+}
+tasks.named('check') { dependsOn 'modernEnergyRepairTest' }
+
+tasks.register('modernSelectionRepairTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ModernSelectionRepairTest'
+}
+tasks.named('check') { dependsOn 'modernSelectionRepairTest' }
+
+tasks.register('modernDirectKoRepairTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ModernDirectKoRepairTest'
+}
+tasks.named('check') { dependsOn 'modernDirectKoRepairTest' }
+
+tasks.register('modernCountRepairTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ModernCountRepairTest'
+}
+tasks.named('check') { dependsOn 'modernCountRepairTest' }
+
+tasks.register('modernQuantityRepairTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ModernQuantityRepairTest'
+}
+tasks.named('check') { dependsOn 'modernQuantityRepairTest' }
+
+tasks.register('modernWindowTimingRepairTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ModernWindowTimingRepairTest'
+}
+tasks.named('check') { dependsOn 'modernWindowTimingRepairTest' }
+
+tasks.register('legacySvRuleFixTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'LegacySvRuleFixTest'
+}
+tasks.named('check') { dependsOn 'legacySvRuleFixTest' }
+tasks.register('ionoRuleTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'IonoRuleTest'
+}
+tasks.named('check') { dependsOn 'ionoRuleTest' }
+tasks.register('modernCardRuleAudit', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ModernCardRuleAudit'
+}
+
+tasks.register('liveDeckImportTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'LiveDeckImportTest'
+}
+tasks.named('check') { dependsOn 'liveDeckImportTest' }
+
+tasks.register('psychicEmbraceTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PsychicEmbraceTest'
+}
+tasks.named('check') { dependsOn 'psychicEmbraceTest' }
+
+tasks.register('aiPracticeTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AiPracticeTest'
+}
+tasks.register('aiDifficultyTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AiDifficultyTest'
+}
+tasks.register('aiDifficultyBenchmark', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AiDifficultyBenchmark'
+}
+tasks.register('completedHistoryTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'CompletedHistoryTest'
+}
+tasks.register('cardArtLoaderTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'dev.hua.ptcglive.client.CardArtLoaderTest'
+}
+tasks.named('check') { dependsOn 'cardArtLoaderTest' }
+tasks.named('check') { dependsOn 'completedHistoryTest' }
+tasks.named('check') { dependsOn 'aiDifficultyTest' }
+tasks.named('check') { dependsOn 'aiPracticeTest' }
+tasks.register('aiCustomDeckTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AiCustomDeckTest'
+}
+tasks.named('check') { dependsOn 'aiCustomDeckTest' }
+tasks.register('aiPracticeLifecycleTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AiPracticeLifecycle'
+}
+tasks.register('aiPresentationBarrierTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AiPresentationBarrierTest'
+}
+tasks.named('check') { dependsOn 'aiPresentationBarrierTest' }
+tasks.register('drawCardAnimationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'dev.hua.ptcglive.client.DrawCardAnimationTest'
+}
+tasks.named('check') { dependsOn 'drawCardAnimationTest' }
+
+tasks.register('devolutionAnimationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'dev.hua.ptcglive.client.DevolutionAnimationTest'
+}
+tasks.named('check') { dependsOn 'devolutionAnimationTest' }
+
+tasks.register('pokemonEntryAnimationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'dev.hua.ptcglive.client.PokemonEntryAnimationTest'
+}
+tasks.named('check') { dependsOn 'pokemonEntryAnimationTest' }
+tasks.register('aiPracticeScenariosTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AiPracticeScenarios'
+}
+
+tasks.register('battleExperienceTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'BattleExperienceTest'
+}
+tasks.named('check') { dependsOn 'battleExperienceTest' }
+tasks.register('battleExperiencePreview', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'BattleExperiencePreview'
+}
+
+tasks.register('collectionSearchTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'CollectionSearchTest'
+}
+tasks.named('check') { dependsOn 'collectionSearchTest' }
+
+// Read-only development preview. Uses the real search engine without launching Minecraft.
+tasks.register('collectionPreview', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'CollectionPreview'
+}
+
+tasks.register('printedRegulationMarksTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PrintedRegulationMarksTest'
+}
+tasks.named('check') { dependsOn 'printedRegulationMarksTest' }
+
+tasks.register('exclusiveCollectionPackTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ExclusiveCollectionPackTest'
+}
+tasks.named('check') { dependsOn 'exclusiveCollectionPackTest' }
+
+tasks.register('exclusiveRulesTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ExclusiveRulesTest'
+}
+tasks.named('check') { dependsOn 'exclusiveRulesTest' }
+
+tasks.register('currentFormatsTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'CurrentFormatsTest'
+}
+tasks.named('check') { dependsOn 'currentFormatsTest' }
+group = 'dev.hua'
+
+tasks.register('phoneLayoutTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PhoneLayoutTest'
+}
+
+tasks.register('supporterHighRarityPackTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'SupporterHighRarityPackTest'
+}
+tasks.named('check') { dependsOn 'supporterHighRarityPackTest' }
+tasks.register('smoothMotionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'dev.hua.ptcglive.client.SmoothMotionTest'
+}
+tasks.register('cobblemonRewardTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'dev.hua.ptcglive.compat.cobblemon.CobblemonRewardTest'
+}
+tasks.named('check') { dependsOn 'phoneLayoutTest', 'smoothMotionTest', 'cobblemonRewardTest' }
+tasks.register('generatedRuleBatch10Test', JavaExec) {
+    dependsOn 'testClasses'
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch10Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch10Test' }
+
+tasks.register('generatedRuleBatch11Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch11Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch11Test' }
+tasks.register('generatedRuleBatch9Test', JavaExec) {
+    dependsOn 'testClasses'
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch9Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch9Test' }
+tasks.register('generatedRuleBatch8Test', JavaExec) {
+    dependsOn 'testClasses'
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch8Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch8Test' }
+tasks.register('evolutionAttackGuardTest', JavaExec) {
+    dependsOn 'testClasses'
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'EvolutionAttackGuardTest'
+}
+tasks.named('check') { dependsOn 'evolutionAttackGuardTest' }
+
+tasks.register('unrestrictedAttackPrizeTest', JavaExec) {
+    dependsOn 'testClasses'
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'UnrestrictedAttackPrizeTest'
+}
+tasks.named('check') { dependsOn 'unrestrictedAttackPrizeTest' }
+
+tasks.register('supporterTurnConditionTest', JavaExec) {
+    dependsOn 'testClasses'
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'SupporterTurnConditionTest'
+}
+tasks.named('check') { dependsOn 'supporterTurnConditionTest' }
+
+tasks.register('generatedRuleBatch7Test', JavaExec) {
+    dependsOn 'testClasses'
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch7Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch7Test' }
+
+tasks.register('generatedRuleBatch6Test', JavaExec) {
+    dependsOn 'testClasses'
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch6Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch6Test' }
+tasks.register('matchPresentationTest', JavaExec) {
+    dependsOn 'testClasses'
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'MatchPresentationTest'
+}
+tasks.named('check') { dependsOn 'matchPresentationTest' }
+tasks.register('battleAnimationTimingTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'dev.hua.ptcglive.client.BattleAnimationTimingTest'
+}
+tasks.named('check') { dependsOn 'battleAnimationTimingTest' }
+tasks.register('pocketTableCameraTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'dev.hua.ptcglive.client.PocketTableCameraTest'
+}
+tasks.named('check') { dependsOn 'pocketTableCameraTest' }
+tasks.register('battleTableEnvironmentTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'dev.hua.ptcglive.client.BattleTableEnvironmentTest'
+}
+tasks.named('check') { dependsOn 'battleTableEnvironmentTest' }
+
+tasks.register('trainerPlayAnimationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'dev.hua.ptcglive.client.TrainerPlayAnimationTest'
+}
+tasks.register('energyAttachmentAnimationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'dev.hua.ptcglive.client.EnergyAttachmentAnimationTest'
+}
+tasks.named('check') { dependsOn 'energyAttachmentAnimationTest' }
+tasks.register('energyTransferAnimationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'dev.hua.ptcglive.client.EnergyTransferAnimationTest'
+}
+tasks.named('check') { dependsOn 'energyTransferAnimationTest' }
+tasks.named('check') { dependsOn 'trainerPlayAnimationTest' }
+tasks.register('battleMotionMeshTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'dev.hua.ptcglive.client.BattleMotionMeshTest'
+}
+tasks.named('check') { dependsOn 'battleMotionMeshTest' }
+tasks.register('evolutionAnimationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'dev.hua.ptcglive.client.EvolutionAnimationTest'
+}
+tasks.named('check') { dependsOn 'evolutionAnimationTest' }
+tasks.register('battleSoundPlanTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'dev.hua.ptcglive.client.BattleSoundPlanTest'
+}
+tasks.named('check') { dependsOn 'battleSoundPlanTest' }
+tasks.register('collectionProgressTest', JavaExec) {
+    dependsOn 'testClasses'
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'CollectionProgressTest'
+}
+tasks.register('packBatchTest', JavaExec) {
+    dependsOn 'testClasses'
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PackBatchTest'
+}
+tasks.named('check') { dependsOn 'collectionProgressTest', 'packBatchTest' }
+tasks.register('packDestinationTest', JavaExec) {
+    dependsOn 'testClasses'
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PackDestinationTest'
+}
+tasks.named('check') { dependsOn 'packDestinationTest' }
+base { archivesName = 'ptcg-craft' }
+loom {
+    runs {
+        client {
+            vmArg '-Xmx4G'
+            programArgs '--username', 'PTCGTester', '--width', '1100', '--height', '760'
+        }
+    }
+}
+repositories {
+    mavenCentral()
+    exclusiveContent {
+        forRepository { maven { name = 'Modrinth'; url = 'https://api.modrinth.com/maven' } }
+        filter { includeGroup 'maven.modrinth' }
+    }
+}
+dependencies {
+    minecraft 'com.mojang:minecraft:1.21.1'
+    mappings 'net.fabricmc:yarn:1.21.1+build.3:v2'
+    modImplementation 'net.fabricmc:fabric-loader:0.16.10'
+    modImplementation 'net.fabricmc.fabric-api:fabric-api:0.115.6+1.21.1'
+    // Optional, compile-only integration. The exact locally installed Cobblemon
+    // build is used when present and is never bundled into PTCG Craft.
+    def cobblemonJar = file('local-deps/Cobblemon-fabric-1.8.0+1.21.1.jar')
+    if (cobblemonJar.isFile()) {
+        modCompileOnly files(cobblemonJar)
+        compileOnly fileTree('local-deps') { include 'kotlin-stdlib*.jar' }
+    } else {
+        modCompileOnly('maven.modrinth:MdwFAVRL:YgmyyFcs') { transitive = false }
+        compileOnly 'org.jetbrains.kotlin:kotlin-stdlib:2.2.20'
+    }
+}
+java { toolchain { languageVersion = JavaLanguageVersion.of(21) }; withSourcesJar() }
+tasks.withType(JavaCompile).configureEach { options.release = 21 }
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+
+sourceSets {
+    main.output.dir('src/generated/resources')
+    test.java.srcDir 'tests'
+    gametest {
+        compileClasspath += sourceSets.main.compileClasspath + sourceSets.main.output
+        runtimeClasspath += sourceSets.main.runtimeClasspath + sourceSets.main.output
+    }
+}
+loom {
+    mods {
+        ptcglive { sourceSet sourceSets.main }
+        ptcglive_gametest { sourceSet sourceSets.gametest }
+    }
+    runs {
+        gametest {
+            server()
+            name 'PTCG Craft headless integration tests'
+            source sourceSets.gametest
+            vmArg '-Dfabric-api.gametest'
+            vmArg "-Dfabric-api.gametest.report-file=${project.layout.buildDirectory.get().asFile}/gametest-results.xml"
+            runDir 'build/gametest-run'
+        }
+    }
+}
+tasks.withType(AbstractArchiveTask).configureEach { zip64 = true }
+// Only full-size faces are external. Compact item sprites and thumbnails must
+// remain available without a resource pack. Restore JPGs after Loom remapping.
+tasks.withType(Jar).configureEach {
+    exclude 'metadata/**', '**/card_art/**', '**/card_thumb/**'
+}
+tasks.named('sourcesJar') { exclude 'assets/**', 'metadata/**' }
+def cardThumbStagingRoot = layout.buildDirectory.dir('card-thumb-staging')
+def registeredCardThumbnailFiles = file('src/generated/resources/ptcg-cards.tsv').readLines('UTF-8')
+    .collect { line -> line.split('\t', -1)[0] + '.jpg' }
+tasks.register('stageCardThumbnails', Sync) {
+    duplicatesStrategy = DuplicatesStrategy.FAIL
+    from('src/generated/resources/assets/ptcglive_mc/card_thumb') { include registeredCardThumbnailFiles }
+    from('src/main/resources/assets/ptcglive_mc/card_thumb') { include '**/*.jpg' }
+    into(cardThumbStagingRoot.map { it.dir('assets/ptcglive_mc/card_thumb') })
+}
+tasks.register('restoreCardThumbnails', Exec) {
+    dependsOn tasks.named('remapJar'), tasks.named('stageCardThumbnails')
+    def remapped = tasks.named('remapJar').flatMap { it.archiveFile }
+    inputs.dir(cardThumbStagingRoot)
+    outputs.file(remapped)
+    outputs.upToDateWhen { false }
+    doFirst {
+        def jarTool = new File(System.getProperty('java.home'), 'bin/jar.exe')
+        if (!jarTool.isFile()) jarTool = new File(System.getProperty('java.home'), 'bin/jar')
+        commandLine jarTool.absolutePath, '--update', '--file', remapped.get().asFile.absolutePath,
+            '-C', cardThumbStagingRoot.get().asFile.absolutePath, 'assets/ptcglive_mc/card_thumb'
+    }
+}
+tasks.named('assemble') { dependsOn 'verifyCoreJarArtwork' }
+// Direct remapJar releases must also restore and verify the mandatory thumbnails.
+tasks.named('remapJar') { finalizedBy 'verifyCoreJarArtwork' }
+tasks.register('verifyCoreJarArtwork') {
+    dependsOn tasks.named('restoreCardThumbnails')
+    def remapped = tasks.named('remapJar').flatMap { it.archiveFile }
+    doLast {
+        new java.util.zip.ZipFile(remapped.get().asFile).withCloseable { zip ->
+            def seen = new HashSet<String>()
+            zip.entries().each { entry ->
+                def name = entry.name
+                if (!seen.add(name)) throw new GradleException("Duplicate archive entry: ${name}")
+                if (!entry.directory && name.contains('/card_art/'))
+                    throw new GradleException("Full-size card artwork must be external: ${name}")
+                if (name.endsWith('/merchant_token.json') || name.endsWith('/MerchantTokenItem.class') || name.endsWith('/PackMerchantItems.class'))
+                    throw new GradleException("Retired merchant resource: ${name}")
+            }
+            def aliasEntry = zip.getEntry('assets/ptcglive_mc/card_art_aliases.json')
+            if (aliasEntry == null) throw new GradleException('Missing stable artwork aliases')
+            def aliases = zip.getInputStream(aliasEntry).withCloseable { stream -> new groovy.json.JsonSlurper().parse(stream, 'UTF-8').aliases }
+            if (aliases.size() != 438) throw new GradleException('SD100 aliases must retain all 438 identities')
+            aliases.each { cardId, sourceId ->
+                ['ptcglive', 'ptcglive_mc'].each { ns ->
+                    def model = zip.getEntry("assets/${ns}/models/item/${cardId}.json")
+                    if (model == null) throw new GradleException("Missing model ${cardId}")
+                    def layer = zip.getInputStream(model).withCloseable { stream -> new groovy.json.JsonSlurper().parse(stream, 'UTF-8').textures.layer0 }
+                    if (layer != "ptcglive_mc:item/cards/${sourceId}") throw new GradleException("Broken alias ${cardId}")
+                }
+            }
+            def cardIds = new HashSet<String>()
+            ['ptcg-cards.tsv', 'ptcg-starter-deck-100.tsv', 'ptcg-energy-printings.tsv', 'ptcg-cn-supporters.tsv', 'ptcg-sc-exclusive.tsv', 'ptcg-mega-completion.tsv'].each { catalog ->
+                zip.getInputStream(zip.getEntry(catalog)).withCloseable { stream ->
+                    stream.getText('UTF-8').readLines().findAll { !it.isBlank() }.each { cardIds.add(it.split('\t', -1)[0]) }
+                }
+            }
+            def markEntry = zip.getEntry('data/ptcglive/printed-regulation-marks.tsv')
+            if (markEntry == null) throw new GradleException('Missing printed regulation-mark index')
+            def markIds = new HashSet<String>()
+            zip.getInputStream(markEntry).withCloseable { stream ->
+                stream.getText('UTF-8').readLines().each { line ->
+                    def fields = line.split('\t', -1)
+                    if (fields.length != 2 || !(fields[1] ==~ /[A-J]?/) || !markIds.add(fields[0]))
+                        throw new GradleException('Invalid or duplicate printed regulation-mark row')
+                }
+            }
+            if (markIds != cardIds) throw new GradleException('Regulation-mark index must classify every catalog ID exactly once')
+            def factsEntry = zip.getEntry('data/ptcglive/collection-card-facts.json')
+            if (factsEntry == null) throw new GradleException('Missing collection search index')
+            def facts = zip.getInputStream(factsEntry).withCloseable { stream -> new groovy.json.JsonSlurper().parse(stream, 'UTF-8') }
+            if (facts.keySet() != cardIds) throw new GradleException('Collection search index must cover every catalog ID')
+            cardIds.each { cardId ->
+                def sourceId = aliases[cardId] ?: cardId
+                ["card_thumb/${sourceId}.jpg", "textures/item/cards/${sourceId}.png"].each { path ->
+                    def entry = zip.getEntry("assets/ptcglive_mc/${path}")
+                    if (entry == null || entry.size == 0) throw new GradleException("Missing builtin card image: ${cardId} -> ${path}")
+                }
+                ['ptcglive', 'ptcglive_mc'].each { ns ->
+                    def model = zip.getEntry("assets/${ns}/models/item/${cardId}.json")
+                    if (model == null) throw new GradleException("Missing card model: ${cardId}")
+                    def layer = zip.getInputStream(model).withCloseable { stream -> new groovy.json.JsonSlurper().parse(stream, 'UTF-8').textures.layer0 }
+                    def parts = layer.split(':', 2)
+                    if (zip.getEntry("assets/${parts[0]}/textures/${parts[1]}.png") == null)
+                        throw new GradleException("Missing item model texture: ${cardId} -> ${layer}")
+                }
+            }
+            logger.lifecycle("Verified: ${cardIds.size()} card IDs have builtin thumbnails and item sprites; full-size art remains external")
+        }
+    }
+}
+
+tasks.register('battleTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'BattleTest'
+}
+tasks.register('catalogTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'CardCatalogTest'
+}
+tasks.register('cardNameLocalizationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'CardNameLocalizationTest'
+}
+tasks.named('check') { dependsOn 'cardNameLocalizationTest' }
+tasks.register('rulesCoreTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'RulesCoreTest'
+}
+tasks.register('matchEngineTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'MatchEngineTest'
+}
+tasks.register('tournamentSeriesTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'TournamentSeriesTest'
+}
+tasks.register('tournamentTableIntegrationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'TournamentTableIntegrationTest'
+}
+tasks.register('battlefieldStateTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'BattlefieldStateTest'
+}
+tasks.register('combatCatalogTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'CombatCatalogTest'
+}
+tasks.register('serverMatchCombatTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ServerMatchCombatTest'
+}
+tasks.register('damageModifierTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DamageModifierTest'
+}
+tasks.register('attackProtectionScopeTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AttackProtectionScopeTest'
+}
+tasks.register('benchTargetAttackTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'BenchTargetAttackTest'
+}
+tasks.register('recoilAttackTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'RecoilAttackTest'
+}
+tasks.register('evolutionPermissionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'EvolutionPermissionTest'
+}
+tasks.register('turnActionRulesTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'TurnActionRulesTest'
+}
+tasks.register('matchSetupRulesTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'MatchSetupRulesTest'
+}
+tasks.register('lostZoneTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'LostZoneTest'
+}
+tasks.register('matchReplayTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'MatchReplayTest'
+}
+tasks.register('damageCounterPlacementTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DamageCounterPlacementTest'
+}
+tasks.register('toolRemovalEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ToolRemovalEffectTest'
+}
+tasks.register('toolReturnEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ToolReturnEffectTest'
+}
+tasks.register('retreatLockEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'RetreatLockEffectTest'
+}
+tasks.register('attackLockEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AttackLockEffectTest'
+}
+tasks.register('retreatCostModifierEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'RetreatCostModifierEffectTest'
+}
+tasks.register('attackDiscardAllEnergyTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AttackDiscardAllEnergyTest'
+}
+tasks.register('attackSelfHealTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AttackSelfHealTest'
+}
+tasks.register('attackSelectedEnergyDiscardTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AttackSelectedEnergyDiscardTest'
+}
+tasks.register('attackIgnoreWeaknessResistanceTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AttackIgnoreWeaknessResistanceTest'
+}
+tasks.register('attackTemporaryDamageReductionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AttackTemporaryDamageReductionTest'
+}
+tasks.register('attackIgnoreDefenderDamageEffectsTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AttackIgnoreDefenderDamageEffectsTest'
+}
+tasks.register('attackCooldownTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AttackCooldownTest'
+}
+tasks.register('abilityHealTargetTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AbilityHealTargetTest'
+}
+tasks.register('abilityEnergyMoveTargetTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AbilityEnergyMoveTargetTest'
+}
+tasks.register('passiveToolCapacityAbilityTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PassiveToolCapacityAbilityTest'
+}
+tasks.register('passiveSpecialConditionImmunityTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PassiveSpecialConditionImmunityTest'
+}
+tasks.register('passiveAttackDamageImmunityTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PassiveAttackDamageImmunityTest'
+}
+tasks.register('passiveAttackDamageReductionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PassiveAttackDamageReductionTest'
+}
+tasks.register('toolDisableEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ToolDisableEffectTest'
+}
+tasks.register('abilityDisableEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AbilityDisableEffectTest'
+}
+tasks.register('specialEnergyPaymentTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'SpecialEnergyPaymentTest'
+}
+tasks.register('specialEnergyRetreatPaymentTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'SpecialEnergyRetreatPaymentTest'
+}
+tasks.register('ptcgLiveLobbyLayoutTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PtcgLiveLobbyLayoutTest'
+}
+tasks.register('tableLobbyViewTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'TableLobbyViewTest'
+}
+tasks.register('ptcgLiveThemeTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PtcgLiveThemeTest'
+}
+tasks.register('ptcgLiveCollectionLayoutTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PtcgLiveCollectionLayoutTest'
+}
+tasks.register('energyEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'EnergyEffectTest'
+}
+tasks.register('energyAttachmentPolicyTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'EnergyAttachmentPolicyTest'
+}
+tasks.register('attachedCardOwnershipTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AttachedCardOwnershipTest'
+}
+tasks.register('specialConditionEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'SpecialConditionEffectTest'
+}
+tasks.register('clearStatusEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ClearStatusEffectTest'
+}
+tasks.register('allAttachedEnergyEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AllAttachedEnergyEffectTest'
+}
+tasks.register('attackCoinConditionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AttackCoinConditionTest'
+}
+tasks.register('stadiumRemovalEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StadiumRemovalEffectTest'
+}
+tasks.register('forcedSwitchEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ForcedSwitchEffectTest'
+}
+tasks.register('pokemonLeavePlayEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PokemonLeavePlayEffectTest'
+}
+tasks.register('discardRecoveryEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DiscardRecoveryEffectTest'
+}
+tasks.register('specialConditionApplicationEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'SpecialConditionApplicationEffectTest'
+}
+tasks.register('healingEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'HealingEffectTest'
+}
+tasks.register('handDiscardEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'HandDiscardEffectTest'
+}
+tasks.register('randomHandDiscardEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'RandomHandDiscardEffectTest'
+}
+tasks.register('trainerRandomHandDiscardTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'TrainerRandomHandDiscardTest'
+}
+tasks.register('trainerStadiumDiscardTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'TrainerStadiumDiscardTest'
+}
+tasks.register('effectArchitectureTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'EffectArchitectureTest'
+}
+tasks.register('trainerConditionCureTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'TrainerConditionCureTest'
+}
+tasks.register('serverEffectTargetTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ServerEffectTargetTest'
+}
+tasks.register('serverEffectConditionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ServerEffectConditionTest'
+}
+tasks.register('trainerForcedSwitchTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'TrainerForcedSwitchTest'
+}
+tasks.register('trainerEvolutionEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'TrainerEvolutionEffectTest'
+}
+tasks.register('trainerSkipStageEvolutionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'TrainerSkipStageEvolutionTest'
+}
+tasks.register('deckSearchEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DeckSearchEffectTest'
+}
+tasks.register('topDeckDiscardEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'TopDeckDiscardEffectTest'
+}
+tasks.register('handShuffleEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'HandShuffleEffectTest'
+}
+tasks.register('effectDrawTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'EffectDrawTest'
+}
+tasks.register('energyMoveEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'EnergyMoveEffectTest'
+}
+tasks.register('effectCoinFlipTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'EffectCoinFlipTest'
+}
+tasks.register('distributedDamageCounterEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DistributedDamageCounterEffectTest'
+}
+tasks.register('exactDamageCounterAllocationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ExactDamageCounterAllocationTest'
+}
+tasks.register('targetScopedDamageCounterAllocationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'TargetScopedDamageCounterAllocationTest'
+}
+tasks.register('passiveToolAttachmentPreventionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PassiveToolAttachmentPreventionTest'
+}
+tasks.register('directKnockoutEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DirectKnockoutEffectTest'
+}
+tasks.register('loneActiveKnockoutTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'LoneActiveKnockoutTest'
+}
+tasks.register('fullMatchLifecycleTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'FullMatchLifecycleTest'
+}
+tasks.register('disconnectCleanupTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DisconnectCleanupTest'
+}
+tasks.named('check') { dependsOn 'disconnectCleanupTest' }
+tasks.register('cardActionLayoutTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'CardActionLayoutTest'
+}
+tasks.named('check') { dependsOn 'loneActiveKnockoutTest', 'fullMatchLifecycleTest', 'cardActionLayoutTest' }
+tasks.register('attackAvailabilityTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AttackAvailabilityTest'
+}
+tasks.named('check') { dependsOn 'attackAvailabilityTest' }
+tasks.register('composedAttachedEnergyEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ComposedAttachedEnergyEffectTest'
+}
+tasks.register('composedAttachedToolEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ComposedAttachedToolEffectTest'
+}
+tasks.named('check') { dependsOn 'composedAttachedToolEffectTest' }
+tasks.register('composedAttachToolEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ComposedAttachToolEffectTest'
+}
+tasks.named('check') { dependsOn 'composedAttachToolEffectTest' }
+tasks.register('composedRetreatEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ComposedRetreatEffectTest'
+}
+tasks.named('check') { dependsOn 'composedRetreatEffectTest' }
+tasks.register('composedBenchDamageEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ComposedBenchDamageEffectTest'
+}
+tasks.named('check') { dependsOn 'composedBenchDamageEffectTest' }
+tasks.register('cardEffectCoverageReport', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'CardEffectCoverageReport'
+}
+tasks.named('check') { dependsOn 'cardEffectCoverageReport' }
+tasks.register('passivePrizeModifierTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PassivePrizeModifierTest'
+}
+tasks.register('evolutionByNameTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'EvolutionByNameTest'
+}
+tasks.register('allEvolutionCardsTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AllEvolutionCardsTest'
+}
+tasks.named('check') { dependsOn 'allEvolutionCardsTest' }
+tasks.register('attackIgnoreResistanceTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AttackIgnoreResistanceTest'
+}
+tasks.named('check') { dependsOn 'attackIgnoreResistanceTest' }
+tasks.register('playerZoneDiscardEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PlayerZoneDiscardEffectTest'
+}
+tasks.named('check') { dependsOn 'playerZoneDiscardEffectTest' }
+tasks.register('retreatCostDamageModifierTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'RetreatCostDamageModifierTest'
+}
+tasks.named('check') { dependsOn 'retreatCostDamageModifierTest' }
+tasks.register('attachedEnergyFilterTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AttachedEnergyFilterTest'
+}
+tasks.named('check') { dependsOn 'attachedEnergyFilterTest' }
+tasks.register('attackAnyCardSearchZeroTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AttackAnyCardSearchZeroTest'
+}
+tasks.named('check') { dependsOn 'attackAnyCardSearchZeroTest' }
+tasks.register('attackLockThroughNextTurnTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AttackLockThroughNextTurnTest'
+}
+tasks.named('check') { dependsOn 'attackLockThroughNextTurnTest' }
+tasks.register('coinUntilTailsTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'CoinUntilTailsTest'
+}
+tasks.named('check') { dependsOn 'coinUntilTailsTest' }
+tasks.register('healDamageDealtTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'HealDamageDealtTest'
+}
+tasks.named('check') { dependsOn 'healDamageDealtTest' }
+tasks.register('deckSearchToBenchTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DeckSearchToBenchTest'
+}
+tasks.named('check') { dependsOn 'deckSearchToBenchTest' }
+tasks.register('opponentAnyTargetDamageTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'OpponentAnyTargetDamageTest'
+}
+tasks.named('check') { dependsOn 'opponentAnyTargetDamageTest' }
+tasks.register('optionalChoiceTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'OptionalChoiceTest'
+}
+tasks.named('check') { dependsOn 'optionalChoiceTest' }
+tasks.register('legacyExFamilyTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'LegacyExFamilyTest'
+}
+tasks.named('check') { dependsOn 'legacyExFamilyTest' }
+tasks.register('basicEnergySelectionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'BasicEnergySelectionTest'
+}
+tasks.named('check') { dependsOn 'basicEnergySelectionTest' }
+tasks.register('specialEnergyTemplateTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'SpecialEnergyTemplateTest'
+}
+tasks.named('check') { dependsOn 'specialEnergyTemplateTest' }
+tasks.register('groupBenchDamageTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GroupBenchDamageTest'
+}
+tasks.named('check') { dependsOn 'groupBenchDamageTest' }
+tasks.register('attackDamagePenaltyTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AttackDamagePenaltyTest'
+}
+tasks.named('check') { dependsOn 'attackDamagePenaltyTest' }
+tasks.register('randomHandShuffleEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'RandomHandShuffleEffectTest'
+}
+tasks.named('check') { dependsOn 'randomHandShuffleEffectTest' }
+tasks.register('drawUntilEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DrawUntilEffectTest'
+}
+tasks.named('check') { dependsOn 'drawUntilEffectTest' }
+tasks.register('pokemonTypeConditionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PokemonTypeConditionTest'
+}
+tasks.named('check') { dependsOn 'pokemonTypeConditionTest' }
+tasks.register('becameActiveAndBenchCountersConditionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'BecameActiveAndBenchCountersConditionTest'
+}
+tasks.named('check') { dependsOn 'becameActiveAndBenchCountersConditionTest' }
+tasks.register('attackStadiumDiscardTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AttackStadiumDiscardTest'
+}
+tasks.named('check') { dependsOn 'attackStadiumDiscardTest' }
+tasks.register('opponentCountDamageConditionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'OpponentCountDamageConditionTest'
+}
+tasks.named('check') { dependsOn 'opponentCountDamageConditionTest' }
+tasks.register('gustEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GustEffectTest'
+}
+tasks.named('check') { dependsOn 'gustEffectTest' }
+tasks.register('shuffleHandEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ShuffleHandEffectTest'
+}
+tasks.named('check') { dependsOn 'shuffleHandEffectTest' }
+tasks.register('typedEnergySearchTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'TypedEnergySearchTest'
+}
+tasks.named('check') { dependsOn 'typedEnergySearchTest' }
+tasks.register('attackLockUntilLeavesActiveTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AttackLockUntilLeavesActiveTest'
+}
+tasks.named('check') { dependsOn 'attackLockUntilLeavesActiveTest' }
+tasks.register('deckEvolutionEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DeckEvolutionEffectTest'
+}
+tasks.named('check') { dependsOn 'deckEvolutionEffectTest' }
+tasks.register('multiBenchDamageTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'MultiBenchDamageTest'
+}
+tasks.named('check') { dependsOn 'multiBenchDamageTest' }
+tasks.register('attackCostBindingTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AttackCostBindingTest'
+}
+tasks.named('check') { dependsOn 'attackCostBindingTest' }
+tasks.register('retaliationEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'RetaliationEffectTest'
+}
+tasks.named('check') { dependsOn 'retaliationEffectTest' }
+tasks.register('trainerPlayLockTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'TrainerPlayLockTest'
+}
+tasks.named('check') { dependsOn 'trainerPlayLockTest' }
+tasks.register('conditionStrengthTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ConditionStrengthTest'
+}
+tasks.named('check') { dependsOn 'conditionStrengthTest' }
+tasks.register('chainedIfYouDoTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ChainedIfYouDoTest'
+}
+tasks.named('check') { dependsOn 'chainedIfYouDoTest' }
+tasks.register('vmaxTeraFamilyTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'VmaxTeraFamilyTest'
+}
+tasks.named('check') { dependsOn 'vmaxTeraFamilyTest' }
+tasks.register('abilityAttachSelfTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AbilityAttachSelfTest'
+}
+tasks.named('check') { dependsOn 'abilityAttachSelfTest' }
+tasks.register('revealHandEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'RevealHandEffectTest'
+}
+tasks.named('check') { dependsOn 'revealHandEffectTest' }
+tasks.register('anySpecialConditionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AnySpecialConditionTest'
+}
+tasks.named('check') { dependsOn 'anySpecialConditionTest' }
+tasks.register('hasToolConditionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'HasToolConditionTest'
+}
+tasks.named('check') { dependsOn 'hasToolConditionTest' }
+tasks.register('healedThisTurnConditionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'HealedThisTurnConditionTest'
+}
+tasks.named('check') { dependsOn 'healedThisTurnConditionTest' }
+tasks.register('attackIgnoreWeaknessTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AttackIgnoreWeaknessTest'
+}
+tasks.named('check') { dependsOn 'attackIgnoreWeaknessTest' }
+tasks.register('benchedDamagePreventionAbilityTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'BenchedDamagePreventionAbilityTest'
+}
+tasks.named('check') { dependsOn 'benchedDamagePreventionAbilityTest' }
+tasks.register('knockedOutLastTurnConditionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'KnockedOutLastTurnConditionTest'
+}
+tasks.named('check') { dependsOn 'knockedOutLastTurnConditionTest' }
+tasks.register('nextTurnDamageBoostTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'NextTurnDamageBoostTest'
+}
+tasks.named('check') { dependsOn 'nextTurnDamageBoostTest' }
+tasks.register('coinPreventDamageAbilityTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'CoinPreventDamageAbilityTest'
+}
+tasks.named('check') { dependsOn 'coinPreventDamageAbilityTest' }
+tasks.register('attackCoinGateTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AttackCoinGateTest'
+}
+tasks.named('check') { dependsOn 'attackCoinGateTest' }
+tasks.register('opponentAttackLockTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'OpponentAttackLockTest'
+}
+tasks.named('check') { dependsOn 'opponentAttackLockTest' }
+tasks.register('evolutionLockEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'EvolutionLockEffectTest'
+}
+tasks.register('deckSearchPolicyTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DeckSearchPolicyTest'
+}
+tasks.register('handDiscardPolicyTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'HandDiscardPolicyTest'
+}
+tasks.register('discardRecoveryPolicyTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DiscardRecoveryPolicyTest'
+}
+tasks.register('discardBenchPokemonEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DiscardBenchPokemonEffectTest'
+}
+tasks.register('discardBenchPokemonPolicyTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DiscardBenchPokemonPolicyTest'
+}
+tasks.register('deckBenchPokemonEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DeckBenchPokemonEffectTest'
+}
+tasks.register('deckBenchPokemonPolicyTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DeckBenchPokemonPolicyTest'
+}
+tasks.register('devolutionEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DevolutionEffectTest'
+}
+tasks.register('deckEnergyAttachmentEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DeckEnergyAttachmentEffectTest'
+}
+tasks.register('discardShuffleEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DiscardShuffleEffectTest'
+}
+tasks.register('toolAttachmentEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ToolAttachmentEffectTest'
+}
+tasks.register('energyReturnEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'EnergyReturnEffectTest'
+}
+tasks.register('serverMatchFieldActionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ServerMatchFieldActionTest'
+}
+tasks.register('cardTableTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'CardTableTest'
+}
+tasks.register('cardTableRecoveryTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'CardTableRecoveryTest'
+}
+tasks.register('cardTableReplayPersistenceTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'CardTableReplayPersistenceTest'
+}
+tasks.register('ptcgLiveTableLayoutTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PtcgLiveTableLayoutTest'
+}
+tasks.register('packOpeningTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PackOpeningTest'
+}
+
+tasks.register('packRevealAnimationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PackRevealAnimationTest'
+}
+tasks.named('check') { dependsOn 'packRevealAnimationTest' }
+tasks.register('packCatalogTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PackCatalogTest'
+}
+tasks.register('allEnergyPackTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AllEnergyPackTest'
+}
+tasks.named('check') { dependsOn 'allEnergyPackTest' }
+tasks.register('economyCoreTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'EconomyCoreTest'
+}
+tasks.named('check') { dependsOn 'economyCoreTest' }
+tasks.register('persistenceSnapshotTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PersistenceSnapshotTest'
+}
+tasks.register('starterDeck100Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100Test'
+}
+
+tasks.register('starterDeck100CombatTest', JavaExec) {
+    dependsOn 'testClasses'
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100CombatTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100CombatTest' }
+tasks.register('topDeckLookTest', JavaExec) {
+    dependsOn 'testClasses'
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'TopDeckLookTest'
+}
+tasks.named('check') { dependsOn 'topDeckLookTest' }
+tasks.register('starterDeck100CommonTest', JavaExec) {
+    dependsOn 'testClasses'
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100CommonTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100CommonTest' }
+tasks.register('starterDeck100EnergyTest', JavaExec) {
+    dependsOn 'testClasses'
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100EnergyTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100EnergyTest' }
+tasks.register('starterDeck100PokemonTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100PokemonTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100PokemonTest' }
+tasks.register('starterDeck100ContinuationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100ContinuationTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100ContinuationTest' }
+tasks.register('starterDeck100EntryTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100EntryTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100EntryTest' }
+tasks.register('starterDeck100TurnEndTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100TurnEndTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100TurnEndTest' }
+tasks.register('starterDeck100CostTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100CostTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100CostTest' }
+tasks.register('starterDeck100EnergyUnitTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100EnergyUnitTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100EnergyUnitTest' }
+tasks.register('starterDeck100GuardTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100GuardTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100GuardTest' }
+tasks.register('starterDeck100IfDoTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100IfDoTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100IfDoTest' }
+tasks.register('starterDeck100ToolGuardTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100ToolGuardTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100ToolGuardTest' }
+tasks.register('starterDeck100SearchTimingTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100SearchTimingTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100SearchTimingTest' }
+tasks.register('starterDeck100FieldCountTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100FieldCountTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100FieldCountTest' }
+tasks.register('starterDeck100EvolutionLockTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100EvolutionLockTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100EvolutionLockTest' }
+tasks.register('starterDeck100ZoneCountTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100ZoneCountTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100ZoneCountTest' }
+tasks.register('starterDeck100AlternateCostTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100AlternateCostTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100AlternateCostTest' }
+tasks.register('starterDeck100TransferTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100TransferTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100TransferTest' }
+tasks.register('starterDeck100StyleSearchTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100StyleSearchTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100StyleSearchTest' }
+tasks.register('starterDeck100SwitchKoTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100SwitchKoTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100SwitchKoTest' }
+tasks.register('starterDeck100PassiveCountTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100PassiveCountTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100PassiveCountTest' }
+tasks.register('starterDeck100TargetCostTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100TargetCostTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100TargetCostTest' }
+tasks.register('starterDeck100GroupHealTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100GroupHealTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100GroupHealTest' }
+tasks.register('starterDeck100CounterMoveTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100CounterMoveTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100CounterMoveTest' }
+tasks.register('starterDeck100ReactionToolTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100ReactionToolTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100ReactionToolTest' }
+tasks.register('starterDeck100NamedBenchTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100NamedBenchTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100NamedBenchTest' }
+tasks.register('starterDeck100FamilyAttackTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100FamilyAttackTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100FamilyAttackTest' }
+tasks.register('starterDeck100HandSwapTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100HandSwapTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100HandSwapTest' }
+tasks.register('starterDeck100OpponentDiscardTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100OpponentDiscardTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100OpponentDiscardTest' }
+tasks.register('starterDeck100TopEnergyTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100TopEnergyTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100TopEnergyTest' }
+tasks.register('starterDeck100TurnBonusTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100TurnBonusTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100TurnBonusTest' }
+tasks.register('starterDeck100KnockoutEnergyTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100KnockoutEnergyTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100KnockoutEnergyTest' }
+tasks.register('starterDeck100SkipEvolutionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100SkipEvolutionTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100SkipEvolutionTest' }
+tasks.register('starterDeck100PassiveRuleTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100PassiveRuleTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100PassiveRuleTest' }
+tasks.register('starterDeck100TurnHistoryTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100TurnHistoryTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100TurnHistoryTest' }
+tasks.register('packCoverCatalogTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PackCoverCatalogTest'
+}
+tasks.register('packIdMigrationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PackIdMigrationTest'
+}
+tasks.named('check') { dependsOn 'packIdMigrationTest' }
+tasks.named('check') { dependsOn 'battleTest', 'catalogTest', 'rulesCoreTest', 'matchEngineTest', 'tournamentSeriesTest', 'tournamentTableIntegrationTest', 'battlefieldStateTest', 'combatCatalogTest', 'serverMatchCombatTest', 'damageModifierTest', 'damageCounterPlacementTest', 'distributedDamageCounterEffectTest', 'exactDamageCounterAllocationTest', 'targetScopedDamageCounterAllocationTest', 'passiveToolAttachmentPreventionTest', 'directKnockoutEffectTest', 'passivePrizeModifierTest', 'evolutionLockEffectTest', 'deckSearchPolicyTest', 'handDiscardPolicyTest', 'discardRecoveryPolicyTest', 'toolRemovalEffectTest', 'toolReturnEffectTest', 'retreatLockEffectTest', 'attackLockEffectTest', 'retreatCostModifierEffectTest', 'attackDiscardAllEnergyTest', 'attackSelfHealTest', 'attackSelectedEnergyDiscardTest', 'attackIgnoreWeaknessResistanceTest', 'attackTemporaryDamageReductionTest', 'attackIgnoreDefenderDamageEffectsTest', 'attackCooldownTest', 'abilityHealTargetTest', 'abilityEnergyMoveTargetTest', 'passiveToolCapacityAbilityTest', 'passiveSpecialConditionImmunityTest', 'passiveAttackDamageImmunityTest', 'passiveAttackDamageReductionTest', 'abilityDisableEffectTest', 'specialEnergyPaymentTest', 'toolAttachmentEffectTest', 'energyEffectTest', 'energyAttachmentPolicyTest', 'attachedCardOwnershipTest', 'deckEnergyAttachmentEffectTest', 'energyMoveEffectTest', 'energyReturnEffectTest', 'effectCoinFlipTest', 'specialConditionEffectTest', 'attackCoinConditionTest', 'specialConditionApplicationEffectTest', 'healingEffectTest', 'handDiscardEffectTest', 'randomHandDiscardEffectTest', 'deckSearchEffectTest', 'topDeckDiscardEffectTest', 'handShuffleEffectTest', 'discardShuffleEffectTest', 'effectDrawTest', 'discardBenchPokemonEffectTest', 'discardBenchPokemonPolicyTest', 'deckBenchPokemonEffectTest', 'deckBenchPokemonPolicyTest', 'devolutionEffectTest', 'stadiumRemovalEffectTest', 'forcedSwitchEffectTest', 'pokemonLeavePlayEffectTest', 'discardRecoveryEffectTest', 'attackProtectionScopeTest', 'benchTargetAttackTest', 'recoilAttackTest', 'evolutionPermissionTest', 'evolutionByNameTest', 'turnActionRulesTest', 'matchSetupRulesTest', 'lostZoneTest', 'matchReplayTest', 'serverMatchFieldActionTest', 'cardTableTest', 'cardTableRecoveryTest', 'cardTableReplayPersistenceTest', 'packOpeningTest', 'packCatalogTest', 'economyCoreTest', 'persistenceSnapshotTest', 'starterDeck100Test', 'packCoverCatalogTest' }
+tasks.named('check') { dependsOn 'trainerRandomHandDiscardTest' }
+tasks.named('check') { dependsOn 'trainerStadiumDiscardTest' }
+tasks.named('check') { dependsOn 'effectArchitectureTest' }
+tasks.named('check') { dependsOn 'trainerConditionCureTest' }
+tasks.named('check') { dependsOn 'clearStatusEffectTest' }
+tasks.named('check') { dependsOn 'allAttachedEnergyEffectTest' }
+tasks.named('check') { dependsOn 'serverEffectTargetTest' }
+tasks.named('check') { dependsOn 'serverEffectConditionTest' }
+tasks.register('effectSelectionAndLifecycleTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'EffectSelectionAndLifecycleTest'
+}
+tasks.named('check') { dependsOn 'effectSelectionAndLifecycleTest' }
+tasks.register('serverEffectProgramExecutionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ServerEffectProgramExecutionTest'
+}
+tasks.named('check') { dependsOn 'serverEffectProgramExecutionTest' }
+tasks.register('genericAttackDamageEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GenericAttackDamageEffectTest'
+}
+tasks.named('check') { dependsOn 'genericAttackDamageEffectTest' }
+tasks.register('effectDeckSelectionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'EffectDeckSelectionTest'
+}
+tasks.named('check') { dependsOn 'effectDeckSelectionTest' }
+tasks.register('effectHandDiscardSelectionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'EffectHandDiscardSelectionTest'
+}
+tasks.named('check') { dependsOn 'effectHandDiscardSelectionTest' }
+tasks.register('effectSelectionAuthorityTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'EffectSelectionAuthorityTest'
+}
+tasks.named('check') { dependsOn 'effectSelectionAuthorityTest' }
+tasks.register('effectResolutionBoundaryTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'EffectResolutionBoundaryTest'
+}
+tasks.named('check') { dependsOn 'effectResolutionBoundaryTest' }
+tasks.register('effectLifecycleAuthorityTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'EffectLifecycleAuthorityTest'
+}
+tasks.named('check') { dependsOn 'effectLifecycleAuthorityTest' }
+tasks.register('composedAbilityIntegrationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ComposedAbilityIntegrationTest'
+}
+tasks.named('check') { dependsOn 'composedAbilityIntegrationTest' }
+tasks.register('cardItemArtRoutingTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'CardItemArtRoutingTest'
+}
+tasks.named('check') { dependsOn 'cardItemArtRoutingTest' }
+tasks.register('triggerSourceIdentityTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'TriggerSourceIdentityTest'
+}
+tasks.named('check') { dependsOn 'triggerSourceIdentityTest' }
+tasks.register('resumableTriggeredAbilityTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ResumableTriggeredAbilityTest'
+}
+tasks.named('check') { dependsOn 'resumableTriggeredAbilityTest' }
+tasks.register('automaticPokemonSelectionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AutomaticPokemonSelectionTest'
+}
+tasks.named('check') { dependsOn 'automaticPokemonSelectionTest' }
+tasks.register('staticAbilitySuppressionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StaticAbilitySuppressionTest'
+}
+tasks.named('check') { dependsOn 'staticAbilitySuppressionTest' }
+tasks.register('packUiSnapshotTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PackUiSnapshotTest'
+}
+tasks.named('check') { dependsOn 'packUiSnapshotTest' }
+tasks.register('packGalleryLayoutTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PackGalleryLayoutTest'
+}
+tasks.named('check') { dependsOn 'packGalleryLayoutTest' }
+tasks.register('composedSwitchEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ComposedSwitchEffectTest'
+}
+tasks.named('check') { dependsOn 'composedSwitchEffectTest' }
+tasks.register('composedStadiumDiscardEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ComposedStadiumDiscardEffectTest'
+}
+tasks.named('check') { dependsOn 'composedStadiumDiscardEffectTest' }
+tasks.register('scopedPokemonSelectionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ScopedPokemonSelectionTest'
+}
+tasks.named('check') { dependsOn 'scopedPokemonSelectionTest' }
+tasks.register('playerPokemonScopeTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PlayerPokemonScopeTest'
+}
+tasks.named('check') { dependsOn 'playerPokemonScopeTest' }
+
+tasks.register('dynamicPassiveModifierTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DynamicPassiveModifierTest'
+}
+tasks.named('check') { dependsOn 'dynamicPassiveModifierTest' }
+tasks.register('dynamicEnergyProvisionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DynamicEnergyProvisionTest'
+}
+tasks.named('check') { dependsOn 'dynamicEnergyProvisionTest' }
+tasks.register('persistentSourceTriggerTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PersistentSourceTriggerTest'
+}
+tasks.named('check') { dependsOn 'persistentSourceTriggerTest' }
+tasks.register('toolCapacityResolutionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ToolCapacityResolutionTest'
+}
+tasks.named('check') { dependsOn 'toolCapacityResolutionTest' }
+
+tasks.register('dynamicHitPointsTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DynamicHitPointsTest'
+}
+tasks.named('check') { dependsOn 'dynamicHitPointsTest' }
+
+tasks.register('fieldStateBoundaryTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'FieldStateBoundaryTest'
+}
+tasks.named('check') { dependsOn 'fieldStateBoundaryTest' }
+tasks.register('beforeDamageAttackTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'BeforeDamageAttackTest'
+}
+tasks.named('check') { dependsOn 'beforeDamageAttackTest' }
+tasks.register('copyAttackTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'CopyAttackTest'
+}
+tasks.named('check') { dependsOn 'copyAttackTest' }
+tasks.register('typedEnergyCountTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'TypedEnergyCountTest'
+}
+tasks.named('check') { dependsOn 'typedEnergyCountTest' }
+
+tasks.register('specialEnergyAttachmentTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'SpecialEnergyAttachmentTest'
+}
+tasks.named('check') { dependsOn 'specialEnergyAttachmentTest' }
+tasks.register('turnEndEffectsTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'TurnEndEffectsTest'
+}
+tasks.named('check') { dependsOn 'turnEndEffectsTest' }
+tasks.register('turnStartEffectsTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'TurnStartEffectsTest'
+}
+tasks.named('check') { dependsOn 'turnStartEffectsTest' }
+tasks.register('pokemonChangeTriggeredAbilityTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PokemonChangeTriggeredAbilityTest'
+}
+tasks.named('check') { dependsOn 'pokemonChangeTriggeredAbilityTest' }
+tasks.register('pokemonLeavePlayTriggeredAbilityTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PokemonLeavePlayTriggeredAbilityTest'
+}
+tasks.named('check') { dependsOn 'pokemonLeavePlayTriggeredAbilityTest' }
+tasks.register('cardPlayedTriggeredAbilityTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'CardPlayedTriggeredAbilityTest'
+}
+tasks.named('check') { dependsOn 'cardPlayedTriggeredAbilityTest' }
+tasks.register('genericPokemonBindingsTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GenericPokemonBindingsTest'
+}
+tasks.named('check') { dependsOn 'genericPokemonBindingsTest' }
+tasks.register('namedAttachedCardTargetTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'NamedAttachedCardTargetTest'
+}
+tasks.named('check') { dependsOn 'namedAttachedCardTargetTest' }
+tasks.register('pokemonStageSelectionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PokemonStageSelectionTest'
+}
+tasks.named('check') { dependsOn 'pokemonStageSelectionTest' }
+tasks.register('anyFieldDamageCounterDistributionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AnyFieldDamageCounterDistributionTest'
+}
+tasks.named('check') { dependsOn 'anyFieldDamageCounterDistributionTest' }
+tasks.register('distributedEnergyAttachmentTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DistributedEnergyAttachmentTest'
+}
+tasks.named('check') { dependsOn 'distributedEnergyAttachmentTest' }
+tasks.register('moveDamageCounterEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'MoveDamageCounterEffectTest'
+}
+tasks.named('check') { dependsOn 'moveDamageCounterEffectTest' }
+tasks.register('attackCostModifierTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AttackCostModifierTest'
+}
+tasks.named('check') { dependsOn 'attackCostModifierTest' }
+tasks.register('delayedPokemonEffectsTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DelayedPokemonEffectsTest'
+}
+tasks.named('check') { dependsOn 'delayedPokemonEffectsTest' }
+tasks.register('attackCoinBindingsTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AttackCoinBindingsTest'
+}
+tasks.named('check') { dependsOn 'attackCoinBindingsTest' }
+tasks.register('attackPokemonBindingsTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AttackPokemonBindingsTest'
+}
+tasks.named('check') { dependsOn 'attackPokemonBindingsTest' }
+tasks.register('regionalRulesetTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'RegionalRulesetTest'
+}
+tasks.named('check') { dependsOn 'regionalRulesetTest' }
+tasks.register('standardRulesCalendarTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StandardRulesCalendarTest'
+}
+tasks.named('check') { dependsOn 'standardRulesCalendarTest' }
+tasks.register('regionalPracticeTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'RegionalPracticeTest'
+}
+tasks.named('check') { dependsOn 'regionalPracticeTest' }
+tasks.register('trainerCategoryEditionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'TrainerCategoryEditionTest'
+}
+tasks.named('check') { dependsOn 'trainerCategoryEditionTest' }
+tasks.register('trainerCostAtomicityTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'TrainerCostAtomicityTest'
+}
+tasks.named('check') { dependsOn 'trainerCostAtomicityTest' }
+tasks.register('composedTrainerIntegrationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ComposedTrainerIntegrationTest'
+}
+tasks.named('check') { dependsOn 'composedTrainerIntegrationTest' }
+tasks.register('resumableTrainerTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ResumableTrainerTest'
+}
+tasks.named('check') { dependsOn 'resumableTrainerTest' }
+tasks.register('resumableZoneTrainerTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ResumableZoneTrainerTest'
+}
+tasks.named('check') { dependsOn 'resumableZoneTrainerTest' }
+tasks.register('trainerSearchRevealTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'TrainerSearchRevealTest'
+}
+tasks.named('check') { dependsOn 'trainerSearchRevealTest' }
+tasks.named('check') { dependsOn 'trainerForcedSwitchTest' }
+tasks.named('check') { dependsOn 'trainerEvolutionEffectTest' }
+tasks.named('check') { dependsOn 'trainerSkipStageEvolutionTest' }
+tasks.named('check') { dependsOn 'ptcgLiveTableLayoutTest', 'ptcgLiveLobbyLayoutTest' }
+tasks.named('check') { dependsOn 'ptcgLiveCollectionLayoutTest' }
+tasks.named('check') { dependsOn 'ptcgLiveThemeTest' }
+tasks.named('check') { dependsOn 'tableLobbyViewTest' }
+tasks.named('check') { dependsOn 'specialEnergyRetreatPaymentTest' }
+tasks.named('check') { dependsOn 'toolDisableEffectTest' }
+tasks.named('build') { dependsOn 'verifyCoreJarArtwork' }
+
+tasks.register('matchRulesRegressionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'MatchRulesRegressionTest'
+    systemProperty 'file.encoding', 'UTF-8'
+}
+tasks.named('check') { dependsOn 'matchRulesRegressionTest' }
+tasks.register('matchSessionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'MatchSessionTest'
+}
+tasks.named('check') { dependsOn 'matchSessionTest' }
+tasks.register('deckIdentityTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DeckIdentityTest'
+}
+tasks.named('check') { dependsOn 'deckIdentityTest' }
+tasks.register('trainerEffectsTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'TrainerEffectsTest'
+}
+tasks.named('check') { dependsOn 'trainerEffectsTest' }
+tasks.register('trainerDeckSearchTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'TrainerDeckSearchTest'
+}
+tasks.named('check') { dependsOn 'trainerDeckSearchTest' }
+
+tasks.register('abilityEffectsTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AbilityEffectsTest'
+}
+tasks.named('check') { dependsOn 'abilityEffectsTest' }
+
+tasks.register('dudunsparceRealCardTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DudunsparceRealCardTest'
+}
+tasks.named('check') { dependsOn 'dudunsparceRealCardTest' }
+
+tasks.register('boxEditorTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'BoxEditorTest'
+}
+tasks.named('check') { dependsOn 'boxEditorTest' }
+
+tasks.register('matchRegionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'MatchRegionTest'
+}
+tasks.named('check') { dependsOn 'matchRegionTest' }
+
+tasks.register('composedEnergyAttachmentTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ComposedEnergyAttachmentTest'
+}
+tasks.named('check') { dependsOn 'composedEnergyAttachmentTest' }
+
+tasks.register('energyTriggeredAbilityTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'EnergyTriggeredAbilityTest'
+}
+tasks.named('check') { dependsOn 'energyTriggeredAbilityTest' }
+
+tasks.register('checkupTriggeredAbilityTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'CheckupTriggeredAbilityTest'
+}
+tasks.named('check') { dependsOn 'checkupTriggeredAbilityTest' }
+
+tasks.register('damageTriggeredAbilityTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DamageTriggeredAbilityTest'
+}
+tasks.named('check') { dependsOn 'damageTriggeredAbilityTest' }
+
+tasks.register('knockoutTriggeredAbilityTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'KnockoutTriggeredAbilityTest'
+}
+tasks.named('check') { dependsOn 'knockoutTriggeredAbilityTest' }
+
+tasks.register('eventTargetBindingTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'EventTargetBindingTest'
+}
+tasks.named('check') { dependsOn 'eventTargetBindingTest' }
+
+tasks.register('composedDamageDistributionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ComposedDamageDistributionTest'
+}
+tasks.named('check') { dependsOn 'composedDamageDistributionTest' }
+tasks.register('resumableAbilityTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ResumableAbilityTest'
+}
+tasks.named('check') { dependsOn 'resumableAbilityTest' }
+tasks.register('effectOriginProtectionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'EffectOriginProtectionTest'
+}
+tasks.named('check') { dependsOn 'effectOriginProtectionTest' }
+tasks.register('sharedUsageLimitTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'SharedUsageLimitTest'
+}
+tasks.named('check') { dependsOn 'sharedUsageLimitTest' }
+tasks.register('resumableAttackTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ResumableAttackTest'
+}
+tasks.named('check') { dependsOn 'resumableAttackTest' }
+tasks.register('abilityActivationPolicyTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AbilityActivationPolicyTest'
+}
+tasks.named('check') { dependsOn 'abilityActivationPolicyTest' }
+
+tasks.register('cardImageDecoderTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'CardImageDecoderTest'
+    systemProperty 'java.awt.headless', 'true'
+    systemProperty 'java.io.tmpdir', layout.buildDirectory.dir('image-test-tmp').get().asFile.absolutePath
+    systemProperty 'org.lwjgl.system.SharedLibraryExtractPath', layout.buildDirectory.dir('image-test-natives').get().asFile.absolutePath
+    systemProperty 'ptcglive.test.packDir', providers.gradleProperty('cardArtPackDir').getOrElse('')
+    doFirst { layout.buildDirectory.dir('image-test-tmp').get().asFile.mkdirs() }
+}
+
+tasks.named('check') { dependsOn 'cardImageDecoderTest' }
+
+tasks.register('openingSequenceTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'OpeningSequenceTest'
+}
+tasks.named('check') { dependsOn 'openingSequenceTest' }
+
+tasks.register('persistentTrainerTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PersistentTrainerTest'
+}
+tasks.named('check') { dependsOn 'persistentTrainerTest' }
+
+tasks.register('cardEncyclopediaResourcesTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'CardEncyclopediaResourcesTest'
+}
+tasks.named('check') { dependsOn 'cardEncyclopediaResourcesTest' }
+
+tasks.register('presentationResourcesTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PresentationResourcesTest'
+}
+tasks.named('check') { dependsOn 'presentationResourcesTest' }
+
+tasks.register('cardBoxColorTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'CardBoxColorTest'
+}
+tasks.register('cardEffectAuditTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'CardEffectAuditTest'
+}
+tasks.register('dynamicCoinEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DynamicCoinEffectTest'
+}
+tasks.named('check') { dependsOn 'cardEffectAuditTest' }
+tasks.named('check') { dependsOn 'cardBoxColorTest' }
+
+tasks.register('cardNameAudit', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'CardNameAudit'
+    systemProperty 'ptcglive.test.packDir', providers.gradleProperty('cardArtPackDir').getOrElse('')
+}
+
+tasks.named('check') {
+    doLast {
+        def suites = ['loneActiveKnockoutTest', 'fullMatchLifecycleTest', 'cardActionLayoutTest', 'battleTest', 'battlefieldStateTest', 'cardTableTest', 'cardTableRecoveryTest', 'cardTableReplayPersistenceTest', 'ptcgLiveTableLayoutTest', 'ptcgLiveLobbyLayoutTest', 'catalogTest',
+            'combatCatalogTest', 'deckIdentityTest', 'cardEffectAuditTest', 'matchEngineTest', 'matchRulesRegressionTest',
+            'matchSessionTest', 'packCatalogTest', 'packCoverCatalogTest', 'packOpeningTest',
+            'economyCoreTest', 'persistenceSnapshotTest', 'rulesCoreTest', 'serverMatchCombatTest',
+            'serverMatchFieldActionTest', 'damageModifierTest', 'damageCounterPlacementTest', 'distributedDamageCounterEffectTest', 'exactDamageCounterAllocationTest', 'targetScopedDamageCounterAllocationTest', 'passiveToolAttachmentPreventionTest', 'directKnockoutEffectTest', 'passivePrizeModifierTest', 'evolutionLockEffectTest', 'deckSearchPolicyTest', 'handDiscardPolicyTest', 'randomHandDiscardEffectTest', 'discardRecoveryPolicyTest', 'toolRemovalEffectTest', 'toolReturnEffectTest', 'retreatLockEffectTest', 'attackLockEffectTest', 'retreatCostModifierEffectTest', 'attackDiscardAllEnergyTest', 'attackSelfHealTest', 'attackSelectedEnergyDiscardTest', 'attackIgnoreWeaknessResistanceTest', 'attackTemporaryDamageReductionTest', 'attackIgnoreDefenderDamageEffectsTest', 'attackCooldownTest', 'attackProtectionScopeTest', 'abilityHealTargetTest', 'abilityEnergyMoveTargetTest', 'passiveToolCapacityAbilityTest', 'passiveSpecialConditionImmunityTest', 'passiveAttackDamageImmunityTest', 'passiveAttackDamageReductionTest', 'abilityDisableEffectTest', 'specialEnergyPaymentTest', 'toolAttachmentEffectTest', 'energyEffectTest', 'energyAttachmentPolicyTest', 'attachedCardOwnershipTest', 'deckEnergyAttachmentEffectTest', 'energyMoveEffectTest', 'energyReturnEffectTest', 'effectCoinFlipTest', 'specialConditionEffectTest', 'attackCoinConditionTest', 'specialConditionApplicationEffectTest', 'healingEffectTest', 'handDiscardEffectTest', 'deckSearchEffectTest', 'topDeckDiscardEffectTest', 'handShuffleEffectTest', 'discardShuffleEffectTest', 'effectDrawTest', 'discardBenchPokemonEffectTest', 'discardBenchPokemonPolicyTest', 'deckBenchPokemonEffectTest', 'deckBenchPokemonPolicyTest', 'devolutionEffectTest', 'stadiumRemovalEffectTest', 'forcedSwitchEffectTest', 'pokemonLeavePlayEffectTest', 'discardRecoveryEffectTest', 'turnActionRulesTest', 'matchSetupRulesTest', 'lostZoneTest', 'matchReplayTest', 'tournamentSeriesTest', 'tournamentTableIntegrationTest', 'trainerEffectsTest', 'abilityEffectsTest', 'dudunsparceRealCardTest', 'boxEditorTest', 'matchRegionTest', 'cardImageDecoderTest', 'openingSequenceTest', 'persistentTrainerTest', 'presentationResourcesTest', 'cardBoxColorTest']
+        suites << 'specialEnergyRetreatPaymentTest'
+        suites << 'toolDisableEffectTest'
+        suites << 'ptcgLiveCollectionLayoutTest'
+        suites << 'ptcgLiveThemeTest'
+        suites << 'tableLobbyViewTest'
+        suites << 'trainerDeckSearchTest'
+        suites << 'trainerRandomHandDiscardTest'
+        suites << 'trainerStadiumDiscardTest'
+        suites << 'effectArchitectureTest'
+        suites << 'trainerConditionCureTest'
+        suites << 'serverEffectTargetTest'
+        suites << 'serverEffectConditionTest'
+        suites << 'effectSelectionAndLifecycleTest'
+        suites << 'serverEffectProgramExecutionTest'
+        suites << 'genericAttackDamageEffectTest'
+        suites << 'effectDeckSelectionTest'
+        suites << 'effectHandDiscardSelectionTest'
+        suites << 'effectSelectionAuthorityTest'
+        suites << 'effectResolutionBoundaryTest'
+        suites << 'effectLifecycleAuthorityTest'
+        suites << 'composedAbilityIntegrationTest'
+        suites << 'cardItemArtRoutingTest'
+        suites << 'composedEnergyAttachmentTest'
+        suites << 'composedAttachedToolEffectTest'
+        suites << 'composedAttachToolEffectTest'
+        suites << 'composedRetreatEffectTest'
+        suites << 'composedBenchDamageEffectTest'
+        suites << 'cardEffectCoverageReport'
+        suites << 'energyTriggeredAbilityTest'
+        suites << 'checkupTriggeredAbilityTest'
+        suites << 'damageTriggeredAbilityTest'
+        suites << 'knockoutTriggeredAbilityTest'
+        suites << 'eventTargetBindingTest'
+        suites << 'triggerSourceIdentityTest'
+        suites << 'resumableTriggeredAbilityTest'
+        suites << 'automaticPokemonSelectionTest'
+        suites << 'composedSwitchEffectTest'
+        suites << 'composedStadiumDiscardEffectTest'
+        suites << 'scopedPokemonSelectionTest'
+        suites << 'playerPokemonScopeTest'
+        suites << 'dynamicPassiveModifierTest'
+        suites << 'dynamicEnergyProvisionTest'
+        suites << 'persistentSourceTriggerTest'
+        suites << 'toolCapacityResolutionTest'
+        suites << 'dynamicHitPointsTest'
+        suites << 'fieldStateBoundaryTest'
+        suites << 'beforeDamageAttackTest'
+        suites << 'copyAttackTest'
+        suites << 'typedEnergyCountTest'
+        suites << 'specialEnergyAttachmentTest'
+        suites << 'turnEndEffectsTest'
+        suites << 'turnStartEffectsTest'
+        suites << 'pokemonChangeTriggeredAbilityTest'
+        suites << 'pokemonLeavePlayTriggeredAbilityTest'
+        suites << 'cardPlayedTriggeredAbilityTest'
+        suites << 'genericPokemonBindingsTest'
+        suites << 'namedAttachedCardTargetTest'
+        suites << 'pokemonStageSelectionTest'
+        suites << 'attackCostModifierTest'
+        suites << 'delayedPokemonEffectsTest'
+        suites << 'attackCoinBindingsTest'
+        suites << 'attackPokemonBindingsTest'
+        suites << 'composedDamageDistributionTest'
+        suites << 'anyFieldDamageCounterDistributionTest'
+        suites << 'distributedEnergyAttachmentTest'
+        suites << 'moveDamageCounterEffectTest'
+        suites << 'resumableAbilityTest'
+        suites << 'effectOriginProtectionTest'
+        suites << 'sharedUsageLimitTest'
+        suites << 'resumableAttackTest'
+        suites << 'abilityActivationPolicyTest'
+        suites << 'regionalRulesetTest'
+        suites << 'trainerCategoryEditionTest'
+        suites << 'trainerCostAtomicityTest'
+        suites << 'composedTrainerIntegrationTest'
+        suites << 'resumableTrainerTest'
+        suites << 'resumableZoneTrainerTest'
+        suites << 'trainerSearchRevealTest'
+        suites << 'trainerForcedSwitchTest'
+        suites << 'trainerEvolutionEffectTest'
+        suites << 'trainerSkipStageEvolutionTest'
+        def report = [version: project.version.toString(), checkedAt: java.time.Instant.now().toString(),
+            scope: 'Standalone rule/resource test suites; not network clients',
+            suites: suites.collect { name ->
+                def suite = tasks.named(name).get()
+                [task: name, testClass: suite.mainClass.get(),
+                 outcome: suite.state.failure != null ? 'FAILED' : suite.state.skipped ? 'SKIPPED' : 'PASSED']
+            }]
+        def output = file('build/reports/rules-core-report.json')
+        output.parentFile.mkdirs()
+        output.text = groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson(report))
+    }
+}
+
+tasks.register('writeClientLaunch') {
+    dependsOn 'configureClientLaunch', 'classes'
+    doLast {
+        def run = tasks.named('runClient').get()
+        def executable = javaToolchains.launcherFor(java.toolchain).get().executablePath.asFile.absolutePath
+        file('build/client-launch.txt').text = ([executable] + run.allJvmArgs + ['-cp', run.classpath.asPath, run.mainClass.get()] + run.args).join('\n')
+    }
+}
+
+processResources {
+    exclude 'metadata/**'
+    // Item model lookup uses the registered item namespace (ptcglive), while
+    // imported card art deliberately remains under ptcglive_mc.  Copy only
+    // the tiny JSON model layer; all models retain their explicit references
+    // to the shared ptcglive_mc base model and PNG thumbnail texture.
+    from('src/generated/resources/assets/ptcglive_mc/models/item') {
+        include '**/*.json'
+        into 'assets/ptcglive/models/item'
+    }
+    inputs.property 'version', project.version
+    filesMatching('fabric.mod.json') {
+        expand version: project.version
+    }
+}
+
+ tasks.register('starterDeck100DiscardBenchTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100DiscardBenchTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100DiscardBenchTest' }
+tasks.register('starterDeck100CounterEntryTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100CounterEntryTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100CounterEntryTest' }
+tasks.register('starterDeck100HandLockTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100HandLockTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100HandLockTest' }
+tasks.register('starterDeck100ExtraPrizeTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100ExtraPrizeTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100ExtraPrizeTest' }
+tasks.register('starterDeck100BlisseyTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100BlisseyTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100BlisseyTest' }
+tasks.register('starterDeck100DamageReactionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100DamageReactionTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100DamageReactionTest' }
+tasks.register('starterDeck100RaichuTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100RaichuTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100RaichuTest' }
+tasks.register('starterDeck100DistributedMoveTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100DistributedMoveTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100DistributedMoveTest' }
+tasks.register('starterDeck100EmpoleonTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100EmpoleonTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100EmpoleonTest' }
+tasks.register('starterDeck100WishiwashiTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100WishiwashiTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100WishiwashiTest' }
+
+tasks.register('starterDeck100ClaydolTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100ClaydolTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100ClaydolTest' }
+
+tasks.register('starterDeck100MedichamTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100MedichamTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100MedichamTest' }
+
+tasks.register('starterDeck100PeoniaTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StarterDeck100PeoniaTest'
+}
+tasks.named('check') { dependsOn 'starterDeck100PeoniaTest' }
+
+tasks.register('extraAttackEnergyTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ExtraAttackEnergyTest'
+}
+
+tasks.named('check') { dependsOn 'extraAttackEnergyTest' }
+
+tasks.register('generatedRuleBatch12Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch12Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch12Test' }
+
+tasks.register('generatedRuleBatch13Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch13Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch13Test' }
+
+tasks.register('abilityDiscardCostTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AbilityDiscardCostTest'
+}
+
+tasks.named('check') { dependsOn 'abilityDiscardCostTest' }
+
+tasks.register('generatedRuleBatch14Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch14Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch14Test' }
+
+tasks.register('generatedRuleBatch15Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch15Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch15Test' }
+
+tasks.register('generatedRuleBatch16Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch16Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch16Test' }
+
+tasks.register('freeRetreatRuleTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'FreeRetreatRuleTest'
+}
+tasks.register('generatedRuleBatch17Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch17Test'
+}
+tasks.named('check') { dependsOn 'freeRetreatRuleTest', 'generatedRuleBatch17Test' }
+
+
+tasks.register('generatedRuleBatch18Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch18Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch18Test' }
+
+
+tasks.register('generatedRuleBatch19Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch19Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch19Test' }
+
+
+tasks.register('generatedRuleBatch20Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch20Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch20Test' }
+
+tasks.register('generatedRuleBatch21Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch21Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch21Test' }
+
+tasks.register('generatedRuleBatch22Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch22Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch22Test' }
+
+tasks.register('generatedRuleBatch23Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch23Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch23Test' }
+
+tasks.register('generatedRuleBatch24Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch24Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch24Test' }
+
+tasks.register('generatedRuleBatch25Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch25Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch25Test' }
+
+
+tasks.register('generatedRuleBatch26Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch26Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch26Test' }
+
+
+tasks.register('generatedRuleBatch27Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch27Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch27Test' }
+
+tasks.register('generatedRuleBatch28Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch28Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch28Test' }
+
+tasks.register('generatedRuleBatch29Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch29Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch29Test' }
+
+tasks.register('generatedRuleBatch30Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch30Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch30Test' }
+
+tasks.register('generatedRuleBatch31Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch31Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch31Test' }
+
+tasks.register('generatedRuleBatch32Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch32Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch32Test' }
+
+tasks.register('generatedRuleBatch33Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch33Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch33Test' }
+
+tasks.register('generatedRuleBatch34Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch34Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch34Test' }
+
+tasks.register('generatedRuleBatch35Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch35Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch35Test' }
+
+tasks.register('generatedRuleBatch36Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch36Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch36Test' }
+
+tasks.register('generatedRuleBatch37Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch37Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch37Test' }
+
+tasks.register('generatedRuleBatch38Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch38Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch38Test' }
+
+tasks.register('generatedRuleBatch39Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch39Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch39Test' }
+
+tasks.register('generatedRuleBatch40Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch40Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch40Test' }
+
+tasks.register('generatedRuleBatch41Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch41Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch41Test' }
+
+tasks.register('generatedRuleBatch42Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch42Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch42Test' }
+
+tasks.register('generatedRuleBatch43Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch43Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch43Test' }
+
+tasks.register('generatedRuleBatch44Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch44Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch44Test' }
+
+tasks.register('generatedRuleBatch45Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch45Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch45Test' }
+
+tasks.register('generatedRuleBatch46Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch46Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch46Test' }
+
+tasks.register('generatedRuleBatch47Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch47Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch47Test' }
+
+tasks.register('generatedRuleBatch48Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch48Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch48Test' }
+
+tasks.register('generatedRuleBatch49Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch49Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch49Test' }
+
+tasks.register('generatedRuleBatch50Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch50Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch50Test' }
+
+tasks.register('generatedRuleBatch51Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch51Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch51Test' }
+
+tasks.register('generatedRuleBatch52Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch52Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch52Test' }
+
+tasks.register('pokemonCardReplacementFieldTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PokemonCardReplacementFieldTest'
+}
+
+tasks.named('check') { dependsOn 'pokemonCardReplacementFieldTest' }
+
+tasks.register('pokemonIdentityCompatibilityTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PokemonIdentityCompatibilityTest'
+}
+
+tasks.named('check') { dependsOn 'pokemonIdentityCompatibilityTest' }
+
+tasks.register('generatedRuleBatch53Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch53Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch53Test' }
+
+tasks.register('generatedRuleBatch54Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch54Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch54Test' }
+
+tasks.register('generatedRuleBatch55Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch55Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch55Test' }
+
+tasks.register('plannedEnergyDiscardTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PlannedEnergyDiscardTest'
+}
+
+tasks.named('check') { dependsOn 'plannedEnergyDiscardTest' }
+
+tasks.register('generatedRuleBatch56Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch56Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch56Test' }
+
+tasks.register('dynamicAttackSourceGuardTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DynamicAttackSourceGuardTest'
+}
+tasks.named('check') { dependsOn 'dynamicAttackSourceGuardTest' }
+
+tasks.register('generatedRuleBatch57Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch57Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch57Test' }
+
+tasks.register('anyStageDeckPlacementTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AnyStageDeckPlacementTest'
+}
+tasks.named('check') { dependsOn 'anyStageDeckPlacementTest' }
+
+tasks.register('generatedRuleBatch58Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch58Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch58Test' }
+
+tasks.register('generatedRuleBatch59Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch59Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch59Test' }
+
+tasks.register('generatedRuleBatch60Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch60Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch60Test' }
+
+tasks.register('temporaryReceivedDamageTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'TemporaryReceivedDamageTest'
+}
+tasks.named('check') { dependsOn 'temporaryReceivedDamageTest' }
+
+tasks.register('generatedRuleBatch61Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch61Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch61Test' }
+
+tasks.register('conditionalCopyAttackTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ConditionalCopyAttackTest'
+}
+tasks.named('check') { dependsOn 'conditionalCopyAttackTest' }
+
+tasks.register('generatedRuleBatch62Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch62Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch62Test' }
+
+tasks.register('namedEnergyCountTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'NamedEnergyCountTest'
+}
+tasks.named('check') { dependsOn 'namedEnergyCountTest' }
+
+tasks.register('generatedRuleBatch63Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch63Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch63Test' }
+
+tasks.register('specialEnergyAttackTargetTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'SpecialEnergyAttackTargetTest'
+}
+tasks.named('check') { dependsOn 'specialEnergyAttackTargetTest' }
+
+tasks.register('generatedRuleBatch64Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch64Test'
+}
+tasks.named('check') { dependsOn 'generatedRuleBatch64Test' }
+
+tasks.register('trainerEndTurnTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'TrainerEndTurnTest'
+}
+
+tasks.named('check') { dependsOn 'trainerEndTurnTest' }
+
+tasks.register('generatedRuleBatch65Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch65Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch65Test' }
+
+tasks.register('turnDamageReductionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'TurnDamageReductionTest'
+}
+
+tasks.named('check') { dependsOn 'turnDamageReductionTest' }
+
+tasks.register('generatedRuleBatch66Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch66Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch66Test' }
+
+tasks.register('discardPokemonEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DiscardPokemonEffectTest'
+}
+
+tasks.named('check') { dependsOn 'discardPokemonEffectTest' }
+
+tasks.register('generatedRuleBatch67Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch67Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch67Test' }
+
+tasks.register('knockoutEnergyTransferTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'KnockoutEnergyTransferTest'
+}
+
+tasks.named('check') { dependsOn 'knockoutEnergyTransferTest' }
+
+tasks.register('generatedRuleBatch68Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch68Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch68Test' }
+
+tasks.register('familyDrawCountTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'FamilyDrawCountTest'
+}
+
+tasks.named('check') { dependsOn 'familyDrawCountTest' }
+
+tasks.register('generatedRuleBatch69Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch69Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch69Test' }
+
+tasks.register('damageCounterSuccessTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DamageCounterSuccessTest'
+}
+
+tasks.named('check') { dependsOn 'damageCounterSuccessTest' }
+
+tasks.register('generatedRuleBatch70Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch70Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch70Test' }
+
+tasks.register('attackDeckWindowTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AttackDeckWindowTest'
+}
+
+tasks.named('check') { dependsOn 'attackDeckWindowTest' }
+
+tasks.register('generatedRuleBatch71Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch71Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch71Test' }
+
+tasks.register('discardAbilityCountTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DiscardAbilityCountTest'
+}
+
+tasks.named('check') { dependsOn 'discardAbilityCountTest' }
+
+tasks.register('generatedRuleBatch72Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch72Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch72Test' }
+
+tasks.register('counterScalingTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'CounterScalingTest'
+}
+
+tasks.named('check') { dependsOn 'counterScalingTest' }
+
+tasks.register('generatedRuleBatch73Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch73Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch73Test' }
+
+tasks.register('attackCoinSequenceTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AttackCoinSequenceTest'
+}
+
+tasks.named('check') { dependsOn 'attackCoinSequenceTest' }
+
+tasks.register('attackCoinAttemptTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AttackCoinAttemptTest'
+}
+
+tasks.named('check') { dependsOn 'attackCoinAttemptTest' }
+
+tasks.register('attackCoinContinuationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AttackCoinContinuationTest'
+}
+
+tasks.named('check') { dependsOn 'attackCoinContinuationTest' }
+
+tasks.register('attackDamageCoinPlanTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AttackDamageCoinPlanTest'
+}
+
+tasks.named('check') { dependsOn 'attackDamageCoinPlanTest' }
+
+tasks.register('attackCoinMatchTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AttackCoinMatchTest'
+}
+
+tasks.named('check') { dependsOn 'attackCoinMatchTest' }
+
+tasks.register('attackCoinCatalogTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AttackCoinCatalogTest'
+}
+
+tasks.named('check') { dependsOn 'attackCoinCatalogTest' }
+
+tasks.register('generatedRuleBatch74Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch74Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch74Test' }
+
+tasks.register('fossilFormTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'FossilFormTest'
+}
+
+tasks.named('check') { dependsOn 'fossilFormTest' }
+
+tasks.register('stadiumActivationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'StadiumActivationTest'
+}
+
+tasks.named('check') { dependsOn 'stadiumActivationTest' }
+
+tasks.register('generatedRuleBatch75Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch75Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch75Test' }
+
+tasks.register('retreatCostConditionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'RetreatCostConditionTest'
+}
+
+tasks.named('check') { dependsOn 'retreatCostConditionTest' }
+
+tasks.register('generatedRuleBatch76Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch76Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch76Test' }
+
+tasks.register('sourceEnergyCounterTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'SourceEnergyCounterTest'
+}
+
+tasks.named('check') { dependsOn 'sourceEnergyCounterTest' }
+
+tasks.register('generatedRuleBatch77Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch77Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch77Test' }
+
+tasks.register('counterTransferRulesTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'CounterTransferRulesTest'
+}
+
+tasks.named('check') { dependsOn 'counterTransferRulesTest' }
+
+tasks.register('generatedRuleBatch78Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch78Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch78Test' }
+
+
+tasks.register('generatedRuleBatch79Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch79Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch79Test' }
+
+
+tasks.register('attackGateTwoCoinsTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AttackGateTwoCoinsTest'
+}
+
+tasks.named('check') { dependsOn 'attackGateTwoCoinsTest' }
+
+tasks.register('generatedRuleBatch80Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch80Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch80Test' }
+
+
+tasks.register('opponentEnergyAttachmentTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'OpponentEnergyAttachmentTest'
+}
+
+tasks.named('check') { dependsOn 'opponentEnergyAttachmentTest' }
+
+
+tasks.register('generatedRuleBatch81Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch81Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch81Test' }
+
+
+tasks.register('generatedRuleBatch82Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch82Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch82Test' }
+
+
+tasks.register('typedTopDeckDiscardTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'TypedTopDeckDiscardTest'
+}
+
+tasks.named('check') { dependsOn 'typedTopDeckDiscardTest' }
+
+
+tasks.register('generatedRuleBatch83Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch83Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch83Test' }
+
+
+tasks.register('attackDamageKoProtectionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AttackDamageKoProtectionTest'
+}
+
+tasks.named('check') { dependsOn 'attackDamageKoProtectionTest' }
+
+
+tasks.register('generatedRuleBatch84Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch84Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch84Test' }
+
+
+tasks.register('generatedRuleBatch85Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch85Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch85Test' }
+
+
+tasks.register('possessedAbilityAttackSourceFilterTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PossessedAbilityAttackSourceFilterTest'
+}
+
+tasks.named('check') { dependsOn 'possessedAbilityAttackSourceFilterTest' }
+
+
+tasks.register('generatedRuleBatch86Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch86Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch86Test' }
+
+
+tasks.register('revealedHandDrawCountTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'RevealedHandDrawCountTest'
+}
+
+tasks.named('check') { dependsOn 'revealedHandDrawCountTest' }
+
+
+tasks.register('generatedRuleBatch87Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch87Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch87Test' }
+
+
+tasks.register('handSelfEvolutionEffectTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'HandSelfEvolutionEffectTest'
+}
+
+tasks.named('check') { dependsOn 'handSelfEvolutionEffectTest' }
+
+
+tasks.register('handEnergyLockEffectAttachmentTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'HandEnergyLockEffectAttachmentTest'
+}
+
+tasks.named('check') { dependsOn 'handEnergyLockEffectAttachmentTest' }
+
+
+tasks.register('fieldDamageCounterAttackTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'FieldDamageCounterAttackTest'
+}
+
+tasks.named('check') { dependsOn 'fieldDamageCounterAttackTest' }
+
+
+tasks.register('generatedRuleBatch88Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch88Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch88Test' }
+
+
+tasks.register('damagedPokemonCountTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DamagedPokemonCountTest'
+}
+
+tasks.named('check') { dependsOn 'damagedPokemonCountTest' }
+
+
+tasks.register('generatedRuleBatch89Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch89Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch89Test' }
+
+
+tasks.register('pairedTrainerPlayTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PairedTrainerPlayTest'
+}
+
+tasks.named('check') { dependsOn 'pairedTrainerPlayTest' }
+
+
+tasks.register('discardPokemonReplacementTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DiscardPokemonReplacementTest'
+}
+
+tasks.named('check') { dependsOn 'discardPokemonReplacementTest' }
+
+
+tasks.register('generatedRuleBatch90Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch90Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch90Test' }
+
+
+tasks.register('generatedRuleBatch91Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch91Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch91Test' }
+
+
+tasks.register('privateDeckTopSearchTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PrivateDeckTopSearchTest'
+}
+
+tasks.named('check') { dependsOn 'privateDeckTopSearchTest' }
+
+
+tasks.register('generatedRuleBatch92Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch92Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch92Test' }
+
+
+tasks.register('attackSelfDamageCalculationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AttackSelfDamageCalculationTest'
+}
+
+tasks.named('check') { dependsOn 'attackSelfDamageCalculationTest' }
+
+
+tasks.register('generatedRuleBatch93Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch93Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch93Test' }
+
+
+tasks.register('switchEffectRecipientTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'SwitchEffectRecipientTest'
+}
+
+tasks.named('check') { dependsOn 'switchEffectRecipientTest' }
+
+
+tasks.register('generatedRuleBatch94Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch94Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch94Test' }
+
+
+tasks.register('deckDiscardTriggeredAbilityTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DeckDiscardTriggeredAbilityTest'
+}
+
+tasks.named('check') { dependsOn 'deckDiscardTriggeredAbilityTest' }
+
+
+tasks.register('generatedRuleBatch95Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch95Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch95Test' }
+
+
+tasks.register('benchToActiveEnergyAbilityTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'BenchToActiveEnergyAbilityTest'
+}
+
+tasks.named('check') { dependsOn 'benchToActiveEnergyAbilityTest' }
+
+
+tasks.register('generatedRuleBatch96Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch96Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch96Test' }
+
+tasks.register('atomicAttachmentDiscardTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'AtomicAttachmentDiscardTest'
+}
+
+tasks.named('check') { dependsOn 'atomicAttachmentDiscardTest' }
+
+tasks.register('generatedRuleBatch97Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch97Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch97Test' }
+
+tasks.register('retreatAttemptCoinGateTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'RetreatAttemptCoinGateTest'
+}
+
+tasks.named('check') { dependsOn 'retreatAttemptCoinGateTest' }
+
+tasks.register('generatedRuleBatch98Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch98Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch98Test' }
+
+tasks.register('namedFieldCoinAttackTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'NamedFieldCoinAttackTest'
+}
+
+tasks.named('check') { dependsOn 'namedFieldCoinAttackTest' }
+
+tasks.register('generatedRuleBatch99Test', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'GeneratedRuleBatch99Test'
+}
+
+tasks.named('check') { dependsOn 'generatedRuleBatch99Test' }
+
+tasks.register("battleReportedBugsTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "BattleReportedBugsTest"
+}
+tasks.named("check") { dependsOn "battleReportedBugsTest" }
+
+tasks.register("modernTriggerCountRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernTriggerCountRepairTest"
+}
+tasks.named("check") { dependsOn "modernTriggerCountRepairTest" }
+
+tasks.register("modernForcedSwitchRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernForcedSwitchRepairTest"
+}
+tasks.named("check") { dependsOn "modernForcedSwitchRepairTest" }
+
+tasks.register("modernShuffleScopeRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernShuffleScopeRepairTest"
+}
+tasks.named("check") { dependsOn "modernShuffleScopeRepairTest" }
+
+tasks.register("modernCounterScopeRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernCounterScopeRepairTest"
+}
+tasks.named("check") { dependsOn "modernCounterScopeRepairTest" }
+
+tasks.register("modernSwitchDrawRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernSwitchDrawRepairTest"
+}
+tasks.named("check") { dependsOn "modernSwitchDrawRepairTest" }
+
+tasks.register("modernFieldRuleRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernFieldRuleRepairTest"
+}
+tasks.named("check") { dependsOn "modernFieldRuleRepairTest" }
+
+tasks.register("modernAttackFlowRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernAttackFlowRepairTest"
+}
+tasks.named("check") { dependsOn "modernAttackFlowRepairTest" }
+
+tasks.register("modernTargetRuleRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernTargetRuleRepairTest"
+}
+tasks.named("check") { dependsOn "modernTargetRuleRepairTest" }
+
+tasks.register("modernSupporterEnergyRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernSupporterEnergyRepairTest"
+}
+tasks.named("check") { dependsOn "modernSupporterEnergyRepairTest" }
+
+tasks.register("modernDeckEntryRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernDeckEntryRepairTest"
+}
+tasks.named("check") { dependsOn "modernDeckEntryRepairTest" }
+
+tasks.register("modernConditionalSwapRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernConditionalSwapRepairTest"
+}
+tasks.named("check") { dependsOn "modernConditionalSwapRepairTest" }
+
+tasks.register("modernActivationRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernActivationRepairTest"
+}
+tasks.named("check") { dependsOn "modernActivationRepairTest" }
+
+tasks.register("modernDiscardSearchRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernDiscardSearchRepairTest"
+}
+tasks.named("check") { dependsOn "modernDiscardSearchRepairTest" }
+
+tasks.register("modernDamageScopeRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernDamageScopeRepairTest"
+}
+tasks.named("check") { dependsOn "modernDamageScopeRepairTest" }
+
+tasks.register("modernEnergyCountRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernEnergyCountRepairTest"
+}
+tasks.named("check") { dependsOn "modernEnergyCountRepairTest" }
+
+tasks.register("modernChoiceDamageRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernChoiceDamageRepairTest"
+}
+tasks.named("check") { dependsOn "modernChoiceDamageRepairTest" }
+
+tasks.register("modernNamedCounterRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernNamedCounterRepairTest"
+}
+tasks.named("check") { dependsOn "modernNamedCounterRepairTest" }
+
+tasks.register("modernWindowDamageRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernWindowDamageRepairTest"
+}
+tasks.named("check") { dependsOn "modernWindowDamageRepairTest" }
+
+tasks.register("modernSourceAttackGateRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernSourceAttackGateRepairTest"
+}
+tasks.named("check") { dependsOn "modernSourceAttackGateRepairTest" }
+
+tasks.register("modernWholeWindowRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernWholeWindowRepairTest"
+}
+tasks.named("check") { dependsOn "modernWholeWindowRepairTest" }
+
+tasks.register("modernDeckOrderRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernDeckOrderRepairTest"
+}
+tasks.named("check") { dependsOn "modernDeckOrderRepairTest" }
+
+tasks.register("modernSearchChoiceRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernSearchChoiceRepairTest"
+}
+tasks.named("check") { dependsOn "modernSearchChoiceRepairTest" }
+
+tasks.register("modernOpponentAttachmentRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernOpponentAttachmentRepairTest"
+}
+tasks.named("check") { dependsOn "modernOpponentAttachmentRepairTest" }
+
+tasks.register("modernChosenCounterRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernChosenCounterRepairTest"
+}
+tasks.named("check") { dependsOn "modernChosenCounterRepairTest" }
+
+tasks.register("modernBuddyPulseRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernBuddyPulseRepairTest"
+}
+tasks.named("check") { dependsOn "modernBuddyPulseRepairTest" }
+
+tasks.register("modernNamedBenchEnergyRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernNamedBenchEnergyRepairTest"
+}
+tasks.named("check") { dependsOn "modernNamedBenchEnergyRepairTest" }
+
+tasks.register("modernCounterSuccessRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernCounterSuccessRepairTest"
+}
+tasks.named("check") { dependsOn "modernCounterSuccessRepairTest" }
+
+tasks.register("modernWeaknessChoiceRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernWeaknessChoiceRepairTest"
+}
+tasks.named("check") { dependsOn "modernWeaknessChoiceRepairTest" }
+
+tasks.register("modernKantoSupporterRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernKantoSupporterRepairTest"
+}
+tasks.named("check") { dependsOn "modernKantoSupporterRepairTest" }
+
+tasks.register("modernPokemonExchangeRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernPokemonExchangeRepairTest"
+}
+tasks.named("check") { dependsOn "modernPokemonExchangeRepairTest" }
+
+tasks.register("modernTrainerEndRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernTrainerEndRepairTest"
+}
+tasks.named("check") { dependsOn "modernTrainerEndRepairTest" }
+
+tasks.register("modernFieldCopyRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernFieldCopyRepairTest"
+}
+tasks.named("check") { dependsOn "modernFieldCopyRepairTest" }
+
+tasks.register("modernCoinEnergyReturnTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernCoinEnergyReturnTest"
+}
+tasks.named("check") { dependsOn "modernCoinEnergyReturnTest" }
+
+tasks.register("modernPrizeRevealRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernPrizeRevealRepairTest"
+}
+tasks.named("check") { dependsOn "modernPrizeRevealRepairTest" }
+
+tasks.register("modernPlayerCoinRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernPlayerCoinRepairTest"
+}
+tasks.named("check") { dependsOn "modernPlayerCoinRepairTest" }
+
+tasks.register("modernJointDepartureRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernJointDepartureRepairTest"
+}
+tasks.named("check") { dependsOn "modernJointDepartureRepairTest" }
+
+tasks.register("modernPsychicTransferRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernPsychicTransferRepairTest"
+}
+tasks.named("check") { dependsOn "modernPsychicTransferRepairTest" }
+
+tasks.register("modernBenchKeepRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernBenchKeepRepairTest"
+}
+tasks.named("check") { dependsOn "modernBenchKeepRepairTest" }
+
+tasks.register("modernPalafinRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernPalafinRepairTest"
+}
+tasks.named("check") { dependsOn "modernPalafinRepairTest" }
+
+tasks.register("modernInvitingKissRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernInvitingKissRepairTest"
+}
+tasks.named("check") { dependsOn "modernInvitingKissRepairTest" }
+
+tasks.register("modernLifeboatRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernLifeboatRepairTest"
+}
+tasks.named("check") { dependsOn "modernLifeboatRepairTest" }
+
+tasks.register("modernPollenRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernPollenRepairTest"
+}
+tasks.named("check") { dependsOn "modernPollenRepairTest" }
+
+tasks.register("modernFluteRepairTest", JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "ModernFluteRepairTest"
+}
+tasks.named("check") { dependsOn "modernFluteRepairTest" }
+
+tasks.register("modernRaidRepairTest", JavaExec) {
+ dependsOn testClasses
+ classpath = sourceSets.test.runtimeClasspath
+ mainClass = "ModernRaidRepairTest"
+}
+tasks.named("check") { dependsOn "modernRaidRepairTest" }
+
+tasks.register("modernCounterMovementRepairTest", JavaExec) {
+ dependsOn testClasses
+ classpath = sourceSets.test.runtimeClasspath
+ mainClass = "ModernCounterMovementRepairTest"
+}
+tasks.named("check") { dependsOn "modernCounterMovementRepairTest" }
+
+tasks.register("modernMimeRepairTest", JavaExec) {
+ dependsOn testClasses
+ classpath = sourceSets.test.runtimeClasspath
+ mainClass = "ModernMimeRepairTest"
+}
+tasks.named("check") { dependsOn "modernMimeRepairTest" }
+
+tasks.register('rentalTest', JavaExec) {
+ dependsOn testClasses
+ classpath = sourceSets.test.runtimeClasspath
+ mainClass = 'RentalTest'
+}
+tasks.named('check') { dependsOn 'rentalTest' }
+
+tasks.register('cardConditionTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'CardConditionTest'
+}
+tasks.named('check') { dependsOn 'cardConditionTest' }
+
+tasks.register('modernOperationEntryRepairTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ModernOperationEntryRepairTest'
+}
+tasks.named('check') { dependsOn 'modernOperationEntryRepairTest' }
+
+tasks.register('prizeCardAnimationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'dev.hua.ptcglive.client.PrizeCardAnimationTest'
+}
+tasks.named('check') { dependsOn 'prizeCardAnimationTest' }
+
+tasks.register('energyDiscardAnimationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'dev.hua.ptcglive.client.EnergyDiscardAnimationTest'
+}
+tasks.named('check') { dependsOn 'energyDiscardAnimationTest' }
+
+
+tasks.register('toolLostAnimationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'dev.hua.ptcglive.client.ToolLostAnimationTest'
+}
+tasks.named('check') { dependsOn 'toolLostAnimationTest' }
+
+
+tasks.register('toolLostEventTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'ToolLostEventTest'
+}
+tasks.named('check') { dependsOn 'toolLostEventTest' }
+
+tasks.register('retreatAnimationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'dev.hua.ptcglive.client.RetreatAnimationTest'
+}
+tasks.named('check') { dependsOn 'retreatAnimationTest' }
+
+tasks.register('switchAnimationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'dev.hua.ptcglive.client.SwitchAnimationTest'
+}
+tasks.named('check') { dependsOn 'switchAnimationTest' }
+
+tasks.register('abilityAnimationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'dev.hua.ptcglive.client.AbilityAnimationTest'
+}
+tasks.named('check') { dependsOn 'abilityAnimationTest' }
+
+tasks.register('coinAnimationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'dev.hua.ptcglive.client.CoinAnimationTest'
+}
+tasks.named('check') { dependsOn 'coinAnimationTest' }
+
+tasks.register('cardRevealAnimationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'dev.hua.ptcglive.client.CardRevealAnimationTest'
+}
+tasks.named('check') { dependsOn 'cardRevealAnimationTest' }
+
+tasks.register('cardSelectionAnimationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'dev.hua.ptcglive.client.CardSelectionAnimationTest'
+}
+tasks.named('check') { dependsOn 'cardSelectionAnimationTest' }
+
+tasks.register('dlrSchemaTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DlrSchemaTest'
+    maxHeapSize = '2g'
+}
+tasks.named('check') { dependsOn 'dlrSchemaTest' }
+
+tasks.register('dlrRuntimeTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DlrRuntimeTest'
+    maxHeapSize = '2g'
+}
+tasks.named('check') { dependsOn 'dlrRuntimeTest' }
+
+tasks.register('dlrInstalledDataTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DlrInstalledDataTest'
+    maxHeapSize = '2g'
+}
+tasks.named('check') { dependsOn 'dlrInstalledDataTest' }
+
+tasks.register('dlrTableLayoutTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'dev.hua.ptcglive.client.DlrTableLayoutTest'
+}
+tasks.named('check') { dependsOn 'dlrTableLayoutTest' }
+
+tasks.register('shuffleAnimationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'dev.hua.ptcglive.client.ShuffleAnimationTest'
+}
+tasks.named('check') { dependsOn 'shuffleAnimationTest' }
+
+tasks.register('discardAnimationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'dev.hua.ptcglive.client.DiscardAnimationTest'
+}
+tasks.named('check') { dependsOn 'discardAnimationTest' }
+
+tasks.register('lostZoneAnimationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'dev.hua.ptcglive.client.LostZoneAnimationTest'
+}
+tasks.named('check') { dependsOn 'lostZoneAnimationTest' }

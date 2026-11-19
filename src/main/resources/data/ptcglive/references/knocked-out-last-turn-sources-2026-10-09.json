@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "version": "knocked-out-last-turn-v1",
+  "checkedDate": "2026-10-09",
+  "implementationVersion": "0.6.8-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Koraidon ex — Mega Evolution Ascended Heroes 121（Orichalcum Fang）",
+      "url": "https://limitlesstcg.com/cards/ASC/121",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Card text as printed (Limitless card page); cross-checked against the Rainier card database 2026-10-09",
+      "supportsZh": "“If any of your Pokémon were Knocked Out by damage from an attack during your opponent's last turn, this attack does N more damage.”：上个对手回合，己方任意一只宝可梦被招式造成的伤害击倒时追加伤害。"
+    },
+    {
+      "title": "Pokémon TCG Rulebook — damage vs. damage counters",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/rules",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official rulebook (Attack step; placing damage counters is not damage)",
+      "supportsZh": "“放置伤害指示物”不是“造成伤害”：被效果放置伤害指示物击倒，不算“被招式造成的伤害击倒”。"
+    }
+  ],
+  "dataContractZh": "新条件 KNOCKED_OUT_BY_ATTACK_LAST_TURN（只接受 target，单只公开宝可梦；读的是 target 的拥有者）：上一个回合（对手的回合）里，这名玩家有宝可梦被招式伤害击倒即成立。",
+  "serverAuthorityZh": "服务器在击倒结算确认“被招式伤害击倒”时，在被击倒宝可梦拥有者的玩家状态上记下当时的回合数；条件只在当前回合数减 1 时成立。",
+  "limitations": [
+    "“上个对手回合这只宝可梦受到招式伤害，追加同样多的伤害”等需要伤害数值的写法不在本条件内。"
+  ]
+}

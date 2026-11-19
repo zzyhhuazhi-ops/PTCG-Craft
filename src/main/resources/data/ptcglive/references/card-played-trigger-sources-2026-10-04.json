@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "version": "card-played-trigger-v1",
+  "checkedDate": "2026-10-04",
+  "implementationVersion": "0.6.0-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Play! Pokémon Competitive Pokémon Rules and Formats",
+      "url": "https://play.pokemon.com/en-us/resources/rules/?category=tcg",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official resources index, retrieved 2026-10-04",
+      "verification": "The official page links the current TCG rules, tournament handbook, legality, errata and format information.",
+      "supportsZh": "作为国际规则包持续更新时的官方资料入口；不把资料入口本身解释为单张卡的触发文本或时序裁定。"
+    },
+    {
+      "title": "Play! Pokémon Rules & Resources",
+      "url": "https://www.pokemon.com/us/play-pokemon/about/card-dex/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official resources index, retrieved 2026-10-04",
+      "verification": "The official resource index lists the Pokémon TCG Rulebook, Tournament Rules Handbook, errata and banned-card list.",
+      "supportsZh": "确认模组应以官方规则书、赛事手册、勘误和官方卡文为优先；不以PTCG Live或社区转录代替。"
+    },
+    {
+      "title": "Pokémon TCG Rulebook — current English link",
+      "url": "https://tcg.pokemon.com/assets/img/global/tcg-rulebook/ME02_Web_Rulebook_en-us_HiRes.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English rulebook link cited by an official Pokémon forum resource post",
+      "verification": "The exact publication and effective dates were not independently verified in this increment.",
+      "supportsZh": "用于保持规则书来源可追溯；本轮不从规则书推断一个泛用的ON_CARD_PLAYED官方规则。"
+    }
+  ],
+  "retrievalLimitations": [
+    "The generic ON_CARD_PLAYED policy is a data-modeling interface, not a claim that the official rulebook defines a universal card-play trigger.",
+    "Every real-card listener still requires a separately traceable official card text and timing audit.",
+    "No PTCG Live behavior, Japanese, Asian, Pocket or community source is treated as international rules authority."
+  ],
+  "implementationLimits": [
+    "The server emits the event only after a completed from-hand Basic Pokémon, Evolution, manual Energy or Trainer play reaches its final resulting zone.",
+    "Effect-mediated movement from deck, discard pile or another zone is not misclassified as a hand-play event.",
+    "Trigger ordering, source eligibility, hidden information, preflight and failures use the central server battle engine."
+  ]
+}

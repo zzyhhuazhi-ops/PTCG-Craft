@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "version": "deck-evolution-v1",
+  "checkedDate": "2026-10-07",
+  "implementationVersion": "0.6.7-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Pokémon Trading Card Game Rules — Scarlet & Violet Rulebook（evolving a Pokémon）",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/pal_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English rulebook PDF; checked 2026-10-07",
+      "supportsZh": "进化后的宝可梦保留伤害指示物和附着的卡，特殊状态和招式施加的效果消失。"
+    },
+    {
+      "title": "Gible（Rainier 卡号 sm5_en_096，招式 Ascension）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm5/96/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-07 (pokemon.com page blocked automated reading)",
+      "supportsZh": "“Search your deck for a card that evolves from this Pokémon and put it onto this Pokémon to evolve it. Then, shuffle your deck.”：从牌库找 1 张能从这只宝可梦进化的卡，放到它身上进化，然后洗牌。"
+    },
+    {
+      "title": "Cosmog（Rainier 卡号 sm12_en_099，招式 Ascension）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm12/99/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-07 (pokemon.com page blocked automated reading)",
+      "supportsZh": "同一写法。“a card that evolves from this Pokémon” 按卡名判断（Cosmog → Cosmoem），任何同名进化卡都可以。"
+    },
+    {
+      "title": "Phantump（Rainier 卡号 xy9_en_064，招式 Ascension）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/xy9/64/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-07 (pokemon.com page blocked automated reading)",
+      "supportsZh": "旧写法 “Search your deck for a card that evolves from this Pokémon and put it onto this Pokémon. (This counts as evolving this Pokémon.) Shuffle your deck afterward.”，意思相同。"
+    }
+  ],
+  "dataContractZh": "search_deck 新增目的地 destination EVOLVE_SELF：只接受 amount 1、minimum 0、card_category POKEMON、destination（检索特定条件的卡可以找不到，所以 minimum 必须为 0）；哪张卡“能从这只宝可梦进化”不写在数据里，由服务器判断。只能由宝可梦自己的招式（AFTER_ATTACK）或主动特性使用；训练家、伤害前、自动触发特性都拒绝。",
+  "serverAuthorityZh": "服务器只把牌库里能从“这只宝可梦”（效果来源，按卡名进化检查，CARD_EFFECT_ALL_TIMING）进化的卡作为候选，选牌只发给使用者；确认后原地进化（宝可梦身份不变，伤害与附着的卡保留，特殊状态清除），然后洗牌。卡是从牌库放上去的，只触发“进化时”事件，不触发“从手牌打出”事件。可以不选；没有候选时不等待选择，直接洗牌。这只宝可梦已离场时这一步不产生作用。",
+  "limitations": [
+    "带额外条件或连在别的效果后面的写法（“If you go first, you can use this attack during your first turn.”、“Switch this Pokémon … If you do, search your deck …”、“If you have any {D} Pokémon on your Bench, …”）不在本组件内。",
+    "进化时点沿用模组已有的卡牌效果进化许可 CARD_EFFECT_ALL_TIMING（不受第一回合、本回合刚上场、本回合已进化的限制）；如有官方裁定与此不同再调整。",
+    "特性中由事件触发的写法（如附能时、其他宝可梦进化时）不支持：自动特性不能请求选牌。"
+  ]
+}

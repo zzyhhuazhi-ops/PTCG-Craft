@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-14",
+  "scope": "One actual Ditto attack enabled; manual SD100 Dummy Doll physical-card protection corrected.",
+  "source": "Exact Rainier component text, stable card IDs, primary rule evidence and actual server regressions.",
+  "ruleReferences": [
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50705/regu/all",
+      "usedFor": "Printed new Ditto exchanges one deck Pokemon on heads, retaining state; physical old card is returned and deck shuffled."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%A1%E3%82%BF%E3%83%A2%E3%83%B3&regulation_faq_main_item1=all",
+      "usedFor": "Ditto cannot select an Item Fossil or Hero Spirit Palafin ex. Original prior attacking species remains Ditto, not the replacement Ancient Pokemon."
+    },
+    {
+      "url": "https://www.pokemon-card.com/assets/document/advanced_manual.pdf",
+      "usedFor": "Ver3.4 D19 p50: inherited same-Ability usage and separate new Ability usage. E19 pp60-61: inspected failed deck searches still shuffle; conditional tails does not inspect/shuffle (inference from card and general rule). C17 p34: applicable attack-effect protection prevents the Pokemon effect, while inspected search still shuffles."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%82%A4%E3%83%AB%E3%82%AB%E3%83%9E%E3%83%B3&regulation_faq_main_item1=all",
+      "usedFor": "Analogous Zero to Hero exchanges the top Palafin card, retaining Finizen underneath. Retaining lower cards for an evolved copier of Ditto is an inference from the same card-exchange mechanism."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%8B%E3%83%B3%E3%82%B8%E3%83%A3%E3%81%94%E3%81%A3%E3%81%93",
+      "usedFor": "Dummy Doll protection is tied to the original physical Mimikyu V card and does not carry to a replacing card, even another Mimikyu V. Position changes of the same card do not clear it."
+    }
+  ],
+  "evidence": [
+    {
+      "cardId": "me5-5_en_115",
+      "component": "attack",
+      "name": "Surprisingly Transform",
+      "textEn": "Flip a coin. If heads, search your deck for a Pokémon and switch it with this Pokémon. Any attached cards, damage counters, Special Conditions, turns in play, and any other effects remain on the new Pokémon. If you switched a Pokémon in this way, put this card into your deck. Then, shuffle your deck.",
+      "textZh": "抛掷1次硬币，如果为正面，则选择自己牌库中的1张宝可梦，与这只宝可梦互换（放于其身上的卡牌、伤害指示物、特殊状态、效果等会全部继承）。如果互换了的话，则将这张卡牌放回牌库。并重洗牌库。",
+      "mapping": {
+        "rules": [
+          "deck-pokemon-state-replacement"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "coin_flip",
+                "flips": 1,
+                "heads": [
+                  {
+                    "type": "replace_pokemon_from_deck",
+                    "target": "SELF",
+                    "amount": 1,
+                    "minimum": 0,
+                    "card_category": "POKEMON",
+                    "preserve_state": "ALL",
+                    "return_old_card": "DECK_SHUFFLED"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    }
+  ],
+  "manualRuleCorrections": [
+    {
+      "cardId": "sd100_cn_197",
+      "ability": "dummy-doll",
+      "change": "Explicit bound_to_top_card=true; same-card switching retains protection, physical replacement removes it, ordinary equal protection remains independently inherited, original duration unchanged."
+    }
+  ]
+}

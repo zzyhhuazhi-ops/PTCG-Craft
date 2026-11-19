@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "version": "before-attack-public-selection-v1",
+  "checkedDate": "2026-10-04",
+  "implementationVersion": "0.6.3-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Pokémon Trading Card Game Rules — XY Primal Clash Rulebook",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/xy4-rulebook-en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English historical rulebook; official search-index excerpt checked 2026-10-04",
+      "supportsZh": "完整攻击步骤先宣告攻击，再作攻击要求的选择，然后支付／执行攻击要求及应用效果。规则书以“选择一只对方备战宝可梦”为攻击选择示例。"
+    },
+    {
+      "title": "Nincada — Platinum—Supreme Victors 117",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/pl3/117",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; indexed text checked 2026-10-04",
+      "supportsZh": "作为机制实例：攻击可选择一只对方备战宝可梦，再对已选择对象造成攻击伤害；备战伤害不适用弱点和抵抗。"
+    }
+  ],
+  "dataContractZh": "BEFORE_ATTACK 中的旧式 SELECT_OWN_POKEMON 或 SELECT_OPPONENT_POKEMON 由攻击宣告绑定为一个独立公开目标；AFTER_ATTACK 中的每个旧式 SELECT 由前一步完成后新发行的服务器选择步骤绑定，可连续选择不同阵营的公开目标。两者都不与攻击本身的备战伤害目标或 select_pokemon 容器复用参数。",
+  "serverAuthorityZh": "客户端仅能点击服务器提供的公开场上卡牌锚点。服务器在费用、混乱随机数、伤害或弃能之前校验伤害前目标的必要性、所属方、当前在场状态和完整三阶段程序；伤害后目标必须由当前攻击方在伤害检查点之后重新选择，不能通过攻击宣告伪造。",
+  "limitations": [
+    "本轮接入攻击伤害前单个旧式公开 SELECT 目标，以及伤害后逐步由服务器新签发的旧式公开 SELECT 目标；独立 select_pokemon 容器继续使用已有逐步服务器选择续接。",
+    "伤害前 return_to_hand 或 shuffle_into_deck 仍明确拒绝，因为攻击者／受击者离场后的重新绑定、替补和中止攻击时序尚未完成核验。",
+    "不因通用语义自动启用任何真实卡；攻击文字、费用、目标范围、时序、合法性和关联效果仍须逐卡审核。",
+    "未将日本、亚洲、Pokémon TCG Pocket、PTCG Live 行为或社区帖混入国际规则包。"
+  ]
+}

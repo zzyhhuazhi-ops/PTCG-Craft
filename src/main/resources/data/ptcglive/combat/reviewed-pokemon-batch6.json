@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "dataVersion": "2026-11-05",
+  "cards": [
+    {
+      "id": "swsh10_en_010",
+      "kind": "POKEMON",
+      "hitPoints": 90,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "sm12_en_013",
+      "weakness": {
+        "type": "FIRE",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Kricketune",
+      "evolvesFromName": "Kricketot",
+      "pokemonType": "GRASS",
+      "attacks": [
+        {
+          "id": "slash",
+          "nameZh": "劈开",
+          "energyCost": {
+            "GRASS": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 50,
+          "damageType": "GRASS",
+          "effectSupport": "SUPPORTED"
+        }
+      ],
+      "abilities": [
+        {
+          "id": "swelling-tune",
+          "nameZh": "弥漫旋律",
+          "kind": "PASSIVE",
+          "effects": [
+            {
+              "type": "hit_points_modifier",
+              "target": "ALL_OWN_POKEMON",
+              "amount": 40,
+              "nonstack_group": "swelling-tune",
+              "conditions": [
+                {
+                  "type": "IS_TYPE",
+                  "target": "SELF",
+                  "pokemon_type": "GRASS"
+                },
+                {
+                  "type": "NOT",
+                  "conditions": [
+                    {
+                      "type": "NAME_EQUALS",
+                      "target": "SELF",
+                      "value": "Kricketune"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "swsh10_en_099",
+      "kind": "POKEMON",
+      "hitPoints": 270,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "swsh10_en_098",
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Darkrai VSTAR",
+      "evolvesFromName": "Darkrai V",
+      "pokemonType": "DARKNESS",
+      "attacks": [
+        {
+          "id": "dark-pulse",
+          "nameZh": "恶之波动",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 30,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "damage_per_energy",
+              "target": "ALL_OWN_POKEMON",
+              "energy_type": "DARKNESS",
+              "amount": 30
+            }
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "id": "ability-star-abyss",
+          "nameZh": "星耀深渊",
+          "kind": "ACTIVATED_ONCE_PER_GAME",
+          "effects": [
+            {
+              "type": "search_discard_pile",
+              "target": "DISCARD",
+              "amount": 2,
+              "minimum": 1,
+              "card_category": "TRAINER",
+              "trainer_category": "ITEM",
+              "destination": "HAND"
+            }
+          ],
+          "usageLimit": {
+            "group": "vstar-power",
+            "period": "GAME"
+          },
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1260 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-13",
+  "scope": "40 newly recognized components, 37 fully supported cards. Prior supported programs and metadata unchanged.",
+  "source": "Rainier English card text included verbatim per component; conversion input matched by stable card ID.",
+  "ruleReference": {
+    "url": "https://www.pokemon-card.com/assets/document/advanced_manual.pdf",
+    "usedFor": "General damage/Weakness order, Bench damage and attack effects, Energy units, KO checks and effect source timing. Card-specific text is retained below."
+  },
+  "evidence": [
+    {
+      "cardId": "me1_en_024",
+      "component": "ability",
+      "name": "Intimidating Fang",
+      "textEn": "As long as this Pokémon is in the Active Spot, attacks used by your opponent's Active Pokémon do 30 less damage <i>(before applying Weakness and Resistance)</i>.",
+      "textZh": "只要这只宝可梦在战斗场上，对手战斗宝可梦所使用的招式的伤害「-30」<i>[在计算弱点、抗性之前]</i>。",
+      "mapping": {
+        "rules": [
+          "ability-active-source-opponent-attack-reduction"
+        ],
+        "fields": {
+          "abilityKind": "PASSIVE"
+        },
+        "program": [
+          {
+            "type": "attack_damage_modifier",
+            "target": "OPPONENT_ACTIVE",
+            "amount": -30,
+            "direction": "DEALT",
+            "source_active_only": true
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me2-5_en_198",
+      "component": "trainer",
+      "name": null,
+      "textEn": "Search your deck for a Pokémon that doesn't have a Rule Box, reveal it, and put it into your hand. Then, shuffle your deck. <i>(Pokémon {ex}, Pokémon <sprite name=\"v_atk\" tint=1>, etc. have Rule Boxes.)</i>",
+      "textZh": "选择自己牌库中的1张宝可梦（除「拥有规则的宝可梦」外），在给对手看过之后加入手牌。<i>[宝可梦{ex}、宝可梦<sprite name=\"v_atk\" tint=1>等即为拥有规则的宝可梦。]</i>并重洗牌库。",
+      "mapping": {
+        "rules": [
+          "trainer-search-no-rule-box-pokemon"
+        ],
+        "fields": {},
+        "program": [
+          {
+            "type": "search_deck",
+            "target": "DECK",
+            "amount": 1,
+            "minimum": 0,
+            "card_category": "POKEMON",
+            "rule_box": "NONE",
+            "reveal": true
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me3_en_081",
+      "component": "trainer",
+      "name": null,
+      "textEn": "Search your deck for a Pokémon that doesn't have a Rule Box, reveal it, and put it into your hand. Then, shuffle your deck. <i>(Pokémon {ex}, Pokémon <sprite name=\"v_atk\" tint=1>, etc. have Rule Boxes.)</i>",
+      "textZh": "选择自己牌库中的1张宝可梦（除「拥有规则的宝可梦」外），在给对手看过之后加入手牌。<i>[宝可梦{ex}、宝可梦<sprite name=\"v_atk\" tint=1>等即为拥有规则的宝可梦。]</i>并重洗牌库。",
+      "mapping": {
+        "rules": [
+          "trainer-search-no-rule-box-pokemon"
+        ],
+        "fields": {},
+        "program": [
+          {
+            "type": "search_deck",
+            "target": "DECK",
+            "amount": 1,
+            "minimum": 0,
+            "card_category": "POKEMON",
+            "rule_box": "NONE",
+            "reveal": true
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me3_en_113",
+      "component": "trainer",
+      "name": null,
+      "textEn": "Search your deck for a Pokémon that doesn't have a Rule Box, reveal it, and put it into your hand. Then, shuffle your deck. <i>(Pokémon {ex}, Pokémon <sprite name=\"v_atk\" tint=1>, etc. have Rule Boxes.)</i>",
+      "textZh": "选择自己牌库中的1张宝可梦（除「拥有规则的宝可梦」外），在给对手看过之后加入手牌。<i>[宝可梦{ex}、宝可梦<sprite name=\"v_atk\" tint=1>等即为拥有规则的宝可梦。]</i>并重洗牌库。",
+      "mapping": {
+        "rules": [
+          "trainer-search-no-rule-box-pokemon"
+        ],
+        "fields": {},
+        "program": [
+          {
+            "type": "search_deck",
+            "target": "DECK",
+            "amount": 1,
+            "minimum": 0,
+            "card_category": "POKEMON",
+            "rule_box": "NONE",
+            "reveal": true
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_002",
+      "component": "ability",
+      "name": "Scale Up",
+      "textEn": "If this Pokémon has 6 or more <sprite name=\"grass\" tint=1> Energy attached, it gets +250 HP.",
+      "textZh": "如果这只宝可梦身上附着了6个及以上<sprite name=\"grass\" tint=1>能量的话，则这只宝可梦的最大HP「+250」。",
+      "mapping": {
+        "rules": [
+          "ability-typed-energy-hp-threshold"
+        ],
+        "fields": {
+          "abilityKind": "PASSIVE"
+        },
+        "program": [
+          {
+            "type": "hit_points_modifier",
+            "target": "SELF",
+            "amount": 250,
+            "minimum_energy_units": 6,
+            "energy_type": "GRASS"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_021",
+      "component": "attack",
+      "name": "Stealthy Slash",
+      "textEn": "This attack does 30 damage to 1 of your opponent's Pokémon for each damage counter on that Pokémon. <i>(Don't apply Weakness and Resistance for Benched Pokémon.)</i>",
+      "textZh": "给对手的1只宝可梦造成其身上放置的伤害指示物数量×30伤害。<i>[备战宝可梦不计算弱点、抗性。]</i>",
+      "mapping": {
+        "rules": [
+          "selected-target-counter-damage"
+        ],
+        "fields": {
+          "baseDamage": 0,
+          "damageTarget": "OPPONENT_ANY",
+          "targetCount": 1,
+          "damageModifiers": [
+            {
+              "basis": "DEFENDER_DAMAGE_COUNTERS",
+              "amountPerUnit": 30
+            }
+          ]
+        },
+        "program": [],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_028",
+      "component": "ability",
+      "name": "Lonely Gaze",
+      "textEn": "As long as this Pokémon is in the Active Spot, attacks used by your opponent's Active Pokémon do 20 less damage <i>(before applying Weakness and Resistance)</i>.",
+      "textZh": "只要这只宝可梦在战斗场上，对手战斗宝可梦所使用的招式的伤害「-20」<i>[在计算弱点、抗性之前]</i>。",
+      "mapping": {
+        "rules": [
+          "ability-active-source-opponent-attack-reduction"
+        ],
+        "fields": {
+          "abilityKind": "PASSIVE"
+        },
+        "program": [
+          {
+            "type": "attack_damage_modifier",
+            "target": "OPPONENT_ACTIVE",
+            "amount": -20,
+            "direction": "DEALT",
+            "source_active_only": true
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_033",
+      "component": "ability",
+      "name": "Keep Hidden",
+      "textEn": "As long as this Pokémon is on your Bench, prevent all damage from and effects of attacks from your opponent's Pokémon done to this Pokémon.",
+      "textZh": "只要这只宝可梦在备战区，就不会受到对手宝可梦的招式的伤害和效果影响。",
+      "mapping": {
+        "rules": [
+          "ability-benched-self-full-guard"
+        ],
+        "fields": {
+          "abilityKind": "PASSIVE"
+        },
+        "program": [
+          {
+            "type": "passive_attack_guard",
+            "target": "SELF",
+            "mode": "PREVENT",
+            "conditions": [
+              {
+                "type": "NOT",
+                "conditions": [
+                  {
+                    "type": "IS_ACTIVE",
+                    "target": "SELF"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "passive_effect_guard",
+            "target": "SELF",
+            "source": "ATTACK",
+            "from": "OPPONENT",
+            "scope": "EFFECTS_ONLY",
+            "conditions": [
+              {
+                "type": "NOT",
+                "conditions": [
+                  {
+                    "type": "IS_ACTIVE",
+                    "target": "SELF"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_037",
+      "component": "attack",
+      "name": "Energized Tail",
+      "textEn": "Search your deck for an Energy card, reveal it, and put it into your hand. Then, shuffle your deck.",
+      "textZh": "选择自己牌库中的1张能量，在给对手看过之后加入手牌。并重洗牌库。",
+      "mapping": {
+        "rules": [
+          "search-one-energy-alias"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "search_deck",
+                "target": "DECK",
+                "amount": 1,
+                "minimum": 0,
+                "card_category": "ENERGY",
+                "reveal": true
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_051",
+      "component": "attack",
+      "name": "Lightning Crash",
+      "textEn": "Discard all <sprite name=\"lightning\" tint=1> Energy from this Pokémon, and this attack does 90 damage to 1 of your opponent's Pokémon. <i>(Don't apply Weakness and Resistance for Benched Pokémon.)</i>",
+      "textZh": "将这只宝可梦身上附着的<sprite name=\"lightning\" tint=1>能量全部放于弃牌区，给对手的1只宝可梦造成90伤害。<i>[备战宝可梦不计算弱点、抗性。]</i>",
+      "mapping": {
+        "rules": [
+          "typed-discard-any-damage"
+        ],
+        "fields": {
+          "baseDamage": 90,
+          "damageTarget": "OPPONENT_ANY",
+          "targetCount": 1
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "discard_energy",
+                "target": "SELF",
+                "all": true,
+                "energy_type": "LIGHTNING"
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_053",
+      "component": "attack",
+      "name": "Pika-Pika Parade",
+      "textEn": "Search your deck for any number of Basic Pokémon and put them onto your Bench. Then, shuffle your deck.",
+      "textZh": "选择自己牌库中任意数量的基础宝可梦，放于备战区。并重洗牌库。",
+      "mapping": {
+        "rules": [
+          "any-number-basic-bench"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "search_deck",
+                "target": "DECK",
+                "amount": 60,
+                "minimum": 0,
+                "card_category": "POKEMON",
+                "basic_pokemon_only": true,
+                "destination": "BENCH"
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_090",
+      "component": "ability",
+      "name": "Fainting Spell",
+      "textEn": "If this Pokémon is Knocked Out by damage from an attack from your opponent's Pokémon, flip a coin. If heads, the Attacking Pokémon is Knocked Out.",
+      "textZh": "当这只宝可梦受到对手宝可梦的招式的伤害而昏厥时，自己抛掷1次硬币。如果为正面，则令使用了招式的宝可梦昏厥。",
+      "mapping": {
+        "rules": [
+          "ability-coin-knockout-attacker"
+        ],
+        "fields": {
+          "abilityKind": "TRIGGERED",
+          "abilityEventPolicy": {
+            "trigger": "ON_KNOCKOUT",
+            "cause": "OPPONENT_ATTACK_DAMAGE",
+            "watch": "SELF",
+            "activeOnly": false,
+            "optional": false,
+            "usage": "NONE"
+          },
+          "abilityTriggerConditions": []
+        },
+        "program": [
+          {
+            "type": "coin_flip",
+            "flips": 1,
+            "heads": [
+              {
+                "type": "knock_out",
+                "target": "ATTACKING_POKEMON"
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_090",
+      "component": "attack",
+      "name": "Chaotic Pain",
+      "textEn": "Place 13 damage counters on 1 of your opponent's Pokémon.",
+      "textZh": "给对手的1只宝可梦身上放置13个伤害指示物。",
+      "mapping": {
+        "rules": [
+          "place-one-opponent-counters"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "damage_counter",
+                "target": "SELECT_OPPONENT_POKEMON",
+                "amount": 13
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_094",
+      "component": "attack",
+      "name": "Nitpick",
+      "textEn": "Your opponent shuffles their hand into their deck and draws 4 cards.",
+      "textZh": "对手将其手牌全部放回牌库并重洗牌库。然后，对手从牌库上方抽取4张卡牌。",
+      "mapping": {
+        "rules": [
+          "opponent-shuffle-draw-alias"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "shuffle_hand",
+                "target": "OPPONENT_ACTIVE"
+              },
+              {
+                "type": "draw",
+                "target": "OPPONENT_ACTIVE",
+                "amount": 4
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_096",
+      "component": "ability",
+      "name": "Nighttime Byway",
+      "textEn": "As long as this Pokémon is on your Bench, your Active Pokémon's Retreat Cost is <sprite name=\"colorless\" tint=1><sprite name=\"colorless\" tint=1> less.",
+      "textZh": "只要这只宝可梦在备战区，自己的战斗宝可梦撤退所需能量减少<sprite name=\"colorless\" tint=1><sprite name=\"colorless\" tint=1>。",
+      "mapping": {
+        "rules": [
+          "ability-benched-source-retreat-reduction"
+        ],
+        "fields": {
+          "abilityKind": "PASSIVE"
+        },
+        "program": [
+          {
+            "type": "retreat_cost_modifier",
+            "target": "OWN_ACTIVE",
+            "amount": -2,
+            "source_benched_only": true
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_123",
+      "component": "attack",
+      "name": "Swirling Resentment",
+      "textEn": "Place damage counters on your opponent's Active Pokémon until its remaining HP is 50.",
+      "textZh": "在对手的战斗宝可梦身上放置伤害指示物，直到其剩余HP变为「50」为止。",
+      "mapping": {
+        "rules": [
+          "place-remaining-hp-counters"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "damage_counter",
+                "target": "OPPONENT_ACTIVE",
+                "remaining_hp": 50
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_126",
+      "component": "trainer",
+      "name": null,
+      "textEn": "Search your deck for a Pokémon that doesn't have a Rule Box, reveal it, and put it into your hand. Then, shuffle your deck. <i>(Pokémon {ex}, Pokémon <sprite name=\"v_atk\" tint=1>, etc. have Rule Boxes.)</i>",
+      "textZh": "选择自己牌库中的1张宝可梦（除「拥有规则的宝可梦」外），在给对手看过之后加入手牌。<i>[宝可梦{ex}、宝可梦<sprite name=\"v_atk\" tint=1>等即为拥有规则的宝可梦。]</i>并重洗牌库。",
+      "mapping": {
+        "rules": [
+          "trainer-search-no-rule-box-pokemon"
+        ],
+        "fields": {},
+        "program": [
+          {
+            "type": "search_deck",
+            "target": "DECK",
+            "amount": 1,
+            "minimum": 0,
+            "card_category": "POKEMON",
+            "rule_box": "NONE",
+            "reveal": true
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_129",
+      "component": "ability",
+      "name": "Scale Up",
+      "textEn": "If this Pokémon has 6 or more <sprite name=\"grass\" tint=1> Energy attached, it gets +250 HP.",
+      "textZh": "如果这只宝可梦身上附着了6个及以上<sprite name=\"grass\" tint=1>能量的话，则这只宝可梦的最大HP「+250」。",
+      "mapping": {
+        "rules": [
+          "ability-typed-energy-hp-threshold"
+        ],
+        "fields": {
+          "abilityKind": "PASSIVE"
+        },
+        "program": [
+          {
+            "type": "hit_points_modifier",
+            "target": "SELF",
+            "amount": 250,
+            "minimum_energy_units": 6,
+            "energy_type": "GRASS"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_140",
+      "component": "attack",
+      "name": "Nitpick",
+      "textEn": "Your opponent shuffles their hand into their deck and draws 4 cards.",
+      "textZh": "对手将其手牌全部放回牌库并重洗牌库。然后，对手从牌库上方抽取4张卡牌。",
+      "mapping": {
+        "rules": [
+          "opponent-shuffle-draw-alias"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "shuffle_hand",
+                "target": "OPPONENT_ACTIVE"
+              },
+              {
+                "type": "draw",
+                "target": "OPPONENT_ACTIVE",
+                "amount": 4
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_148",
+      "component": "attack",
+      "name": "Stealthy Slash",
+      "textEn": "This attack does 30 damage to 1 of your opponent's Pokémon for each damage counter on that Pokémon. <i>(Don't apply Weakness and Resistance for Benched Pokémon.)</i>",
+      "textZh": "给对手的1只宝可梦造成其身上放置的伤害指示物数量×30伤害。<i>[备战宝可梦不计算弱点、抗性。]</i>",
+      "mapping": {
+        "rules": [
+          "selected-target-counter-damage"
+        ],
+        "fields": {
+          "baseDamage": 0,
+          "damageTarget": "OPPONENT_ANY",
+          "targetCount": 1,
+          "damageModifiers": [
+            {
+              "basis": "DEFENDER_DAMAGE_COUNTERS",
+              "amountPerUnit": 30
+            }
+          ]
+        },
+        "program": [],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_149",
+      "component": "attack",
+      "name": "Pika-Pika Parade",
+      "textEn": "Search your deck for any number of Basic Pokémon and put them onto your Bench. Then, shuffle your deck.",
+      "textZh": "选择自己牌库中任意数量的基础宝可梦，放于备战区。并重洗牌库。",
+      "mapping": {
+        "rules": [
+          "any-number-basic-bench"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "search_deck",
+                "target": "DECK",
+                "amount": 60,
+                "minimum": 0,
+                "card_category": "POKEMON",
+                "basic_pokemon_only": true,
+                "destination": "BENCH"
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_154",
+      "component": "ability",
+      "name": "Fainting Spell",
+      "textEn": "If this Pokémon is Knocked Out by damage from an attack from your opponent's Pokémon, flip a coin. If heads, the Attacking Pokémon is Knocked Out.",
+      "textZh": "当这只宝可梦受到对手宝可梦的招式的伤害而昏厥时，自己抛掷1次硬币。如果为正面，则令使用了招式的宝可梦昏厥。",
+      "mapping": {
+        "rules": [
+          "ability-coin-knockout-attacker"
+        ],
+        "fields": {
+          "abilityKind": "TRIGGERED",
+          "abilityEventPolicy": {
+            "trigger": "ON_KNOCKOUT",
+            "cause": "OPPONENT_ATTACK_DAMAGE",
+            "watch": "SELF",
+            "activeOnly": false,
+            "optional": false,
+            "usage": "NONE"
+          },
+          "abilityTriggerConditions": []
+        },
+        "program": [
+          {
+            "type": "coin_flip",
+            "flips": 1,
+            "heads": [
+              {
+                "type": "knock_out",
+                "target": "ATTACKING_POKEMON"
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_154",
+      "component": "attack",
+      "name": "Chaotic Pain",
+      "textEn": "Place 13 damage counters on 1 of your opponent's Pokémon.",
+      "textZh": "给对手的1只宝可梦身上放置13个伤害指示物。",
+      "mapping": {
+        "rules": [
+          "place-one-opponent-counters"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "damage_counter",
+                "target": "SELECT_OPPONENT_POKEMON",
+                "amount": 13
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "mebsp_en_094",
+      "component": "ability",
+      "name": "Scale Up",
+      "textEn": "If this Pokémon has 6 or more <sprite name=\"grass\" tint=1> Energy attached, it gets +250 HP.",
+      "textZh": "如果这只宝可梦身上附着了6个及以上<sprite name=\"grass\" tint=1>能量的话，则这只宝可梦的最大HP「+250」。",
+      "mapping": {
+        "rules": [
+          "ability-typed-energy-hp-threshold"
+        ],
+        "fields": {
+          "abilityKind": "PASSIVE"
+        },
+        "program": [
+          {
+            "type": "hit_points_modifier",
+            "target": "SELF",
+            "amount": 250,
+            "minimum_energy_units": 6,
+            "energy_type": "GRASS"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "mebsp_en_099",
+      "component": "attack",
+      "name": "Stealthy Slash",
+      "textEn": "This attack does 30 damage to 1 of your opponent's Pokémon for each damage counter on that Pokémon. <i>(Don't apply Weakness and Resistance for Benched Pokémon.)</i>",
+      "textZh": "给对手的1只宝可梦造成其身上放置的伤害指示物数量×30伤害。<i>[备战宝可梦不计算弱点、抗性。]</i>",
+      "mapping": {
+        "rules": [
+          "selected-target-counter-damage"
+        ],
+        "fields": {
+          "baseDamage": 0,
+          "damageTarget": "OPPONENT_ANY",
+          "targetCount": 1,
+          "damageModifiers": [
+            {
+              "basis": "DEFENDER_DAMAGE_COUNTERS",
+              "amountPerUnit": 30
+            }
+          ]
+        },
+        "program": [],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "sm1_en_098",
+      "component": "attack",
+      "name": "Devastating Wind",
+      "textEn": "Your opponent shuffles their hand into their deck and draws 3 cards.",
+      "textZh": "对手将其所有的手牌放回牌库并重洗牌库。然后，对手从牌库上方抽取3张卡牌。",
+      "mapping": {
+        "rules": [
+          "opponent-shuffle-draw-alias"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "shuffle_hand",
+                "target": "OPPONENT_ACTIVE"
+              },
+              {
+                "type": "draw",
+                "target": "OPPONENT_ACTIVE",
+                "amount": 3
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "sm11_en_132",
+      "component": "attack",
+      "name": "Nocturnal Maneuvers GX",
+      "textEn": "Search your deck for any number of Basic Pokémon and put them onto your Bench. Then, shuffle your deck. <i>(You can't use more than 1 <sprite name=\"gx_atk\" tint=1> attack in a game.)</i>",
+      "textZh": "将自己牌库中任意数量的基础宝可梦，放于备战区。并重洗牌库。<i>[对战中，己方的<sprite name=\"gx_atk\" tint=1>招式只能使用1次。]</i>",
+      "mapping": {
+        "rules": [
+          "any-number-basic-bench"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "search_deck",
+                "target": "DECK",
+                "amount": 60,
+                "minimum": 0,
+                "card_category": "POKEMON",
+                "basic_pokemon_only": true,
+                "destination": "BENCH"
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "sm12_en_182",
+      "component": "ability",
+      "name": "Carry and Run",
+      "textEn": "As long as this Pokémon is on your Bench, your Active Pokémon's Retreat Cost is <sprite name=\"colorless\" tint=1><sprite name=\"colorless\" tint=1> less.",
+      "textZh": "只要这只宝可梦在备战区，自己的战斗宝可梦撤退所需能量，减少<sprite name=\"colorless\" tint=1><sprite name=\"colorless\" tint=1>。",
+      "mapping": {
+        "rules": [
+          "ability-benched-source-retreat-reduction"
+        ],
+        "fields": {
+          "abilityKind": "PASSIVE"
+        },
+        "program": [
+          {
+            "type": "retreat_cost_modifier",
+            "target": "OWN_ACTIVE",
+            "amount": -2,
+            "source_benched_only": true
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "sv2_en_081",
+      "component": "attack",
+      "name": "Devastating Wind",
+      "textEn": "Your opponent shuffles their hand into their deck and draws 4 cards.",
+      "textZh": "对手将其所有的手牌放回牌库并重洗牌库。然后，对手从牌库上方抽取4张卡牌。",
+      "mapping": {
+        "rules": [
+          "opponent-shuffle-draw-alias"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "shuffle_hand",
+                "target": "OPPONENT_ACTIVE"
+              },
+              {
+                "type": "draw",
+                "target": "OPPONENT_ACTIVE",
+                "amount": 4
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "sv3_en_030",
+      "component": "ability",
+      "name": "Pressure",
+      "textEn": "As long as this Pokémon is in the Active Spot, attacks used by your opponent's Active Pokémon do 20 less damage <i>(before applying Weakness and Resistance)</i>.",
+      "textZh": "只要这只宝可梦在战斗场上，对手战斗宝可梦使用的招式的伤害「-20」<i>[在计算弱点、抗性之前]</i>。",
+      "mapping": {
+        "rules": [
+          "ability-active-source-opponent-attack-reduction"
+        ],
+        "fields": {
+          "abilityKind": "PASSIVE"
+        },
+        "program": [
+          {
+            "type": "attack_damage_modifier",
+            "target": "OPPONENT_ACTIVE",
+            "amount": -20,
+            "direction": "DEALT",
+            "source_active_only": true
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "sv4-5_en_112",
+      "component": "ability",
+      "name": "Pressure",
+      "textEn": "As long as this Pokémon is in the Active Spot, attacks used by your opponent's Active Pokémon do 20 less damage <i>(before applying Weakness and Resistance)</i>.",
+      "textZh": "只要这只宝可梦在战斗场上，对手战斗宝可梦使用的招式的伤害「-20」<i>[在计算弱点、抗性之前]</i>。",
+      "mapping": {
+        "rules": [
+          "ability-active-source-opponent-attack-reduction"
+        ],
+        "fields": {
+          "abilityKind": "PASSIVE"
+        },
+        "program": [
+          {
+            "type": "attack_damage_modifier",
+            "target": "OPPONENT_ACTIVE",
+            "amount": -20,
+            "direction": "DEALT",
+            "source_active_only": true
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "sv4_en_035",
+      "component": "attack",
+      "name": "Drawup Power",
+      "textEn": "Search your deck for an Energy card, reveal it, and put it into your hand. Then, shuffle your deck.",
+      "textZh": "选择自己牌库中1张能量，在给对手看过之后，加入手牌。并重洗牌库。",
+      "mapping": {
+        "rules": [
+          "search-one-energy-alias"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "search_deck",
+                "target": "DECK",
+                "amount": 1,
+                "minimum": 0,
+                "card_category": "ENERGY",
+                "reveal": true
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "sv6_en_020",
+      "component": "ability",
+      "name": "Storehouse Hideaway",
+      "textEn": "As long as this Pokémon is on your Bench, prevent all damage from and effects of attacks from your opponent's Pokémon done to this Pokémon.",
+      "textZh": "只要这只宝可梦，处于备战区，就不会受到对手宝可梦的招式的伤害和效果影响。",
+      "mapping": {
+        "rules": [
+          "ability-benched-self-full-guard"
+        ],
+        "fields": {
+          "abilityKind": "PASSIVE"
+        },
+        "program": [
+          {
+            "type": "passive_attack_guard",
+            "target": "SELF",
+            "mode": "PREVENT",
+            "conditions": [
+              {
+                "type": "NOT",
+                "conditions": [
+                  {
+                    "type": "IS_ACTIVE",
+                    "target": "SELF"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "passive_effect_guard",
+            "target": "SELF",
+            "source": "ATTACK",
+            "from": "OPPONENT",
+            "scope": "EFFECTS_ONLY",
+            "conditions": [
+              {
+                "type": "NOT",
+                "conditions": [
+                  {
+                    "type": "IS_ACTIVE",
+                    "target": "SELF"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "sv6_en_171",
+      "component": "ability",
+      "name": "Storehouse Hideaway",
+      "textEn": "As long as this Pokémon is on your Bench, prevent all damage from and effects of attacks from your opponent's Pokémon done to this Pokémon.",
+      "textZh": "只要这只宝可梦，处于备战区，就不会受到对手宝可梦的招式的伤害和效果影响。",
+      "mapping": {
+        "rules": [
+          "ability-benched-self-full-guard"
+        ],
+        "fields": {
+          "abilityKind": "PASSIVE"
+        },
+        "program": [
+          {
+            "type": "passive_attack_guard",
+            "target": "SELF",
+            "mode": "PREVENT",
+            "conditions": [
+              {
+                "type": "NOT",
+                "conditions": [
+                  {
+                    "type": "IS_ACTIVE",
+                    "target": "SELF"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "passive_effect_guard",
+            "target": "SELF",
+            "source": "ATTACK",
+            "from": "OPPONENT",
+            "scope": "EFFECTS_ONLY",
+            "conditions": [
+              {
+                "type": "NOT",
+                "conditions": [
+                  {
+                    "type": "IS_ACTIVE",
+                    "target": "SELF"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "sv9_en_089",
+      "component": "ability",
+      "name": "Secret Forest Path",
+      "textEn": "As long as this Pokémon is on your Bench, your Active Pokémon's Retreat Cost is <sprite name=\"colorless\" tint=1><sprite name=\"colorless\" tint=1> less.",
+      "textZh": "只要这只宝可梦在备战区，自己的战斗宝可梦撤退所需能量，减少<sprite name=\"colorless\" tint=1><sprite name=\"colorless\" tint=1>。",
+      "mapping": {
+        "rules": [
+          "ability-benched-source-retreat-reduction"
+        ],
+        "fields": {
+          "abilityKind": "PASSIVE"
+        },
+        "program": [
+          {
+            "type": "retreat_cost_modifier",
+            "target": "OWN_ACTIVE",
+            "amount": -2,
+            "source_benched_only": true
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "sv10_en_048",
+      "component": "ability",
+      "name": "So Submerged",
+      "textEn": "As long as this Pokémon is on your Bench, prevent all damage from and effects of attacks from your opponent's Pokémon done to this Pokémon.",
+      "textZh": "只要这只宝可梦在备战区，就不会受到对手宝可梦的招式的伤害和效果影响。",
+      "mapping": {
+        "rules": [
+          "ability-benched-self-full-guard"
+        ],
+        "fields": {
+          "abilityKind": "PASSIVE"
+        },
+        "program": [
+          {
+            "type": "passive_attack_guard",
+            "target": "SELF",
+            "mode": "PREVENT",
+            "conditions": [
+              {
+                "type": "NOT",
+                "conditions": [
+                  {
+                    "type": "IS_ACTIVE",
+                    "target": "SELF"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "passive_effect_guard",
+            "target": "SELF",
+            "source": "ATTACK",
+            "from": "OPPONENT",
+            "scope": "EFFECTS_ONLY",
+            "conditions": [
+              {
+                "type": "NOT",
+                "conditions": [
+                  {
+                    "type": "IS_ACTIVE",
+                    "target": "SELF"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "swsh3_en_141",
+      "component": "attack",
+      "name": "Drawup Power",
+      "textEn": "Search your deck for an Energy card, reveal it, and put it into your hand. Then, shuffle your deck.",
+      "textZh": "选择自己牌库中1张能量，在给对手看过之后，加入手牌。并重洗牌库。",
+      "mapping": {
+        "rules": [
+          "search-one-energy-alias"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "search_deck",
+                "target": "DECK",
+                "amount": 1,
+                "minimum": 0,
+                "card_category": "ENERGY",
+                "reveal": true
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "swsh10_en_093",
+      "component": "ability",
+      "name": "Carry and Climb",
+      "textEn": "As long as this Pokémon is on your Bench, your Active Pokémon's Retreat Cost is <sprite name=\"colorless\" tint=1><sprite name=\"colorless\" tint=1> less.",
+      "textZh": "只要这只宝可梦在备战区，自己的战斗宝可梦撤退所需能量，减少<sprite name=\"colorless\" tint=1><sprite name=\"colorless\" tint=1>。",
+      "mapping": {
+        "rules": [
+          "ability-benched-source-retreat-reduction"
+        ],
+        "fields": {
+          "abilityKind": "PASSIVE"
+        },
+        "program": [
+          {
+            "type": "retreat_cost_modifier",
+            "target": "OWN_ACTIVE",
+            "amount": -2,
+            "source_benched_only": true
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "xy8_en_117",
+      "component": "ability",
+      "name": "Retreat Aid",
+      "textEn": "As long as this Pokémon is on your Bench, your Active Pokémon's Retreat Cost is <sprite name=\"colorless\" tint=1><sprite name=\"colorless\" tint=1> less.",
+      "textZh": "只要这只宝可梦在备战区，自己的战斗宝可梦撤退所需能量减少<sprite name=\"colorless\" tint=1><sprite name=\"colorless\" tint=1>。",
+      "mapping": {
+        "rules": [
+          "ability-benched-source-retreat-reduction"
+        ],
+        "fields": {
+          "abilityKind": "PASSIVE"
+        },
+        "program": [
+          {
+            "type": "retreat_cost_modifier",
+            "target": "OWN_ACTIVE",
+            "amount": -2,
+            "source_benched_only": true
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "xy9-5_en_056",
+      "component": "ability",
+      "name": "Retreat Aid",
+      "textEn": "As long as this Pokémon is on your Bench, your Active Pokémon's Retreat Cost is <sprite name=\"colorless\" tint=1><sprite name=\"colorless\" tint=1> less.",
+      "textZh": "只要这只宝可梦在备战区，自己的战斗宝可梦撤退所需能量减少<sprite name=\"colorless\" tint=1><sprite name=\"colorless\" tint=1>。",
+      "mapping": {
+        "rules": [
+          "ability-benched-source-retreat-reduction"
+        ],
+        "fields": {
+          "abilityKind": "PASSIVE"
+        },
+        "program": [
+          {
+            "type": "retreat_cost_modifier",
+            "target": "OWN_ACTIVE",
+            "amount": -2,
+            "source_benched_only": true
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    }
+  ]
+}

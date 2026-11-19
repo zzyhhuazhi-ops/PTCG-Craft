@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "version": "attack-stadium-discard-v1",
+  "checkedDate": "2026-10-07",
+  "implementationVersion": "0.6.7-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Regigigas — Sun & Moon Crimson Invasion 84/111（Giant Stomp）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm4/84/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-07 (pokemon.com page blocked automated reading)",
+      "supportsZh": "招式印刷伤害 160，卡文 “Discard any Stadium card in play.”：造成伤害后弃置场上的竞技场。新写法 “Discard a Stadium in play.”（Eternatus me2 69 等）意思相同。"
+    },
+    {
+      "title": "Pokémon Trading Card Game Rules — Scarlet & Violet Rulebook（attacks; doing as much of an effect as you can）",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/pal_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English rulebook PDF; checked 2026-10-07",
+      "supportsZh": "招式只要能支付能量就可以使用，招式文字中做不到的部分就不做，其余照常结算。所以场上没有竞技场时照样可以使用这个招式（印刷伤害照常），只是没有竞技场可弃。训练家卡则不同：整张卡完全没有效果时不能使用。"
+    }
+  ],
+  "dataContractZh": "discard_stadium 的数据格式不变（target SELF，无参数）。改动只在服务器结算：来源是招式时，场上没有竞技场不再让整个招式在宣告时被拒绝。",
+  "serverAuthorityZh": "服务器在执行这一步时检查当前场地：有就弃置到其主人的弃牌区，没有就跳过；训练家、特性来源仍要求场上有竞技场。",
+  "limitations": [
+    "“You may discard any Stadium card in play.”（可选）由转换工具写成 choice optional 包住 discard_stadium。"
+  ]
+}

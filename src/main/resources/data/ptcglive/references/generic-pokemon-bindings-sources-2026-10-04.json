@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "version": "generic-pokemon-bindings-v1",
+  "checkedDate": "2026-10-04",
+  "implementationVersion": "0.6.0-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Roserade — Diamond & Pearl Secret Wonders 23 official card page",
+      "url": "https://www.pokemon.com/uk/pokemon-tcg/pokemon-cards/series/dp7/23/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official card database entry",
+      "verification": "Previously recorded official-card reference; publication and effective dates remain unverified.",
+      "supportsZh": "先选择公开宝可梦、再对同一对象继续结算的通用对象绑定需求；本轮不启用该真实整卡。"
+    },
+    {
+      "title": "February 2026 Rule Book Updates — official Professor Program editorial",
+      "url": "https://professorprogram.pokemon.com/news/11473085",
+      "publishedDate": "2026-02-26",
+      "effectiveDate": null,
+      "documentVersion": "February 2026 editorial rule update",
+      "verification": "Existing project source snapshot; the effective date is retained as null because page wording is internally inconsistent.",
+      "supportsZh": "原始卡文须由服务器完成或暂停在服务器签发的选择步骤；客户端不能用重放消息改变已选择对象。"
+    }
+  ],
+  "retrievalLimitations": [
+    "No current official comprehensive last-known-information or every multi-target priority ruling was newly obtained.",
+    "No PTCG Live behavior or log is used as a rules authority.",
+    "No Japanese, Asian or community source is mixed into the international ruleset."
+  ],
+  "implementationLimits": [
+    "Supports named public Pokémon bindings for resumable Trainer and activated-Ability programs, in addition to the existing attack continuation bindings.",
+    "Each binding records server owner, instance identity and in-play entry sequence; an object that left play or re-entered is not substituted.",
+    "Automatic triggered effects, replacement effects and last-known-information predicates remain outside this capability and reject unsupported programs."
+  ]
+}

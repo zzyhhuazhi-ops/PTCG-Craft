@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "scope": "Newest-first ME5 Jynx and exact identical text on older Team Rocket Grimer. Artwork and true BREAK excluded.",
+  "ruleReferences": [
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50249/regu/all",
+      "facts": "Jynx100HP: Intense Kiss discards affected Pokemon and all attached cards at end of next opponent turn; Psy Bolt50 coin heads Paralysis."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%AB%E3%83%BC%E3%82%B8%E3%83%A5%E3%83%A9&regulation_faq_main_item1=all",
+      "facts": "Direct Intense Kiss FAQ: benching/evolution/devolution clears effect; simultaneous Leftovers and Kiss ordered by player whose turn is ending."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/47460",
+      "facts": "Team Rocket Grimer80HP, same complete delayed discard wording. Bilingual local costs DC. Do not alter existing catalog Chinese name."
+    },
+    {
+      "url": "https://www.pokemon-card.com/assets/document/advanced_manual.pdf",
+      "facts": "E-21 explicitly cites Corrosive Sludge as end-of-turn before checkup; simultaneous effects ordered by ending player."
+    }
+  ],
+  "evidence": [
+    {
+      "cardId": "me5_en_032",
+      "name": "Intense Kiss",
+      "textEn": "At the end of your opponent's next turn, discard the Defending Pokémon and all attached cards.",
+      "textZh": "在下一个对手的回合结束时，将受到这个招式影响的宝可梦以及放于其身上的全部的卡牌放于弃牌区。",
+      "triggers": [
+        {
+          "trigger": "AFTER_ATTACK",
+          "effects": [
+            {
+              "type": "delayed_effect",
+              "target": "OPPONENT_ACTIVE",
+              "when": "OPPONENT_NEXT_TURN_END",
+              "clear": "BENCH_EVOLVE_LEAVE",
+              "effects": [
+                {
+                  "type": "discard_pokemon",
+                  "target": "TRIGGER_POKEMON"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cardId": "sv10_en_123",
+      "name": "Corrosive Sludge",
+      "textEn": "At the end of your opponent's next turn, discard the Defending Pokémon and all attached cards.",
+      "textZh": "在下一个对手的回合结束时，将受到这个招式影响的宝可梦以及放于其身上的全部的卡牌放于弃牌区。",
+      "triggers": [
+        {
+          "trigger": "AFTER_ATTACK",
+          "effects": [
+            {
+              "type": "delayed_effect",
+              "target": "OPPONENT_ACTIVE",
+              "when": "OPPONENT_NEXT_TURN_END",
+              "clear": "BENCH_EVOLVE_LEAVE",
+              "effects": [
+                {
+                  "type": "discard_pokemon",
+                  "target": "TRIGGER_POKEMON"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

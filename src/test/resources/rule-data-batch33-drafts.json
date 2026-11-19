@@ -1,0 +1,75 @@
+{
+  "scope": "TEST ONLY: independently supported components of three still unsupported complete cards",
+  "cards": [
+    {
+      "id": "sm7_en_010",
+      "attacks": [
+        {
+          "id": "powerful-storm",
+          "nameZh": "强力风暴",
+          "energyCost": {
+            "GRASS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "GRASS",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "damage_per_energy",
+              "target": "ALL_OWN_POKEMON",
+              "amount": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sv1_en_145",
+      "abilities": [
+        {
+          "id": "busybody-nurse",
+          "nameZh": "细心护士",
+          "kind": "ACTIVATED_ONCE_PER_TURN",
+          "effects": [
+            {
+              "type": "clear_status",
+              "target": "OWN_ACTIVE",
+              "statuses": "ALL"
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "swsh6_en_080",
+      "attacks": [
+        {
+          "id": "thunderous-kick",
+          "nameZh": "雷鸣蹴击",
+          "energyCost": {
+            "FIGHTING": 1,
+            "COLORLESS": 3
+          },
+          "baseDamage": 170,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "BEFORE_ATTACK",
+              "effects": [
+                {
+                  "type": "discard_energy",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 1,
+                  "minimum": 1,
+                  "card_kind": "SPECIAL"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

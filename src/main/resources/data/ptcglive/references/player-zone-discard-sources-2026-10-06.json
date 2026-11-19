@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "version": "player-zone-discard-v1",
+  "checkedDate": "2026-10-06",
+  "implementationVersion": "0.6.4-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Pokémon Trading Card Game Rules — Scarlet & Violet Rulebook（What if you should draw more cards than you have?）",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/pal_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English rulebook PDF; text extracted and checked 2026-10-06",
+      "supportsZh": "规则书：卡牌要你从牌库抽或看的张数多于剩余张数时，就处理剩下的那些并照常继续；只有回合开始时抽不到牌才判负，卡牌效果要你抽而抽不到不会判负。弃置牌库上方 N 张按同一原则“能做多少做多少”，牌库空时什么都不发生，也不会因此判负。"
+    },
+    {
+      "title": "Malamar — Sun & Moon Unbroken Bonds 119/214（Dark Pressure）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm10/119/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-06 (pokemon.com page blocked automated reading)",
+      "supportsZh": "招式文字“Discard the top card of your opponent's deck.”：弃置对手牌库上方 1 张。同类写法“Discard the top N cards of your (opponent's) deck.”见于 Excadrill（sm12 115，自己牌库 4 张）、Mega Heracross ex（对手牌库 2 张）等。"
+    },
+    {
+      "title": "Mienshao — Black & White Boundaries Crossed 88/149（Knock Off）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/bw7/88/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-06 (pokemon.com page blocked automated reading)",
+      "supportsZh": "招式文字“Discard a random card from your opponent's hand.”：从对手手牌中随机选 1 张弃置。对手没有手牌时什么都不发生；随机由服务器决定，攻击方看不到对手手牌。"
+    }
+  ],
+  "dataContractZh": "discard_top_deck(amount 1–60) 与 discard_random_hand(amount 1–60)：目标 SELF/HAND/DECK 表示效果来源的控制者，OPPONENT_ACTIVE 表示对手（与 draw 相同的玩家约定）。只接受 amount，不接受其它参数或子效果。",
+  "serverAuthorityZh": "服务器从权威牌库顶（列表末尾）或用可重放随机源从手牌中取卡，直接放入该玩家弃牌区；张数不足时尽量处理，空区域时不做任何事，也不判负。客户端不提供卡牌身份，牌只在进入弃牌区后公开。",
+  "limitations": [
+    "“看牌库上方再选择弃置”“对手选择弃置的手牌”“弃到放逐区”等变体不在本组件内，需各自的选择流程。",
+    "作为训练家费用的“弃置 N 张手牌才能使用”仍由 discard / discardHandCost 处理，不使用本组件。"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-12",
+  "scope": "81 newly recognized attack components, 53 fully supported additional cards; no previous supported program or metadata changes.",
+  "sources": [
+    {
+      "title": "Dedenne Mad Party",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/swsh3/78/",
+      "checkedFacts": "20 damage per discarded Pokemon with the Mad Party attack."
+    },
+    {
+      "title": "Joltik Night March",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/xy4/26/",
+      "checkedFacts": "20 damage per discarded Pokemon with the Night March attack."
+    },
+    {
+      "title": "Dondozo Release Rage",
+      "url": "https://asia.pokemon-card.com/sg/card-search/detail/13256/",
+      "checkedFacts": "50 damage per Tatsugiri in the own discard pile; exact Pokemon name."
+    }
+  ],
+  "boundaries": [
+    "Counts physical cards in the specified owner discard pile, not Energy units or field Pokemon.",
+    "Named attacks use the discarded printed attack identifier; Pokemon names are exact canonical names with explicit unions, never substring matches.",
+    "Typed Pokemon use printed types, counting dual types once; legacy profiles provide primary type when tags are absent.",
+    "Basic Energy type filters require the Basic Energy identity; Special Energy never inherits its former attached type.",
+    "Count limits cap the variable damage portion, preserving any printed base damage.",
+    "Mandatory recovery runs after damage and retains existing strict recovery category schema.",
+    "Unrecognized companion abilities, attacks or structural fields keep the whole card unsupported."
+  ]
+}

@@ -1,0 +1,26 @@
+import dev.hua.ptcglive.engine.*;
+import dev.hua.ptcglive.engine.effect.*;
+import dev.hua.ptcglive.engine.field.*;
+import java.util.*;
+
+public final class StarterDeck100ReactionToolTest {
+    static final UUID A=StarterDeck100PokemonTest.A,B=StarterDeck100PokemonTest.B;
+    static String id(int n){return StarterDeck100PokemonTest.id(n);}
+    static void check(boolean ok,String text){StarterDeck100PokemonTest.check(ok,text);}
+    public static void main(String[] args){for(boolean lethal:List.of(false,true))helmet(lethal);helmetDisabled();noEnergy();sourceProtection();invalidEvent();System.out.println("StarterDeck100ReactionToolTest passed: captured attacker, owner selection, lethal damage before KO, true Trainer origin, no counter trigger, disabled Tool and event validation");}
+    static void helmet(boolean lethal){
+        var m=StarterDeck100PokemonTest.game(1,id(382));UUID host=m.activePokemonView(A).pokemonId(),attacker=m.activePokemonView(B).pokemonId();
+        var tool=StarterDeck100PokemonTest.hand(m,id(382));m.playTrainer(A,tool.instanceId(),host);
+        var e1=StarterDeck100EnergyTest.attach(m,A,B,"sd100_cn_grass_energy",attacker);var e2=StarterDeck100EnergyTest.attach(m,A,B,"sd100_cn_grass_energy",attacker);
+        m.placeDamageCountersByEffect(A,A,host,lethal?(m.activePokemonView(A).hitPoints()-10)/10:1);check(!m.hasPendingCardSelection(),"Helmet triggered on placed counters");int prizes=m.publicView().get(B).prizeCount();m.endTurn(A);m.attack(B,StarterDeck100CombatTest.COMBAT.pokemon(id(1)).orElseThrow().attacks().getFirst().id());
+        var p=m.effectCardPrompt(A);check(p.candidates().containsAll(List.of(e1,e2))&&p.candidates().size()==2,"Helmet did not select from captured attacker");check(m.publicView().get(B).prizeCount()==prizes&&m.activePokemonView(A).pokemonId().equals(host),"KO/prizes completed before Helmet choice");
+        TopDeckLookTest.rejects(()->m.effectCardPrompt(B));TopDeckLookTest.rejects(()->m.submitEffectCards(B,p.resolutionId(),p.step(),List.of(e1.instanceId())));TopDeckLookTest.rejects(()->m.submitEffectCards(A,p.resolutionId(),p.step(),List.of()));TopDeckLookTest.rejects(()->m.submitEffectCards(A,p.resolutionId(),p.step(),List.of(e1.instanceId(),e2.instanceId())));
+        m.submitEffectCards(A,p.resolutionId(),p.step(),List.of(e1.instanceId()));check(m.privateView(B).hand().contains(e1)&&!m.privateView(A).hand().contains(e1)&&m.activePokemonView(B).attachedEnergyIds().equals(List.of(e2.instanceId())),"Helmet returned wrong Energy or to wrong hand");TopDeckLookTest.rejects(()->m.submitEffectCards(A,p.resolutionId(),p.step(),List.of(e1.instanceId())));
+        if(lethal){StarterDeck100CombatTest.settleKnockouts(m);check(m.privateView(A).discard().contains(tool)&&m.publicView().get(B).prizeCount()==prizes-2,"Helmet host KO did not resume");}
+        check(m.currentPlayer().equals(A),"automatic reaction did not resume turn");
+    }
+    static void helmetDisabled(){var m=StarterDeck100PokemonTest.game(1,id(382));UUID host=m.activePokemonView(A).pokemonId();m.playTrainer(A,StarterDeck100PokemonTest.hand(m,id(382)).instanceId(),host);m.disableToolEffectsByEffect(A,A,host);for(int i=0;i<2;i++)StarterDeck100EnergyTest.attach(m,A,B,"sd100_cn_grass_energy",m.activePokemonView(B).pokemonId());m.endTurn(A);m.attack(B,StarterDeck100CombatTest.COMBAT.pokemon(id(1)).orElseThrow().attacks().getFirst().id());check(!m.hasPendingCardSelection()&&m.activePokemonView(B).attachedEnergyIds().size()==2,"disabled Helmet triggered");}
+    static void noEnergy(){var tool=StarterDeck100CombatTest.COMBAT.trainer(id(382)).orElseThrow();var m=DynamicPassiveModifierTest.fixture(tool,DynamicPassiveModifierTest.plainStadium(),EnergyProfile.basic(EnergyType.COLORLESS),DynamicPassiveModifierTest.attack(40,false,false));var a=DynamicPassiveModifierTest.A;var b=DynamicPassiveModifierTest.B;m.playTrainer(a,DynamicPassiveModifierTest.hand(m,a,"tool").instanceId(),m.activePokemonView(a).pokemonId());m.endTurn(a);m.attack(b,"hit");check(!m.hasPendingCardSelection()&&m.currentPlayer().equals(a),"empty attacker Energy list stalled reaction");}
+    static void invalidEvent(){TopDeckLookTest.rejects(()->PersistentSourceTriggerTest.trainer("TOOL",PersistentSourceTriggerTest.trigger("bad",PersistentSourceTriggerTest.CHECKUP,"{\"type\":\"return_energy\",\"target\":\"ATTACKING_POKEMON\",\"amount\":1,\"minimum\":1}")));}
+    static void sourceProtection(){for(String origin:List.of("TRAINER","ABILITY")){var m=StarterDeck100PokemonTest.game(1,id(382));UUID host=m.activePokemonView(A).pokemonId(),attacker=m.activePokemonView(B).pokemonId();m.playTrainer(A,StarterDeck100PokemonTest.hand(m,id(382)).instanceId(),host);var e=StarterDeck100EnergyTest.attach(m,A,B,"sd100_cn_grass_energy",attacker);StarterDeck100EnergyTest.attach(m,A,B,"sd100_cn_grass_energy",attacker);m.endTurn(A);StarterDeck100CounterMoveTest.shield(m,B,attacker,origin);m.attack(B,StarterDeck100CombatTest.COMBAT.pokemon(id(1)).orElseThrow().attacks().getFirst().id());var p=m.effectCardPrompt(A);m.submitEffectCards(A,p.resolutionId(),p.step(),List.of(e.instanceId()));check(m.activePokemonView(B).attachedEnergyIds().contains(e.instanceId())==origin.equals("TRAINER"),"Helmet continuation lost Trainer origin: "+origin);}}
+}

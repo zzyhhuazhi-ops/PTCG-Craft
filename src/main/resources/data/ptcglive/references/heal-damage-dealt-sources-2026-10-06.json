@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "version": "heal-damage-dealt-v1",
+  "checkedDate": "2026-10-06",
+  "implementationVersion": "0.6.4-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Palossand — Sun & Moon 75/149（Absorb Vitality）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm1/75/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-06 (pokemon.com page blocked automated reading)",
+      "supportsZh": "招式文字“Heal from this Pokémon the same amount of damage you did to your opponent's Active Pokémon.”：回复量等于这次攻击实际对对方战斗宝可梦造成的伤害（套用弱点、抵抗力和对方防伤效果之后）。同句式见于 Golbat、Tangrowth、Virizion 等约 33 张。"
+    },
+    {
+      "title": "Pokémon Trading Card Game Rules — Scarlet & Violet Rulebook (damage calculation order)",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/pal_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English rulebook PDF; text extracted and checked 2026-10-06",
+      "supportsZh": "招式先结算伤害（基础伤害 → 弱点 → 抵抗力 → 对方身上的效果），再完成招式文字的其余部分；所以回复读取的是已经放上的伤害，伤害被防止时回复 0。"
+    }
+  ],
+  "dataContractZh": "heal 新增 mode:\"DAMAGE_DEALT\"，此时不能写 amount。只能出现在攻击的 AFTER_ATTACK 阶段；训练家、特性、伤害计算阶段（ON_ATTACK）使用都会被拒绝。",
+  "serverAuthorityZh": "服务器从本次攻击检查点记录的伤害事件里，取实际放在对方当时战斗宝可梦身上的伤害，作为回复量（不超过目标身上现有的伤害）。客户端不能提供或改写这个数值。",
+  "limitations": [
+    "只读取“对对方战斗宝可梦造成的伤害”；“对备战宝可梦造成的伤害”“全部伤害之和”等写法另需审核。",
+    "回复目标须是固定目标（SELF 等）；选择目标的回复不接受 DAMAGE_DEALT。"
+  ]
+}

@@ -1,0 +1,2541 @@
+{
+  "schemaVersion": 1,
+  "dataVersion": "ptcgcardcn-xy9-5-2026.10.14",
+  "region": "international",
+  "noteZh": "PTCGCardCN 0.1.0 由 Rainier（PTCG Live 客户端卡牌数据库）自动转换；审核策略 rainier-db。详见 reports/conversion-report.json。",
+  "cards": [
+    {
+      "id": "xy9-5_en_001",
+      "kind": "POKEMON",
+      "hitPoints": 180,
+      "retreatCost": 4,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIRE",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Venusaur-EX",
+      "pokemonType": "GRASS",
+      "attacks": [
+        {
+          "id": "frog-hop",
+          "nameZh": "蛙跳",
+          "energyCost": {
+            "GRASS": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 40,
+          "damageType": "GRASS",
+          "effectSupport": "SUPPORTED",
+          "coinDamage": {
+            "flips": 1,
+            "perHeads": 40
+          }
+        },
+        {
+          "id": "poison-impact",
+          "nameZh": "毒液冲击",
+          "energyCost": {
+            "GRASS": 2,
+            "COLORLESS": 2
+          },
+          "baseDamage": 80,
+          "damageType": "GRASS",
+          "effectSupport": "SUPPORTED",
+          "conditions": [
+            {
+              "target": "DEFENDER",
+              "condition": "ASLEEP"
+            },
+            {
+              "target": "DEFENDER",
+              "condition": "POISONED"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_002",
+      "kind": "POKEMON",
+      "hitPoints": 230,
+      "retreatCost": 4,
+      "evolvesFromDefinitionId": "xy9-5_en_001",
+      "weakness": {
+        "type": "FIRE",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "M Venusaur-EX",
+      "evolvesFromName": "Venusaur-EX",
+      "pokemonType": "GRASS",
+      "attacks": [
+        {
+          "id": "bloom-buster",
+          "nameZh": "茂盛破坏",
+          "energyCost": {
+            "GRASS": 2,
+            "COLORLESS": 2
+          },
+          "baseDamage": 130,
+          "damageType": "GRASS",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "coin_flip",
+                  "flips": 1,
+                  "heads": [
+                    {
+                      "type": "bench_damage",
+                      "amount": 30,
+                      "target": "OPPONENT_BENCH"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "printedRules": "EVOLUTION_ENDS_TURN"
+    },
+    {
+      "id": "xy9-5_en_005",
+      "kind": "POKEMON",
+      "hitPoints": 130,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "sm10_en_003",
+      "weakness": {
+        "type": "LIGHTNING",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "FIGHTING",
+        "amount": 20
+      },
+      "prizeCards": 1,
+      "pokemonName": "Butterfree",
+      "evolvesFromName": "Metapod",
+      "pokemonType": "GRASS",
+      "attacks": [
+        {
+          "id": "quiver-dance",
+          "nameZh": "蝶舞",
+          "energyCost": {
+            "GRASS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "GRASS",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：if you attached energy in this way"
+        },
+        {
+          "id": "gust",
+          "nameZh": "起风",
+          "energyCost": {
+            "GRASS": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 70,
+          "damageType": "GRASS",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_006",
+      "kind": "POKEMON",
+      "hitPoints": 60,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIRE",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Paras",
+      "pokemonType": "GRASS",
+      "attacks": [
+        {
+          "id": "blot",
+          "nameZh": "轻轻吸取",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 10,
+          "damageType": "GRASS",
+          "effectSupport": "SUPPORTED",
+          "selfHealAfterAttack": 10
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_007",
+      "kind": "POKEMON",
+      "hitPoints": 100,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "xy9-5_en_006",
+      "weakness": {
+        "type": "FIRE",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Parasect",
+      "evolvesFromName": "Paras",
+      "pokemonType": "GRASS",
+      "attacks": [
+        {
+          "id": "colorful-spores",
+          "nameZh": "多彩孢子",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "GRASS",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：choose 3 of your pokemon. for each of those pokemon, search your deck for a different type of basic energy card and attach it to that pokemon. shuffle your deck afterward"
+        },
+        {
+          "id": "x-scissor",
+          "nameZh": "十字剪",
+          "energyCost": {
+            "GRASS": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 30,
+          "damageType": "GRASS",
+          "effectSupport": "SUPPORTED",
+          "coinDamage": {
+            "flips": 1,
+            "perHeads": 30
+          }
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_008",
+      "kind": "POKEMON",
+      "hitPoints": 80,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIRE",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Tangela",
+      "pokemonType": "GRASS",
+      "attacks": [
+        {
+          "id": "absorb",
+          "nameZh": "吸取",
+          "energyCost": {
+            "GRASS": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 20,
+          "damageType": "GRASS",
+          "effectSupport": "SUPPORTED",
+          "selfHealAfterAttack": 20
+        },
+        {
+          "id": "vine-whip",
+          "nameZh": "藤鞭",
+          "energyCost": {
+            "GRASS": 2,
+            "COLORLESS": 1
+          },
+          "baseDamage": 30,
+          "damageType": "GRASS",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_009",
+      "kind": "POKEMON",
+      "hitPoints": 100,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIRE",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Pinsir",
+      "pokemonType": "GRASS",
+      "attacks": [
+        {
+          "id": "overhead-throw",
+          "nameZh": "背摔",
+          "energyCost": {
+            "GRASS": 1
+          },
+          "baseDamage": 30,
+          "damageType": "GRASS",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "bench_damage",
+                  "target": "SELECT_OWN_POKEMON",
+                  "amount": 20
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "heavy-suplex",
+          "nameZh": "重后拉抱",
+          "energyCost": {
+            "GRASS": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 40,
+          "damageType": "GRASS",
+          "effectSupport": "SUPPORTED",
+          "damageModifiers": [
+            {
+              "basis": "DEFENDER_RETREAT_COST",
+              "amountPerUnit": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_010",
+      "kind": "POKEMON",
+      "hitPoints": 170,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIRE",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Leafeon-EX",
+      "pokemonType": "GRASS",
+      "attacks": [
+        {
+          "id": "leaf-blade",
+          "nameZh": "叶刃",
+          "energyCost": {
+            "GRASS": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 30,
+          "damageType": "GRASS",
+          "effectSupport": "SUPPORTED",
+          "coinDamage": {
+            "flips": 1,
+            "perHeads": 30
+          }
+        },
+        {
+          "id": "nature-s-breath",
+          "nameZh": "自然之息",
+          "energyCost": {
+            "GRASS": 2,
+            "COLORLESS": 1
+          },
+          "baseDamage": 90,
+          "damageType": "GRASS",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "印刷伤害 90+ 带 +，但没有识别出加成来源；未识别的效果：if there is any stadium card in play, this attack does 30 more damage and"
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_011",
+      "kind": "POKEMON",
+      "hitPoints": 180,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Charizard-EX",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "flame-cloak",
+          "nameZh": "火焰收集",
+          "energyCost": {
+            "FIRE": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 30,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "attach_energy",
+                  "source": "DISCARD",
+                  "target": "SELF",
+                  "target_scope": "OWN_FIELD",
+                  "amount": 1,
+                  "minimum": 1,
+                  "basic_energy_only": true,
+                  "energy_type": "FIRE"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "burning-breath",
+          "nameZh": "灼热之息",
+          "energyCost": {
+            "FIRE": 2,
+            "COLORLESS": 2
+          },
+          "baseDamage": 80,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "coinDamage": {
+            "flips": 2,
+            "perHeads": 40
+          }
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_012",
+      "kind": "POKEMON",
+      "hitPoints": 220,
+      "retreatCost": 3,
+      "evolvesFromDefinitionId": "xy9-5_en_011",
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "M Charizard-EX",
+      "evolvesFromName": "Charizard-EX",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "heat-typhoon",
+          "nameZh": "炎热台风",
+          "energyCost": {
+            "FIRE": 1,
+            "COLORLESS": 3
+          },
+          "baseDamage": 100,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "coin_flip",
+              "flips": 0,
+              "flips_from": "ENERGY_COUNT",
+              "flips_target": "SELF",
+              "effects": [
+                {
+                  "type": "repeat_per_heads",
+                  "effects": [
+                    {
+                      "type": "damage",
+                      "target": "OPPONENT_ACTIVE",
+                      "amount": 50
+                    }
+                  ]
+                }
+              ],
+              "energy_type": "FIRE"
+            }
+          ]
+        }
+      ],
+      "printedRules": "EVOLUTION_ENDS_TURN"
+    },
+    {
+      "id": "xy9-5_en_013",
+      "kind": "POKEMON",
+      "hitPoints": 170,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Ninetales-EX",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "flare-bonus",
+          "nameZh": "火焰奖励",
+          "energyCost": {
+            "FIRE": 1
+          },
+          "baseDamage": 0,
+          "damageType": "FIRE",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：discard a {fire} energy card from your hand. if you do, draw 3 cards"
+        },
+        {
+          "id": "fire-blast",
+          "nameZh": "大字爆炎",
+          "energyCost": {
+            "FIRE": 1,
+            "COLORLESS": 3
+          },
+          "baseDamage": 130,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "coin_flip",
+                  "flips": 1,
+                  "tails": [
+                    {
+                      "type": "discard_energy",
+                      "target": "OWN_ACTIVE",
+                      "amount": 1,
+                      "minimum": 1,
+                      "energy_type": "FIRE"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_014",
+      "kind": "POKEMON",
+      "hitPoints": 60,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Ponyta",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "agility",
+          "nameZh": "高速移动",
+          "energyCost": {
+            "FIRE": 1
+          },
+          "baseDamage": 10,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "coinProtection": {
+            "flips": 1,
+            "requiredHeads": 1
+          }
+        },
+        {
+          "id": "flame-tail",
+          "nameZh": "火之尾",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 20,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_015",
+      "kind": "POKEMON",
+      "hitPoints": 90,
+      "retreatCost": 0,
+      "evolvesFromDefinitionId": "xy9-5_en_014",
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Rapidash",
+      "evolvesFromName": "Ponyta",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "agility",
+          "nameZh": "高速移动",
+          "energyCost": {
+            "FIRE": 1
+          },
+          "baseDamage": 20,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "coinProtection": {
+            "flips": 1,
+            "requiredHeads": 1
+          }
+        },
+        {
+          "id": "overrun",
+          "nameZh": "飞驰",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 40,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "bench_damage",
+                  "amount": 20,
+                  "target": "SELECT_OPPONENT_POKEMON"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_016",
+      "kind": "POKEMON",
+      "hitPoints": 80,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Magmar",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "ram",
+          "nameZh": "冲撞",
+          "energyCost": {
+            "FIRE": 1
+          },
+          "baseDamage": 10,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED"
+        },
+        {
+          "id": "ember",
+          "nameZh": "火花",
+          "energyCost": {
+            "FIRE": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 30,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "discard_energy",
+                  "target": "SELF",
+                  "amount": 1,
+                  "minimum": 1,
+                  "energy_type": "FIRE",
+                  "count_mode": "UNITS"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_017",
+      "kind": "POKEMON",
+      "hitPoints": 180,
+      "retreatCost": 3,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Blastoise-EX",
+      "pokemonType": "WATER",
+      "attacks": [
+        {
+          "id": "hyper-whirlpool",
+          "nameZh": "破坏潮旋",
+          "energyCost": {
+            "WATER": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 60,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "coin_flip",
+                  "flips": 1,
+                  "heads": [
+                    {
+                      "type": "discard_energy",
+                      "target": "OPPONENT_ACTIVE",
+                      "amount": 1,
+                      "minimum": 1
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hydro-press",
+          "nameZh": "水压",
+          "energyCost": {
+            "WATER": 2,
+            "COLORLESS": 2
+          },
+          "baseDamage": 100,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "bench_damage",
+                  "amount": 20,
+                  "target": "SELECT_OPPONENT_POKEMON"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_018",
+      "kind": "POKEMON",
+      "hitPoints": 220,
+      "retreatCost": 3,
+      "evolvesFromDefinitionId": "xy9-5_en_017",
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "M Blastoise-EX",
+      "evolvesFromName": "Blastoise-EX",
+      "pokemonType": "WATER",
+      "attacks": [
+        {
+          "id": "dread-launcher",
+          "nameZh": "恐惧发射器",
+          "energyCost": {
+            "WATER": 2,
+            "COLORLESS": 2
+          },
+          "baseDamage": 180,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "coin_flip",
+                  "flips": 1,
+                  "tails": [
+                    {
+                      "type": "discard_energy",
+                      "target": "SELF",
+                      "amount": 2,
+                      "minimum": 2,
+                      "energy_type": "WATER",
+                      "count_mode": "UNITS"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "printedRules": "EVOLUTION_ENDS_TURN"
+    },
+    {
+      "id": "xy9-5_en_019",
+      "kind": "POKEMON",
+      "hitPoints": 60,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Shellder",
+      "pokemonType": "WATER",
+      "attacks": [
+        {
+          "id": "rain-splash",
+          "nameZh": "泼水",
+          "energyCost": {
+            "WATER": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 20,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_020",
+      "kind": "POKEMON",
+      "hitPoints": 100,
+      "retreatCost": 3,
+      "evolvesFromDefinitionId": "xy9-5_en_019",
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Cloyster",
+      "evolvesFromName": "Shellder",
+      "pokemonType": "WATER",
+      "attacks": [
+        {
+          "id": "clamp-crush",
+          "nameZh": "粉碎之剪",
+          "energyCost": {
+            "WATER": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 30,
+          "damageType": "WATER",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：flip a coin. if heads, your opponent's active pokemon is now paralyzed and discard an energy attached to that pokemon"
+        },
+        {
+          "id": "spike-cannon",
+          "nameZh": "尖刺加农炮",
+          "energyCost": {
+            "WATER": 2,
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "coinDamage": {
+            "flips": 5,
+            "perHeads": 30
+          }
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_021",
+      "kind": "POKEMON",
+      "hitPoints": 70,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Krabby",
+      "pokemonType": "WATER",
+      "attacks": [
+        {
+          "id": "vice-grip",
+          "nameZh": "夹住",
+          "energyCost": {
+            "WATER": 1
+          },
+          "baseDamage": 10,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED"
+        },
+        {
+          "id": "crabhammer",
+          "nameZh": "蟹钳锤",
+          "energyCost": {
+            "WATER": 3
+          },
+          "baseDamage": 50,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_022",
+      "kind": "POKEMON",
+      "hitPoints": 30,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "LIGHTNING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Magikarp",
+      "pokemonType": "WATER",
+      "attacks": [
+        {
+          "id": "epic-splash",
+          "nameZh": "强力跃起",
+          "energyCost": {
+            "WATER": 1
+          },
+          "baseDamage": 0,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "COIN_RESULT",
+                  "coin": "allheads",
+                  "value": "ALL_HEADS"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "damage",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 30
+                }
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "trigger": "BEFORE_ATTACK",
+              "effects": [
+                {
+                  "type": "coin_flip",
+                  "flips": 2,
+                  "bind": "allheads",
+                  "effects": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_023",
+      "kind": "POKEMON",
+      "hitPoints": 130,
+      "retreatCost": 3,
+      "evolvesFromDefinitionId": "xy9-5_en_022",
+      "weakness": {
+        "type": "LIGHTNING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Gyarados",
+      "evolvesFromName": "Magikarp",
+      "pokemonType": "WATER",
+      "attacks": [
+        {
+          "id": "berserker-splash",
+          "nameZh": "狂暴飞沫",
+          "energyCost": {
+            "WATER": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 80,
+          "damageType": "WATER",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：this attack does 10 damage to each benched pokemon"
+        },
+        {
+          "id": "aqua-tail",
+          "nameZh": "水流尾",
+          "energyCost": {
+            "WATER": 1,
+            "COLORLESS": 3
+          },
+          "baseDamage": 90,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "coin_flip",
+              "flips": 0,
+              "flips_from": "ENERGY_COUNT",
+              "flips_target": "SELF",
+              "effects": [
+                {
+                  "type": "repeat_per_heads",
+                  "effects": [
+                    {
+                      "type": "damage",
+                      "target": "OPPONENT_ACTIVE",
+                      "amount": 30
+                    }
+                  ]
+                }
+              ],
+              "energy_type": "WATER"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_024",
+      "kind": "POKEMON",
+      "hitPoints": 180,
+      "retreatCost": 3,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Vaporeon-EX",
+      "pokemonType": "WATER",
+      "attacks": [
+        {
+          "id": "bubble-drain",
+          "nameZh": "泡沫吸取",
+          "energyCost": {
+            "WATER": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 30,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "selfHealAfterAttack": 30
+        },
+        {
+          "id": "deep-squall",
+          "nameZh": "急风骤雨",
+          "energyCost": {
+            "WATER": 2,
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "WATER",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "无法解析的印刷伤害 '130−'；未识别的效果：this attack does 130 damage minus 10 damage for each damage counter on this pokemon"
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_025",
+      "kind": "POKEMON",
+      "hitPoints": 120,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "METAL",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "FIGHTING",
+        "amount": 20
+      },
+      "prizeCards": 1,
+      "pokemonName": "Articuno",
+      "pokemonType": "WATER",
+      "attacks": [
+        {
+          "id": "find-ice",
+          "nameZh": "寻冰",
+          "energyCost": {
+            "WATER": 1
+          },
+          "baseDamage": 0,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "search_deck",
+                  "target": "DECK",
+                  "amount": 3,
+                  "minimum": 0,
+                  "card_category": "ENERGY",
+                  "basic_energy_only": true,
+                  "reveal": "true",
+                  "energy_type": "WATER"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "freezing-wind",
+          "nameZh": "寒风",
+          "energyCost": {
+            "WATER": 2,
+            "COLORLESS": 2
+          },
+          "baseDamage": 100,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_026",
+      "kind": "POKEMON",
+      "hitPoints": 60,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "METAL",
+        "amount": 20
+      },
+      "prizeCards": 1,
+      "pokemonName": "Pikachu",
+      "pokemonType": "LIGHTNING",
+      "attacks": [
+        {
+          "id": "nuzzle",
+          "nameZh": "蹭蹭脸颊",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "LIGHTNING",
+          "effectSupport": "SUPPORTED",
+          "conditions": [
+            {
+              "target": "DEFENDER",
+              "condition": "PARALYZED",
+              "coinCondition": {
+                "flips": 1,
+                "requiredHeads": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "quick-attack",
+          "nameZh": "电光一闪",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 20,
+          "damageType": "LIGHTNING",
+          "effectSupport": "SUPPORTED",
+          "coinDamage": {
+            "flips": 1,
+            "perHeads": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_027",
+      "kind": "POKEMON",
+      "hitPoints": 90,
+      "retreatCost": 0,
+      "evolvesFromDefinitionId": "xy9-5_en_026",
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "METAL",
+        "amount": 20
+      },
+      "prizeCards": 1,
+      "pokemonName": "Raichu",
+      "evolvesFromName": "Pikachu",
+      "pokemonType": "LIGHTNING",
+      "attacks": [
+        {
+          "id": "circle-circuit",
+          "nameZh": "电圈",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 0,
+          "damageType": "LIGHTNING",
+          "effectSupport": "SUPPORTED",
+          "damageModifiers": [
+            {
+              "basis": "ATTACKER_BENCH_SIZE",
+              "amountPerUnit": 20
+            }
+          ]
+        },
+        {
+          "id": "thunderbolt",
+          "nameZh": "十万伏特",
+          "energyCost": {
+            "LIGHTNING": 2,
+            "COLORLESS": 1
+          },
+          "baseDamage": 100,
+          "damageType": "LIGHTNING",
+          "effectSupport": "SUPPORTED",
+          "discardAllAttachedEnergyAfterAttack": true
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_028",
+      "kind": "POKEMON",
+      "hitPoints": 160,
+      "retreatCost": 0,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "METAL",
+        "amount": 20
+      },
+      "prizeCards": 2,
+      "pokemonName": "Jolteon-EX",
+      "pokemonType": "LIGHTNING",
+      "attacks": [
+        {
+          "id": "swift",
+          "nameZh": "高速星星",
+          "energyCost": {
+            "LIGHTNING": 1
+          },
+          "baseDamage": 30,
+          "damageType": "LIGHTNING",
+          "effectSupport": "SUPPORTED",
+          "ignoresWeaknessAndResistance": true,
+          "ignoresActiveDefenderDamageEffects": true
+        },
+        {
+          "id": "flash-ray",
+          "nameZh": "闪光射线",
+          "energyCost": {
+            "LIGHTNING": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 70,
+          "damageType": "LIGHTNING",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "prevent_damage",
+                  "target": "SELF",
+                  "source": "ATTACK",
+                  "from": "OPPONENT",
+                  "scope": "DAMAGE_ONLY",
+                  "duration": "OPPONENT_TURN_END",
+                  "attacker_filter": "BASIC"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_029",
+      "kind": "POKEMON",
+      "hitPoints": 120,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "LIGHTNING",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "FIGHTING",
+        "amount": 20
+      },
+      "prizeCards": 1,
+      "pokemonName": "Zapdos",
+      "pokemonType": "LIGHTNING",
+      "attacks": [
+        {
+          "id": "drill-peck",
+          "nameZh": "啄钻",
+          "energyCost": {
+            "LIGHTNING": 1
+          },
+          "baseDamage": 20,
+          "damageType": "LIGHTNING",
+          "effectSupport": "SUPPORTED"
+        },
+        {
+          "id": "raging-thunder",
+          "nameZh": "落雷",
+          "energyCost": {
+            "LIGHTNING": 2,
+            "COLORLESS": 1
+          },
+          "baseDamage": 120,
+          "damageType": "LIGHTNING",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "bench_damage",
+                  "target": "SELECT_OWN_POKEMON",
+                  "amount": 40
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_030",
+      "kind": "POKEMON",
+      "hitPoints": 50,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "LIGHTNING",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "FIGHTING",
+        "amount": 20
+      },
+      "prizeCards": 1,
+      "pokemonName": "Zubat",
+      "pokemonType": "PSYCHIC",
+      "attacks": [
+        {
+          "id": "skill-dive",
+          "nameZh": "飞行直击",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 10,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED",
+          "damageTarget": "OPPONENT_ANY",
+          "targetCount": 1
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_032",
+      "kind": "POKEMON",
+      "hitPoints": 50,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "PSYCHIC",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Slowpoke",
+      "pokemonType": "PSYCHIC",
+      "attacks": [
+        {
+          "id": "spacing-out",
+          "nameZh": "发呆",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "coin_flip",
+                  "flips": 1,
+                  "heads": [
+                    {
+                      "type": "heal",
+                      "target": "SELF",
+                      "amount": 10
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "scavenge",
+          "nameZh": "捡垃圾",
+          "energyCost": {
+            "PSYCHIC": 2
+          },
+          "baseDamage": 0,
+          "damageType": "PSYCHIC",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：if you do"
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_033",
+      "kind": "POKEMON",
+      "hitPoints": 50,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "DARKNESS",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "FIGHTING",
+        "amount": 20
+      },
+      "prizeCards": 1,
+      "pokemonName": "Gastly",
+      "pokemonType": "PSYCHIC",
+      "attacks": [
+        {
+          "id": "sleep-poison",
+          "nameZh": "睡眠之毒",
+          "energyCost": {
+            "PSYCHIC": 1
+          },
+          "baseDamage": 0,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "coin_flip",
+                  "flips": 1,
+                  "heads": [
+                    {
+                      "type": "sleep",
+                      "target": "OPPONENT_ACTIVE"
+                    },
+                    {
+                      "type": "poison",
+                      "target": "OPPONENT_ACTIVE"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_035",
+      "kind": "POKEMON",
+      "hitPoints": 130,
+      "retreatCost": 0,
+      "evolvesFromDefinitionId": "me2-5_en_124",
+      "weakness": {
+        "type": "DARKNESS",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "FIGHTING",
+        "amount": 20
+      },
+      "prizeCards": 1,
+      "pokemonName": "Gengar",
+      "evolvesFromName": "Haunter",
+      "pokemonType": "PSYCHIC",
+      "attacks": [
+        {
+          "id": "sinister-fog",
+          "nameZh": "不吉之雾",
+          "energyCost": {
+            "PSYCHIC": 1
+          },
+          "baseDamage": 0,
+          "damageType": "PSYCHIC",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：put 1 damage counter on each of your opponent's benched pokemon"
+        },
+        {
+          "id": "creep-show",
+          "nameZh": "徐变秀",
+          "energyCost": {
+            "PSYCHIC": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "PSYCHIC",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：if your opponent's active pokemon has 3 or more damage counters on it, that pokemon is knocked out"
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_038",
+      "kind": "POKEMON",
+      "hitPoints": 50,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Diglett",
+      "pokemonType": "FIGHTING",
+      "attacks": [
+        {
+          "id": "mine",
+          "nameZh": "挖山",
+          "energyCost": {
+            "FIGHTING": 1
+          },
+          "baseDamage": 0,
+          "damageType": "FIGHTING",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：look at the top card of your opponent's deck. then, you may have your opponent shuffle his or her deck"
+        },
+        {
+          "id": "mud-slap",
+          "nameZh": "掷泥",
+          "energyCost": {
+            "FIGHTING": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 20,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_039",
+      "kind": "POKEMON",
+      "hitPoints": 90,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "xy9-5_en_038",
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Dugtrio",
+      "evolvesFromName": "Diglett",
+      "pokemonType": "FIGHTING",
+      "attacks": [
+        {
+          "id": "earthquake",
+          "nameZh": "地震",
+          "energyCost": {
+            "FIGHTING": 1
+          },
+          "baseDamage": 60,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "bench_damage",
+                  "target": "OWN_BENCH",
+                  "amount": 10
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "rock-tumble",
+          "nameZh": "巨岩坠落",
+          "energyCost": {
+            "FIGHTING": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 60,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "ignoresResistance": true
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_040",
+      "kind": "POKEMON",
+      "hitPoints": 70,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "PSYCHIC",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Machop",
+      "pokemonType": "FIGHTING",
+      "attacks": [
+        {
+          "id": "knuckle-punch",
+          "nameZh": "拳头击打",
+          "energyCost": {
+            "FIGHTING": 1
+          },
+          "baseDamage": 10,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_041",
+      "kind": "POKEMON",
+      "hitPoints": 90,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "xy9-5_en_040",
+      "weakness": {
+        "type": "PSYCHIC",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Machoke",
+      "evolvesFromName": "Machop",
+      "pokemonType": "FIGHTING",
+      "attacks": [
+        {
+          "id": "beatdown",
+          "nameZh": "正拳推力",
+          "energyCost": {
+            "FIGHTING": 2
+          },
+          "baseDamage": 40,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_042",
+      "kind": "POKEMON",
+      "hitPoints": 150,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "xy9-5_en_041",
+      "weakness": {
+        "type": "PSYCHIC",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Machamp",
+      "evolvesFromName": "Machoke",
+      "pokemonType": "FIGHTING",
+      "attacks": [
+        {
+          "id": "machamp-crush",
+          "nameZh": "怪力粉碎",
+          "energyCost": {
+            "FIGHTING": 3
+          },
+          "baseDamage": 80,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "reduce_attack_damage",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 40
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "id": "fighting-fury",
+          "nameZh": "斗魂",
+          "kind": "PASSIVE",
+          "effects": [
+            {
+              "type": "attack_damage_modifier",
+              "target": "ALL_OWN_POKEMON",
+              "direction": "DEALT",
+              "amount": 20,
+              "opponent_active_only": true,
+              "conditions": [
+                {
+                  "type": "IS_TYPE",
+                  "target": "SELF",
+                  "pokemon_type": "FIGHTING"
+                }
+              ]
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_043",
+      "kind": "POKEMON",
+      "hitPoints": 60,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Geodude",
+      "pokemonType": "FIGHTING",
+      "attacks": [
+        {
+          "id": "rollout",
+          "nameZh": "滚动",
+          "energyCost": {
+            "FIGHTING": 1
+          },
+          "baseDamage": 10,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED"
+        },
+        {
+          "id": "flail",
+          "nameZh": "抓狂",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 0,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "damageModifiers": [
+            {
+              "basis": "ATTACKER_DAMAGE_COUNTERS",
+              "amountPerUnit": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_044",
+      "kind": "POKEMON",
+      "hitPoints": 100,
+      "retreatCost": 3,
+      "evolvesFromDefinitionId": "xy9-5_en_043",
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Graveler",
+      "evolvesFromName": "Geodude",
+      "pokemonType": "FIGHTING",
+      "attacks": [
+        {
+          "id": "double-edge",
+          "nameZh": "舍身冲撞",
+          "energyCost": {
+            "COLORLESS": 3
+          },
+          "baseDamage": 60,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "selfDamage": 20
+        },
+        {
+          "id": "rollout",
+          "nameZh": "滚动",
+          "energyCost": {
+            "FIGHTING": 2,
+            "COLORLESS": 2
+          },
+          "baseDamage": 80,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_045",
+      "kind": "POKEMON",
+      "hitPoints": 150,
+      "retreatCost": 3,
+      "evolvesFromDefinitionId": "xy9-5_en_044",
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Golem",
+      "evolvesFromName": "Graveler",
+      "pokemonType": "FIGHTING",
+      "attacks": [
+        {
+          "id": "stone-edge",
+          "nameZh": "尖石攻击",
+          "energyCost": {
+            "FIGHTING": 2,
+            "COLORLESS": 1
+          },
+          "baseDamage": 60,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "coinDamage": {
+            "flips": 1,
+            "perHeads": 30
+          }
+        },
+        {
+          "id": "explosion",
+          "nameZh": "大爆炸",
+          "energyCost": {
+            "FIGHTING": 2,
+            "COLORLESS": 2
+          },
+          "baseDamage": 150,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "selfDamage": 100
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_046",
+      "kind": "POKEMON",
+      "hitPoints": 180,
+      "retreatCost": 4,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Golem-EX",
+      "pokemonType": "FIGHTING",
+      "attacks": [
+        {
+          "id": "boulder-crush",
+          "nameZh": "碎岩",
+          "energyCost": {
+            "FIGHTING": 2,
+            "COLORLESS": 1
+          },
+          "baseDamage": 80,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED"
+        },
+        {
+          "id": "megaton-fall",
+          "nameZh": "百万吨坠落",
+          "energyCost": {
+            "FIGHTING": 3,
+            "COLORLESS": 1
+          },
+          "baseDamage": 180,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "selfDamage": 60
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_047",
+      "kind": "POKEMON",
+      "hitPoints": 90,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "PSYCHIC",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Hitmonlee",
+      "pokemonType": "FIGHTING",
+      "attacks": [
+        {
+          "id": "stretch-kick",
+          "nameZh": "伸长踢",
+          "energyCost": {
+            "FIGHTING": 1
+          },
+          "baseDamage": 30,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "damageTarget": "OPPONENT_BENCH",
+          "targetCount": 1
+        },
+        {
+          "id": "spiral-kick",
+          "nameZh": "回旋踢",
+          "energyCost": {
+            "FIGHTING": 2
+          },
+          "baseDamage": 30,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_048",
+      "kind": "POKEMON",
+      "hitPoints": 90,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "PSYCHIC",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Hitmonchan",
+      "pokemonType": "FIGHTING",
+      "attacks": [
+        {
+          "id": "bullet-punch",
+          "nameZh": "子弹拳",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 20,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "coinDamage": {
+            "flips": 2,
+            "perHeads": 20
+          }
+        },
+        {
+          "id": "mach-cross",
+          "nameZh": "音速直击",
+          "energyCost": {
+            "FIGHTING": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 60,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_049",
+      "kind": "POKEMON",
+      "hitPoints": 80,
+      "retreatCost": 3,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Rhyhorn",
+      "pokemonType": "FIGHTING",
+      "attacks": [
+        {
+          "id": "take-down",
+          "nameZh": "猛撞",
+          "energyCost": {
+            "FIGHTING": 2
+          },
+          "baseDamage": 40,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "selfDamage": 10
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_050",
+      "kind": "POKEMON",
+      "hitPoints": 60,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "METAL",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "DARKNESS",
+        "amount": 20
+      },
+      "prizeCards": 1,
+      "pokemonName": "Clefairy",
+      "pokemonType": "FAIRY",
+      "attacks": [
+        {
+          "id": "moonlight",
+          "nameZh": "月光",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "FAIRY",
+          "effectSupport": "SUPPORTED",
+          "selfHealAfterAttack": 30
+        },
+        {
+          "id": "pound",
+          "nameZh": "拍击",
+          "energyCost": {
+            "FAIRY": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 20,
+          "damageType": "FAIRY",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_051",
+      "kind": "POKEMON",
+      "hitPoints": 90,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "xy9-5_en_050",
+      "weakness": {
+        "type": "METAL",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "DARKNESS",
+        "amount": 20
+      },
+      "prizeCards": 1,
+      "pokemonName": "Clefable",
+      "evolvesFromName": "Clefairy",
+      "pokemonType": "FAIRY",
+      "attacks": [
+        {
+          "id": "follow-me",
+          "nameZh": "看我嘛",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "FAIRY",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "gust",
+                  "target": "SELECT_OPPONENT_POKEMON"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "moonblast",
+          "nameZh": "月亮之力",
+          "energyCost": {
+            "FAIRY": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 30,
+          "damageType": "FAIRY",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "reduce_attack_damage",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 30
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_053",
+      "kind": "POKEMON",
+      "hitPoints": 60,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Meowth",
+      "pokemonType": "COLORLESS",
+      "attacks": [
+        {
+          "id": "exhausted-tackle",
+          "nameZh": "力竭应对",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "COLORLESS",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：flip a coin. if heads, this attack does 30 damage to your opponent's active pokemon. if tails"
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_054",
+      "kind": "POKEMON",
+      "hitPoints": 90,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "xy9-5_en_053",
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Persian",
+      "evolvesFromName": "Meowth",
+      "pokemonType": "COLORLESS",
+      "attacks": [
+        {
+          "id": "fake-out",
+          "nameZh": "击掌奇袭",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 30,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED",
+          "conditions": [
+            {
+              "target": "DEFENDER",
+              "condition": "PARALYZED",
+              "coinCondition": {
+                "flips": 1,
+                "requiredHeads": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "ambush",
+          "nameZh": "伏击",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 40,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED",
+          "coinDamage": {
+            "flips": 1,
+            "perHeads": 30
+          }
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_055",
+      "kind": "POKEMON",
+      "hitPoints": 60,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "LIGHTNING",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "FIGHTING",
+        "amount": 20
+      },
+      "prizeCards": 1,
+      "pokemonName": "Doduo",
+      "pokemonType": "COLORLESS",
+      "attacks": [
+        {
+          "id": "double-stab",
+          "nameZh": "二连撞",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED",
+          "coinDamage": {
+            "flips": 2,
+            "perHeads": 10
+          }
+        },
+        {
+          "id": "doduo-delivery",
+          "nameZh": "嘟嘟快递",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 0,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "draw",
+                  "amount": 2
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_056",
+      "kind": "POKEMON",
+      "hitPoints": 90,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "xy9-5_en_055",
+      "weakness": {
+        "type": "LIGHTNING",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "FIGHTING",
+        "amount": 20
+      },
+      "prizeCards": 1,
+      "pokemonName": "Dodrio",
+      "evolvesFromName": "Doduo",
+      "pokemonType": "COLORLESS",
+      "attacks": [
+        {
+          "id": "fury-attack",
+          "nameZh": "乱击",
+          "energyCost": {
+            "COLORLESS": 3
+          },
+          "baseDamage": 0,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED",
+          "coinDamage": {
+            "flips": 3,
+            "perHeads": 40
+          }
+        }
+      ],
+      "abilities": [
+        {
+          "id": "retreat-aid",
+          "nameZh": "撤退支援",
+          "kind": "PASSIVE",
+          "effects": [
+            {
+              "type": "retreat_cost_modifier",
+              "target": "OWN_ACTIVE",
+              "amount": -2,
+              "source_benched_only": true
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_057",
+      "kind": "POKEMON",
+      "hitPoints": 110,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Tauros",
+      "pokemonType": "COLORLESS",
+      "attacks": [
+        {
+          "id": "take-down",
+          "nameZh": "猛撞",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 30,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED",
+          "selfDamage": 10
+        },
+        {
+          "id": "seething-anger",
+          "nameZh": "愤怒爆发",
+          "energyCost": {
+            "COLORLESS": 3
+          },
+          "baseDamage": 0,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "coin_flip",
+              "flips": 0,
+              "flips_from": "DAMAGE_COUNTER_COUNT",
+              "flips_target": "SELF",
+              "effects": [
+                {
+                  "type": "repeat_per_heads",
+                  "effects": [
+                    {
+                      "type": "damage",
+                      "target": "OPPONENT_ACTIVE",
+                      "amount": 30
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_059",
+      "kind": "TRAINER",
+      "trainerCategory": "SUPPORTER",
+      "effects": [
+        {
+          "type": "search_deck",
+          "target": "DECK",
+          "amount": 4,
+          "minimum": 0,
+          "card_category": "ENERGY",
+          "basic_energy_only": true,
+          "reveal": "true",
+          "energy_type": "LIGHTNING"
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_061",
+      "kind": "TRAINER",
+      "trainerCategory": "ITEM",
+      "effects": [
+        {
+          "type": "move_energy",
+          "target": "ALL_OWN_POKEMON",
+          "amount": 1,
+          "minimum": 1,
+          "card_kind": "BASIC",
+          "destination_scope": "OWN_FIELD"
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_067",
+      "kind": "TRAINER",
+      "trainerCategory": "ITEM",
+      "effects": [
+        {
+          "type": "coin_flip",
+          "flips": 1,
+          "heads": [
+            {
+              "type": "search_deck",
+              "target": "DECK",
+              "amount": 1,
+              "minimum": 0,
+              "card_category": "POKEMON",
+              "reveal": "true"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_068",
+      "kind": "TRAINER",
+      "trainerCategory": "SUPPORTER",
+      "effects": [
+        {
+          "type": "select_pokemon",
+          "target": "SELECT_OWN_POKEMON",
+          "effects": [
+            {
+              "type": "heal",
+              "target": "CHOSEN_POKEMON",
+              "amount": 60
+            },
+            {
+              "type": "clear_status",
+              "target": "CHOSEN_POKEMON",
+              "statuses": "ALL"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_069",
+      "kind": "TRAINER",
+      "trainerCategory": "SUPPORTER",
+      "effects": [
+        {
+          "type": "search_deck",
+          "target": "DECK",
+          "minimum": 0,
+          "amount": 2,
+          "card_category": "POKEMON",
+          "basic_pokemon_only": true,
+          "reveal": true
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_072",
+      "kind": "TRAINER",
+      "trainerCategory": "SUPPORTER",
+      "effect": {
+        "opcode": "SHUFFLE_HAND_DRAW",
+        "amount": 5
+      }
+    },
+    {
+      "id": "xy9-5_en_073",
+      "kind": "TRAINER",
+      "trainerCategory": "SUPPORTER",
+      "effects": [
+        {
+          "amount": 1,
+          "minimum": 1,
+          "target": "OPPONENT_ACTIVE",
+          "type": "discard_energy",
+          "count_mode": "UNITS"
+        }
+      ]
+    },
+    {
+      "id": "xy9-5_en_074",
+      "kind": "ENERGY",
+      "energyUnits": [
+        [
+          "COLORLESS"
+        ],
+        [
+          "COLORLESS"
+        ]
+      ]
+    },
+    {
+      "id": "xy9-5_en_075",
+      "kind": "ENERGY",
+      "energyType": "GRASS"
+    },
+    {
+      "id": "xy9-5_en_076",
+      "kind": "ENERGY",
+      "energyType": "FIRE"
+    },
+    {
+      "id": "xy9-5_en_077",
+      "kind": "ENERGY",
+      "energyType": "WATER"
+    },
+    {
+      "id": "xy9-5_en_078",
+      "kind": "ENERGY",
+      "energyType": "LIGHTNING"
+    },
+    {
+      "id": "xy9-5_en_079",
+      "kind": "ENERGY",
+      "energyType": "PSYCHIC"
+    },
+    {
+      "id": "xy9-5_en_080",
+      "kind": "ENERGY",
+      "energyType": "FIGHTING"
+    },
+    {
+      "id": "xy9-5_en_081",
+      "kind": "ENERGY",
+      "energyType": "DARKNESS"
+    },
+    {
+      "id": "xy9-5_en_082",
+      "kind": "ENERGY",
+      "energyType": "METAL"
+    },
+    {
+      "id": "xy9-5_en_083",
+      "kind": "ENERGY",
+      "energyType": "FAIRY"
+    }
+  ]
+}

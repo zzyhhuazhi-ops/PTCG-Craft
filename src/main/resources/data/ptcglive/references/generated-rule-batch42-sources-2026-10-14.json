@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-14",
+  "scope": "1 newly recognized component, 1 fully supported card. Prior supported programs and metadata unchanged.",
+  "source": "Rainier English card text included verbatim per component; conversion input matched by stable card ID.",
+  "ruleReferences": [
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50646/regu/all",
+      "usedFor": "Official Pikachu Overwriting Bolt: 10 damage, Lightning Weakness x2 until end of next own turn."
+    },
+    {
+      "url": "https://www.pokemon-card.com/assets/document/advanced_manual.pdf",
+      "usedFor": "Attack damage precedes other effects; Weakness is calculated at step 3, while ignoring defender effects skips step 5 (B-07). Bench/evolution removes attack effects. Applying the live x3 aura after the changed Weakness is an implementation inference from these separate type and multiplier effects."
+    }
+  ],
+  "evidence": [
+    {
+      "cardId": "me5-5_en_040",
+      "component": "attack",
+      "name": "Overwriting Bolt",
+      "textEn": "The Defending Pokémon's Weakness is now <sprite name=\"lightning\" tint=1> until the end of your next turn. <i>(Apply Weakness as ×2.)</i>",
+      "textZh": "在下一个自己的回合结束前，受到这个招式影响的宝可梦的弱点变为<sprite name=\"lightning\" tint=1>属性。<i>[弱点按「×2」计算伤害。]</i>",
+      "mapping": {
+        "rules": [
+          "defender-lightning-weakness-until-next-own-end"
+        ],
+        "fields": {
+          "baseDamage": 10
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "weakness_override",
+                "target": "OPPONENT_ACTIVE",
+                "energy_type": "LIGHTNING",
+                "multiplier": 2,
+                "duration": "OWNER_NEXT_TURN_END"
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    }
+  ]
+}

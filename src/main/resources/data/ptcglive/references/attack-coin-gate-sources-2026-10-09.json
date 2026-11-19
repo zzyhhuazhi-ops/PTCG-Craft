@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "version": "attack-coin-gate-v1",
+  "checkedDate": "2026-10-09",
+  "implementationVersion": "0.6.8-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Swoobat — Black & White 51/114（Attract）",
+      "url": "https://limitlesstcg.com/cards/BLW/51",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Card text as printed (Limitless card page); cross-checked against the Rainier card database 2026-10-09",
+      "supportsZh": "“If the Defending Pokémon tries to attack during your opponent's next turn, your opponent flips a coin. If tails, that attack does nothing.”：防守宝可梦在对手的下个回合要攻击时先掷硬币，反面则这次招式没有任何效果。"
+    },
+    {
+      "title": "Dolliv — Scarlet & Violet 22/198（Apply Oil）",
+      "url": "https://limitlesstcg.com/cards/SVI/22",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Card text as printed (Limitless card page); cross-checked against the Rainier card database 2026-10-09",
+      "supportsZh": "新写法 “During your opponent's next turn, if the Defending Pokémon tries to attack, your opponent flips a coin. If tails, that attack doesn't happen.”。"
+    },
+    {
+      "title": "Pokémon TCG Rulebook — Attack step order",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/rules",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official rulebook (attack: check Energy, check Confusion, then check effects that might alter or cancel the attack)",
+      "supportsZh": "攻击时先判定混乱，再处理可能改变或取消招式的效果（规则书即以这类掷币效果为例）。"
+    }
+  ],
+  "dataContractZh": "新效果 attack_coin_gate（target 只能是 OPPONENT_ACTIVE，不带参数），只在攻击的 AFTER_ATTACK 结算。",
+  "serverAuthorityZh": "新持续效果 ATTACK_COIN_GATE（拥有者是攻击方，到其下个回合开始时失效；换下场、进化时随其他招式效果清除；“防止招式效果”的防护会挡住施加）。被施加的宝可梦宣告攻击时，服务器在混乱判定之后掷币（随机记录 attack-coin-gate:<玩家>）；反面时招式不发生：不造成伤害、没有任何效果，回合结束，与混乱判定失败的处理方式一致（不消耗 GX／VSTAR 等整局一次的资格）。",
+  "limitations": [
+    "旧写法 “that attack does nothing” 与新写法 “that attack doesn't happen” 一律按“招式不发生”处理；二者在“招式是否算作已使用”上的细微差别（例如下回合不能使用同一招式）未单独区分，请同伴按官方裁定复核。"
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "scope": "Newest-first ME5 Tremendous Bomb two exact Tool printings. Artwork and true BREAK excluded.",
+  "ruleReferences": [
+    {
+      "url": "https://asia.pokemon-card.com/sg/card-search/detail/25772/",
+      "facts": "Official English Tool: attached non-Mega Evolution ex Active takes240+ damage from opposing Mega Evolution ex attack; place12counters on actual attacking Pokemon even if host KO; discard Tool only if any counters were actually placed."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50292",
+      "facts": "Official Japanese normal print M5 073/081, same threshold/source/host; Tool normal attachment rules. English explicit successful-counter discard condition must be honored."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50326/",
+      "facts": "Official Japanese alternate print M5 106/081, same effect."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%81%94%E3%81%86%E3%81%8B%E3%81%84%E3%83%9C%E3%83%A0&regulation_faq_main_item1=all",
+      "facts": "Direct official FAQ: if incoming Mega Evolution ex damage is230 or lower, do not discard Bomb."
+    }
+  ],
+  "evidence": [
+    {
+      "cardId": "me5_en_082",
+      "textEn": "If the Pokémon this card is attached to isn't a Mega Evolution Pokémon {ex}, is in the Active Spot, and takes 240 or more damage from an attack from your opponent's Mega Evolution Pokémon {ex} <i>(even if this Pokémon is Knocked Out)</i>, place 12 damage counters on the Attacking Pokémon. If you placed any damage counters in this way, discard this card.",
+      "textZh": "身上放有这张卡牌的宝可梦（除「超级进化宝可梦{ex}」外）在战斗场受到对手的「超级进化宝可梦{ex}」「240」及以上的招式的伤害时<i>[即使这只宝可梦因此昏厥]</i>，给使用招式的宝可梦身上放置12个伤害指示物。然后，将这张卡牌放于弃牌区。",
+      "fields": {
+        "automaticEffects": [
+          {
+            "id": "tremendous-bomb",
+            "nameZh": "豪迈炸弹",
+            "eventPolicy": {
+              "trigger": "ON_DAMAGE",
+              "from": "OPPONENT_ATTACK",
+              "activeOnly": true,
+              "lethalOnly": false,
+              "optional": false,
+              "usage": "NONE",
+              "minimumDamage": 240,
+              "attackerFamilies": [
+                "MEGA_EVOLUTION_EX"
+              ]
+            },
+            "triggers": [
+              {
+                "trigger": "ON_DAMAGE",
+                "conditions": [
+                  {
+                    "type": "NOT",
+                    "conditions": [
+                      {
+                        "type": "IS_FAMILY",
+                        "target": "SELF",
+                        "pokemon_family": "MEGA_EVOLUTION_EX"
+                      }
+                    ]
+                  }
+                ],
+                "effects": [
+                  {
+                    "type": "damage_counter",
+                    "target": "ATTACKING_POKEMON",
+                    "amount": 12,
+                    "bind": "placed"
+                  },
+                  {
+                    "type": "conditional",
+                    "conditions": [
+                      {
+                        "type": "BOUND_COUNT",
+                        "bind": "placed",
+                        "value": 1
+                      }
+                    ],
+                    "effects": [
+                      {
+                        "type": "discard_source"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "cardId": "me5_en_113",
+      "textEn": "If the Pokémon this card is attached to isn't a Mega Evolution Pokémon {ex}, is in the Active Spot, and takes 240 or more damage from an attack from your opponent's Mega Evolution Pokémon {ex} <i>(even if this Pokémon is Knocked Out)</i>, place 12 damage counters on the Attacking Pokémon. If you placed any damage counters in this way, discard this card.",
+      "textZh": "身上放有这张卡牌的宝可梦（除「超级进化宝可梦{ex}」外）在战斗场受到对手的「超级进化宝可梦{ex}」「240」及以上的招式的伤害时<i>[即使这只宝可梦因此昏厥]</i>，给使用招式的宝可梦身上放置12个伤害指示物。然后，将这张卡牌放于弃牌区。",
+      "fields": {
+        "automaticEffects": [
+          {
+            "id": "tremendous-bomb",
+            "nameZh": "豪迈炸弹",
+            "eventPolicy": {
+              "trigger": "ON_DAMAGE",
+              "from": "OPPONENT_ATTACK",
+              "activeOnly": true,
+              "lethalOnly": false,
+              "optional": false,
+              "usage": "NONE",
+              "minimumDamage": 240,
+              "attackerFamilies": [
+                "MEGA_EVOLUTION_EX"
+              ]
+            },
+            "triggers": [
+              {
+                "trigger": "ON_DAMAGE",
+                "conditions": [
+                  {
+                    "type": "NOT",
+                    "conditions": [
+                      {
+                        "type": "IS_FAMILY",
+                        "target": "SELF",
+                        "pokemon_family": "MEGA_EVOLUTION_EX"
+                      }
+                    ]
+                  }
+                ],
+                "effects": [
+                  {
+                    "type": "damage_counter",
+                    "target": "ATTACKING_POKEMON",
+                    "amount": 12,
+                    "bind": "placed"
+                  },
+                  {
+                    "type": "conditional",
+                    "conditions": [
+                      {
+                        "type": "BOUND_COUNT",
+                        "bind": "placed",
+                        "value": 1
+                      }
+                    ],
+                    "effects": [
+                      {
+                        "type": "discard_source"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

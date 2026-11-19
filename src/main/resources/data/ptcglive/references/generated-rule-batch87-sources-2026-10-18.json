@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-18",
+  "scope": "ME4 Espurr and directly named same-release Emma Supporters; no artwork, BREAK or JAR.",
+  "cardIds": [
+    "me4_en_036",
+    "me4_en_077",
+    "me4_en_107"
+  ],
+  "ruleReferences": [
+    {
+      "url": "https://asia.pokemon-card.com/sg/card-search/detail/25298/",
+      "kind": "Official English Emma",
+      "status": "Opened",
+      "facts": "Supporter, regulation J, Chaos Rising; exact English rule matches local raw."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50210",
+      "kind": "Official Japanese Emma alternate artwork",
+      "status": "Opened",
+      "facts": "M4 111/083, Supporter; opponent hand inspection then draw equal to Pokemon there."
+    },
+    {
+      "url": "https://www.pokemon.com/uk/pokemon-tcg/pokemon-cards/series/me04/36/",
+      "kind": "Official English Espurr supplied by root",
+      "status": "Opened but extraction returned no useful card body",
+      "facts": "Identity link only in this review; local raw and Japanese actual-card source supply printed details."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50120/regu/all",
+      "kind": "Official Japanese actual Espurr",
+      "status": "Opened",
+      "facts": "Actual M4 Espurr / Buddy Attack counterpart; corroborates card identity and rule."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%8B%E3%83%A3%E3%82%B9%E3%83%91%E3%83%BC&regulation_faq_main_item1=all",
+      "kind": "Official actual Espurr FAQ",
+      "status": "Opened; relevant lines80-84",
+      "facts": "Playing Emma from hand before benching Espurr still permits Buddy Attack's additional60 in that turn."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%9E%E3%83%81%E3%82%A8%E3%83%BC%E3%83%AB&regulation_header_search_item1=all",
+      "kind": "Official actual Emma FAQ",
+      "status": "Search result and open succeeded",
+      "facts": "Two questions: Emma-before-Espurr entry qualifies; Old Jaw Fossil in the revealed hand is an Item, not a Pokemon, so it does not add a draw."
+    },
+    {
+      "url": "https://www.pokemon-card.com/assets/document/advanced_manual.pdf",
+      "kind": "Official general rules version3.4",
+      "status": "Opened and relevant sections read",
+      "facts": "B-03 p10 forbids Supporter play known to change nothing and resolves text in order; C-20 p38 inspects hidden faces then restores secrecy; E p13 loses from empty deck only when failing the start-of-turn draw; E-26 p64 checks that controller's current-turn hand Supporter play. These support the inferences below, not extra Emma-specific FAQs."
+    }
+  ],
+  "reviewedSemantics": [
+    "One copied opponent hand supplies both public reveal faces and canonical Pokemon count. Memory stores explicit 0 before empty continuation; no field-derived Fossil form in hidden zones.",
+    "draw.count_bind reads the existing isolated server count memory, multiplied by amount and capped60. Existing draw.bind independently records actual drawn count; old five-argument DrawCount constructor preserved.",
+    "New consumer participates in AttackCountBindings.reference/references/usesCounts/Flow, capability classification and named-count preflight gating. Legacy skipped prior branch means0; sibling-branch read, forward read, duplicate and repeated producer, delayed ref/write reject.",
+    "Legacy unparameterized reveal SELF/HAND/OPPONENT_ACTIVE unchanged; new parameterized shape requires exactly opponent+bind+POKEMON, no children. Public reveal and authorized controller acknowledgement are unchanged.",
+    "No hidden composition read in canPlayTrainer. Nonempty opponent hand alone makes reveal meaningful, including zero Pokemon or empty own deck. Exact empty-opponent Emma is no-effect rejection.",
+    "Bound draw inspector now says the draw repeats according to preceding effect count, instead of falsely showing fixed1 draw.",
+    "Use server-owned completed hand plays of the actual attacker controller in the current turn. Emma can have been played before this Espurr entered play. No persistent Pokemon bonus or entry-time snapshot; no need for a new history engine component. Incomplete, failed, discarded, opponent-owned, past-turn or effect-only copied Emma use must not count."
+  ],
+  "localPrintAudit": {
+    "rawRoot": "D:/我的mod/rainier-localization-chinese/rainier-localization-chinese (1)/card-databases",
+    "rawFile": "me4.json",
+    "rawSha256": "f74a17944d45aa60ae6a74572a61f9e02184bea66c5665253511144d76d946b5",
+    "report": "outputs/rules-20261012/batch83/reports/conversion-report.json",
+    "reportSha256": "8aed3ae408d9b0ee748e08d406b5dfb16900dd1d7e861d9f12aeb632415cfd90",
+    "allRawScan": {
+      "databaseFiles": 109,
+      "rows": 25598,
+      "method": "Enumerated all rows for the two archetype IDs, Emma name, and Espurr text mentioning Emma.",
+      "matches": [
+        "me4_36",
+        "me4_36_ph",
+        "me4_77",
+        "me4_77_ph",
+        "me4_107"
+      ],
+      "canonicalCombatIds": [
+        "me4_en_036",
+        "me4_en_077",
+        "me4_en_107"
+      ]
+    },
+    "currentSupport": "Batch83 report has Buddy Attack UNSUPPORTED and Emma only unsupported Trainer combat drafts; none of the three is active support."
+  },
+  "evidenceLimitations": [
+    "The initial Emma freeword URL with regulation_faq_main_item1 and card_name variants returned tool InternalError. The regulation_header_search_item1 URL succeeded and contains the exact actual-card FAQs; no missing FAQ was inferred from the failed URL.",
+    "The English Espurr page body did not extract; no unsupported body quotation is attributed to it. Exact card body comes from local raw and official Japanese counterpart.",
+    "No tests or implementation were run during this research. Schema names and engine design are proposals, not existing supported capabilities."
+  ],
+  "chronology": {
+    "era": "mega_evolution",
+    "set": "me4",
+    "releaseDateLocal": "2026-05-22",
+    "afterBatch86": "me4_en_033",
+    "dependencyException": "Emma 077/107 is from the same release and directly named by next remaining Espurr036. No older-era dependencies are proposed. Return to remaining ME4 order after this dependency group."
+  },
+  "schema": {
+    "trigger": "ON_CARD_PLAYED",
+    "effects": [
+      {
+        "type": "reveal_hand",
+        "target": "OPPONENT_ACTIVE",
+        "bind": "revealed-pokemon",
+        "card_category": "POKEMON"
+      },
+      {
+        "type": "draw",
+        "target": "SELF",
+        "amount": 1,
+        "count_bind": "revealed-pokemon"
+      }
+    ]
+  },
+  "mapperScope": "Buddy Attack exact name/base10+/full text/no reminders. map_trainer is text-only: exact full Emma sentence/no reminders; all raw matches proved only the two Emma Supporter printings. No name/category guard is falsely attributed to its API.",
+  "zeroAndLegality": {
+    "opponentNonemptyNoPokemon": "Legal. The reveal itself has an effect; count0 and draw0. Do not make canPlayTrainer depend on the hidden Pokemon count or reveal that count early. Emma still completes and qualifies Buddy Attack.",
+    "opponentEmpty": "Inferred from general no-effect Supporter rule: cannot play this exact Emma because there are no faces to reveal and no count-based draw can happen. Reject before consumption, history, Supporter quota, reveal or RNG. Other composite effects retaining a useful action must keep their ordinary empty-reveal skip behavior.",
+    "ownDeckEmptyOpponentNonempty": "Inferred legal because the opponent-hand reveal remains meaningful. Draw0, no immediate deck-out, complete Supporter use and Buddy Attack qualification. First subsequent own-turn draw remains the ordinary deck-out boundary.",
+    "shortDeck": "Draw all available cards up to captured Pokemon count, no immediate loss or shuffle; bind requested count separately from actual drawn count if both are modeled.",
+    "directFaqLimit": "No direct Emma FAQ for empty opponent hand, zero Pokemon, empty own deck or short deck was found. These are printed-text/general-rule inferences consistent with existing reveal/draw legality paths; tests must be labeled accordingly."
+  },
+  "testLimitations": [
+    "Fossil is an explicitly synthetic Item with an in-play Pokemon form. Its hand category exclusion follows the real Emma FAQ.",
+    "Synthetic echo Item copies actual Emma program but neither real Emma identity; it isolates effect-copy versus a completed actual hand play.",
+    "Empty opponent hand and zero/short/empty own deck boundaries are general-rule inferences, not direct Emma FAQs."
+  ],
+  "validationAtReview": {
+    "pythonTests": 614,
+    "catalogLoad": "passed",
+    "actualCardAndComponentRegressions": "passed",
+    "fullCheck": "pending; see final batch87 docs for terminal result"
+  }
+}

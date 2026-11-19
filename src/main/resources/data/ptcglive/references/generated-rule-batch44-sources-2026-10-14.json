@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-14",
+  "scope": "2 newly recognized components, 2 fully supported cards. Prior supported programs and metadata unchanged.",
+  "source": "Rainier English card text included verbatim per component; conversion input matched by stable card ID.",
+  "ruleReferences": [
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50664/regu/all",
+      "usedFor": "Official Morpeko Select a Snack: discard top three of own deck, choose one of those, show opponent, add to hand."
+    },
+    {
+      "url": "https://www.pokemon-card.com/assets/document/advanced_manual.pdf",
+      "usedFor": "Resolve effect text in order; with an insufficient zone execute the possible portion of an effect. A discard recovery window cannot include previously discarded cards."
+    }
+  ],
+  "evidence": [
+    {
+      "cardId": "me5-5_en_061",
+      "component": "attack",
+      "name": "Select a Snack",
+      "textEn": "Discard the top 3 cards of your deck and put 1 of them into your hand.",
+      "textZh": "将自己牌库上方3张卡牌放于弃牌区，选择其中1张卡牌，在给对手看过之后加入手牌。",
+      "mapping": {
+        "rules": [
+          "discard-top-three-recover-one"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "search_discard_pile",
+                "target": "DISCARD",
+                "amount": 1,
+                "minimum": 1,
+                "destination": "HAND",
+                "reveal": true,
+                "discard_top_count": 3
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_135",
+      "component": "attack",
+      "name": "Select a Snack",
+      "textEn": "Discard the top 3 cards of your deck and put 1 of them into your hand.",
+      "textZh": "将自己牌库上方3张卡牌放于弃牌区，选择其中1张卡牌，在给对手看过之后加入手牌。",
+      "mapping": {
+        "rules": [
+          "discard-top-three-recover-one"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "search_discard_pile",
+                "target": "DISCARD",
+                "amount": 1,
+                "minimum": 1,
+                "destination": "HAND",
+                "reveal": true,
+                "discard_top_count": 3
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    }
+  ]
+}

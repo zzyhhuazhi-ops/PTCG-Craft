@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "version": "attached-energy-filter-v1",
+  "checkedDate": "2026-10-06",
+  "implementationVersion": "0.6.4-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Arcanine — Sun & Moon 22/149（Firestorm）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm1/22/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-06 (pokemon.com page blocked automated reading)",
+      "supportsZh": "招式文字“Discard 3 {R} Energy from this Pokémon.”：只能选当前提供火能量的附着能量。同类写法“Discard a {T} Energy from/attached to this Pokémon.”见于 Raichu、Ho-Oh、Simisear 等。"
+    },
+    {
+      "title": "Zeraora — Sun & Moon Unbroken Bonds 60/214（Crushing Claw）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm10/60/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-06 (pokemon.com page blocked automated reading)",
+      "supportsZh": "招式文字“Discard a Special Energy from your opponent's Active Pokémon.”：只能选特殊能量卡。同句式见于 Drampa-GX、Black Kyurem、Wishiwashi-GX 等约 34 张。"
+    },
+    {
+      "title": "Pokémon Trading Card Game Rules — Scarlet & Violet Rulebook (Energy cards; glossary)",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/pal_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English rulebook PDF; text extracted and checked 2026-10-06",
+      "supportsZh": "能量卡分基本能量与特殊能量；“某属性能量”指提供该属性能量的附着能量卡。筛选读取能量在当前宿主上的实际供能（动态供能先按场上状态解析），多属性能量只要能提供该属性就算。"
+    }
+  ],
+  "dataContractZh": "discard_energy / return_energy / move_energy 新增可选参数 energy_type（EnergyType 名称）与 card_kind（ANY / BASIC / SPECIAL），可单独或组合使用，也可与 all:true 组合（如“弃置这只宝可梦身上全部 {R} 能量”）。省略时与旧数据完全相同。",
+  "serverAuthorityZh": "服务器生成候选时按筛选条件过滤，提交时只接受服务器发出的候选；不符合条件的能量即使附着在同一宿主上也会被拒绝。候选不足时按“能做多少做多少”把最少数量降到实际候选数。",
+  "limitations": [
+    "未覆盖“对手选择弃置哪张能量”“弃置的能量放到放逐区”等变体。",
+    "能量数量作为招式费用（宣告前支付）的情形不在本组件内。"
+  ]
+}

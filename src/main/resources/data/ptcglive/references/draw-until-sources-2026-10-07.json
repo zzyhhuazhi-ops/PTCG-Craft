@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "version": "draw-until-v1",
+  "checkedDate": "2026-10-07",
+  "implementationVersion": "0.6.7-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Furfrou — Sun & Moon Forbidden Light 99/131（Return）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm6/99/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-07 (pokemon.com page blocked automated reading)",
+      "supportsZh": "招式 “You may draw cards until you have 5 cards in your hand.”：攻击方可以选择抽牌直到手牌有 5 张，也可以不抽（数据写成 choice optional 包住 draw_until）。"
+    },
+    {
+      "title": "Dialga-GX — Sun & Moon Ultra Prism 100/156（Overclock）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm5/100/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-07 (pokemon.com page blocked automated reading)",
+      "supportsZh": "招式 “Draw cards until you have 6 cards in your hand.”：必须抽到手牌 6 张；手牌已有 6 张或以上时不抽。"
+    },
+    {
+      "title": "Pokémon Trading Card Game Rules — Scarlet & Violet Rulebook（What if you should draw more cards than you have?）",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/pal_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English rulebook PDF; checked 2026-10-07",
+      "supportsZh": "效果要抽的张数多于牌库剩余张数时，抽完剩下的照常继续；只有回合开始时抽不到牌才判负。"
+    }
+  ],
+  "dataContractZh": "新效果 draw_until(amount 1–60 = 目标手牌张数)：目标 SELF/HAND/DECK 表示来源控制者，OPPONENT_ACTIVE 表示对手（与 draw 相同的玩家约定）。只接受 amount。“You may …” 写成 choice optional 包住它。",
+  "serverAuthorityZh": "服务器按结算时的实际手牌数计算差额，用与 draw 相同的服务器抽牌；手牌已够时不抽，牌库不足时抽完为止且不判负。",
+  "limitations": [
+    "特性和训练家的 “draw cards until you have N” 仍用已有的 DRAW_UNTIL_HAND_SIZE 旧操作码；附带额外条件的写法（如 “If … , draw until 8 instead.”）不在本组件内。"
+  ]
+}

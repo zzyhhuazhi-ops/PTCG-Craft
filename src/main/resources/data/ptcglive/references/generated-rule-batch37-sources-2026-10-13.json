@@ -1,0 +1,555 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-13",
+  "scope": "12 newly recognized components, 12 fully supported cards. Prior supported programs and metadata unchanged.",
+  "source": "Rainier English card text included verbatim per component; conversion input matched by stable card ID.",
+  "ruleReference": {
+    "url": "https://www.pokemon-card.com/assets/document/advanced_manual.pdf",
+    "usedFor": "General damage/Weakness order, Bench damage and attack effects, Energy units, KO checks and effect source timing. Card-specific text is retained below."
+  },
+  "evidence": [
+    {
+      "cardId": "me5-5_en_011",
+      "component": "ability",
+      "name": "Fiery Flapping",
+      "textEn": "Once during your turn, if you have Articuno and Zapdos in play, you may use this Ability. Attach a Basic <sprite name=\"fire\" tint=1> Energy card from your hand to this Pokémon.",
+      "textZh": "如果自己场上有「急冻鸟」「闪电鸟」的话，则在自己的回合可以使用1次。选择自己手牌中的1张「基本<sprite name=\"fire\" tint=1>能量」，附着于这只宝可梦身上。",
+      "mapping": {
+        "rules": [
+          "ability-two-named-partners-hand-energy"
+        ],
+        "fields": {
+          "abilityKind": "ACTIVATED_ONCE_PER_TURN"
+        },
+        "program": [
+          {
+            "type": "conditional",
+            "conditions": [
+              {
+                "type": "POKEMON_COUNT",
+                "target": "SELF",
+                "pokemon_names": "Articuno",
+                "value": 1
+              },
+              {
+                "type": "POKEMON_COUNT",
+                "target": "SELF",
+                "pokemon_names": "Zapdos",
+                "value": 1
+              }
+            ],
+            "effects": [
+              {
+                "type": "attach_energy",
+                "source": "HAND",
+                "target": "SELF",
+                "target_scope": "OWN_FIELD",
+                "amount": 1,
+                "minimum": 1,
+                "basic_energy_only": true,
+                "energy_type": "FIRE"
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_018",
+      "component": "ability",
+      "name": "Frosty Flapping",
+      "textEn": "Once during your turn, if you have Moltres and Zapdos in play, you may use this Ability. Attach a Basic <sprite name=\"water\" tint=1> Energy card from your hand to this Pokémon.",
+      "textZh": "如果自己场上有「火焰鸟」「闪电鸟」的话，则在自己的回合可以使用1次。选择自己手牌中的1张「基本<sprite name=\"water\" tint=1>能量」，附着于这只宝可梦身上。",
+      "mapping": {
+        "rules": [
+          "ability-two-named-partners-hand-energy"
+        ],
+        "fields": {
+          "abilityKind": "ACTIVATED_ONCE_PER_TURN"
+        },
+        "program": [
+          {
+            "type": "conditional",
+            "conditions": [
+              {
+                "type": "POKEMON_COUNT",
+                "target": "SELF",
+                "pokemon_names": "Moltres",
+                "value": 1
+              },
+              {
+                "type": "POKEMON_COUNT",
+                "target": "SELF",
+                "pokemon_names": "Zapdos",
+                "value": 1
+              }
+            ],
+            "effects": [
+              {
+                "type": "attach_energy",
+                "source": "HAND",
+                "target": "SELF",
+                "target_scope": "OWN_FIELD",
+                "amount": 1,
+                "minimum": 1,
+                "basic_energy_only": true,
+                "energy_type": "WATER"
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_034",
+      "component": "attack",
+      "name": "Pika Chain",
+      "textEn": "This attack does 40 damage for each of your Pikachu and Pikachu {ex} in play.",
+      "textZh": "造成自己场上的「皮卡丘（包含『宝可梦{ex}』）」数量×40伤害。",
+      "mapping": {
+        "rules": [
+          "named-pikachu-field-count"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [
+          {
+            "type": "damage_per_pokemon",
+            "target": "ALL_OWN_POKEMON",
+            "amount": 40,
+            "pokemon_names": "Pikachu|Pikachu ex"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_055",
+      "component": "ability",
+      "name": "Flash-Pop Flapping",
+      "textEn": "Once during your turn, if you have Moltres and Articuno in play, you may use this Ability. Attach a Basic <sprite name=\"lightning\" tint=1> Energy card from your hand to this Pokémon.",
+      "textZh": "如果自己场上有「火焰鸟」「急冻鸟」的话，则在自己的回合可以使用1次。选择自己手牌中的1张「基本<sprite name=\"lightning\" tint=1>能量」，附着于这只宝可梦身上。",
+      "mapping": {
+        "rules": [
+          "ability-two-named-partners-hand-energy"
+        ],
+        "fields": {
+          "abilityKind": "ACTIVATED_ONCE_PER_TURN"
+        },
+        "program": [
+          {
+            "type": "conditional",
+            "conditions": [
+              {
+                "type": "POKEMON_COUNT",
+                "target": "SELF",
+                "pokemon_names": "Moltres",
+                "value": 1
+              },
+              {
+                "type": "POKEMON_COUNT",
+                "target": "SELF",
+                "pokemon_names": "Articuno",
+                "value": 1
+              }
+            ],
+            "effects": [
+              {
+                "type": "attach_energy",
+                "source": "HAND",
+                "target": "SELF",
+                "target_scope": "OWN_FIELD",
+                "amount": 1,
+                "minimum": 1,
+                "basic_energy_only": true,
+                "energy_type": "LIGHTNING"
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_125",
+      "component": "attack",
+      "name": "Gnaw Together",
+      "textEn": "Flip a coin for each Maushold you have in play. For each heads, discard the top 2 cards of your opponent's deck.",
+      "textZh": "抛掷与自己场上的「一家鼠」数量相同次数的硬币，从对手牌库上方将出现正面次数×2张卡牌放于弃牌区。",
+      "mapping": {
+        "rules": [
+          "named-maushold-coins"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "coin_flip",
+                "flips": 0,
+                "flips_from": "POKEMON_COUNT",
+                "flips_target": "ALL_OWN_POKEMON",
+                "pokemon_names": "Maushold",
+                "effects": [
+                  {
+                    "type": "repeat_per_heads",
+                    "effects": [
+                      {
+                        "type": "discard_top_deck",
+                        "target": "OPPONENT_ACTIVE",
+                        "amount": 2
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_130",
+      "component": "ability",
+      "name": "Fiery Flapping",
+      "textEn": "Once during your turn, if you have Articuno and Zapdos in play, you may use this Ability. Attach a Basic <sprite name=\"fire\" tint=1> Energy card from your hand to this Pokémon.",
+      "textZh": "如果自己场上有「急冻鸟」「闪电鸟」的话，则在自己的回合可以使用1次。选择自己手牌中的1张「基本<sprite name=\"fire\" tint=1>能量」，附着于这只宝可梦身上。",
+      "mapping": {
+        "rules": [
+          "ability-two-named-partners-hand-energy"
+        ],
+        "fields": {
+          "abilityKind": "ACTIVATED_ONCE_PER_TURN"
+        },
+        "program": [
+          {
+            "type": "conditional",
+            "conditions": [
+              {
+                "type": "POKEMON_COUNT",
+                "target": "SELF",
+                "pokemon_names": "Articuno",
+                "value": 1
+              },
+              {
+                "type": "POKEMON_COUNT",
+                "target": "SELF",
+                "pokemon_names": "Zapdos",
+                "value": 1
+              }
+            ],
+            "effects": [
+              {
+                "type": "attach_energy",
+                "source": "HAND",
+                "target": "SELF",
+                "target_scope": "OWN_FIELD",
+                "amount": 1,
+                "minimum": 1,
+                "basic_energy_only": true,
+                "energy_type": "FIRE"
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_132",
+      "component": "ability",
+      "name": "Frosty Flapping",
+      "textEn": "Once during your turn, if you have Moltres and Zapdos in play, you may use this Ability. Attach a Basic <sprite name=\"water\" tint=1> Energy card from your hand to this Pokémon.",
+      "textZh": "如果自己场上有「火焰鸟」「闪电鸟」的话，则在自己的回合可以使用1次。选择自己手牌中的1张「基本<sprite name=\"water\" tint=1>能量」，附着于这只宝可梦身上。",
+      "mapping": {
+        "rules": [
+          "ability-two-named-partners-hand-energy"
+        ],
+        "fields": {
+          "abilityKind": "ACTIVATED_ONCE_PER_TURN"
+        },
+        "program": [
+          {
+            "type": "conditional",
+            "conditions": [
+              {
+                "type": "POKEMON_COUNT",
+                "target": "SELF",
+                "pokemon_names": "Moltres",
+                "value": 1
+              },
+              {
+                "type": "POKEMON_COUNT",
+                "target": "SELF",
+                "pokemon_names": "Zapdos",
+                "value": 1
+              }
+            ],
+            "effects": [
+              {
+                "type": "attach_energy",
+                "source": "HAND",
+                "target": "SELF",
+                "target_scope": "OWN_FIELD",
+                "amount": 1,
+                "minimum": 1,
+                "basic_energy_only": true,
+                "energy_type": "WATER"
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_133",
+      "component": "ability",
+      "name": "Flash-Pop Flapping",
+      "textEn": "Once during your turn, if you have Moltres and Articuno in play, you may use this Ability. Attach a Basic <sprite name=\"lightning\" tint=1> Energy card from your hand to this Pokémon.",
+      "textZh": "如果自己场上有「火焰鸟」「急冻鸟」的话，则在自己的回合可以使用1次。选择自己手牌中的1张「基本<sprite name=\"lightning\" tint=1>能量」，附着于这只宝可梦身上。",
+      "mapping": {
+        "rules": [
+          "ability-two-named-partners-hand-energy"
+        ],
+        "fields": {
+          "abilityKind": "ACTIVATED_ONCE_PER_TURN"
+        },
+        "program": [
+          {
+            "type": "conditional",
+            "conditions": [
+              {
+                "type": "POKEMON_COUNT",
+                "target": "SELF",
+                "pokemon_names": "Moltres",
+                "value": 1
+              },
+              {
+                "type": "POKEMON_COUNT",
+                "target": "SELF",
+                "pokemon_names": "Articuno",
+                "value": 1
+              }
+            ],
+            "effects": [
+              {
+                "type": "attach_energy",
+                "source": "HAND",
+                "target": "SELF",
+                "target_scope": "OWN_FIELD",
+                "amount": 1,
+                "minimum": 1,
+                "basic_energy_only": true,
+                "energy_type": "LIGHTNING"
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_146",
+      "component": "attack",
+      "name": "Gnaw Together",
+      "textEn": "Flip a coin for each Maushold you have in play. For each heads, discard the top 2 cards of your opponent's deck.",
+      "textZh": "抛掷与自己场上的「一家鼠」数量相同次数的硬币，从对手牌库上方将出现正面次数×2张卡牌放于弃牌区。",
+      "mapping": {
+        "rules": [
+          "named-maushold-coins"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "coin_flip",
+                "flips": 0,
+                "flips_from": "POKEMON_COUNT",
+                "flips_target": "ALL_OWN_POKEMON",
+                "pokemon_names": "Maushold",
+                "effects": [
+                  {
+                    "type": "repeat_per_heads",
+                    "effects": [
+                      {
+                        "type": "discard_top_deck",
+                        "target": "OPPONENT_ACTIVE",
+                        "amount": 2
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "mebsp_en_096",
+      "component": "ability",
+      "name": "Fiery Flapping",
+      "textEn": "Once during your turn, if you have Articuno and Zapdos in play, you may use this Ability. Attach a Basic <sprite name=\"fire\" tint=1> Energy card from your hand to this Pokémon.",
+      "textZh": "如果自己场上有「急冻鸟」「闪电鸟」的话，则在自己的回合可以使用1次。选择自己手牌中的1张「基本<sprite name=\"fire\" tint=1>能量」，附着于这只宝可梦身上。",
+      "mapping": {
+        "rules": [
+          "ability-two-named-partners-hand-energy"
+        ],
+        "fields": {
+          "abilityKind": "ACTIVATED_ONCE_PER_TURN"
+        },
+        "program": [
+          {
+            "type": "conditional",
+            "conditions": [
+              {
+                "type": "POKEMON_COUNT",
+                "target": "SELF",
+                "pokemon_names": "Articuno",
+                "value": 1
+              },
+              {
+                "type": "POKEMON_COUNT",
+                "target": "SELF",
+                "pokemon_names": "Zapdos",
+                "value": 1
+              }
+            ],
+            "effects": [
+              {
+                "type": "attach_energy",
+                "source": "HAND",
+                "target": "SELF",
+                "target_scope": "OWN_FIELD",
+                "amount": 1,
+                "minimum": 1,
+                "basic_energy_only": true,
+                "energy_type": "FIRE"
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "mebsp_en_097",
+      "component": "ability",
+      "name": "Frosty Flapping",
+      "textEn": "Once during your turn, if you have Moltres and Zapdos in play, you may use this Ability. Attach a Basic <sprite name=\"water\" tint=1> Energy card from your hand to this Pokémon.",
+      "textZh": "如果自己场上有「火焰鸟」「闪电鸟」的话，则在自己的回合可以使用1次。选择自己手牌中的1张「基本<sprite name=\"water\" tint=1>能量」，附着于这只宝可梦身上。",
+      "mapping": {
+        "rules": [
+          "ability-two-named-partners-hand-energy"
+        ],
+        "fields": {
+          "abilityKind": "ACTIVATED_ONCE_PER_TURN"
+        },
+        "program": [
+          {
+            "type": "conditional",
+            "conditions": [
+              {
+                "type": "POKEMON_COUNT",
+                "target": "SELF",
+                "pokemon_names": "Moltres",
+                "value": 1
+              },
+              {
+                "type": "POKEMON_COUNT",
+                "target": "SELF",
+                "pokemon_names": "Zapdos",
+                "value": 1
+              }
+            ],
+            "effects": [
+              {
+                "type": "attach_energy",
+                "source": "HAND",
+                "target": "SELF",
+                "target_scope": "OWN_FIELD",
+                "amount": 1,
+                "minimum": 1,
+                "basic_energy_only": true,
+                "energy_type": "WATER"
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "mebsp_en_098",
+      "component": "ability",
+      "name": "Flash-Pop Flapping",
+      "textEn": "Once during your turn, if you have Moltres and Articuno in play, you may use this Ability. Attach a Basic <sprite name=\"lightning\" tint=1> Energy card from your hand to this Pokémon.",
+      "textZh": "如果自己场上有「火焰鸟」「急冻鸟」的话，则在自己的回合可以使用1次。选择自己手牌中的1张「基本<sprite name=\"lightning\" tint=1>能量」，附着于这只宝可梦身上。",
+      "mapping": {
+        "rules": [
+          "ability-two-named-partners-hand-energy"
+        ],
+        "fields": {
+          "abilityKind": "ACTIVATED_ONCE_PER_TURN"
+        },
+        "program": [
+          {
+            "type": "conditional",
+            "conditions": [
+              {
+                "type": "POKEMON_COUNT",
+                "target": "SELF",
+                "pokemon_names": "Moltres",
+                "value": 1
+              },
+              {
+                "type": "POKEMON_COUNT",
+                "target": "SELF",
+                "pokemon_names": "Articuno",
+                "value": 1
+              }
+            ],
+            "effects": [
+              {
+                "type": "attach_energy",
+                "source": "HAND",
+                "target": "SELF",
+                "target_scope": "OWN_FIELD",
+                "amount": 1,
+                "minimum": 1,
+                "basic_energy_only": true,
+                "energy_type": "LIGHTNING"
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    }
+  ]
+}

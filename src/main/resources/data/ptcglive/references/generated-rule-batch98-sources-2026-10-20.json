@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-20",
+  "cardIds": [
+    "me4_en_068",
+    "mebsp_en_077"
+  ],
+  "ruleReferences": [
+    {
+      "url": "https://asia.pokemon-card.com/sg/card-search/detail/25259/",
+      "kind": "Official English card, opened2026-10-18",
+      "supports": "Actual name is Slimy Sliding, not assumed Slippery Slip. Full coin-retreat text, nonstacking, Dragon Pulse160 own top1, profile."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50150/regu/all",
+      "kind": "Official Japanese card, opened2026-10-18",
+      "supports": "Stage2 HP160, effect always while in play inclBench; opponent flips on manual retreat, tails prevents discard/movement; does not stack."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%8C%E3%83%A1%E3%83%AB%E3%82%B4%E3%83%B3&regulation_faq_main_item1=all",
+      "kind": "Direct Goodra official FAQ, opened2026-10-18",
+      "supports": [
+        "Tails does not activate Escape Pouch because no retreat Energy discard occurs.",
+        "AZ Tranquility effect-switch does not flip: attacks/Trainers switching are not manual retreat.",
+        "Zubat zero-retreat-cost still flips and tails does not move.",
+        "Tails consumes player retreat usage even if later Trainer switch replaces Active; new Active cannot retreat again that turn.",
+        "Own Dragon Pulse discarding own Ferrothorn does not trigger Startling Drop."
+      ]
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%82%A2%E3%83%BC%E3%83%9E%E3%83%BC%E3%82%AC%E3%82%A2V&regulation_faq_main_item1=all",
+      "kind": "Official analogous Gooey Room / Lustrous Body FAQ opened2026-10-20",
+      "fact": "Gooey Room coin/attachment instruction affects the player, so Corviknight VMAX Ability protection does not prevent it.",
+      "inference": "Slimy Sliding likewise tells the opponent to flip for their retreat attempt; treated as a player instruction, not an effect placed on the Active Pokemon. This is an analogy, not a claimed direct Slimy Sliding FAQ."
+    }
+  ],
+  "profile": {
+    "stage": "STAGE2",
+    "hp": 160,
+    "type": "DRAGON",
+    "evolvesFrom": "Sliggoo",
+    "retreat": 3,
+    "weakness": null,
+    "resistance": null,
+    "prizes": 1,
+    "attack": "Dragon Pulse WP160, discard own top1 after damage",
+    "costIconsOpened": [
+      "https://asia.pokemon-card.com/various_images/energy/Water.png",
+      "https://asia.pokemon-card.com/various_images/energy/Psychic.png"
+    ]
+  },
+  "matchingPromotion": {
+    "matchingPrintedFields": [
+      "EN Format",
+      "EN Type",
+      "EN Attack Name",
+      "EN Attack Name 2",
+      "EN Attack Name 3",
+      "EN Attack Name 4",
+      "EN Attack Text",
+      "EN Attack Text 2",
+      "EN Attack Text 3",
+      "EN Attack Text 4",
+      "EN Cost",
+      "EN Cost 2",
+      "EN Cost 3",
+      "EN Cost 4",
+      "HP",
+      "Retreat",
+      "Damage",
+      "Damage 2",
+      "Damage 3",
+      "Damage 4",
+      "EN Weakness Type",
+      "Weakness Amount",
+      "EN Resistance Type",
+      "Resistance Amount",
+      "EN Evolves From",
+      "Regulations symbol"
+    ],
+    "allEqual": true,
+    "officialPromotionPageSearch": "No precise page obtained from two official-domain searches; unrelated decklists ignored. This does not prove a page is absent."
+  },
+  "implementation": [
+    "Read-only complete manual-retreat/payment validation before RNG. One live opposing Ability coin regardless of source count/position.",
+    "Tails spends the manual retreat allowance without moving or discarding cards, clearing status, or emitting successful-retreat/incoming events. Heads continues existing retreat settlement.",
+    "Suppression and leaving/evolving/devolving change live source availability; effect switches never invoke this gate.",
+    "Dragon Pulse reuses existing own top-deck discard after160 damage; own-cause Ferrothorn must not trigger."
+  ],
+  "evidenceLimits": [
+    "Original card/direct retreat FAQs from2026-10-18 reused; Japanese50150 reopened2026-10-20.",
+    "Matching promotion is based on full local printed-field equality; no precise official promotion page retrieved.",
+    "Player-effect protection boundary is the explicit documented official analogy above.",
+    "Escape Pouch is not activated by this batch. No-tail movement callbacks are tested with an explicitly synthetic draw callback."
+  ]
+}

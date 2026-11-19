@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "version": "field-state-boundaries-v1",
+  "checkedDate": "2026-10-03",
+  "implementationVersion": "0.6.0-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "February 2026 Rule Book Updates — official Professor Program editorial",
+      "url": "https://professorprogram.pokemon.com/news/11473085",
+      "publishedDate": "2026-02-26",
+      "effectiveDate": null,
+      "documentVersion": "February 2026 editorial rule update",
+      "verification": "Full official editorial page read online on checkedDate; not a user forum ruling",
+      "supportsZh": "原始整张卡／效果完成后再处理所引发效果；击倒与附能事件由当前回合方决定顺序，回合间效果由下一回合方决定顺序。页面日期与正文中的昨天／2月20日矛盾，精确生效日不猜测。"
+    },
+    {
+      "title": "Pokémon TCG Rulebook — Paradox Rift edition (historical)",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/par_rulebook_en.pdf",
+      "localCache": "tmp/pdfs/par_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "PAR English historical rulebook; printed pages 10, 11, 15, 16",
+      "verification": "Cached PDF relevant pages rendered and visually reviewed with PDF reading workflow",
+      "supportsZh": "回合开始抽牌；进化处理；回合间检查在双方回合之间，全部异常状态／其它回合间效果处理后检查击倒。旧书与2026更新需区分，不能视作已读最新规则书。"
+    },
+    {
+      "title": "Mew V — Fusion Strike 250/264",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/swsh8/250/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database SWSH8 250",
+      "verification": "Official indexed card text retrieved on checkedDate",
+      "supportsZh": "攻击可在伤害后按卡文将自身及所附卡洗回牌库。此条只证明通用离场组件的用例，不等于本卡已完整核验、已绑定或当前Standard合法。"
+    }
+  ],
+  "retrievalLimitations": [
+    "Current meg_rulebook_en.pdf and asc_rulebook_en.pdf official web links returned iframe shells or could not be opened; do not report latest PDFs as read",
+    "Exact end-of-turn expiration versus Pokemon Checkup priority is not newly established by the reviewed excerpts; existing order was not changed",
+    "No Asia/Japan ruling has been imported into the international ruleset; no PTCG Live logs were accessed"
+  ],
+  "implementationLimits": [
+    "Only resumable active Ability, Trainer and AFTER_ATTACK programs gain compound return/shuffle continuation",
+    "Automatic departure reactions and direct Knock Out plus departure combinations are rejected before mutation",
+    "Absent-object conditions use unavailable truth, not guessed last-known state; this is not complete LKI or replacement-effect support",
+    "Tests use synthetic programs, not additional audited real-card bindings"
+  ]
+}

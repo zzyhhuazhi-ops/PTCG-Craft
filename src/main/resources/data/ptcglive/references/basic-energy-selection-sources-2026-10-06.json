@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "version": "basic-energy-selection-v1",
+  "checkedDate": "2026-10-06",
+  "implementationVersion": "0.6.4-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Energy Retrieval — Sun & Moon 116/149",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm1/116/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-06 (pokemon.com page blocked automated reading)",
+      "supportsZh": "物品文字“Put up to 2 basic Energy cards from your discard pile into your hand.”：只能选基本能量卡。招式写法“Search your deck for up to N basic Energy cards, reveal them, and put them into your hand.”（约 34 张）同样只认基本能量卡。"
+    },
+    {
+      "title": "Pokémon Trading Card Game Rules — Scarlet & Violet Rulebook（Energy cards; glossary: basic Energy card, Special Energy card）",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/pal_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English rulebook PDF; text extracted and checked 2026-10-06",
+      "supportsZh": "规则书把能量卡分为基本能量卡和特殊能量卡；“basic Energy card”不包括任何特殊能量卡。"
+    }
+  ],
+  "dataContractZh": "search_deck、search_discard_pile、discard 新增可选参数 basic_energy_only（true/false），为 true 时必须同时声明 card_category ENERGY，只有基本能量卡可选。",
+  "serverAuthorityZh": "服务器生成候选时按卡牌定义的基本能量标记筛选，提交时只接受服务器发出的候选；特殊能量即使在同一区域也不能被选中。",
+  "limitations": [
+    "“基本 {R} 能量卡”这种同时限定属性的写法尚未接入（需要读取卡牌的基本能量属性）。"
+  ]
+}

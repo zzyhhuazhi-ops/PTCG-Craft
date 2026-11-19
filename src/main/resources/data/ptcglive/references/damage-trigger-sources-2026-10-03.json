@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "version": "attack-damage-reaction-checkpoint-v1",
+  "checkedDate": "2026-10-03",
+  "implementationVersion": "0.6.0-development",
+  "sources": [
+    {
+      "title": "Ascended Heroes FAQ — Tenacious Body",
+      "url": "https://professorprogram.pokemon.com/news/11464646",
+      "region": "international Play! Pokémon",
+      "publishedDate": "2026-02-11",
+      "effectiveDate": null,
+      "documentVersion": "official Professor Community FAQ 11464646",
+      "retrievalStatus": "official full body read 2026-10-03",
+      "supportsZh": "无视防御效果的Shred仍先造成伤害，随后Tenacious Body可掷硬币保留10HP，不应因无视减伤而跳过伤害后特性。",
+      "dateNoteZh": "产品上市和赛事卡池合法日期不当成通用裁定的生效日期。"
+    },
+    {
+      "title": "Mega Hawlucha ex Spreads Its Wings in Pokémon TCG: Mega Evolution—Ascended Heroes",
+      "url": "https://www.pokemon.com/uk/news/mega-hawlucha-ex-spreads-its-wings-in-pokemon-tcg-mega-evolution-ascended-heroes",
+      "region": "international English",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "official card feature; search-index wording checked 2026-10-03",
+      "retrievalStatus": "official indexed body available; direct page iframe-only",
+      "supportsZh": "自救后剩余HP为10，不能把过量伤害情形误实现成仅移除10点伤害。"
+    },
+    {
+      "title": "Pokémon Card Game Advanced Player’s Rulebook Ver.3.4 — E-03",
+      "url": "https://asia.pokemon-card.com/sg/wp-content/uploads/sites/6/2025/10/EN_advanced_manual-2025.pdf",
+      "region": "Singapore / Malaysia / Philippines English; mechanics cross-check only",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Ver.3.4, printed 01/08/2025; pages 51–52 E-03",
+      "retrievalStatus": "official PDF text inspected; no new locally rendered pages",
+      "supportsZh": "最终伤害至少10才算受伤；攻击伤害和文字完成后处理受伤效果，然后KO；多个受伤效果由受伤一方排序。",
+      "regionNoteZh": "这是国际FAQ的机制交叉依据，不引入该地区卡池或赛事规则。国际2026更新只重述击倒／附能当前玩家及Checkup下一玩家的排序，未把这些顺序推定为受伤排序。"
+    },
+    {
+      "title": "Pokémon Trading Card Game Rules — Paradox Rift historical rulebook",
+      "url": "https://www.pokemon.com/static-assets/content-assets/cms2/pdf/trading-card-game/rulebook/par_rulebook_en.pdf",
+      "region": "international English; historical rulebook",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "2023 copyright; page 20 Full details of attacking",
+      "retrievalStatus": "previously cached PDF rendered page 20 visually inspected",
+      "sha256": "CD526F74614ECFC8AA09C641B03ABC53AAD2F261F028EFAA5B402811FDB86B23",
+      "supportsZh": "攻击伤害与放置指示物不同；弱点、抵抗、伤害效果完成后，最终伤害才放入指示物，零伤害不放。非最新2026全文。"
+    },
+    {
+      "title": "February 2026 Rule Book Updates — What you need to know!",
+      "url": "https://professorprogram.pokemon.com/news/11473085",
+      "region": "international Play! Pokémon",
+      "publishedDate": "2026-02-26",
+      "effectiveDate": null,
+      "documentVersion": "official Professor Community update 11473085",
+      "retrievalStatus": "official full article body read",
+      "supportsZh": "原卡全部效果先完成，再处理其它卡触发；不让受伤特性抢先进入攻击自己的选牌或Choice。",
+      "dateNoteZh": "正文昨天2月20日与页首日期不一致，精确生效日仍null。"
+    },
+    {
+      "title": "Pokémon TCG Live Known Issues Tracker (Updated 10/1/26)",
+      "url": "https://community.pokemon.com/en-us/discussion/23664/pokemon-tcg-live-known-issues-tracker-updated-10-1-26",
+      "region": "PTCG Live; compatibility evidence only",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "TPCi_GlowingMoon administrator post; edited October 1, 2026; Incoming Fixes",
+      "retrievalStatus": "official forum body and administrator attribution read 2026-10-03",
+      "supportsZh": "Incoming Fixes列有Shell Spikes因自己备战宝可梦受伤而误触发；据官方卡文，本模组严格匹配受到伤害的本来源与战斗位限定，不复刻该错误。",
+      "dateNoteZh": "页面同时公告10月6日更新；只记录待上线修复清单，不声称10月3日已上线或亲自测试Live。"
+    }
+  ],
+  "implementationZh": [
+    "ON_DAMAGE + DamageTriggerPolicy明确OPPONENT_ATTACK、activeOnly、lethalOnly、optional、usage；仅本来源实际受伤，零伤害、指示物、中毒、自身反伤不伪装成此事件。",
+    "AttackCheckpoint保留实际伤害事实与直接KO标记，原攻击所有效果和等待完成后读取仍有效特性；受伤反应完成前不移除致命目标。",
+    "受伤反应优先于最终KO及原攻击附能引发的一般触发；最终KO后复用拿奖／替补／Checkup，恰好推进一次。",
+    "HealingEffect参数化DAMAGE和MINIMUM_HP，后者回复到至少指定剩余HP，不降低更健康目标的HP，复用既有回复、免疫与无作用检查；不是新单卡类。",
+    "TriggerOrderPrompt公开事件类型，中文界面提示受伤方排序，旧附能构造兼容。随机与隐藏信息仍由服务器控制。"
+  ],
+  "limitationsZh": [
+    "仅已支持同步Effect。自动私有选牌、Choice、伤害分配、中途离场／换位和附能新事件链仍明确拒绝。",
+    "本方其它宝可梦受伤监听、工具／能量／攻击留下的受伤持续来源、最后已知状态以及ON_KNOCKOUT事件尚未完成。",
+    "没有因此启用Mega Hawlucha ex或Turtonator真实卡；审核绑定仍39。官方论坛仅交叉验证已知问题，不等于Live实机或对局日志回归。",
+    "未做双登录客户端可视化与跨进程恢复，本阶段不重建或替换安装JAR。"
+  ]
+}

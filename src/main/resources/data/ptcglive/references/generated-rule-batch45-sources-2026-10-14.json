@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-14",
+  "scope": "1 newly recognized component, 1 fully supported card. Prior supported programs and metadata unchanged.",
+  "source": "Rainier English card text included verbatim per component; conversion input matched by stable card ID.",
+  "ruleReferences": [
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50648/regu/all",
+      "usedFor": "Official Pikachu Charge-Up Dash: flip until actual tails; choose own Basic Lightning Energy up to heads, attach to this Pokemon, then shuffle the deck."
+    },
+    {
+      "url": "https://www.pokemon-card.com/assets/document/advanced_manual.pdf",
+      "usedFor": "Resolve text in order with server-owned randomness and actual self target. Printed until-tails has no 20-flip limit; one batch search/attachment has one final shuffle."
+    }
+  ],
+  "evidence": [
+    {
+      "cardId": "me5-5_en_042",
+      "component": "attack",
+      "name": "Charge-Up Dash",
+      "textEn": "Flip a coin until you get tails. Search your deck for an amount of Basic <sprite name=\"lightning\" tint=1> Energy up to the number of heads and attach it to this Pokémon. Then, shuffle your deck.",
+      "textZh": "抛掷硬币直到出现反面，选择自己牌库中最多与出现正面次数相同数量的「基本<sprite name=\"lightning\" tint=1>能量」，附着于这只宝可梦身上。并重洗牌库。",
+      "mapping": {
+        "rules": [
+          "until-tails-heads-lightning-attachment"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "coin_flip",
+                "until": "TAILS",
+                "bind": "charge",
+                "effects": []
+              },
+              {
+                "type": "attach_energy",
+                "target": "SELF",
+                "source": "DECK",
+                "amount": 60,
+                "minimum": 0,
+                "amount_mode": "COIN_HEADS",
+                "coin": "charge",
+                "basic_energy_only": true,
+                "energy_type": "LIGHTNING",
+                "target_scope": "OWN_FIELD"
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    }
+  ]
+}

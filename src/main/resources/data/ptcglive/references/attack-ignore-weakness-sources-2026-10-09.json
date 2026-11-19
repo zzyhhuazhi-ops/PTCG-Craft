@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "version": "attack-ignore-weakness-v1",
+  "checkedDate": "2026-10-09",
+  "implementationVersion": "0.6.8-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Pachirisu — Scarlet & Violet 68/198（Everyone Discharge）",
+      "url": "https://limitlesstcg.com/cards/SVI/68",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Card text as printed (Limitless card page); cross-checked against the Rainier card database 2026-10-09",
+      "supportsZh": "“This attack does 20 more damage for each of your Benched {L} Pokémon. This attack's damage isn't affected by Weakness.”：计算伤害时跳过弱点，抵抗力照常。"
+    },
+    {
+      "title": "Zapdos — Sun & Moon Team Up 40/181（Thunderous Assault）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm9/40/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-09",
+      "supportsZh": "同一写法的太阳月亮年代印刷：只写 Weakness，没有写 Resistance。"
+    },
+    {
+      "title": "Pokémon TCG Rulebook — damage calculation order",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/rules",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official rulebook (Attack step: apply Weakness, then Resistance)",
+      "supportsZh": "弱点与抵抗力是伤害计算里两个独立的步骤，招式可以只跳过其中一个。"
+    }
+  ],
+  "dataContractZh": "AttackDefinition 新增末尾字段 ignoresWeakness（旧数据默认 false，另有旧签名的兼容构造器）。不能与 ignoresWeaknessAndResistance 或 ignoresResistance 同时声明（两者都无视时写 ignoresWeaknessAndResistance），也只能用于攻击对方战斗宝可梦（或含战斗宝可梦的任选／全体）招式。",
+  "serverAuthorityZh": "ServerMatch 两条伤害管线（对方战斗宝可梦；任选／全体时的战斗宝可梦）在这个字段为真时跳过弱点；复制招式时带上被复制招式的这个字段，声明复制的招式本身不能带。",
+  "limitations": []
+}

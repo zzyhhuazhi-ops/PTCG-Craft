@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-14",
+  "scope": "1 newly recognized component, 1 fully supported card. Prior supported programs and metadata unchanged.",
+  "source": "Rainier English card text included verbatim per component; conversion input matched by stable card ID.",
+  "ruleReferences": [
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?page=35",
+      "usedFor": "Official Counterattack Grouping FAQ: each in-play Wishiwashi triggers; separate attacks each trigger."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%81%AF%E3%82%93%E3%81%92%E3%81%8D&regulation_faq_main_item1=XY",
+      "usedFor": "Official retaliation FAQ: resolve attack healing/return text first; attack source switched to Bench still receives counters, but departed attacker does not; retaliation can resolve before the damaged source is Knocked Out."
+    }
+  ],
+  "evidence": [
+    {
+      "cardId": "me5-5_en_022",
+      "component": "ability",
+      "name": "Counterattack Grouping",
+      "textEn": "<i><i></i></i>If your Wishiwashi or Wishiwashi {ex} is in the Active Spot and is damaged by an attack from your opponent's Pokémon <i>(even if your Pokémon</i><i> is Knocked Out)</i>, place 3 damage counters on the Attacking Pokémon.",
+      "textZh": "<i><i></i></i>只要这只宝可梦在场上，自己战斗场上的「弱丁鱼（包含『宝可梦{ex}』）」受到对手宝可梦的招式的伤害时<i>[即使自己的宝可梦</i><i>因此昏厥]</i>，就给使用了招式的宝可梦身上放置3个伤害指示物。",
+      "mapping": {
+        "rules": [
+          "wishiwashi-own-active-damage-observer"
+        ],
+        "fields": {
+          "abilityKind": "TRIGGERED",
+          "abilityEventPolicy": {
+            "trigger": "ON_DAMAGE",
+            "from": "OPPONENT_ATTACK",
+            "watch": "OWN_FIELD",
+            "pokemonNames": [
+              "Wishiwashi",
+              "Wishiwashi ex"
+            ],
+            "activeOnly": true,
+            "lethalOnly": false,
+            "optional": false,
+            "usage": "NONE"
+          },
+          "abilityTriggerConditions": []
+        },
+        "program": [
+          {
+            "type": "damage_counter",
+            "target": "ATTACKING_POKEMON",
+            "amount": 3
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    }
+  ]
+}

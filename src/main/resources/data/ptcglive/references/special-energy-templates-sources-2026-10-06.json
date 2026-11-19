@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "version": "special-energy-templates-v1",
+  "checkedDate": "2026-10-06",
+  "implementationVersion": "0.6.4-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Unit Energy GRW / LPM / FDY — Sun & Moon Forbidden Light 137, 138; Ultra Prism 118",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm5/137/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-06 (pokemon.com page blocked automated reading)",
+      "supportsZh": "“While this card is attached to a Pokémon, it provides {G}, {R}, and {W} Energy but provides only 1 Energy at a time.”：附着时 1 个供能单位，可当作三种属性之一。"
+    },
+    {
+      "title": "Rainbow Energy — Sun & Moon 137/149；Draw Energy — Cosmic Eclipse 209/236；Capture Energy、Twin Energy — Rebel Clash 171、174/192；Prism Energy",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm1/137/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-06 (pokemon.com page blocked automated reading)",
+      "supportsZh": "Rainbow：在场时提供任意属性 1 个，从手牌附着时在那只宝可梦身上放 1 个伤害指示物；Draw：从手牌附着时抽 1 张；Capture：从手牌附着时检索 1 只基础宝可梦放到备战区；Twin：附在 Pokémon V（含 VMAX/VSTAR）或 GX 以外的宝可梦时提供 2 个无色，否则 1 个；Prism：附在基础宝可梦上时提供任意属性 1 个，否则无色。"
+    }
+  ],
+  "dataContractZh": "这些卡只用模组已有的特殊能量档案字段：energyUnits（每个内层数组是一个供能单位）、provisionRules（按顺序第一条满足的条件分支）、automaticEffects（ON_ENERGY_ATTACHED，target SELF、source HAND、cause ANY、sourceCardOnly true，表示这张能量本身从手牌附着时）。",
+  "serverAuthorityZh": "供能按宿主当前状态逐次解析；附着触发由服务器捕获的附能事件驱动，检索仍走服务器的私有选牌续接。SpecialEnergyTemplateTest 以同样的数据形状验证。",
+  "limitations": [
+    "其它特殊能量（附着限制为对战风格、“被弃置时改为回手”、按奖赏差改变供能、只对某类攻击生效的减伤等）需要逐张审核或新组件，仍标为未支持。"
+  ]
+}

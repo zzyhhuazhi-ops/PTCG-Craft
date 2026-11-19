@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "version": "search-reveal-v1",
+  "checkedDate": "2026-10-03",
+  "region": "international",
+  "implementationVersion": "0.6.0-development",
+  "sources": [
+    {
+      "title": "Ultra Ball — Brilliant Stars 186/172 — Official Card Database",
+      "url": "https://www.pokemon.com/uk/pokemon-tcg/pokemon-cards/series/swsh9/186/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Brilliant Stars / swsh9 / 186",
+      "retrievalStatus": "official-search-index; direct page returned iframe without card text",
+      "supportsZh": "卡文中的检索、展示、入手顺序；仅作通用展示步骤的文字证据。",
+      "limitationsZh": "未取得页面发布日期或完整当期裁定。没有因此启用该卡，没有把费用或检索数量语义推断为已支持。"
+    }
+  ],
+  "dataContract": {
+    "effects": ["search_deck", "search_discard_pile"],
+    "parameter": "reveal",
+    "type": "boolean",
+    "default": false,
+    "trueMeaningZh": "所选非空卡牌经服务器复核后公开卡面，对手确认查看后再完成原区域移动并继续卡文。"
+  },
+  "compatibilityZh": [
+    "确认按钮只是联网展示同步，不是裁判裁量或官方新增规则；不能取消展示、修改所选牌或插入其他对局行动。",
+    "公开数据仅含卡面定义编号，不含隐藏区物理实例、牌库顺序、其他候选或洗牌结果。",
+    "零张选择不产生空展示；未声明 reveal 的旧数据不自动公开。",
+    "未操作 PTCG Live，未完成实际行为交叉验证；未绑定新真实卡。",
+    "未覆盖展示整手牌、牌库顶查看、排回顺序、成本支付以及攻击／特性中的暂停展示。"
+  ]
+}

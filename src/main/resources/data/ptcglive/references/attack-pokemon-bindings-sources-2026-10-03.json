@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "version": "attack-pokemon-bindings-v1",
+  "implementationVersion": "0.6.0-development",
+  "checkedDate": "2026-10-03",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Roserade — Diamond & Pearl Stormfront, database dp7/23",
+      "url": "https://www.pokemon.com/uk/pokemon-tcg/pokemon-cards/series/dp7/23/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "International official card database, dp7/23",
+      "verification": "Official indexed Bowed Whip text inspected on 2026-10-03",
+      "supportsZh": "Bowed Whip的伤害及正面后弃能都指向此前选中的同一宝可梦，支持跨步骤保留对象关系。此处只取目标关系作为通用架构依据，不声称该招式的可选主伤害和后续弃能已全部实现，也不启用整卡。旧页面Hidden Poison文字与官方勘误不同，以勘误为准。"
+    },
+    {
+      "title": "Rotom — HS Undaunted, database hgss3/20",
+      "url": "https://www.pokemon.com/uk/pokemon-tcg/pokemon-cards/series/hgss3/20",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "International official card database, hgss3/20",
+      "verification": "Official indexed Plasma Arrow text inspected on 2026-10-03",
+      "supportsZh": "Plasma Arrow读取所选宝可梦的能量数，说明目标身份与目标数值查询需要共用同一对象。当前增量支持命名对象的数值读取，不代表该真实攻击全部结算、整卡数据或Standard合法性已审核。"
+    },
+    {
+      "title": "Play! Pokémon TCG Errata — HTML, Roserade correction",
+      "url": "https://play.pokemon.com/en-us/resources/documents/tcg-errata/",
+      "publishedDate": null,
+      "lastUpdatedDate": "2024-11-07",
+      "effectiveDate": null,
+      "documentVersion": "Official HTML Last Update November 7, 2024",
+      "verification": "HTML header and relevant Roserade paragraph inspected on 2026-10-03",
+      "supportsZh": "Hidden Poison的目标被勘误为攻击宝可梦，不能照抄旧卡库的防守宝可梦。此来源用于记录旧文本冲突和勘误优先级，不借此宣称已实现该特性或已核对2026最新版规则书。"
+    }
+  ],
+  "implementationZh": [
+    "select_pokemon.bind在服务器当前攻击检查点保存宝可梦实例及入场序号；with_pokemon.ref在后续阶段重新进入该目标作用域，客户端不能指定或改写内存。",
+    "按BEFORE_ATTACK、ON_ATTACK、AFTER_ATTACK实际顺序校验；最多64个名字、4096步和32层，拒绝拼写错误、前向引用、同路径重复定义与窄化原选择范围。互斥Choice分支可以独立产生同名对象。",
+    "绑定仍对应原入场对象：换位不重新选当前战斗位，同卡离场重入不继承旧引用。未执行选择的引用跳过；旧对象已离场时有关目标的条件不可用、原子动作跳过，无关玩家动作仍遵循原程序。",
+    "复制攻击、私有选牌和Choice暂停共用当前攻击目标及硬币上下文；下一攻击重新创建内存。命名对象可用于当前伤害指示物、能量和条件查询，伤害仍由统一规则层计算。",
+    "position是原选择范围的静态断言，不是再次选目标；状态效果仍要求当前处于战斗位，换到备战区不会把状态错误施加给替补。"
+  ],
+  "unsupportedZh": [
+    "此次绑定只用于同一攻击，不开放训练家、自动特性或未来延迟程序的命名引用",
+    "不因此开放任意主伤害目标、绑定目标附能／弃能／回手、完整离场最后已知信息或替代规则",
+    "复杂复制、动态来源依赖、其余事件排序及更多硬币形式仍需实现和核验",
+    "未完成双真实登录客户端验收，也没有PTCG Live实机交叉验证"
+  ],
+  "scopeDecisionsZh": [
+    "用户取消新增中途保存、跨进程重启续局和完整回放，不作为发布条件；既有随机／操作日志及安全终止解锁保留",
+    "四大项的第一项通用规则完成并验证后打包和替换JAR，不等待另外三项"
+  ],
+  "customEffectsAdded": 0,
+  "auditedRealCardCount": 39,
+  "ptcgLiveObserved": false,
+  "notesZh": "未新建逐卡实现，示例真实卡未启用。未知日期为null，抓取时间不是发布或生效日期。未以卡库目录分母补填整卡编号，未读取Live，未使用普通社区、日本、亚洲或Pocket规则作为国际裁定。搜索返回PDF摘要但未打开或核验PDF整页。命名绑定格式是本模组内部架构，不冒称官方JSON格式。"
+}

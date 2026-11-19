@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-20",
+  "cardIds": [
+    "me4_en_057"
+  ],
+  "ruleReferences": [
+    {
+      "url": "https://asia.pokemon-card.com/my/card-search/detail/25248/",
+      "kind": "Actual English Garbodor",
+      "supports": "Opponent Active with a Tool deals20 less before Weakness/Resistance. Stage1 HP140, DDC100, retreat3."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50139/regu/all",
+      "kind": "Actual Japanese Garbodor",
+      "supports": "Passive in-play scope, opponent Active with physical Tool, minus20 attack damage."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%96%E3%83%AC%E3%82%A4%E3%83%96%E3%83%90%E3%83%B3%E3%82%B0%E3%83%AB&regulation_faq_main_item1=all",
+      "kind": "Actual Garbodor FAQ",
+      "supports": "Chespin Beat10 plus Brave Bangle30 minus Gloomy Garbage20 deals20 against opposing Active ex. Positive and negative attacking-side modifiers combine before zero-floor."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%82%B8%E3%83%A3%E3%83%9F%E3%83%B3%E3%82%B0%E3%82%BF%E3%83%AF%E3%83%BC&regulation_faq_main_item1=all",
+      "kind": "Actual Garbodor FAQ",
+      "supports": "Jamming Tower disabling Tool effects does not erase physical attachment; Gloomy Garbage still reduces20."
+    },
+    {
+      "url": "https://www.pokemon-card.com/assets/document/advanced_manual.pdf",
+      "kind": "Official advanced rules Ver3.4, pp5–6 and22–23",
+      "supports": "B-09 attack self-damage uses ordinary source modifiers, Weakness/Resistance and recipient modifiers; p6 step4 stops calculation at zero/negative after Resistance. Root independently verified; prior exclusion of self-damage was incorrect."
+    }
+  ],
+  "reviewedSemantics": [
+    "Existing passive attack_damage_modifier DEALT -20 targets opponent Active; HAS_TOOL SELF reads affected attacker, not Garbodor source. Converter reuses the schema; independently discovered general self-damage and Resistance-boundary defects are repaired in the final93 engine.",
+    "Any in-play unsuppressed Garbodor source contributes once, including Bench; multiple sources add, more Tools on one attacker do not multiply a source. Existing printed no-stack absence/general continuous-effect rules support additive copies; do not label an unlocated stacking FAQ as found.",
+    "Physical Tool possession remains true while effects disabled. Actual Jamming Tower FAQ directly verifies this distinction.",
+    "Damage adjustment belongs to attacker before Weakness/Resistance. It applies to Active/Bench attack damage and own Bench collateral when such damage is from that affected attack, including printed attack self-damage, but not damage-counter effects or poison/checkup. These are engine/general-rule inferences unless separately sourced.",
+    "Source ability suppression/removal/evolution/switching and affected attacker Tool removal/attachment/switching queried live. Snapshot attack source modifiers at existing damage boundary; no mutation/listener/prompt or usage counter.",
+    "No older unsupported card activation, artwork or BREAK work. Actual Trubbish056 is already supported.",
+    "Native selfDamage and composed self_damage/recoil use ordinary signed DEALT then Active W/R then RECEIVED stages, under actual attack origin.",
+    "Outgoing modifiers/penalty use the existing post-BEFORE_ATTACK snapshot; copied body damageType already carries actual attacker type.",
+    "Own source excludes opponent-only/Active-only dealt bonuses and opponent-only received guards. Legal Bench self damage remains on original entry without W/R; Bench all-source shield still applies.",
+    "Main Active/mixed Resistance<=0 ends only that target damage, preserving other recipients and AFTER text.",
+    "Damage events and final KO remain existing checkpoint; zero self damage emits no positive damage event. No changes to damage_counter, Confusion or Checkup."
+  ],
+  "schema": {
+    "abilityKind": "PASSIVE",
+    "effects": [
+      {
+        "type": "attack_damage_modifier",
+        "target": "OPPONENT_ACTIVE",
+        "amount": -20,
+        "direction": "DEALT",
+        "conditions": [
+          {
+            "type": "HAS_TOOL",
+            "target": "SELF"
+          }
+        ]
+      }
+    ]
+  },
+  "evidenceLimitations": [
+    "No direct Garbodor stacking/collateral/timing FAQ located. Expected cases explicitly follow printed scope and existing general damage rules, not invented card-specific FAQ.",
+    "English HTML type/weakness/cost uses images; raw profile provides structured fields, Japanese and English printed pages corroborate text.",
+    "Receiving-side live effects preserve existing secondary-damage semantics; outgoing snapshot is immutable.",
+    "Formal full Gradle and production integration remain root work.",
+    "Official B-06+B-09 general-rule inference supports whole-attack ignore W/R flags on self; not a dedicated card FAQ. B-07 opposing-Active bypass stays out of self calculation."
+  ],
+  "testLimitations": [
+    "No separate Jamming Tower real-card support is claimed.",
+    "Snapshot timing cases are generic engine behavior with explicit synthetic effects; only the two named actor interactions above are direct Garbodor FAQs."
+  ],
+  "actualCoverage": [
+    "Real Garbodor exact printed profile, passive id/kind/effect-local HAS_TOOL, normal actual Trubbish name evolution, DDC100 missing/wrong/paid cost and own-source exclusion.",
+    "Opposing real passive source on Active or Bench;0/1/2 sources and0/1/2 physical Tools; each holder adds-20 once, not per Tool; source Tool alone does not affect unrelated attacker.",
+    "Attacker Tool attached/removed/re-attached, Active switched out/back, source Active/Bench changes; two-source suppression expiry, devolution and complete leave remove only correct source.",
+    "Actual Chespin Beat10 + actual Brave Bangle30 vs actual Mega Kangaskhan ex with0/1/2 opposing Garbodor gives40/20/0; positive/negative outgoing totals combine before zero floor.",
+    "Explicit server Tool-disable hook isolates unsupported Jamming Tower rule; real Brave Bangle bonus disappears while physical Tool and Garbodor-20 remain. No unsupported Stadium profile activated.",
+    "Actual passive applied before weakness/resistance; native ALL_POKEMON and separate bench_damage to both owners, base0 with secondary40, opponent/self damage counters unaffected, actual Bench attacking source excluded.",
+    "Explicit synthetic BEFORE_ATTACK devolution removes actual Garbodor before capture; synthetic ON_DAMAGE Tool devolution removes its Ability after capture without changing secondary damage already captured.",
+    "Official B-09 native selfDamage and composed self_damage paths each apply actual Garbodor-20 for0/1/2 sources, own weakness/resistance, and preserve independent SELF damage counters.",
+    "Actual Garbodor40-20 with synthetic defender resistance30 must stop at0 before synthetic RECEIVED+30; regression expectation follows official step4, not current engine behavior.",
+    "Copy real Sludge Bomb with actual attacking source/controller Tool, not donor Tool; attacker Ability-effect protection blocks passive, defender attack damage-only/effects-only guards distinguish damage."
+  ],
+  "validationScope": "Reviewed immutable draft component and actual-card runs passed; combined production validation documented in docs/rule-data-batch93-96-20261020.json. No per-batch full-check claim.",
+  "previouslySupportedBehaviorChanges": [
+    {
+      "kind": "General attack self-damage calculation",
+      "programDataChanged": false,
+      "potentialRelatedSupportedDefinitionsAt88": 423,
+      "limit": "Inventory presence is potential reach, not a claim that all ordinary matches change.",
+      "behavior": "Both native and composed self damage now apply ordinary source, Active Weakness/Resistance and receiving stages; own damage excludes opponent-only modifiers. Existing actual85 remains unchanged and passes."
+    },
+    {
+      "kind": "Resistance zero boundary and native opponent-only guards",
+      "programDataChanged": false,
+      "behavior": "Main Active/mixed damage ends when Resistance reaches zero or below; positive receiving effects cannot revive it. Native opponent-only immunity/reduction no longer applies to own self/Bench damage."
+    }
+  ]
+}

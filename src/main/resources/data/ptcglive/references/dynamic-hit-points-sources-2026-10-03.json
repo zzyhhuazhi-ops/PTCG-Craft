@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "version": "dynamic-hit-points-v1",
+  "checkedDate": "2026-10-03",
+  "implementationVersion": "0.6.0-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Hero’s Cape — Temporal Forces 152/162",
+      "url": "https://www.pokemon.com/uk/pokemon-tcg/pokemon-cards/series/sv05/152/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "official international card database SV05 152",
+      "verification": "official indexed card text retrieved 2026-10-03; direct open returned iframe shell",
+      "supportsZh": "所附宝可梦增加100 HP；HP修正与减伤不能互相替代。不据此声明本卡全部限制或历年合法性已核验。"
+    },
+    {
+      "title": "Bravery Charm — Stellar Crown 175/175",
+      "url": "https://www.pokemon.com/uk/pokemon-tcg/pokemon-cards/series/sv07/175/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "official international card database SV07 175",
+      "verification": "official indexed card text retrieved 2026-10-03",
+      "supportsZh": "仅所附基础宝可梦增加50 HP，不能对进化后不符合条件的宿主继续保留加成。"
+    },
+    {
+      "title": "Pokémon TCG Raging Bolt ex & Teal Mask Ogerpon ex Deck Strategy — Ross Cawthon",
+      "url": "https://www.pokemon.com/us/features/pokemon-tcg-raging-bolt-ex-teal-mask-ogerpon-ex-deck-strategy",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "official strategy article, indexed text checked 2026-10-03",
+      "verification": "official indexed strategy paragraph retrieved; no exact official publication date verified; third-party reprint dates not adopted",
+      "supportsZh": "文中明确说明移除勇气护符能在不攻击的情况下击倒已有伤害的飘飘球或吼叫尾，当回合仍可继续攻击。因此HP来源丢失必须检查击倒，不能仅更新界面或直接结束回合。"
+    }
+  ],
+  "implementationZh": [
+    "新增通用hit_points_modifier(amount)，由持续工具、场地或能量程序组合；非一次性HP写值，不为每张卡创建Java类。",
+    "纯来源事实与动态HP视图分层。能量卡替换先于HP，HP先于条件供能，其它数值修正最后查询，避免刷新和条件查询递归。",
+    "当前HP修正条件仅开放卡牌阶段、已识别类别及战斗位，允许逻辑组合；HP、动态供能、区域数量、伤害等其它条件拒绝，不以印刷值伪装实现。",
+    "hit_points_modifier可附加per_attached_energy、可选max_energy和card_kind(BASIC/SPECIAL/ANY)：只按实际附着的能量卡张数计数，不读取特殊能量的动态供能单位或类型，防止HP与条件供能递归。",
+    "伤害、HP条件、回复及场上视图统一使用动态最大HP；伤害指示物保持不变，HP损失不派发ON_DAMAGE。",
+    "已测工具移除/回手/关闭、能量移动/回手/弃置/场地替换失效、场地弃置、进化、攻击/中毒、工具容量清理后的击倒与继续回合。",
+    "HP来源宿主被击倒后检查后续存活状态，沿用击倒触发队列，累积各批奖赏后统一拿奖，不把后续HP来源丢失标记为攻击伤害。"
+  ],
+  "limitationsZh": [
+    "这是第一主项的一个增量，不是通用规则全部完成。任意来源依赖、覆盖优先级、全部到期边界、主动离场与复杂替代的统一检查点仍需补齐。",
+    "仅工具、场地、能量的持续HP组件；尚未把所有宝可梦被动特性重构为通用HP来源。测试中的场地/能量和组合为合成数据，不代表对应真实卡完成审核。",
+    "没有读取或操作PTCG Live；暂无本轮Live对局行为核验结论。社区用户发帖、非官方转载和搜索引擎相对日期未作为裁定或精确日期。",
+    "真实整卡审核绑定仍39张。历年国际/简中规则包、完整可追溯数据与批量效果转换仍未完成。"
+  ]
+}

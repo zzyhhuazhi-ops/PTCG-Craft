@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "version": "energy-trigger-queue-v1",
+  "checkedDate": "2026-10-03",
+  "region": "international",
+  "implementationVersion": "0.6.0-development",
+  "sources": [
+    {
+      "title": "February 2026 Rule Book Updates - What you need to know!",
+      "url": "https://professorprogram.pokemon.com/news/11473085",
+      "publishedDate": "2026-02-26",
+      "effectiveDate": null,
+      "effectiveDateNoteZh": "正文自述 yesterday (February 20th) 与页面发布日期不一致，保留冲突，不猜测精确生效日。",
+      "documentVersion": "February 2026 official Professor Community rules update; checked 2026-10-03",
+      "retrievalStatus": "official article body read",
+      "supportsZh": "附着能量引发多个同时触发效果时，当前回合玩家决定顺序；先完成原卡全部效果，才处理其它卡被触发的效果。",
+      "limitationsZh": "文章还涉及击倒及回合间触发；本阶段没有实现这两类事件。可选与限次取决于卡文，不把所有特性自动判为每回合一次。"
+    }
+  ],
+  "rulesets": {
+    "standard-international-2026": "2026.1.5",
+    "custom-open-all": "1.0.1 (custom rules, not an official format)",
+    "timing": "AFTER_CARD_ACTIVE_PLAYER_V1",
+    "otherEditionsZh": "其它规则未声明时为 UNVERIFIED，带自动触发特性的卡组拒绝开局，不能将当期国际时序外推至简中或历史年份。"
+  },
+  "implementationZh": [
+    "使用 TRIGGERED Ability + ON_ENERGY_ATTACHED + eventPolicy + EffectProgram；不按单张卡编写 Java 类。",
+    "eventPolicy 明确目标关系、来源区域、手动或效果附着、基础能量限定、是否可选与限次。触发条件在附着发生时捕获；不同附着步骤按先后批次处理，同一附着步骤内由当前玩家排序。",
+    "原卡全部结算并经现有击倒／拿奖／替补检查点后继续队列；这属于本引擎检查点接线，尚未以真实相关卡全面验收，不声称全部击倒触发规则已完成。",
+    "可选触发由特性拥有者确认；排序不代表当前玩家可代替对手决定用不用。未使用不消耗次数，实际执行才计次。",
+    "次数键仍绑定来源、特性编号及在场序号；ONCE_PER_GAME 不代表玩家共享的 GX／VSTAR 权限已实现。",
+    "只开放抽牌、固定目标回复／异常状态／指示物和无暂停的条件、硬币、重复组合。需选择／检索／附能链／移动／复制等仍明确拒绝。未增加真实支持卡（仍39张）。"
+  ],
+  "compatibilityZh": [
+    "未操作、Hook、读取或修改 PTCG Live；没有宣称实际 Live 行为已对照验证。",
+    "自动触发等待可在同一服务器进程内刷新或切换练习视角继续；持久化重启续局、真实双客户端断线尚未验收。",
+    "真实卡必须另行审定来源、可选文字、能量来源所有权及最后已知状态语义；当前参数不是任意卡文的自动解析结果。"
+  ]
+}

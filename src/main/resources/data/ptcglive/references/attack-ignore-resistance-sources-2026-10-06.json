@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "version": "attack-ignore-resistance-v1",
+  "checkedDate": "2026-10-06",
+  "implementationVersion": "0.6.4-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Pokémon Trading Card Game Rules — Scarlet & Violet Rulebook (Attacking, damage calculation order)",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/pal_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English rulebook PDF; text extracted and checked 2026-10-06",
+      "supportsZh": "规则书的伤害计算顺序：先按招式文字算出基础伤害，再乘对方战斗宝可梦的弱点，然后减去其抵抗力，之后才处理对方身上的防伤效果；备战宝可梦不计弱点和抵抗力。“只无视抵抗力”因此只跳过第 4 步，弱点照常计算。"
+    },
+    {
+      "title": "Scolipede — Black & White 54/114（Steamroller）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/bw1/54/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-06 (pokemon.com page blocked automated reading)",
+      "supportsZh": "招式文字为“This attack's damage isn't affected by Resistance.”（这个招式的伤害不计算抵抗力），是只无视抵抗力、不影响弱点的机制例；同句式在全库约 106 张卡上出现（如 Naclstack、Landorus 等）。"
+    }
+  ],
+  "dataContractZh": "攻击字段 ignoresResistance:true 表示伤害只跳过抵抗力，弱点照常。只能用于伤害目标为 OPPONENT_ACTIVE 的招式（备战伤害本来就不计弱点抵抗）；不能与 ignoresWeaknessAndResistance 同时声明。省略时为 false。",
+  "serverAuthorityZh": "服务器在同一攻击结算中按规则书顺序计算：基础伤害与招式修正 → 弱点 → 抵抗力（此字段为真时跳过）→ 防守方效果；客户端无法声明或改变这一步。lastAttack().resistanceApplied() 如实记录未套用抵抗力。",
+  "limitations": [
+    "只覆盖“伤害不计抵抗力”；“不计弱点”的单独写法和“不受对方战斗宝可梦身上效果影响”仍分别由其它字段处理。",
+    "未把 PTCG Live、日本或其它地区的行为混入国际规则包。"
+  ]
+}

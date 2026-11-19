@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "scope": "Newest-first ME5: Mabosstiff and Bronzong whole cards, new next-opponent-turn self received-damage modifier; artwork and true BREAK excluded.",
+  "ruleReferences": [
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50275/regu/all",
+      "facts": "Mabosstiff Bite60, PlungingHeadbutt210; next opponent turn this Pokemon receives +100 attack damage."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%9E%E3%83%95%E3%82%A3%E3%83%86%E3%82%A3%E3%83%95&regulation_faq_main_item1=all",
+      "facts": "Official7FAQ, first4 relevant: W/R first, zero base stops calculation, SonicEdge ignores +100, Hide n Sneak attacking Banette does not suppress self-effect."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50281",
+      "facts": "Bronzong MetalBlock120: next opponent turn this Pokemon takes100 less from Evolution Pokemon attacks."
+    }
+  ],
+  "evidence": [
+    {
+      "cardId": "me5_en_058",
+      "name": "Plunging Headbutt",
+      "textEn": "During your opponent's next turn, this Pokémon takes 100 more damage from attacks <i>(after applying Weakness and Resistance)</i>.",
+      "textZh": "在下一个对手的回合，这只宝可梦所受到的招式的伤害「+100」<i>[在计算弱点、抗性之后]</i>。",
+      "mapping": {
+        "rules": [
+          "attack-next-opponent-turn-received-damage-change"
+        ],
+        "fields": {
+          "baseDamage": 210
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "modify_damage_taken",
+                "target": "SELF",
+                "amount": 100,
+                "duration": "OPPONENT_NEXT_TURN"
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5_en_064",
+      "name": "Metal Block",
+      "textEn": "During your opponent's next turn, this Pokémon takes 100 less damage from attacks from Evolution Pokémon <i>(after applying Weakness and Resistance)</i>.",
+      "textZh": "在下一个对手的回合，这只宝可梦受到进化宝可梦的招式的伤害「-100」<i>[在计算弱点、抗性之后]</i>。",
+      "mapping": {
+        "rules": [
+          "attack-next-opponent-turn-received-damage-change"
+        ],
+        "fields": {
+          "baseDamage": 120
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "modify_damage_taken",
+                "target": "SELF",
+                "amount": -100,
+                "duration": "OPPONENT_NEXT_TURN",
+                "attacker_filter": "EVOLUTION"
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    }
+  ]
+}

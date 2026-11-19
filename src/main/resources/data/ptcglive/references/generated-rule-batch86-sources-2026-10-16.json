@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-16",
+  "scope": "ME4 Deoxys Psy Protection; no artwork, BREAK or JAR.",
+  "cardIds": [
+    "me4_en_033"
+  ],
+  "ruleReferences": [
+    {
+      "url": "https://asia.pokemon-card.com/sg/card-search/detail/25224/",
+      "kind": "Official English actual card",
+      "status": "Opened successfully",
+      "facts": "Basic Deoxys130HP, Psychic type, Psy Protection PPC80, J, Darkness weakness2, Fighting resistance30, retreat3. Energy icon links inspected individually; rule text matches local ME4 033."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50117/regu/all",
+      "kind": "Official Japanese actual card",
+      "status": "Opened successfully",
+      "facts": "M4 033/083, Basic130HP, サイコプロテクト80; text says no attack damage from Pokemon possessing Abilities during next opposing turn."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%AD%E3%82%B1%E3%83%83%E3%83%88%E5%9B%A3%E3%81%AE%E7%9B%A3%E8%A6%96%E5%A1%94&regulation_faq_main_item1=all",
+      "kind": "Official actual Deoxys FAQ",
+      "status": "Opened successfully,4 results; relevant question/answer at text lines92-95",
+      "questionParaphrase": "With Team Rocket's Watchtower in play, can Cinccino ex Energy Slap damage an opposing Deoxys protected by Psy Protection?",
+      "answerParaphrase": "Yes: Watchtower has removed all of Cinccino ex's Abilities, so Psy Protection does not apply.",
+      "proves": "Use current possessed Ability state with removal/suppression, not printed profile presence and not a snapshot taken when Deoxys used Psy Protection."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%95%E3%83%AB%E3%83%95%E3%82%A7%E3%82%A4%E3%82%B9%E3%82%AC%E3%83%BC%E3%83%89&regulation_faq_main_item1=all",
+      "kind": "Official analogue only: Full Face Guard possession/removal timing",
+      "status": "Opened successfully,3 results",
+      "facts": "A Rayquaza VMAX loses its Ability under Path to the Peak and qualifies for Full Face Guard. Rewind Beam damage precedes devolution, so later loss/change of Ability does not revise prior damage. Gastro Acid example also confirms damage uses pre-effect state.",
+      "limitation": "These are Full Face Guard examples, not additional Deoxys rulings; Gastro Acid answer does not by itself prove every later-turn activation-lock interaction."
+    }
+  ],
+  "reviewedSemantics": [
+    "Two actual-source fact construction paths use hasPossessedAbilities(owner,pokemon). Frozen damage facts are captured after BEFORE_ATTACK and retained after later restoration/leave for secondary damage. Non-damage dynamic protection queries use live actual actor. No use of donor, current replacement Active, printed-only or activeAbilities.",
+    "ProtectionEffect.FIELDS derives from AttackSourceFilter.FIELDS; preflight derives from ProtectionEffect.FIELDS. PassiveAttackGuard and DamageTakenModifier likewise consume source filters. Existing registry/schema/resumable architecture needs no opcode/example addition. Strict malformed flag, typo and sourceABILITY are component-tested.",
+    "No dependency rule broadened. Existing HAS_ABILITIES removal cycle still rejects; source filter on suppress_abilities rejects. Regression suites validate current canonical possession behavior.",
+    "Preserved old 2/4/6 argument AttackSourceFilter constructors and old 6 argument Facts constructor; old Facts Ability proof is null, only new required predicate fails closed."
+  ],
+  "localPrintAudit": {
+    "name": "Deoxys",
+    "nameZh": "代欧奇希斯",
+    "archetypeId": -1036422763,
+    "printed": {
+      "stage": "BASIC",
+      "hitPoints": 130,
+      "type": "PSYCHIC",
+      "weakness": "DARKNESS x2",
+      "resistance": "FIGHTING -30",
+      "retreat": 3,
+      "prizes": 1,
+      "regulation": "J",
+      "ruleBox": false,
+      "ability": null
+    },
+    "internalId": "me4_33",
+    "rawFoilVariants": [
+      "me4_33",
+      "me4_33_ph"
+    ],
+    "exactRulePrintEvidence": "Full 14,198-card report has exactly one cardId with archetype -1036422763 and one Psy Protection attack: me4_en_033. Raw ME4 includes normal and reverse-holo rows with identical rule data; these are one combat ID, not two rules cards. ME4 031,032,034 and other same-name Deoxys have different attacks and are not siblings.",
+    "rawSources": [
+      "D:\\我的mod\\rainier-localization-chinese\\rainier-localization-chinese (1)\\card-databases\\me4.json"
+    ],
+    "rawSha256": "f74a17944d45aa60ae6a74572a61f9e02184bea66c5665253511144d76d946b5",
+    "reportSource": "outputs/rules-20261012/batch83/reports/conversion-report.json",
+    "reportSha256": "8aed3ae408d9b0ee748e08d406b5dfb16900dd1d7e861d9f12aeb632415cfd90",
+    "releaseDateRaw": "2026-05-21T17:00:00.0000000Z"
+  },
+  "evidenceLimitations": [
+    "Direct exact サイコプロテクト FAQ query returned tool InternalError; the actual same question was successfully recovered and opened through Team Rocket's Watchtower query.",
+    "Official English Deoxys Q&A link https://asia.pokemon-card.com/sg/rules/search/?keyword=Deoxys returned cache miss.",
+    "Attempts to open Alolan Vulpix VSTAR / Snow Mirage FAQ queries returned InternalError. No claim of a recovered Alolan Vulpix ruling.",
+    "No direct Deoxys FAQ located for temporary ability-use/effect locks, copied attacks, damage counters, or extra turns. These boundaries follow printed scope and existing audited engine contracts; identified as inference/implementation requirements.",
+    "No live tests were run in this research. Source fit and proposed extension require component and actual-card runtime verification before support is enabled."
+  ],
+  "abilityPossessionContract": {
+    "requiredQuery": "ServerMatch.hasPossessedAbilities(owner,pokemon), currently lines1388-1392; same canonical query used by HAS_ABILITIES condition.",
+    "whyNotActiveAbilities": "activeAbilities returns empty when a temporary disable_abilities effect prevents functioning/activation. That is distinct from losing/erasing all Abilities; using it would disagree with the preexisting possession contract.",
+    "whyNotPrintedProfile": "profile.abilities alone ignores Team Rocket's Watchtower and other true removal, violating the actual Deoxys FAQ.",
+    "existingImplementation": "hasPossessedAbilities checks abilitySuppressed and zoneSuppressionSourceId exemptions, then battlefield.abilities. Thus it respects persistent removal and preserved exempt source abilities, while bypassing a mere temporary ability-effects lock.",
+    "snapshot": "Capture possessed-ability Boolean for the actual attacker in resolveDeclaredAttackDamage after genuine BEFORE_ATTACK changes, alongside current energy/status Facts. Keep that same fact for primary and secondary attack damage. Normal AFTER_ATTACK removals/restorations must not retroactively rewrite attack damage. Non-damage source filter queries should receive live authoritative facts when relevant.",
+    "noRecursion": "Reuse existing acyclic hasPossessedAbilities. Do not define an Ability-removal condition that depends on HAS_ABILITIES or on this new filter; AbilitySuppressionProgram.validateDependency already rejects that cycle."
+  },
+  "deferredInteractions": {
+    "cinccinoEx": [
+      "me4_en_073",
+      "me4_en_105",
+      "me4_en_119"
+    ],
+    "cinccinoStatus": "Already SUPPORTED in batch83 report; may be used without new activation.",
+    "watchtower": [
+      "me2-5_en_210",
+      "sv10_en_180"
+    ],
+    "watchtowerStatus": "Both UNSUPPORTED and older/different pending sequence. Use explicitly synthetic COLORLESS-only suppress_abilities Stadium to test official interaction; do not activate these cards in86."
+  },
+  "sameTextNotActivated": [
+    {
+      "cardId": "sv4_en_005",
+      "name": "Simisage",
+      "attack": "Arm Thrust Needle",
+      "text": "During your opponent's next turn, prevent all damage done to this Pokémon by attacks from Pokémon that have an Ability, except any Simisage.",
+      "status": "UNSUPPORTED",
+      "reason": "Older era, not a sibling print of this Deoxys; keep deferred. Exact same clause may be reused only when that era/card is reached."
+    },
+    {
+      "cardId": "swsh8_en_189",
+      "name": "Melmetal",
+      "attack": "Ingot Swing",
+      "text": "During your opponent's next turn, prevent all damage done to this Pokémon by attacks from Pokémon that have an Ability.",
+      "status": "UNSUPPORTED",
+      "reason": "Older era, not a sibling print of this Deoxys; keep deferred. Exact same clause may be reused only when that era/card is reached."
+    },
+    {
+      "cardId": "swsh12_en_034",
+      "name": "Alolan Vulpix VSTAR",
+      "attack": "Snow Mirage",
+      "text": "This attack's damage isn't affected by any effects on your opponent's Active Pokémon. During your opponent's next turn, prevent all damage done to this Pokémon by attacks from Pokémon that have an Ability.",
+      "status": "UNSUPPORTED",
+      "reason": "Older era, not a sibling print of this Deoxys; keep deferred. Exact same clause may be reused only when that era/card is reached."
+    },
+    {
+      "cardId": "swsh12_en_197",
+      "name": "Alolan Vulpix VSTAR",
+      "attack": "Snow Mirage",
+      "text": "This attack's damage isn't affected by any effects on your opponent's Active Pokémon. During your opponent's next turn, prevent all damage done to this Pokémon by attacks from Pokémon that have an Ability.",
+      "status": "UNSUPPORTED",
+      "reason": "Older era, not a sibling print of this Deoxys; keep deferred. Exact same clause may be reused only when that era/card is reached."
+    }
+  ],
+  "validationAtReview": {
+    "pythonTests": 604,
+    "catalogLoad": "passed",
+    "actualCardAndComponentRegressions": "passed",
+    "fullCheck": "pending; see final batch86 docs for terminal result"
+  }
+}

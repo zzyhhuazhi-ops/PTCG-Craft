@@ -1,0 +1,30 @@
+{
+  "batch": 100,
+  "checkedAt": "2026-10-20",
+  "cards": ["me4_en_071", "me4_en_097"],
+  "officialSources": [
+    {
+      "url": "https://asia.pokemon-card.com/sg/card-search/detail/25262/",
+      "facts": "Watchog: 100 HP; evolves from Patrat; Snap Inspection uses three coin flips, then reveals the opponent's hand and returns one distinct card per heads to the opponent's deck; Low Kick does 50 damage for Colorless Colorless; Fighting weakness x2; one retreat cost."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50194",
+      "facts": "Japanese print cross-check for the same Watchog card family and attack wording."
+    }
+  ],
+  "reuseDecision": {
+    "accepted": ["existing coin bindings", "existing opponent-hand reveal", "existing private physical-card selection", "existing shuffle transaction"],
+    "rejected": ["external Watchog implementation with different cost/text", "BREAK combat behavior"]
+  },
+  "implementation": {
+    "effect": "opponent_hand_to_deck",
+    "destination": "DECK_SHUFFLED",
+    "selection": "exactly heads physical cards from the revealed snapshot, one shuffle after all selected cards return"
+  },
+  "validation": [
+    "717 conversion tests passed",
+    "candidate overlay loaded all 14661 card definitions",
+    "both Watchog attack programs passed rules validation",
+    "real-card regression passed for both prints, zero heads, empty hand, illegal selections, and copied attacks"
+  ]
+}

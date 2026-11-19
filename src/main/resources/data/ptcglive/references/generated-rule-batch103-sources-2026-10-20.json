@@ -1,0 +1,36 @@
+{
+  "batch": 103,
+  "checkedAt": "2026-10-20",
+  "cards": [
+    "me4_en_076",
+    "me4_en_106",
+    "me4_en_120"
+  ],
+  "officialSources": [
+    "https://www.pokemon-card.com/card-search/details.php/card/48484",
+    "https://github.com/PokemonTCG/pokemon-tcg-data"
+  ],
+  "reuseDecision": {
+    "accepted": [
+      "existing private bench selection",
+      "existing CHOSEN_POKEMON scope",
+      "existing switch and heal effects",
+      "existing IS_EX condition"
+    ],
+    "rejected": [
+      "healing a different Pokemon after switching",
+      "BREAK combat behavior"
+    ]
+  },
+  "implementation": {
+    "effect": "select_pokemon(OWN_BENCH) -> switch CHOSEN_POKEMON -> if IS_EX CHOSEN_POKEMON heal 80"
+  },
+  "validation": {
+    "conversion": "3 targets generated SUPPORTED and TRAINER combat entries",
+    "javaCompile": "passed in prior batch; no new Java engine change",
+    "tests": "deferred by user until all cards are complete",
+    "realCardRegression": "deferred",
+    "jarBuilt": false,
+    "sourcePushed": false
+  }
+}

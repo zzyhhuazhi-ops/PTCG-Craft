@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "version": "any-field-damage-counter-distribution-v1",
+  "checkedDate": "2026-10-04",
+  "implementationVersion": "0.6.0-development",
+  "region": "international-historical-reference",
+  "sources": [
+    {
+      "title": "Pokémon TCG: Platinum—Supreme Victors official Card-Dex",
+      "url": "https://assets.pokemon.com/assets/cms/pdf/tcg/carddex/Supreme_Victors.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official historical Card-Dex PDF",
+      "verification": "The Claydol Antique Magic text places three damage counters on any Pokémon, both the player's and the opponent's, in any way the player likes.",
+      "supportsZh": "作为双方公开场上固定总额指示物分配的历史卡文建模用例；不表示 Claydol 或任何历史卡已经可在本模组对战。"
+    },
+    {
+      "title": "Play! Pokémon Competitive Pokémon Rules and Formats",
+      "url": "https://play.pokemon.com/en-us/resources/rules/?category=tcg",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official resources index, retrieved 2026-10-04",
+      "verification": "The official index provides maintained entry points for rulebooks, tournament rules, legality notices and errata.",
+      "supportsZh": "用于持续核验当前规则包；索引页本身不被当作历史单卡的完整时序裁定。"
+    }
+  ],
+  "retrievalLimitations": [
+    "No PTCG Live behavior, Chinese translation, image or community source is used as rule authority.",
+    "The Card-Dex is used as a historical international text example, not a current Standard legality assertion.",
+    "Every real card remains unavailable until its complete official text, timing and legality are audited."
+  ],
+  "implementationLimits": [
+    "Supports only exact placement of new damage counters across publicly visible in-play Pokémon with SELECT_ANY_POKEMON plus ANY_FIELD.",
+    "The server issues candidates and revalidates target identity, ownership, counts and total before applying all placements.",
+    "Does not implement moving counters, removal, replacement effects, card-rule filtering, complex source restrictions or the historical Claydol card."
+  ]
+}

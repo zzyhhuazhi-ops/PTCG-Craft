@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "version": "attach-to-this-pokemon-v1",
+  "checkedDate": "2026-10-07",
+  "implementationVersion": "0.6.7-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Pawmot（Rainier 卡号 sv1_en_076，特性 Electrogenesis）",
+      "url": "https://limitlesstcg.com/cards/SVI/76",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Limitless card page used by PTCGCardCN for this card's English image (Rainier sv1 → Limitless SVI); English card text from the Rainier card database 2026-10-07",
+      "supportsZh": "“Once during your turn, you may search your deck for a Basic {L} Energy card and attach it to this Pokémon. Then, shuffle your deck.”：能量附到拥有这个特性的宝可梦，它在备战区时也一样。"
+    },
+    {
+      "title": "Sandy Shocks ex（Rainier 卡号 sv4_en_108，特性 Magnetic Absorption）",
+      "url": "https://limitlesstcg.com/cards/PAR/108",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Limitless card page used by PTCGCardCN for this card's English image (Rainier sv4 → Limitless PAR); English card text from the Rainier card database 2026-10-07",
+      "supportsZh": "“Once during your turn, if your opponent has 4 or fewer Prize cards remaining, you may attach a Basic {F} Energy card from your discard pile to this Pokémon.”：条件不满足时不能使用特性。"
+    },
+    {
+      "title": "Solgaleo（Rainier 卡号 me5-5_en_105，特性 Sunrise）",
+      "url": "https://limitlesstcg.com/cards/30C/105",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Limitless card page used by PTCGCardCN for this card's English image (Rainier me5-5 → Limitless 30C); English card text from the Rainier card database 2026-10-07",
+      "supportsZh": "“Once during your turn, if this Pokémon is on your Bench, you may use this Ability. Search your deck for up to 2 Basic {M} Energy cards and attach them to this Pokémon.”：只有在备战区时能用，能量附到这只备战宝可梦。"
+    }
+  ],
+  "dataContractZh": "attach_energy 新增目标 SELF（target_scope 必须是 OWN_FIELD，不能用 distribution ANY）：拥有这段文字的宝可梦本身，在战斗位或备战区都可以。训练家没有“这只宝可梦”，一律拒绝。",
+  "serverAuthorityZh": "宿主由服务器从效果来源取得，只在同一只宝可梦仍在场（入场身份没变）时有效；选完能量后直接附着，不给客户端第二次选宿主的机会，与 select_pokemon 绑定的宿主（CHOSEN_POKEMON）相同。顺带修正：CHOSEN_POKEMON 的附能／附着工具在选完卡后原来提前返回，没有继续推进卡牌结算，训练家／特性的结算一直挂着；现在与普通提交一样附着后继续结算。",
+  "limitations": [
+    "特性从手牌附能到这只宝可梦（Moltres／Articuno／Zapdos 的 “if you have … in play”）需要按卡名判断场上宝可梦，还没有对应条件。"
+  ]
+}

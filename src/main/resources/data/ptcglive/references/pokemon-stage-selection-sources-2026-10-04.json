@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "version": "pokemon-stage-selection-v1",
+  "checkedDate": "2026-10-04",
+  "implementationVersion": "0.6.0-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Rosa's Encouragement — Perfect Order 114 official card page",
+      "url": "https://www.pokemon.com/uk/pokemon-tcg/pokemon-cards/series/me03/114/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official card database entry",
+      "verification": "The official card text attaches Basic Energy cards from the discard pile to one of the player's Stage 2 Pokémon.",
+      "supportsZh": "作为“选择己方二阶宝可梦”服务器目标筛选的卡文建模用例；不表示该真实卡的数量、区域、时序或合法性已经完成。"
+    },
+    {
+      "title": "Play! Pokémon Competitive Pokémon Rules and Formats",
+      "url": "https://play.pokemon.com/en-us/resources/rules/?category=tcg",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official resources index, retrieved 2026-10-04",
+      "verification": "The official index provides maintained entry points for rulebooks, tournament rules, legality notices and errata.",
+      "supportsZh": "用于持续核验进化、规则包和勘误；索引页本身不被当作任意阶段目标或历史形态的逐项裁定。"
+    }
+  ],
+  "retrievalLimitations": [
+    "No PTCG Live behavior, Chinese translation, image, card name or community source is used as rule authority.",
+    "This source record is international only and does not assert Chinese or Japanese historical-format equivalence.",
+    "Every real card remains unavailable until its complete official text, timing and legality are audited."
+  ],
+  "implementationLimits": [
+    "Supports BASIC, EVOLUTION, STAGE1 and STAGE2 selectors only when the authoritative card definition and CombatProfile evolution chain are present and acyclic.",
+    "Candidates are server-filtered before the prompt and server-revalidated after selection; missing or invalid chains fail closed.",
+    "Does not implement Rosa's Encouragement, arbitrary multi-target energy allocation, Level-Up, BREAK, V-UNION, devolution or historical evolution exceptions."
+  ]
+}

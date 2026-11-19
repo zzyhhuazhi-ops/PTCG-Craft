@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "version": "active-ability-continuation-v1",
+  "checkedDate": "2026-10-03",
+  "implementationVersion": "0.6.0-development",
+  "sources": [
+    {
+      "title": "February 2026 Rule Book Updates - What you need to know!",
+      "url": "https://professorprogram.pokemon.com/news/11473085",
+      "region": "international",
+      "publishedDate": "2026-02-26",
+      "effectiveDate": null,
+      "documentVersion": "February 2026 official Professor Community update",
+      "retrievalStatus": "official article body read 2026-10-03",
+      "dateNoteZh": "正文 yesterday (February 20th) 与页面发布日期不一致，不推断精确生效日。",
+      "supportsZh": "先完成最初卡牌或效果的全部结算，再处理因此触发的其它效果。本轮将已有整卡检查点用于主动特性的附能、后续选择和触发队列。"
+    },
+    {
+      "title": "Pidgeot ex — Quick Search, Obsidian Flames",
+      "url": "https://asia.pokemon-card.com/hk-en/card-search/detail/9105/",
+      "region": "Hong Kong English; illustrative card wording only",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "official card database snapshot checked 2026-10-03",
+      "retrievalStatus": "official card body read; international pokemon.com card page returned iframe only",
+      "supportsZh": "卡文说明特性可检索后洗牌，并存在跨来源共享的同名特性回合限制，不能把所有特性都解释为每只各一次。",
+      "limitationsZh": "仅用作数据需求示例；没有新增本卡规则绑定。当前主动组合仍使用来源实例/特性编号/在场序号的限次，未实现该卡跨来源共享资格。不将此地区资料当作国际赛事或简中合法性规则。"
+    }
+  ],
+  "implementationZh": [
+    "PendingResolution 与 EffectContinuation 共用训练家和主动特性的 Choice、区域选择、展示、附能目标和指示物分配，不按单卡写类。",
+    "ResumableProgramRules 区分训练家 SELF 与来源宝可梦 SELF，静态卡组检查和实际执行共用校验。",
+    "完整预检后锁定程序和本次使用次数；等待、刷新、失败后半段不释放已发动次数。条件检查重入拒绝，使用条件失败不消耗次数。",
+    "客户端只收公开特性来源、拥有者私有候选和服务器发行的版本化操作，不接收程序、随机种子或牌库顺序。",
+    "整段效果完成后统一处理击倒；特性来源不按训练家卡弃置。附能产生的其它特性在原特性末尾继续。"
+  ],
+  "limitationsZh": [
+    "攻击中的选择续接、统一来源免疫、多方独立预选目标、GX/VSTAR共享次数、跨来源同名特性限次仍未完成。",
+    "带后续步骤的离场与依赖最后已知状态的组合继续明确拒绝。自动触发特性仍采用原有受限同步组件，不与主动特性续接范围混淆。",
+    "服务器进程内刷新/练习切席已验证，不代表服务器重启续局或真实双客户端断线恢复。",
+    "未读取、修改或运行PTCG Live，没有实际行为对照日志；真实已审核卡牌绑定仍为39张。"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "version": "attack-lock-until-leaves-active-v1",
+  "checkedDate": "2026-10-07",
+  "implementationVersion": "0.6.7-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Galarian Sirfetch'd — Sword & Shield Rebel Clash 95/192（Meteor Assault）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/swsh2/95/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-07 (pokemon.com page blocked automated reading)",
+      "supportsZh": "“This Pokémon can't use Meteor Assault again until it leaves the Active Spot.”：这只宝可梦回到备战区（或进化，攻击效果随之清除）之前不能再用这个招式；其他招式不受影响。"
+    },
+    {
+      "title": "Pokémon Trading Card Game Rules — Scarlet & Violet Rulebook（effects of attacks end when the Pokémon is moved to the Bench or evolves）",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/pal_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English rulebook PDF; checked 2026-10-07",
+      "supportsZh": "宝可梦回到备战区或进化时，攻击施加在它身上的效果都会消失。"
+    }
+  ],
+  "dataContractZh": "新效果 lock_this_attack：target 只能是 SELF，不接受参数，只在攻击的 AFTER_ATTACK 结算。锁定的是本次结算的这个招式的印刷名称（与 cannotUseSameAttackDuringNextTurn 相同的按名称锁定）。",
+  "serverAuthorityZh": "服务器取当前攻击结算记录里的招式名称（不由客户端提供），给攻击者挂 ATTACK_ID_LOCK 持续效果，到期条件 LEAVES_PLAY：不随回合失效，换下场或进化时随其他攻击效果清除。攻击者已离开战斗位时不施加。",
+  "limitations": []
+}

@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "version": "up-to-selection-v1",
+  "checkedDate": "2026-10-06",
+  "implementationVersion": "0.6.4-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Pokémon Trading Card Game Rules — Scarlet & Violet Rulebook（What's the difference between “up to” and “any amount”?）",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/pal_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English rulebook PDF; text extracted and checked 2026-10-06",
+      "supportsZh": "规则书：卡牌写“up to X”时可选 1 到 X（例外是“draw up to X cards”可以选 0）；写“any amount / any number”时可以选 0；写“you may”的是可选效果。"
+    },
+    {
+      "title": "Pokémon Rulings Compendium — Mega Lucario ex “Aura Jab”（Mega Evolution FAQ）",
+      "url": "https://compendium.pokegym.net/ruling/2219/",
+      "publishedDate": "2025-09-25",
+      "effectiveDate": null,
+      "documentVersion": "TPCi Rules Team ruling (2025-09-25; reaffirmed 2026-02-19), read 2026-10-06",
+      "supportsZh": "官方裁定：招式写“up to X”时，可以选 0 到上限之间的任意数（即使弃牌区里有符合的能量也可以一张都不附）。"
+    },
+    {
+      "title": "Pokémon Rulings Compendium — Miraidon “Photon Cord”（Pitch Black FAQ）",
+      "url": "https://compendium.pokegym.net/ruling/2399/",
+      "publishedDate": "2026-07-16",
+      "effectiveDate": null,
+      "documentVersion": "TPCi Rules Team ruling (2026-07-16), read 2026-10-06",
+      "supportsZh": "官方裁定：特性的“up to”效果只要有符合的卡就必须至少选 1 张；“只有招式可以对‘up to’效果选 0”。"
+    },
+    {
+      "title": "Whimsicott-GX — Sun & Moon Unbroken Bonds 140/214（Toy Box GX）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm10/140/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-06 (pokemon.com page blocked automated reading)",
+      "supportsZh": "招式文字“Search your deck for up to 5 cards and put them into your hand. Then, shuffle your deck.”：招式的任意卡检索，按上面的裁定可以一张都不拿（仍然洗牌）。同句式见于 Salazzle ex（me3）等约 41 张。"
+    }
+  ],
+  "dataContractZh": "search_deck / search_discard_pile 在没有任何筛选（任意卡）时：招式的 BEFORE_ATTACK / AFTER_ATTACK 程序可以声明 minimum 0；训练家与特性程序仍须 minimum ≥ 1。有筛选条件的检索照旧可以声明 minimum 0（牌库是隐藏信息，指定条件的卡可以“找不到”）。",
+  "serverAuthorityZh": "ZoneSelectionEffect.forProgram 依据服务器所知的出处（攻击游标 / 训练家 / 特性）决定是否允许任意卡检索选 0 张；客户端不能把训练家或特性伪装成招式。牌库不足时最少数量仍按实际候选数下调。",
+  "limitations": [
+    "只调整“任意卡检索”的最少张数；其它“up to”组件（附能、移动伤害指示物等）的最少数量继续由各卡审核数据中的 minimum 明确声明。"
+  ]
+}

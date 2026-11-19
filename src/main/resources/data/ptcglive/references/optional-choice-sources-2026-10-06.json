@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "version": "optional-choice-v1",
+  "checkedDate": "2026-10-06",
+  "implementationVersion": "0.6.4-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Pokémon Trading Card Game Rules — Scarlet & Violet Rulebook（What's the difference between “up to” and “any amount”?）",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/pal_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English rulebook PDF; text extracted and checked 2026-10-06",
+      "supportsZh": "规则书同一节写明：写着“you may”的效果是可选的，可以选择不做。"
+    },
+    {
+      "title": "Umbreon-GX — Sun & Moon 80/149（Strafe）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm1/80/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-06 (pokemon.com page blocked automated reading)",
+      "supportsZh": "招式文字“You may switch this Pokémon with 1 of your Benched Pokémon.”：攻击方可以换位，也可以不换。同句式见于 Tapu Fini-GX 等约 57 张。"
+    }
+  ],
+  "dataContractZh": "choice 新增参数 optional（true/false，默认 false）。optional:true 时选项数可以只有 1 个，服务器在选项最后加一个“不发动”，选它就什么都不结算；不接受其它参数。",
+  "serverAuthorityZh": "选项由服务器按卡牌数据签发给效果操控方，提交的序号由服务器核对；“不发动”不产生任何场面变化，也不消耗随机数。被选中的选项照常经过各自组件的服务器校验与选择流程。",
+  "limitations": [
+    "“you may … If you do, …”这类“发动后才有后续效果”的写法需要把后续效果放进同一选项里，各卡另行审核。"
+  ]
+}

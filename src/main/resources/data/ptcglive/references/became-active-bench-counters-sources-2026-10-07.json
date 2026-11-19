@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "version": "became-active-bench-counters-v1",
+  "checkedDate": "2026-10-07",
+  "implementationVersion": "0.6.7-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Golisopod-GX — Sun & Moon Burning Shadows 17/147（First Impression）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm3/17/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-07 (pokemon.com page blocked automated reading)",
+      "supportsZh": "“If this Pokémon was on the Bench and became your Active Pokémon this turn, this attack does 90 more damage.”：这只宝可梦在本回合内从备战区来到战斗位（撤退、交换效果，或本回合内击倒后替补）时追加伤害。新写法 “If this Pokémon moved from your Bench to the Active Spot this turn” 意思相同。回合之间（宝可梦检查后）替补上场的不算“本回合”。"
+    },
+    {
+      "title": "Drampa-GX — Sun & Moon Guardians Rising 115/145（Berserk）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm2/115/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-07 (pokemon.com page blocked automated reading)",
+      "supportsZh": "“If your Benched Pokémon have any damage counters on them, this attack does 70 more damage.”：己方任意一只备战宝可梦身上有伤害指示物即可（战斗宝可梦身上的不算）。"
+    }
+  ],
+  "dataContractZh": "新条件 BECAME_ACTIVE_THIS_TURN（只接受 target，单只公开宝可梦）。DAMAGE_COUNTER_COUNT 新增群体目标 OWN_BENCH / OPPONENT_BENCH / ALL_OWN_POKEMON / ALL_OPPONENT_POKEMON：数值为该组全部宝可梦的伤害指示物合计（空组为 0），“有任何指示物”写成 value 1。",
+  "serverAuthorityZh": "BattlefieldState 在交换、撤退、替补三种“从备战区到战斗位”时记下当时的回合数；条件只在当前回合数相同时成立。群体计数由服务器按当前公开场上逐只相加。",
+  "limitations": [
+    "“如果这只宝可梦本回合被回复过”“上个对手回合被攻击伤害过”等其它回合内事件记录不在本组件内。"
+  ]
+}

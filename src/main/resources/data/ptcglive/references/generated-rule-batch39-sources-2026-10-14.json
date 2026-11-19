@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-14",
+  "scope": "2 newly recognized components, 2 fully supported cards. Prior supported programs and metadata unchanged.",
+  "source": "Rainier English card text included verbatim per component; conversion input matched by stable card ID.",
+  "ruleReference": {
+    "url": "https://www.pokemon-card.com/assets/document/advanced_manual.pdf",
+    "usedFor": "General damage/Weakness order, Bench damage and attack effects, Energy units, KO checks and effect source timing. Card-specific text is retained below."
+  },
+  "evidence": [
+    {
+      "cardId": "me5-5_en_004",
+      "component": "ability",
+      "name": "Supereffective Pheromones",
+      "textEn": "If you have Volbeat in play, apply Weakness for both Active Pokémon as ×3.",
+      "textZh": "如果自己场上有「电萤虫」的话，则能生效。只要这只宝可梦在场上，双方战斗宝可梦的弱点按「×3」计算伤害。",
+      "mapping": {
+        "rules": [
+          "volbeat-both-active-triple-weakness"
+        ],
+        "fields": {
+          "abilityKind": "PASSIVE"
+        },
+        "program": [
+          {
+            "type": "conditional",
+            "conditions": [
+              {
+                "type": "POKEMON_COUNT",
+                "target": "SELF",
+                "pokemon_names": "Volbeat",
+                "value": 1
+              }
+            ],
+            "effects": [
+              {
+                "type": "weakness_multiplier",
+                "target": "OWN_ACTIVE",
+                "amount": 3
+              },
+              {
+                "type": "weakness_multiplier",
+                "target": "OPPONENT_ACTIVE",
+                "amount": 3
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_100",
+      "component": "ability",
+      "name": "Life-Locked",
+      "textEn": "Your opponent's Active Pokémon can't be healed.",
+      "textZh": "只要这只宝可梦在场上，对手的战斗宝可梦无法回复HP。",
+      "mapping": {
+        "rules": [
+          "opponent-active-no-healing"
+        ],
+        "fields": {
+          "abilityKind": "PASSIVE"
+        },
+        "program": [
+          {
+            "type": "prevent_healing",
+            "target": "OPPONENT_ACTIVE"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "version": "attack-after-damage-continuation-v1",
+  "checkedDate": "2026-10-03",
+  "implementationVersion": "0.6.0-development",
+  "sources": [
+    {
+      "title": "Pokémon Trading Card Game Rules — PAR historical reference",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/par_rulebook_en.pdf",
+      "region": "international; historical attack sequence reference",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "PAR / 2023 copyright / 41 pages; not verified as latest 2026 edition",
+      "pagesReviewed": [20],
+      "sha256": "CD526F74614ECFC8AA09C641B03ABC53AAD2F261F028EFAA5B402811FDB86B23",
+      "retrievalStatus": "web PDF text and complete cached page 20 visually reviewed on 2026-10-03",
+      "supportsZh": "攻击在伤害前效果后放置伤害，再完成其它攻击效果；伤害计算继续使用弱点、抵抗力和防护顺序。指示物效果不冒充攻击伤害。"
+    },
+    {
+      "title": "February 2026 Rule Book Updates — What you need to know!",
+      "url": "https://professorprogram.pokemon.com/news/11473085",
+      "region": "international Play! Pokémon",
+      "publishedDate": "2026-02-26",
+      "effectiveDate": null,
+      "documentVersion": "official Professor Community article 11473085; read 2026-10-03",
+      "retrievalStatus": "official article body read",
+      "dateUncertaintyZh": "正文称立即生效，并把昨天写为2月20日，与页首2月26日发布日期冲突，未推测精确生效日。",
+      "supportsZh": "先完成初始卡牌／效果的全部步骤，再执行其它卡牌触发；回合中同时附能触发由当前玩家排序。攻击的最多可选0，但无类别限制的任意卡牌检索仍至少1张。"
+    }
+  ],
+  "implementationZh": [
+    "普通攻击和已有伤害计算不重写；ON_ATTACK保留伤害计算组件，单个AFTER_ATTACK入口明确表示伤害之后、击倒检查之前的本攻击文字，不表示回合结束后的事件。",
+    "AFTER_ATTACK复用EffectContinuation、区域选牌、公开展示、附能目标、指示物分配；参数minimum由审核数据明确，不能从卡名或攻击文字猜测。",
+    "初始伤害／能量费用／混乱及随机不因等待选择而重做；暂停保留ATTACK来源，防护由统一规则层执行。",
+    "整个攻击文字结束统一检查击倒；拿奖和替补、延后附能触发结束后只进行一次Checkup及回合推进。",
+    "攻击完整静态契约由检查器、界面选项与服务器共同使用，未支持时序或目标在消耗随机和伤害前拒绝。"
+  ],
+  "limitationsZh": [
+    "尚不支持伤害前的交互、攻击中的回手／洗回造成离场与替补、独立预选目标、多AFTER_ATTACK绑定或跨阶段共用硬币条件；仍明确拒绝，不把效果放错时序。",
+    "附能与指示物分配有其自己的后续目标选择；其它SELECT_*固定公开预选目标尚未接到攻击入口。",
+    "AFTER_ATTACK阶段不能声明damage或伤害倍率，不能绕过统一伤害计算；复制攻击、反射伤害、更多自动事件与来源最后已知状态仍待做。",
+    "续接保存于当前服务器进程，跨进程恢复、双真实客户端可视验收和Live行为对照尚未完成。",
+    "未新增真实卡绑定，仍39张审核绑定；不把测试夹具当真实卡或全卡支持。已安装0.5.19不变，最终统一大版本交付。"
+  ]
+}

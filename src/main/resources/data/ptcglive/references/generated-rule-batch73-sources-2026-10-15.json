@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "scope": "Newest-first ME5 Sinistcha and Spiritomb. Artwork and true BREAK excluded.",
+  "ruleReferences": [
+    {
+      "url": "https://asia.pokemon-card.com/sg/card-search/detail/25696/",
+      "facts": "Sinistcha60HP Stage1, Hide n Sneak, MatchaSpin6+discard matching Abilities ->4counters on each opponentPokemon."
+    },
+    {
+      "url": "https://asia.pokemon-card.com/sg/card-search/detail/25725/",
+      "facts": "Spiritomb60HP Basic, SpiritualEnd13+discard matching Abilities ->choose2opponentPokemon, quadruple each existing counter total."
+    }
+  ],
+  "evidence": [
+    {
+      "cardId": "me5_en_006",
+      "name": "Matcha Spin",
+      "textEn": "If you have 6 or more Pokémon that have the Hide 'n' Sneak Ability in your discard pile, place 4 damage counters on each of your opponent's Pokémon.",
+      "textZh": "如果自己弃牌区有6张及以上拥有特性「化隐」的宝可梦的话，则在对手所有宝可梦身上各放置4个伤害指示物。",
+      "fields": {
+        "baseDamage": 0
+      },
+      "program": [],
+      "triggers": [
+        {
+          "trigger": "AFTER_ATTACK",
+          "effects": [
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "DISCARD_COUNT",
+                  "target": "SELF",
+                  "ability_id": "hide-n-sneak",
+                  "value": 6,
+                  "comparison": ">="
+                }
+              ],
+              "effects": [
+                {
+                  "type": "damage_counter",
+                  "target": "ALL_OPPONENT_POKEMON",
+                  "amount": 4
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cardId": "me5_en_035",
+      "name": "Spiritual End",
+      "textEn": "If you have 13 or more Pokémon that have the Hide 'n' Sneak Ability in your discard pile, choose 2 of your opponent's Pokémon and quadruple the number of damage counters on each of them.",
+      "textZh": "如果自己弃牌区中拥有特性「化隐」的宝可梦在13张及以上的话，则选择对手的2只宝可梦，将各自身上的伤害指示物数量变为原来的4倍。",
+      "fields": {
+        "baseDamage": 0
+      },
+      "program": [],
+      "triggers": [
+        {
+          "trigger": "AFTER_ATTACK",
+          "effects": [
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "DISCARD_COUNT",
+                  "target": "SELF",
+                  "ability_id": "hide-n-sneak",
+                  "value": 13,
+                  "comparison": ">="
+                }
+              ],
+              "effects": [
+                {
+                  "type": "damage_counter",
+                  "target": "SELECT_OPPONENT_POKEMON",
+                  "target_count": 2,
+                  "counter_multiplier": 4
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "version": "attack-lock-next-turn-v1",
+  "checkedDate": "2026-10-06",
+  "implementationVersion": "0.6.4-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Lapras-GX — Sun & Moon 35/149（Blizzard Burn）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm1/35/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-06 (pokemon.com page blocked automated reading)",
+      "supportsZh": "招式文字“This Pokémon can't attack during your next turn.”；另一种写法“During your next turn, this Pokémon can't attack.”见于 Koraidon ex、Miraidon ex（sv1）、奇树的电肚蛙ex 等，两种写法合计约 227 张。限制覆盖使用招式一方的下一个回合，到那个回合结束为止。"
+    },
+    {
+      "title": "Pokémon Trading Card Game Rules — Scarlet & Violet Rulebook（Retreat; Evolve）",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/pal_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English rulebook PDF; text extracted and checked 2026-10-06",
+      "supportsZh": "规则书：战斗宝可梦回到备战区时（撤退或其它方式），特殊状态和所有招式效果都会消失；宝可梦进化时，影响它的招式效果和特殊状态也会结束。所以这个限制在宝可梦回到备战区或进化时提前解除。"
+    }
+  ],
+  "dataContractZh": "prevent_attack 新增可选参数 duration：SOURCE_NEXT_TURN_START（默认，与旧数据相同：到来源玩家下个回合开始时结束，用于“对手下个回合不能攻击”）或 SOURCE_NEXT_TURN_END（到来源玩家下个回合结束时结束，用于“自己下个回合不能攻击”）。不接受其它参数或子效果。",
+  "serverAuthorityZh": "服务器把限制写成宝可梦身上的持续效果（ATTACK_LOCK，到期回合按来源玩家已开始的回合数记录），在来源玩家下个回合结束时清除；宝可梦回到备战区或进化时随其它招式效果一起清除。客户端不能声明、延长或跳过。",
+  "limitations": [
+    "“不能使用某个指定招式”仍由 cannotUseSameAttackDuringNextTurn 处理，不使用本参数。",
+    "“掷硬币，反面则下回合不能攻击”等带条件的写法需要外层 coin_flip / conditional 组合，各卡另行审核。"
+  ]
+}

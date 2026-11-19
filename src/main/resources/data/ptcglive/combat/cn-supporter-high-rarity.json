@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 1,
+  "dataVersion": "cn-supporters-2026-10-24",
+  "cards": [
+    {
+      "id": "sc_cs1bc_175_sr",
+      "kind": "TRAINER",
+      "trainerCategory": "SUPPORTER",
+      "effects": [
+        {
+          "type": "discard",
+          "target": "HAND",
+          "amount": 2,
+          "minimum": 1,
+          "bind": "milo-discard"
+        },
+        {
+          "type": "conditional",
+          "conditions": [
+            {
+              "type": "BOUND_COUNT",
+              "bind": "milo-discard",
+              "value": 1
+            },
+            {
+              "type": "NOT",
+              "conditions": [
+                {
+                  "type": "BOUND_COUNT",
+                  "bind": "milo-discard",
+                  "value": 2
+                }
+              ]
+            }
+          ],
+          "effects": [
+            {
+              "type": "draw",
+              "target": "SELF",
+              "amount": 2
+            }
+          ]
+        },
+        {
+          "type": "conditional",
+          "conditions": [
+            {
+              "type": "BOUND_COUNT",
+              "bind": "milo-discard",
+              "value": 2
+            },
+            {
+              "type": "NOT",
+              "conditions": [
+                {
+                  "type": "BOUND_COUNT",
+                  "bind": "milo-discard",
+                  "value": 3
+                }
+              ]
+            }
+          ],
+          "effects": [
+            {
+              "type": "draw",
+              "target": "SELF",
+              "amount": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sc_cs2_5c_070_sr",
+      "kind": "TRAINER",
+      "trainerCategory": "SUPPORTER",
+      "effect": {
+        "opcode": "SWITCH_OPPONENT_ACTIVE",
+        "amount": 0
+      }
+    },
+    {
+      "id": "sc_csm1ac_182_sr",
+      "kind": "TRAINER",
+      "trainerCategory": "SUPPORTER",
+      "effects": [
+        {
+          "type": "search_deck",
+          "target": "DECK",
+          "amount": 4,
+          "minimum": 0,
+          "card_category": "ENERGY",
+          "basic_energy_only": true,
+          "reveal": "true"
+        }
+      ]
+    },
+    {
+      "id": "sc_csv10c_276_sar",
+      "kind": "TRAINER",
+      "trainerCategory": "SUPPORTER",
+      "effects": [
+        {
+          "type": "choice",
+          "effects": [
+            {
+              "type": "search_deck",
+              "target": "DECK",
+              "amount": 2,
+              "minimum": 0,
+              "card_category": "POKEMON",
+              "basic_pokemon_only": true,
+              "reveal": true
+            },
+            {
+              "type": "search_deck",
+              "target": "DECK",
+              "amount": 1,
+              "minimum": 0,
+              "card_category": "POKEMON",
+              "evolution_pokemon_only": true,
+              "reveal": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sc_csv4c_159_sar",
+      "kind": "TRAINER",
+      "trainerCategory": "SUPPORTER",
+      "effects": [
+        {
+          "type": "search_deck",
+          "target": "DECK",
+          "amount": 2,
+          "minimum": 2,
+          "top_count": 4,
+          "remainder": "SHUFFLE_BOTTOM"
+        }
+      ]
+    },
+    {
+      "id": "sc_csv5c_157_sar",
+      "kind": "TRAINER",
+      "trainerCategory": "SUPPORTER",
+      "effects": [
+        {
+          "type": "coin_flip",
+          "flips": 1,
+          "heads": [
+            {
+              "type": "search_deck",
+              "target": "DECK",
+              "amount": 2,
+              "minimum": 0,
+              "card_category": "POKEMON",
+              "reveal": true
+            }
+          ],
+          "tails": [
+            {
+              "type": "search_deck",
+              "target": "DECK",
+              "amount": 1,
+              "minimum": 0,
+              "card_category": "POKEMON",
+              "basic_pokemon_only": true,
+              "reveal": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sc_csv7c_245_sar",
+      "kind": "TRAINER",
+      "trainerCategory": "SUPPORTER",
+      "effects": [
+        {
+          "type": "search_deck",
+          "target": "DECK",
+          "amount": 2,
+          "minimum": 2,
+          "destination": "DECK_TOP_AFTER_SHUFFLE",
+          "reveal": false,
+          "ordered": true
+        }
+      ]
+    },
+    {
+      "id": "sc_csv8c_255_sar",
+      "kind": "TRAINER",
+      "trainerCategory": "SUPPORTER",
+      "effects": [
+        {
+          "type": "discard_hand",
+          "target": "SELF"
+        },
+        {
+          "type": "draw",
+          "target": "SELF",
+          "amount": 5
+        }
+      ],
+      "mayPlayFirstTurn": true
+    },
+    {
+      "id": "sc_csv9c_257_sar",
+      "kind": "TRAINER",
+      "trainerCategory": "SUPPORTER",
+      "effects": [
+        {
+          "type": "select_pokemon",
+          "target": "SELECT_OPPONENT_POKEMON",
+          "position": "BENCH",
+          "stage": "BASIC",
+          "effects": [
+            {
+              "type": "gust",
+              "target": "CHOSEN_POKEMON",
+              "bind": "sv8-lisia"
+            },
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "BOUND_COUNT",
+                  "bind": "sv8-lisia",
+                  "value": 1
+                }
+              ],
+              "effects": [
+                {
+                  "type": "confuse",
+                  "target": "OPPONENT_ACTIVE"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

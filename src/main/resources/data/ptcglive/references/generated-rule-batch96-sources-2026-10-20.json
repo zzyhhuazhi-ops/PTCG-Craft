@@ -1,0 +1,434 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-20",
+  "cardIds": [
+    "me4_en_064",
+    "me4_en_103"
+  ],
+  "ruleReferences": [
+    {
+      "url": "https://asia.pokemon-card.com/sg/card-search/detail/25255/",
+      "kind": "Opened official English Cobalion ex",
+      "supports": "Own-turn Bench-to-Active trigger, optional once during turn; move any amount of current Metal Energy from other own Pokemon to source. Basic210, MMC200 with next-own-turn attack lock, retreat2."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50200/regu/all",
+      "kind": "Opened actual Japanese alternate print",
+      "supports": "Same Metal Road and Power Tackle rules, Basic210 and two prizes. Japanese101 is not an extra international canonical print."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%82%B3%E3%83%90%E3%83%AB%E3%82%AA%E3%83%B3EX",
+      "kind": "Opened actual Cobalion ex FAQ",
+      "supports": "Metal Road can move Neo Upper Energy from Stage2; after movement onto Basic Cobalion it provides one Colorless. Magnet Metal Energy can also be moved."
+    },
+    {
+      "url": "https://www.pokemon.com/us/pokemon-news/discover-more-cards-from-the-pokemon-tcg-mega-evolution-chaos-rising-expansion",
+      "kind": "Official product explanation retrieved by search",
+      "supports": "Explains movement from Bench and using the gathered Energy to attack immediately; corroborates MMC cost. Not a ruling on usage reset."
+    },
+    {
+      "url": "https://asia.pokemon-card.com/sg/card-search/detail/25255/",
+      "kind": "Actual English print, root research",
+      "fact": "Own-turn Bench-to-Active event, optional once per turn, transfer Metal Energy from other own Pokemon."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%82%B3%E3%83%90%E3%83%AB%E3%82%AA%E3%83%B3EX",
+      "kind": "Actual Cobalion FAQ, independently reopened",
+      "fact": "Neo Upper qualifies on Stage2 but provides one Colorless on Basic Cobalion; Magnet Metal can move."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%86%E3%83%84%E3%83%8E%E3%83%96%E3%82%B8%E3%83%B3ex&regulation_faq_main_item1=all",
+      "kind": "Explicit Iron Valiant analogous event FAQ, independently reopened",
+      "facts": [
+        "Own recoil KO and own end-turn KO promotions qualify; opponent-turn and Checkup promotions do not.",
+        "Surfer finishes drawing before the optional Ability.",
+        "Same Pokemon switched out and back cannot use twice that turn."
+      ]
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%92%E3%83%BC%E3%83%89%E3%83%A9%E3%83%B3GX&regulation_faq_main_item1=all",
+      "kind": "Heatran GX analogous event/transfer FAQ, independently reopened",
+      "facts": [
+        "Own end-turn KO and Guzma promotions qualify.",
+        "Typed Energy may change supply after transfer; an ineligible destination causes the transferred card to discard."
+      ]
+    },
+    {
+      "url": "https://www.pokemon-card.com/assets/document/advanced_manual.pdf",
+      "version": "3.4 2025-08-01",
+      "kind": "General rules independently reopened, not Cobalion-specific FAQ",
+      "locations": [
+        {
+          "printedPage": 12,
+          "section": "I D",
+          "lines": "303-323",
+          "shortQuote": "上記以外で、ポケモンの残りHPがなくなったとき",
+          "fact": "Outside attack/Checkup processing, depleted HP requires a KO check; KO sequence includes effects, discard, prizes, then promotion."
+        },
+        {
+          "printedPage": 7,
+          "section": "I A-02",
+          "lines": "171-181",
+          "fact": "An Ability cannot be declared if its result is known to make no change."
+        },
+        {
+          "printedPages": [
+            39,
+            40
+          ],
+          "section": "II D-02",
+          "lines": "1015-1027",
+          "shortQuote": "状況の変化が何も起きないことが分かっている場合",
+          "fact": "Any number has no printed upper limit. A Trainer/Ability use known to make no change through choosing zero is not permitted. The 120 implementation capacity covers the current two-deck match model; it is not an official printed cap."
+        },
+        {
+          "printedPage": 14,
+          "section": "I F",
+          "lines": "360-363",
+          "fact": "Checkup is separate from either player turn."
+        }
+      ]
+    }
+  ],
+  "reviewedSemantics": [
+    "ON_BENCH_TO_ACTIVE is an exact optional own-turn SELF once-per-turn Pokemon Ability policy; strict one-node other-own Metal physical-card transfer. No card trigger, shared usage, arbitrary program, manual activation or forged generic-rule execution.",
+    "Private validated transition token is captured before successful real Bench movement and checked after promotion/switch; old ON_RETREAT/ON_SWITCH retain their subjects and share the same batch with incoming96. Setup, direct placement, evolution, opponent-turn and Checkup movements never produce96.",
+    "Ability/program/suppression captured at actual movement; source logical incarnation retained. Original complete causing effect finishes before opportunity. Current own turn, incarnation, HP/confirmedKO, unused state and actual Metal potential are rechecked at offer and acceptance. Empty capture-time donor pool is retained for suffix changes.",
+    "Captured source may remain on Bench after original suffix; ALL_OWN_POKEMON explicitly excludes it and includes the new Active. Destination remains capturedSELF. Source gone/reentered invalidates old event.",
+    "Exact amount120/minimum1 form has a narrow selection factory and private capacity constructor; generic selection/energy paths remain<=60. Factory validates own field references and1..120 distinct physical candidates. Capacity follows two physical60-card decks, not printed card text.",
+    "Whole eligible current-Metal physical cards move, including foreign-owned cards on own hosts. All selected attachment identities, donor entries, current supply and captured destination are rechecked before movement. Optional decline is outside selection; accepted choice must contain at least1.",
+    "Existing move protection/destination attachment/owner handling is preserved. Whole transfer executes before HP/KO checkpoint; no manual hand-energy quota or from-hand event is invented.",
+    "Independent endingPromotionTurn is latched before promotion HP/Tool correction for a pending failed-attack ending obligation. It survives secondary KO that changes continueCurrentTurn, source removal, no-potential drop, optional accept/decline and Tool pauses; clears before exactly one turn-end path, or on finish. Existing95 pre-KO gates and old event semantics unchanged."
+  ],
+  "schema": {
+    "kind": "TRIGGERED",
+    "eventPolicy": {
+      "trigger": "ON_BENCH_TO_ACTIVE",
+      "watch": "SELF",
+      "turn": "OWN",
+      "optional": true,
+      "usage": "ONCE_PER_TURN"
+    },
+    "triggers": [
+      {
+        "trigger": "ON_BENCH_TO_ACTIVE",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "move_energy",
+            "target": "ALL_OWN_POKEMON",
+            "amount": 120,
+            "minimum": 1,
+            "destination_scope": "OWN_FIELD",
+            "destination_ref": "SELF",
+            "energy_type": "METAL",
+            "count_mode": "CARDS"
+          }
+        ]
+      }
+    ]
+  },
+  "evidenceLimitations": [
+    "Own attack/recoil and own turn-end promotion versus Checkup/opponent-turn distinctions and Surfer whole-text timing use documented official analogous incoming-Ability rulings.",
+    "Promotion HP/Tool correction before optional rescue, captured suppression/source lifetime and source-returned-to-Bench behavior are approved general-rule/existing-event-contract applications, not additional Cobalion-specific FAQ claims.",
+    "Synthetic current-supply mutation and pending physical-attachment mutation explicitly isolate stale transaction validation; these are test fixture operations, not claims of an ordinary player interrupting a pending choice.",
+    "Actual two Cobalion prints, existing supported card interactions and61/120 client-session boundaries are owned by peer actual tests; their runtime is pending here."
+  ],
+  "testLimitations": [
+    "1000HP neutral/Metal-weak/Metal-resistant base isolates damage and provides an explicit generic copier. No unsupported copy-attack real card is enabled.",
+    "Original synthetic Item programs isolate switch/private search/attachment/discard/second switch/suppression/leave suffixes; real Cobalion printed Ability is never modified.",
+    "Prepared damage, statuses and relocation of existing cards between private zones are setup helpers preserving original physical ownership and deck totals. Actual event causes use server actions.",
+    "Foreign-owned attachments are prepared by existing generic move hook; current supported card inventory has no claimed real stealing actor.61 actual-source transfer conserves entities from two60-card decks.",
+    "120-candidate DTO is deliberately synthetic and not a claimed legal120-Energy board;121 rejection remains component-only.",
+    "Neo Upper sv5_en_162 remains UNSUPPORTED. Explicit evolved-double Energy uses existing IS_EVOLVED to provide two all-type units on real Stage2 Ampharos, then one Colorless on Basic Cobalion. It does not implement/test Neo Upper exact Stage2-only eligibility or ACE SPEC restriction; parent approved this limited substitute.",
+    "Bench-only HP Tool and field-suppression Stadium are synthetic mechanisms; no historical FAQ actor is silently activated.",
+    "Capture after source suppression/top transformation and same-action event batching are existing-engine contract inferences, not Cobalion-specific official FAQs."
+  ],
+  "actualCoverage": [
+    {
+      "designGroup": "96-profile-both-prints",
+      "actualMethods": "printed",
+      "status": "LISTED_ACTUAL_METHODS_PASS_ATTEMPT3_COMPONENT_BOUNDARIES_REMAIN_SEPARATE"
+    },
+    {
+      "designGroup": "96-paid-retreat",
+      "actualMethods": "retreatAndSwitch",
+      "status": "LISTED_ACTUAL_METHODS_PASS_ATTEMPT3_COMPONENT_BOUNDARIES_REMAIN_SEPARATE"
+    },
+    {
+      "designGroup": "96-actual-switch",
+      "actualMethods": "retreatAndSwitch",
+      "status": "LISTED_ACTUAL_METHODS_PASS_ATTEMPT3_COMPONENT_BOUNDARIES_REMAIN_SEPARATE"
+    },
+    {
+      "designGroup": "96-actual-surfer",
+      "actualMethods": "surfer",
+      "status": "LISTED_ACTUAL_METHODS_PASS_ATTEMPT3_COMPONENT_BOUNDARIES_REMAIN_SEPARATE"
+    },
+    {
+      "designGroup": "96-actual-attack-switch",
+      "actualMethods": "attackSwitch",
+      "status": "LISTED_ACTUAL_METHODS_PASS_ATTEMPT3_COMPONENT_BOUNDARIES_REMAIN_SEPARATE"
+    },
+    {
+      "designGroup": "96-own-recoil-ko",
+      "actualMethods": "recoil",
+      "status": "LISTED_ACTUAL_METHODS_PASS_ATTEMPT3_COMPONENT_BOUNDARIES_REMAIN_SEPARATE"
+    },
+    {
+      "designGroup": "96-own-turnend-ko",
+      "actualMethods": "turnEnd",
+      "status": "LISTED_ACTUAL_METHODS_PASS_ATTEMPT3_COMPONENT_BOUNDARIES_REMAIN_SEPARATE"
+    },
+    {
+      "designGroup": "96-own-turnend-nonko-leave",
+      "actualMethods": "turnEnd",
+      "status": "LISTED_ACTUAL_METHODS_PASS_ATTEMPT3_COMPONENT_BOUNDARIES_REMAIN_SEPARATE"
+    },
+    {
+      "designGroup": "96-opponent-and-checkup-negatives",
+      "actualMethods": "negativeTiming",
+      "status": "LISTED_ACTUAL_METHODS_PASS_ATTEMPT3_COMPONENT_BOUNDARIES_REMAIN_SEPARATE"
+    },
+    {
+      "designGroup": "96-once-per-logical-pokemon",
+      "actualMethods": "usage",
+      "status": "LISTED_ACTUAL_METHODS_PASS_ATTEMPT3_COMPONENT_BOUNDARIES_REMAIN_SEPARATE"
+    },
+    {
+      "designGroup": "96-optional-and-minimum",
+      "actualMethods": "usage / selection",
+      "status": "LISTED_ACTUAL_METHODS_PASS_ATTEMPT3_COMPONENT_BOUNDARIES_REMAIN_SEPARATE"
+    },
+    {
+      "designGroup": "96-energy-selection",
+      "actualMethods": "selection",
+      "status": "LISTED_ACTUAL_METHODS_PASS_ATTEMPT3_COMPONENT_BOUNDARIES_REMAIN_SEPARATE"
+    },
+    {
+      "designGroup": "96-real-magnet-metal",
+      "actualMethods": "specialEnergy",
+      "status": "LISTED_ACTUAL_METHODS_PASS_ATTEMPT3_COMPONENT_BOUNDARIES_REMAIN_SEPARATE"
+    },
+    {
+      "designGroup": "96-real-reversal-type-change",
+      "actualMethods": "specialEnergy",
+      "status": "LISTED_ACTUAL_METHODS_PASS_ATTEMPT3_COMPONENT_BOUNDARIES_REMAIN_SEPARATE"
+    },
+    {
+      "designGroup": "96-synthetic-neoupper",
+      "actualMethods": "specialEnergy",
+      "status": "LISTED_ACTUAL_METHODS_PASS_ATTEMPT3_COMPONENT_BOUNDARIES_REMAIN_SEPARATE"
+    },
+    {
+      "designGroup": "96-potential-suffix-add-remove",
+      "actualMethods": "originalSuffix",
+      "status": "LISTED_ACTUAL_METHODS_PASS_ATTEMPT3_COMPONENT_BOUNDARIES_REMAIN_SEPARATE"
+    },
+    {
+      "designGroup": "96-captured-source-returns-bench",
+      "actualMethods": "originalSuffix",
+      "status": "LISTED_ACTUAL_METHODS_PASS_ATTEMPT3_COMPONENT_BOUNDARIES_REMAIN_SEPARATE"
+    },
+    {
+      "designGroup": "96-source-lifecycle-suppression",
+      "actualMethods": "sourceLifecycle",
+      "status": "LISTED_ACTUAL_METHODS_PASS_ATTEMPT3_COMPONENT_BOUNDARIES_REMAIN_SEPARATE"
+    },
+    {
+      "designGroup": "96-hp-zero-checkpoint",
+      "actualMethods": "promotionHp",
+      "status": "LISTED_ACTUAL_METHODS_PASS_ATTEMPT3_COMPONENT_BOUNDARIES_REMAIN_SEPARATE"
+    },
+    {
+      "designGroup": "96-authority-privacy",
+      "actualMethods": "selection / privacy / capacity",
+      "status": "LISTED_ACTUAL_METHODS_PASS_ATTEMPT3_COMPONENT_BOUNDARIES_REMAIN_SEPARATE"
+    },
+    {
+      "designGroup": "96-power-tackle",
+      "actualMethods": "powerTackle",
+      "status": "LISTED_ACTUAL_METHODS_PASS_ATTEMPT3_COMPONENT_BOUNDARIES_REMAIN_SEPARATE"
+    },
+    {
+      "designGroup": "96-failed-confusion-ko",
+      "actualMethods": "confusion",
+      "status": "LISTED_ACTUAL_METHODS_PASS_ATTEMPT3_COMPONENT_BOUNDARIES_REMAIN_SEPARATE"
+    },
+    {
+      "designGroup": "96-over60-physical-card-capacity",
+      "actualMethods": "capacity / synthetic120",
+      "status": "LISTED_ACTUAL_METHODS_PASS_ATTEMPT3_COMPONENT_BOUNDARIES_REMAIN_SEPARATE"
+    }
+  ],
+  "validationScope": "Reviewed immutable draft component and actual-card runs passed; combined production validation documented in docs/rule-data-batch93-96-20261020.json. No per-batch full-check claim.",
+  "previouslySupportedBehaviorChanges": [
+    {
+      "kind": "Successful own-turn Bench-to-Active movements can capture the newly-supported incoming Ability",
+      "programDataChanged": false,
+      "behavior": "Retreat, effect switch and KO promotion retain their existing outgoing/incoming events. The new captured reaction waits for full original text and HP correction. Failed-attack KO promotion retains a separate ending obligation through secondary KO, Tool correction and reactions.",
+      "limit": "No new event during Checkup or the opponent turn; no generic selection limit increase; existing once-per-source lifecycle semantics retained."
+    }
+  ],
+  "benchTransitionContract": {
+    "schemaContract": {
+      "policy": "New BenchToActiveTriggerPolicy implements AbilityEventPolicy. Exact five JSON keys trigger/watch/turn/optional/usage; trigger ON_BENCH_TO_ACTIVE, watch SELF, turn OWN, boolean true optional, usage ONCE_PER_TURN only. Strings/boolean must have correct JSON types. No shared usage, alternate watch/turn, additional unknown keys or card-trigger source.",
+      "program": "For this new policy only: exactly one matching trigger, no root/child conditions, exactly one move_energy node with precisely the approved arguments. Reject bind/all/distribution/card_kind/other filters/children/costs and arbitrary automatic programs. Keep all older policy validation unchanged.",
+      "moveExtension": "AttachedEnergyEffect.destinationSelf remains backwards compatible for TRIGGER_POKEMON -> OWN_FIELD/SELF. Add a distinct exact helper otherOwnMetalToSelf for only ALL_OWN_POKEMON, amount120, minimum1, destination_scope OWN_FIELD, destination_ref SELF, energy_type METAL, count_mode CARDS with precisely these arguments and no conditions/children. Parse this reviewed shape before the unchanged generic amount<=60 branch. Any variation, including amount61 or121, rejects. This form requires a real captured incoming source context; manual Trainer/Attack/rule programs cannot invent it.",
+      "units": "CARDS counts selected physical entities, not supplied units. Eligibility means currentEnergyProfile at the donor provides at least one METAL. One eligible multi-unit or all-type card moves whole. Any chosen subset of1..available is permitted, with an exact-new-form120 capacity covering both60-card decks. Candidate pools above120 reject as invalid match state rather than truncate. Card ownership is independent of field control; an opposing-owned attachment on an own donor remains eligible and retains its owner.",
+      "loader": "No new ModInfo capability flag or UI/network transport. Existing BundledCombatData wraps policy effects into matching trigger after AbilityEventPolicy parsing. Existing EffectSchemaValidator delegates AttachedEnergyEffect parsing. EffectCardSelectionSpec, existing generic card selectors and ordinary AttachedEnergyEffect count bounds stay unchanged.",
+      "sourceDefinition": "No card ID or Ability ID hardcoding in the engine. Strict event/effect shape provides the reviewed capability; converter separately matches exact actual text/identities.",
+      "selectionCapacity": "EffectCardSelectionSpec remains unchanged at60: this attached-energy path never uses it. Add only EffectSelectionTransaction.openForOtherOwnMetalEnergy(owner,revision,exactDefinition,candidates), which checks AttachedEnergyEffect.otherOwnMetalToSelf, PUBLIC_FIELD PokemonTarget candidates owned/controlled by the entitled seat, distinct IDs and1..120 candidates, then uses a private120-capacity construction path. Existing public open/openForTarget retain60. The new factory is a server-side selection-shape validator, not authority to execute an Ability; the private captured transition token remains mandatory in ServerMatch preflight."
+    },
+    "producers": [
+      {
+        "method": "retreat(UUID,UUID,List<UUID>)",
+        "baselineLine": 7409,
+        "beforeCommit": "After existing payment/host validation, snapshot the chosen real Bench Pokemon logical ID and entry, plus current player/turn context. Do not emit anything before battlefield.retreat succeeds.",
+        "afterCommit": "After battlefield.retreat and syncField, preserve outgoing ON_RETREAT subject retreat.movedToBench. Capture new incoming Bench-to-Active for actual replacement using the before-Bench snapshot. Do not label incoming as ON_RETREAT or generic ON_SWITCH. Preserve payment, quota and old replay."
+      },
+      {
+        "method": "switchActiveByEffect private scoped helper (public3arg/legacy/composed callers converge)",
+        "baselineLine": 6890,
+        "beforeCommit": "Snapshot actual selected Bench/entry after existing legality checks. Preserve94 ACTIVE versus SELECTED_BENCH recipient protection; blocked switch emits neither old nor new event.",
+        "afterCommit": "After successful battlefield.switchActiveByEffect and syncField, keep existing ON_SWITCH incoming event and add new incoming event. Capture only if owner was current player in a player turn; executor/origin controller does not decide owner-turn eligibility."
+      },
+      {
+        "method": "chooseReplacement(UUID,UUID)",
+        "baselineLine": 8551,
+        "beforeCommit": "Require CHOOSE_REPLACEMENT and the correct queued owner; snapshot selected real Bench/entry and contextual turn. CHOOSE_REPLACEMENT alone is not a turn test: capture is allowed only turnNumber>0, owner=currentPlayer, !resolvingCheckup. Keep turnEndInProgress so own end-turn remains own turn.",
+        "afterCommit": "After battlefield.promote and syncField, capture the incoming event, remove replacement queue entry, and resume only when the replacement queue is empty. Do not offer before all required promotions/HP checks finish."
+      }
+    ],
+    "nonProducers": [
+      "Opening Active choice/setup",
+      "Direct hand/deck/discard placement into an empty Active without prior Bench transition",
+      "Evolution/devolution or top-card replacement on same logical Pokemon",
+      "Bench reorder",
+      "Failed or protected switch, rejected/stale promotion request",
+      "Checkup or opponent-turn promotion"
+    ],
+    "capturedEventAndIdentity": {
+      "record": "Suggested private CapturedBenchToActiveEvent(owner, pokemonId, entrySequence, turnPlayer, turnNumber). Construct only from a validated pre-move Bench snapshot after successful movement. Store nullable token in QueuedAbility with compatibility overloads and copy it through capturedAbilities/automaticContext. No client token constructor.",
+      "capture": "New captureBenchToActiveEvent validates same post-move Active/entry against pre-move snapshot, then enumerates only that incoming source’s currently enabled supported Abilities matching new policy. Reuse abilitySource and bindSourceEvent with triggerPokemon=sourcePokemon=the incoming logical entry. Reject unsupported trigger timing. No field-wide passive card listener registration for this policy.",
+      "preflight": "ServerEffectExecutionContext for ON_BENCH_TO_ACTIVE requires automatic=true, a matching private captured transition token and captured source/event identity. Generic executeEffectProgramByRule with a real source UUID is still unauthorized. Token follows the existing nested context copy path if needed; exact96 program has no nested steps.",
+      "position": "At resolution the destination is context.liveSourcePokemon, never current Active. Bench return preserves that field entry. The new ALL_OWN source form excludes this exact destination even when it is now Bench.",
+      "departure": "A removed/re-entered logical entry cannot receive the old event’s Energy. If no live original destination remains, discard event without offering or reserving usage. No last-known off-field Energy destination.",
+      "definitionAndSuppression": "Capture uses enabled Ability at movement. Subsequent handling follows existing captured field-event semantics: same logical field entry/program token persists; do not introduce a speculative global re-scan of all Abilities or a new switch reset. Source profile transformation and suppression after capture are inference boundaries to audit independently, not new card-specific rulings.",
+      "usage": "Use existing abilitySource key (logical ID + ability ID + entry) and EffectLifecycleDispatcher ONCE_PER_TURN reservation. Capture/order/decline do not reserve. Accept reserves before first selection. Same-turn Active->Bench->Active does not reset; distinct source/entry has independent usage. Replacement inheritance retains existing90 rules. No shared name-wide limit."
+    },
+    "potentialAndSelection": {
+      "captureTime": "Bypass early EffectPotential.canAffect only for this policy, alongside existing narrowly named Checkup/95 exemptions. An empty donor pool at movement may become nonempty during the original text. Capture conditions are otherwise exact/no arbitrary root conditions.",
+      "offerTime": "At resolveOrOfferTriggeredAbility, before optional prompt and again before accepting use, verify transition turn is still current, original source entry exists, no pending confirmed/HP KO for it, usage remains available, and the current exact program can change state via a qualifying other-own donor. Failure silently drops that captured opportunity without consuming usage. It does not create a late manual action. Other simultaneous events may change this potential before the chosen event is considered.",
+      "minimum": "If offered, optional decline consumes no usage. Recheck late potential immediately before beginCaptured reserves usage. Accept opens the exact public attached-energy transaction with minimum1; never reconstruct the exact contract with minimum0. Empty selection is rejected atomically; repeated/stale/wrong-owner commands preserve cursor, selection and RNG. If source/potential is stale at acceptance, drop the captured opportunity without reserving usage. The one-node program has no intervening state-changing prefix; an unexpected zero pool at opening is an invariant error, never a min0 downgrade.",
+      "sourceCandidates": "New helper filters ALL_OWN_POKEMON through captured live destination and excludes identical host before enumerating attachments. Potential and actual selection share the exact donor/type/destination predicate, including a pure check that the donor permits this Ability effect (never call replay-mutating preventCardEffect during a query). A protected destination can still produce the existing detach-to-owner-discard change. Include a later new Active donor when source returned to Bench. Exclude opponent hosts and source own attachments; do not exclude an eligible card solely because its physical owner differs from its host controller. Pure protection predicate is ServerMatch.preventsImpact(owner,pokemon,capturedOrigin,OTHER_EFFECTS), baseline469; use context origin rather than chooser or ambient current actor.",
+      "commit": "Before any move, revalidate ALL selected physical IDs, donor logical entry and attachment identity, current effective METAL eligibility, and destination captured entry. New form compares resolved selections with freshly computed candidates, closing the existing generic MOVE path type-recheck gap only for this capability. Validate selected size<=120 and all IDs before movement; a121 request fails atomically even if synthetic data supplies it. No prefix movement before all selected identities pass.",
+      "destination": "Existing destination_ref SELF auto-commits the unique fixed destination; no player-selected second host. Keep original Ability origin for protection. Donor protection/no-effect and destination rejection/discard semantics follow existing reviewed move implementation; do not route through hand attachment quota/lock.",
+      "atomicityAndKO": "Validate whole selection before grouping moves. Keep resolvingEffectProgram active across every donor group; settle HP and invalid host attachments after the full transfer step/Ability checkpoint. Losing a donor HP modifier or gaining a receiver modifier may cause KOs only at that whole-step boundary, never while toggling choices or after the first selected card.",
+      "energyEvents": "Preserve existing moveAttachedEnergyByEffect semantics for attachment events, ownership, restrictions and cleanup. Do not fabricate a from-hand attach, hand-play history or manual Energy quota. Transferred card’s actual owner remains unchanged.",
+      "actualSupplyCases": "Actual me4_en_085 Magnet Metal is supported. Actual Reversal sv2_en_192 can provide three all-type units on qualifying evolved non-rulebox donor while behind on prizes, then one Colorless on Basic ex destination. Neo Upper sv5_en_162 remains unsupported and may only be an explicitly synthetic equivalent in tests.",
+      "capacityAtOpen": "openPendingAttachedEnergy takes an explicit exact-form branch: preserve the original constant amount120/minimum1 definition, compute all current candidates, reject more than120, and openForOtherOwnMetalEnergy with transaction maximum=candidate count (1..120). Do not fall back through generic open or the existing Math.min(minimum,available) contract rewrite. Subsequent commit reparses the same exact definition, so it cannot lose the120 capability.",
+      "productLabel": "Add an exact-form branch in ServerMatch.attachedEnergyLabel: describe choosing Energy cards providing Metal from other own Pokemon and moving them to this Ability source, with at least1. Do not present120 as a printed card cap or say the user chooses another destination. Existing generic labels remain unchanged; the generic prompt min/max still reports the actual candidate bound."
+    },
+    "continuationAndOrdering": {
+      "fullOriginalText": "Capture never drains in the producer. Original attack/Trainer/Ability completes all suffix choices, draw and attachments before the incoming opportunity is offered, as Surfer analogue explicitly rules. Existing resolvingEffectProgram/advancingResolution/pendingResolution guards handle this.",
+      "oldEvents": "Do not replace or rename ON_RETREAT/ON_SWITCH. Suggested minimal private change: capturePokemonChangeEvent returns its allocated batch ID (existing statement callers can ignore it), and incoming capture appends to that same batch for the same successful swap. This preserves existing ordering when96 absent and lets existing current-player trigger ordering choose among coexisting outgoing/incoming events rather than imposing invented precedence. KO promotion uses a fresh event batch; sequential required promotions remain distinct.",
+      "damageAndKO": "Do not add96 to95 pre-KO priority or bypass attack/ON_KNOCKOUT gates. Finish original text, existing damage reactions and required KO processing; only surviving live source receives the incoming optional use. This is deliberately different from the off-field95 capture.",
+      "promotionHP": "Keep resumeAfterKnockouts currentHitPointKnockouts check before any new optional offer. Bench-only maxHP lost by promotion can produce immediate cascading KO; resolve it and existing prizes/replacements first. A queued incoming event for the removed entry becomes ineligible. The optional Energy transfer cannot rescue an already-depleted/confirmed KO source. This follows manual I D p12 general timing, not a direct Metal Road FAQ.",
+      "ownAttack": "Normal completed attack already uses continueCurrentTurn=true plus endingResumableAttack: after promotion, drain captured incoming event while it is still owner turn, then finishResumableAttackTurn advances exactly once. Keep queued/in-flight/optional and Energy selection pauses blocking turn progression.",
+      "ownTurnEnd": "turnEndInProgress true survives end-turn direct KO and promotion. Resume TURN_END, process incoming optional event and any legal transfer, then continue remaining end-turn queue/checkup exactly once. Do not restart runTurnEnd or duplicate expiry.",
+      "legacyFalseBranch": "Failed Confusion KO at baseline7703 calls resolveKnockouts(...false); the default resumeAfterKnockouts branch would otherwise end the turn before96. In resumeAfterKnockouts, restore phase, then BEFORE currentHitPointKnockouts, ToolOverflow return or the first drain: if !resolvingCheckup && !turnEndInProgress && !resumeCurrentTurnAfterReplacement and a private captured incoming96 opportunity is queued/in-flight, set endingPromotionTurn=true. This is a one-shot continuation obligation for the current player turn, not another Ability event. Do not clear or recompute it when its source dies, the queue drains/drops, or a later KO sets resumeCurrentTurnAfterReplacement=true.",
+      "cleanup": "finish/concede clears endingPromotionTurn and incoming queued/pending state through existing cleanup. Rejected selections or stale requests do not clear it. The flag is latched before HP cascading can overwrite continueCurrentTurn and persists until the one completion gate; it is not derived from queue non-emptiness after first capture. Never set it for a normal manual switch/retreat, already-ending TURN_END, Checkup, or a continuation that originally means the current turn may continue.",
+      "sameActionBatchStatus": "Batch-sharing proposal is an implementation ordering contract using existing current-player event dispatcher, not a separately obtained Metal Road-vs-outgoing-retreat FAQ. Independent audit should review before approval.",
+      "falseBranchResume": "After the existing HP check (which remains before any optional offer), branch on resumeCurrentTurnAfterReplacement OR endingPromotionTurn: clear only resumeCurrentTurnAfterReplacement, restore player/end-turn phase as appropriate, and drain. If endingPromotionTurn is true and ToolOverflow is pending, return before optional processing and retain it. The ordinary checkup/false/no96 path remains unchanged. All later KO checkpoints may still write their existing continueCurrentTurn value; the independent endingPromotionTurn survives them.",
+      "completionGate": "Extend finishResumableAttackTurn to regard endingPromotionTurn as an ending obligation alongside the existing attack/card flags. Retain all current guards: phaseTURN, no ToolOverflow, no original/automatic program in flight, no pendingResolution, no attack/KO checkpoint, no ordering/optional prompt, no queued reactions and no95 checkpoint. Only this gate clears all ending flags together BEFORE calling runTurnEnd once. Repeated outer finally/submit/discardOverflowTool calls then see no obligation. finish/concede clears it without entering turn end.",
+      "toolOverflow": "discardOverflowTool already resumes settleHitPointChanges, saved tool effect checkpoints, pendingResolution/drain and finishResumableAttackTurn. Keep those routes and deferred direct-KO sets intact. A correction-triggered HP KO uses resolveEffectKnockouts(...continueCurrentTurn=true); this must not overwrite endingPromotionTurn. If more tools remain, preserve it through the early return. After final correction, a surviving queued event can offer; a removed/no-potential event drops; either route ends once after prizes/replacements and remaining effects. toolTurnAdvancePending is the separate already-started Checkup/expiry continuation and must not be repurposed to store this obligation.",
+      "falseBranchStateCases": [
+        "False-continue Confusion KO ->96 promotion ->optional accept/pause/transfer ->one turn-end/Checkup/draw.",
+        "Same transition ->decline OR no current eligible donor ->queue empty ->same one-shot ending gate.",
+        "Promoted source loses Bench-only HP ->second KO before offer ->prizes/replacement ->old source token drops; any surviving new incoming opportunity is handled, then exactly one ending gate.",
+        "Promotion/transfer causes ToolOverflow ->pause ->several corrections; final correction causes HP KO with continueCurrentTurn=true ->marker survives prizes/replacement ->one ending gate.",
+        "Concede or terminal prize/no-Pokemon result at any pause ->finish clears marker; no turn-end/Checkup/next draw.",
+        "All no96 legacy branches and normal manual96 use preserve their prior turn continuation behavior."
+      ]
+    },
+    "capacityAudit": {
+      "wholeMatchBound": {
+        "file": "src/main/java/dev/hua/ptcglive/rules/MatchSetupRules.java",
+        "lines": "5-7",
+        "fact": "Each match deck is1..60 physical cards; ServerMatch has exactly two seats. A valid conserved match therefore has at most120 original physical cards.120 is conservative because some cards must be Pokemon/prizes/etc., but avoids a false per-owner assumption."
+      },
+      "ownerEvidence": {
+        "files": [
+          "frozen95 ServerMatch.moveAttachedEnergyByEffect6597-6602",
+          "src/main/java/dev/hua/ptcglive/engine/field/BattlefieldState.java:676-682",
+          "src/main/java/dev/hua/ptcglive/rules/CardInstance.java"
+        ],
+        "fact": "Runtime sourceOwner and targetOwner may differ; transfer preserves the original CardInstance owner. Independent current data inventory found80 move nodes but no current cross-owner real print. This is a reachable general runtime state, not a claim that a currently enabled real card steals Energy."
+      },
+      "hardLimits": [
+        {
+          "file": "AttachedEnergyEffect.from",
+          "baseline": "integer amount1..60",
+          "action": "Reviewed exact form only returns max120 before unchanged generic path."
+        },
+        {
+          "file": "EffectSelectionTransaction private constructor",
+          "baseline": "maximum>60 rejected",
+          "action": "Explicit factory invokes private capacity120; old factories invoke60."
+        }
+      ],
+      "unchangedSpec": {
+        "file": "EffectCardSelectionSpec.java",
+        "sha256": "d4ba435dfa530e933ce8872908df921f8d430ceae873a9f8a71b391afec2980c",
+        "fact": "Private-zone selection parser/record retains60. openPendingAttachedEnergy goes directly through AttachedEnergyEffect + EffectSelectionTransaction; it does not use this spec."
+      },
+      "transportAndUI": [
+        {
+          "file": "EffectCardPrompt.java",
+          "fact": "Int minimum/maximum and copied candidate/selected lists; no60 clamp."
+        },
+        {
+          "file": "MatchSession.java",
+          "lines": "325-334",
+          "fact": "Creates an action for every candidate and uses prompt.maximum; server-held toggles then confirms full selection."
+        },
+        {
+          "file": "MatchRegionModel.java",
+          "lines": "71-77",
+          "fact": "Maps all visible candidates; no truncation."
+        },
+        {
+          "file": "EffectCardPage.java",
+          "fact": "Five cards per page, ceil(size/5), all candidates reachable."
+        },
+        {
+          "file": "MatchTableScreen.java",
+          "lines": "439-442",
+          "fact": "Displays actual prompt min/max and selected total; page control comes from EffectCardPage."
+        },
+        {
+          "file": "MatchIntentPayload.java",
+          "fact": "Server action index is VAR_INT, no direct card-array transport or60 cap."
+        },
+        {
+          "file": "MatchStatePayload.java",
+          "fact": "Snapshot JSON string cap250000, no card-count cap. Planned61-card and conservative120 synthetic snapshot checks must stay within byte/character transport limit; no increase proposed."
+        }
+      ],
+      "tests": [
+        "Exact schema amount120 accepted;121,61,119,min0/2,wrongtarget/type/mode/fields rejected.",
+        "Old AttachedEnergyEffect generic amount61 and old EffectSelectionTransaction.open maximum61 reject; EffectCardSelectionSpec61 remains rejected.",
+        "At least61 eligible physical cards spanning original owners: all61 candidate UUIDs present, all selectable through MatchSession and all pages; confirm all or a true subset, preserve each original owner.",
+        "New exact factory bounds1..120;121 candidates/request rejects before mutation; no clipping. Duplicate/stale/wrong-owner selection and source changes preserve cursor/RNG/state.",
+        "Round-trip MatchSession snapshot with61 and synthetic120 candidates, final-page and action access verified; existing integer/list protocol unchanged."
+      ]
+    }
+  },
+  "capacityEvidence": {
+    "real61": "Both full61 and true subset passed through issued MatchSession actions, all13 pages, selected-list round-trip, correct original-owner return to hand.",
+    "synthetic120": "120 candidates,40 selected identities and120 options preserved in Gson snapshot; all24 pages and final candidate reachable.",
+    "transport": "Serialized snapshot length asserted below existing250000-character bound in both61 and120 cases; exact numeric lengths were not written to the runtime log. Minecraft PacketCodec was not executed.",
+    "negativeBounds": "121 and legacy61 parser/factory negatives belong to author component evidence, not falsely claimed as actual match states."
+  }
+}

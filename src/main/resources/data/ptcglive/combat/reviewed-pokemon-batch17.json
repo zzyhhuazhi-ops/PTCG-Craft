@@ -1,0 +1,466 @@
+{
+  "schemaVersion": 1,
+  "dataVersion": "2026-11-05",
+  "cards": [
+    {
+      "id": "bw11_en_101",
+      "kind": "POKEMON",
+      "hitPoints": 180,
+      "retreatCost": 3,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "DRAGON",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "White Kyurem-EX",
+      "pokemonType": "DRAGON",
+      "attacks": [
+        {
+          "id": "dragon-stream",
+          "nameZh": "龙之流",
+          "energyCost": {
+            "FIRE": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 60,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "coin_flip",
+                  "flips": 1,
+                  "heads": [
+                    {
+                      "type": "attach_energy",
+                      "source": "DISCARD",
+                      "target": "SELF",
+                      "target_scope": "OWN_FIELD",
+                      "amount": 1,
+                      "minimum": 1,
+                      "basic_energy_only": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ice-burn",
+          "nameZh": "极寒冷焰",
+          "energyCost": {
+            "FIRE": 2,
+            "WATER": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 150,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "discard_energy",
+                  "target": "SELF",
+                  "amount": 2,
+                  "minimum": 2,
+                  "count_mode": "UNITS",
+                  "energy_type": "FIRE"
+                },
+                {
+                  "type": "burn",
+                  "target": "OPPONENT_ACTIVE"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bw4_en_020",
+      "kind": "POKEMON",
+      "hitPoints": 120,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "bw4_en_019",
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Chandelure",
+      "evolvesFromName": "Lampent",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "flame-burst",
+          "nameZh": "烈焰溅射",
+          "energyCost": {
+            "FIRE": 1
+          },
+          "baseDamage": 30,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "bench_damage",
+                  "amount": 30,
+                  "target": "SELECT_OPPONENT_POKEMON",
+                  "target_count": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "inferno",
+          "nameZh": "烈火深渊",
+          "energyCost": {
+            "FIRE": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 80,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "discard_energy",
+                  "target": "SELF",
+                  "all": true
+                },
+                {
+                  "type": "burn",
+                  "target": "OPPONENT_ACTIVE"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bw7_en_103",
+      "kind": "POKEMON",
+      "hitPoints": 180,
+      "retreatCost": 3,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "DRAGON",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "White Kyurem-EX",
+      "pokemonType": "DRAGON",
+      "attacks": [
+        {
+          "id": "dragon-stream",
+          "nameZh": "龙之流",
+          "energyCost": {
+            "FIRE": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 60,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "coin_flip",
+                  "flips": 1,
+                  "heads": [
+                    {
+                      "type": "attach_energy",
+                      "source": "DISCARD",
+                      "target": "SELF",
+                      "target_scope": "OWN_FIELD",
+                      "amount": 1,
+                      "minimum": 1,
+                      "basic_energy_only": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ice-burn",
+          "nameZh": "极寒冷焰",
+          "energyCost": {
+            "FIRE": 2,
+            "WATER": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 150,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "discard_energy",
+                  "target": "SELF",
+                  "amount": 2,
+                  "minimum": 2,
+                  "count_mode": "UNITS",
+                  "energy_type": "FIRE"
+                },
+                {
+                  "type": "burn",
+                  "target": "OPPONENT_ACTIVE"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bwalt_en_036",
+      "kind": "POKEMON",
+      "hitPoints": 120,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "bw3_en_059",
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Chandelure",
+      "evolvesFromName": "Lampent",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "flame-burst",
+          "nameZh": "烈焰溅射",
+          "energyCost": {
+            "FIRE": 1
+          },
+          "baseDamage": 30,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "bench_damage",
+                  "amount": 30,
+                  "target": "SELECT_OPPONENT_POKEMON",
+                  "target_count": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "inferno",
+          "nameZh": "烈火深渊",
+          "energyCost": {
+            "FIRE": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 80,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "discard_energy",
+                  "target": "SELF",
+                  "all": true
+                },
+                {
+                  "type": "burn",
+                  "target": "OPPONENT_ACTIVE"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bwalt_en_085",
+      "kind": "POKEMON",
+      "hitPoints": 180,
+      "retreatCost": 3,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "DRAGON",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "White Kyurem-EX",
+      "pokemonType": "DRAGON",
+      "attacks": [
+        {
+          "id": "dragon-stream",
+          "nameZh": "龙之流",
+          "energyCost": {
+            "FIRE": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 60,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "coin_flip",
+                  "flips": 1,
+                  "heads": [
+                    {
+                      "type": "attach_energy",
+                      "source": "DISCARD",
+                      "target": "SELF",
+                      "target_scope": "OWN_FIELD",
+                      "amount": 1,
+                      "minimum": 1,
+                      "basic_energy_only": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ice-burn",
+          "nameZh": "极寒冷焰",
+          "energyCost": {
+            "FIRE": 2,
+            "WATER": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 150,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "discard_energy",
+                  "target": "SELF",
+                  "amount": 2,
+                  "minimum": 2,
+                  "count_mode": "UNITS",
+                  "energy_type": "FIRE"
+                },
+                {
+                  "type": "burn",
+                  "target": "OPPONENT_ACTIVE"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bwbsp_en_063",
+      "kind": "POKEMON",
+      "hitPoints": 180,
+      "retreatCost": 3,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "DRAGON",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "White Kyurem-EX",
+      "pokemonType": "DRAGON",
+      "attacks": [
+        {
+          "id": "dragon-stream",
+          "nameZh": "龙之流",
+          "energyCost": {
+            "FIRE": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 60,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "coin_flip",
+                  "flips": 1,
+                  "heads": [
+                    {
+                      "type": "attach_energy",
+                      "source": "DISCARD",
+                      "target": "SELF",
+                      "target_scope": "OWN_FIELD",
+                      "amount": 1,
+                      "minimum": 1,
+                      "basic_energy_only": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ice-burn",
+          "nameZh": "极寒冷焰",
+          "energyCost": {
+            "FIRE": 2,
+            "WATER": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 150,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "discard_energy",
+                  "target": "SELF",
+                  "amount": 2,
+                  "minimum": 2,
+                  "count_mode": "UNITS",
+                  "energy_type": "FIRE"
+                },
+                {
+                  "type": "burn",
+                  "target": "OPPONENT_ACTIVE"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

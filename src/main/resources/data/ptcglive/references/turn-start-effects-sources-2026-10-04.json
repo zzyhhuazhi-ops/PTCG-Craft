@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "version": "turn-start-effects-v1",
+  "checkedDate": "2026-10-04",
+  "implementationVersion": "0.6.0-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Pokémon TCG Rulebook — Paradox Rift edition (historical)",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/par_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "PAR English historical rulebook; opening-turn procedure pages previously visually reviewed",
+      "verification": "Existing project source snapshot reviewed again for this implementation; it is historical and is not represented as the current rulebook",
+      "supportsZh": "玩家回合从正常抽牌开始；本实现因此在该抽牌完成后才进入卡文声明的回合开始自动事件队列。"
+    },
+    {
+      "title": "February 2026 Rule Book Updates — official Professor Program editorial",
+      "url": "https://professorprogram.pokemon.com/news/11473085",
+      "publishedDate": "2026-02-26",
+      "effectiveDate": null,
+      "documentVersion": "February 2026 editorial rule update",
+      "verification": "Existing project source snapshot; the editorial distinguishes completing the original card effect before subsequent triggered effects",
+      "supportsZh": "自动事件由服务器在原始步骤完成后排队；本实现不让客户端在待结算事件之间插入普通行动。"
+    }
+  ],
+  "retrievalLimitations": [
+    "The historical rulebook is not claimed to be the current complete rulebook",
+    "No official comprehensive priority document for every start-of-turn card interaction was newly obtained",
+    "No PTCG Live log or behavior was read or used as a rules authority"
+  ],
+  "implementationLimits": [
+    "Supports ON_TURN_START for audited Ability, Tool, Stadium and Energy programs with OWN, OPPONENT or ANY scope",
+    "Normal draw completes before this queue; all ordinary actions are server-blocked while ordering, optional decisions or selections are pending",
+    "Complex replacement effects, enter-play/evolve/retreat/switch events, last-known information and unreviewed real-card bindings remain unsupported"
+  ]
+}

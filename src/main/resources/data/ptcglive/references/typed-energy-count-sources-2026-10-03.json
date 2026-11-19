@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "version": "typed-energy-count-v1",
+  "checkedDate": "2026-10-03",
+  "implementationVersion": "0.6.0-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Gorebyss — Destined Rivals 56",
+      "url": "https://www.pokemon.com/uk/pokemon-tcg/pokemon-cards/series/sv10/56/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database DRI56",
+      "verification": "Official indexed card text retrieved on checkedDate",
+      "supportsZh": "按附着水能量计算伤害，伤害前附能应影响随后计算。这里验证通用组件，不代表整卡已审核启用。"
+    },
+    {
+      "title": "Unit Energy Grass Fire Water — Ultra Prism 137",
+      "url": "https://www.pokemon.com/uk/pokemon-tcg/pokemon-cards/series/sm5/137",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database UPR137",
+      "verification": "Official indexed card text retrieved on checkedDate",
+      "supportsZh": "附着时具有多种属性但仅提供一个能量单位。属性存在查询不等于将一个单位用于两份攻击费用。"
+    },
+    {
+      "title": "Mega Gardevoir ex — Mega Evolution 60",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/me01/60/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database MEG60",
+      "verification": "Official indexed card text retrieved on checkedDate",
+      "supportsZh": "伤害按己方所有宝可梦附着的超能量求和；不能仅查看战斗宝可梦。未启用整卡。"
+    },
+    {
+      "title": "Pokemon TCG Mega Evolution Battle Pass Deck Strategies",
+      "url": "https://www.pokemon.com/uk/strategy/pokemon-tcg-mega-evolution-battle-pass-deck-strategies",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international strategy article, Mega Evolution era",
+      "verification": "Official indexed strategy text retrieved on checkedDate",
+      "supportsZh": "Mega Symphonia的属性能量统计包含发光能量，佐证应读取当前供给，而非只计基本能量卡；发光能量的完整条件并未在本阶段实现。"
+    },
+    {
+      "title": "Pokemon TCG Errata",
+      "url": "https://play.pokemon.com/en-us/resources/documents/tcg-errata/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official HTML errata retrieved 2026-10-03; per-card effective dates not verified",
+      "verification": "Read official HTML entries for Exeggutor String Bomb, Manectric Lightning Twister, Electivire Discharge and Tangrowth Power Whip",
+      "supportsZh": "勘误明确区分基本能量卡所提供的能量和弃置的实体能量卡张数；计数方式与来源卡类别必须独立参数化。未把未核验的旧卡机制当作已实现。"
+    },
+    {
+      "title": "XY Kalos Starter Set",
+      "url": "https://www.pokemon.com/uk/pokemon-tcg/xy-kalos-starter-set",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international historical product page",
+      "verification": "Official indexed product text retrieved on checkedDate",
+      "supportsZh": "该历史产品引入妖精属性及基本妖精能量；FAIRY加入供能数据枚举不意味着当前Standard合法。"
+    }
+  ],
+  "priorRuleReferences": ["dynamic-energy-provision-sources-2026-10-03.json", "before-damage-attack-sources-2026-10-03.json"],
+  "dataContractZh": "damage_per_energy、HAS_ENERGY、ENERGY_COUNT共用energy_type、count_mode=UNITS/CARDS、card_kind=ANY/BASIC/SPECIAL。省略参数保持全部单位。固定公开范围可求和，空范围为0；已绑定单个目标仍沿用服务器上下文校验。",
+  "limitations": [
+    "No new latest Rulebook or Tournament Handbook PDF verification; no PTCG Live access or behavior validation",
+    "No whole-card binding added; real audited card count remains 39",
+    "Zero-unit provision, Energy attachment restrictions, comparisons with opponent Prizes and dependent Rule Box provision remain incomplete",
+    "Energy-dependent Energy provision and hit-point modifiers remain rejected to prevent unresolved dependency cycles",
+    "Typed attached-Energy counting is not a change to hidden-zone searches or to discard-payment semantics",
+    "No Japanese local, TCG Pocket or community-user ruling used as an international rule; unknown publication and effective dates remain null"
+  ]
+}

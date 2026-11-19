@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "version": "delayed-pokemon-effects-v1",
+  "implementationVersion": "0.6.0-development",
+  "checkedDate": "2026-10-03",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Sword & Shield—Silver Tempest Strategy: Zoroark Toolbox",
+      "url": "https://www.pokemon.com/uk/strategy/sword-shield-silver-tempest-strategy-zoroark-toolbox",
+      "publishedDate": "2022-12-22",
+      "effectiveDate": null,
+      "documentVersion": "Official international strategy, Hisuian Zoroark paragraph",
+      "verification": "Official indexed article text inspected on 2026-10-03",
+      "supportsZh": "Doom Curse在对手下回合末造成击倒；受影响的宝可梦换到备战区可解除。策略发布日期不是规则生效日。"
+    },
+    {
+      "title": "Big Parasol — Darkness Ablaze 199/189",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/swsh3/199/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "International official card database, swsh3/199",
+      "verification": "Official indexed card text inspected on 2026-10-03",
+      "supportsZh": "阻止攻击效果不移除既有的效果；伤害不是效果。延迟目标效果在施加时检查防护，到期不被后来新增的此类防护取消。这一交互是根据官方卡文作出的规则实现推导，不代表整张卡已审核启用。"
+    },
+    {
+      "title": "Pokémon Trading Card Game Rules — PAR historical reference",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/par_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "PAR, 2023 copyright; historical, not verified as latest 2026 rulebook",
+      "pagesReviewed": [11],
+      "verification": "Complete relevant cached PDF page visually inspected using the PDF skill",
+      "supportsZh": "进化保留附着卡和伤害指示物，但结束影响该宝可梦的攻击效果和特殊状态。进化清除延迟标记，不清除已放置的伤害指示物。"
+    }
+  ],
+  "implementationZh": [
+    "delayed_effect是通用数据组件；参数when=OWN_NEXT_TURN_END或OPPONENT_NEXT_TURN_END，clear=BENCH_EVOLVE_LEAVE。",
+    "攻击游标施加时绑定目标与入场序号；未来程序只可通过TRIGGER_POKEMON引用原宝可梦，玩家抽牌归原控制者。",
+    "到期复用现有回合末队列、可暂停效果游标、硬币、条件、击倒、拿奖与替补；原攻击者离场不取消已施加的效果。",
+    "条件在到期步骤读取当前状态，未来硬币不会在施加时投掷；不允许跨攻击阶段继承硬币。",
+    "服务器保留归因，公开排序和回放不重新暴露已经进入隐藏区域的原来源实例。"
+  ],
+  "unsupportedZh": [
+    "任意事件延迟、玩家或区域上的延迟、重复周期和永不清除等其它清除策略",
+    "延迟程序中的私有检索、移动区域、附能、目标重新选择与递归调度",
+    "训练家或特性施加延迟的独立语义，跨阶段任意命名目标与硬币结果",
+    "所有回合末跨双方交互的官方优先级、条件重检、到期及来源重新启用顺序",
+    "完整离场替代、最后已知状态、中途跨进程恢复与真实双客户端验收"
+  ],
+  "customEffectsAdded": 0,
+  "auditedRealCardCount": 39,
+  "ptcgLiveObserved": false,
+  "notesZh": "没有使用亚洲、日本或Pocket规则替代国际规则；没有访问PTCG Live；无可观察实机差异数据，不声称已与其完全一致。"
+}

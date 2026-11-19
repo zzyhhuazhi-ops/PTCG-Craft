@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-16",
+  "scope": "ME4 Ninetales/Patrat; no artwork, BREAK or JAR.",
+  "cardIds": [
+    "me4_en_009",
+    "me4_en_070"
+  ],
+  "ruleReferences": [
+    {
+      "url": "https://asia.pokemon-card.com/my/card-search/detail/25200/",
+      "facts": "Ninetales120HP Stage1 from Vulpix, retreat1, Fire1 Nine-Tailed Transfer moves all counters from one own Bench to opponent Active; RR70 Will-O-Wisp."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%82%AD%E3%83%A5%E3%82%A6%E3%82%B3%E3%83%B3&regulation_faq_main_item1=XY",
+      "facts": "Ninetales FAQs distinguish movement prohibition (Patrat Observant Eye leaves all counters on source) from destination immunity (Empoleon ex Emperors Stance prevents receiving counters but chosen own Bench still loses all counters). Existing ServerMatch.moveDamageCountersByEffect already removes source before target protection; preserve that."
+    },
+    {
+      "url": "https://asia.pokemon-card.com/my/card-search/detail/25261/",
+      "facts": "Patrat70HP BasicColorless,retreat1,Fightingweakness2,BiteC10; Watchful Eye prevents existing damage counters on either side from moving to another Pokemon."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%9F%E3%83%8D%E3%82%BA%E3%83%9F&regulation_faq_main_item1=all",
+      "facts": "Movement prohibition leaves counters on source for both Ninetales attack and Munkidori Ability. Transformative Tome card replacement still inherits counters: replacement continuity is not counter movement."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%9E%E3%82%B7%E3%83%9E%E3%82%B7%E3%83%A9&regulation_faq_main_item1=all",
+      "facts": "Moving counters is not healing; healing multiplier and healed-this-turn bonus do not apply. Destination Ability immunity removes selected source counters but places none."
+    }
+  ],
+  "reviewedSemantics": [
+    "Nine-Tailed Transfer selects one own Bench Pokemon and transfers its current full counter quantity to opposing Active. Zero counters and empty Bench are legal no-ops; transfer is not healing or attack damage.",
+    "Watchful Eye blocks movement before source removal. Destination attack-effect immunity is checked after source removal, matching the official Empoleon ex ruling. Transfer checks protection once even above60 counters and resolves KO once; public explicit-count API retains1..60 bounds.",
+    "Watchful Eye is live on either side in either position. Suppression, evolution, removal and restoration update the rule. Generic opposing-Ability immunity on a Pokemon excludes its continuous rule; this is an engine interpretation of Pokemon-affecting scope, not a separately sourced FAQ.",
+    "All-count mode requires explicit chosen Bench scope and an AFTER_ATTACK continuation; other entry points reject it. Converter limits activation to reviewed Nine-Tailed Transfer while older same-text whole cards await chronological audit.",
+    "Preserve Ninetales evolution/120HP/Fire costs/Will-O-Wisp70, Patrat70HP/Bite10, weaknesses/retreat/prizes; actual copy uses the copier field."
+  ],
+  "validationAtReview": {
+    "pythonTests": 566,
+    "catalogLoad": "passed",
+    "actualCardAndComponentRegressions": "passed",
+    "fullCheck": "pending; see final batch78 docs for terminal result"
+  }
+}

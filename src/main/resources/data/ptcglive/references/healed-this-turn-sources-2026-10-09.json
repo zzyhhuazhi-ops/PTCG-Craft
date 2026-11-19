@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "version": "healed-this-turn-v1",
+  "checkedDate": "2026-10-09",
+  "implementationVersion": "0.6.8-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Goodra — Sun & Moon Forbidden Light 94/131（Soaking Horn）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm6/94/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-09",
+      "supportsZh": "“If this Pokémon was healed during this turn, this attack does 80 more damage.”：这只宝可梦在本回合内被回复过（确实移除了伤害）时追加伤害。"
+    },
+    {
+      "title": "Lurantis ex — Mega Evolution Pitch Black 4（Lively Cutter）",
+      "url": "https://limitlesstcg.com/cards/PBL/4",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Card text as printed (Limitless card page); cross-checked against the Rainier card database 2026-10-09",
+      "supportsZh": "同一写法的现行印刷（Vileplume me2 3、Lurantis ex me5 4／96），确认卡文没有变化。"
+    }
+  ],
+  "dataContractZh": "新条件 HEALED_THIS_TURN（只接受 target，单只公开宝可梦）：本回合内有回复效果从这只宝可梦身上移除了伤害即成立；没有伤害时的“回复”不算。",
+  "serverAuthorityZh": "BattlefieldState 在回复确实移除伤害时记下当时的回合数，条件只在当前回合数相同时成立。移动伤害指示物改走单独的 removeDamageForMove，不记为回复。",
+  "limitations": [
+    "“移动伤害指示物不算回复”按卡文用语区分（回复效果写 heal，移动效果写 move damage counters），未找到规则书原文，请同伴复核。",
+    "“回复 N 点并且……追加伤害”（同一招式里先回复再判断）的写法另行处理。"
+  ]
+}

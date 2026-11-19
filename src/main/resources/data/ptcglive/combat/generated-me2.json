@@ -1,0 +1,5969 @@
+{
+  "schemaVersion": 1,
+  "dataVersion": "ptcgcardcn-me2-2026.10.14",
+  "region": "international",
+  "noteZh": "PTCGCardCN 0.1.0 由 Rainier（PTCG Live 客户端卡牌数据库）自动转换；审核策略 rainier-db。详见 reports/conversion-report.json。",
+  "cards": [
+    {
+      "id": "me2_en_001",
+      "kind": "POKEMON",
+      "hitPoints": 50,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIRE",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Oddish",
+      "pokemonType": "GRASS",
+      "attacks": [
+        {
+          "id": "seed-bomb",
+          "nameZh": "种子炸弹",
+          "energyCost": {
+            "GRASS": 1
+          },
+          "baseDamage": 20,
+          "damageType": "GRASS",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_002",
+      "kind": "POKEMON",
+      "hitPoints": 70,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "me2_en_001",
+      "weakness": {
+        "type": "FIRE",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Gloom",
+      "evolvesFromName": "Oddish",
+      "pokemonType": "GRASS",
+      "attacks": [
+        {
+          "id": "disperse-drool",
+          "nameZh": "洒口水",
+          "energyCost": {
+            "GRASS": 1
+          },
+          "baseDamage": 20,
+          "damageType": "GRASS",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "bench_damage",
+                  "target": "OWN_BENCH",
+                  "amount": 20
+                },
+                {
+                  "type": "bench_damage",
+                  "target": "OPPONENT_BENCH",
+                  "amount": 20
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_003",
+      "kind": "POKEMON",
+      "hitPoints": 150,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "me2_en_002",
+      "weakness": {
+        "type": "FIRE",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Vileplume",
+      "evolvesFromName": "Gloom",
+      "pokemonType": "GRASS",
+      "attacks": [
+        {
+          "id": "pollen-bomb",
+          "nameZh": "花粉炸弹",
+          "energyCost": {
+            "GRASS": 1
+          },
+          "baseDamage": 30,
+          "damageType": "GRASS",
+          "effectSupport": "SUPPORTED",
+          "conditions": [
+            {
+              "target": "DEFENDER",
+              "condition": "ASLEEP"
+            },
+            {
+              "target": "DEFENDER",
+              "condition": "POISONED"
+            }
+          ]
+        },
+        {
+          "id": "lively-flower",
+          "nameZh": "活泼鲜花",
+          "energyCost": {
+            "GRASS": 1
+          },
+          "baseDamage": 60,
+          "damageType": "GRASS",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "HEALED_THIS_TURN",
+                  "target": "SELF"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "damage",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 120
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_004",
+      "kind": "POKEMON",
+      "hitPoints": 280,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIRE",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 3,
+      "pokemonName": "Mega Heracross ex",
+      "pokemonType": "GRASS",
+      "attacks": [
+        {
+          "id": "juggernaut-horn",
+          "nameZh": "重装角击",
+          "energyCost": {
+            "GRASS": 2
+          },
+          "baseDamage": 100,
+          "damageType": "GRASS",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "damage_from_last_opponent_attack",
+              "target": "SELF"
+            }
+          ]
+        },
+        {
+          "id": "mountain-ramming",
+          "nameZh": "推山",
+          "energyCost": {
+            "GRASS": 3
+          },
+          "baseDamage": 170,
+          "damageType": "GRASS",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "discard_top_deck",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 2
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_005",
+      "kind": "POKEMON",
+      "hitPoints": 70,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIRE",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Lotad",
+      "pokemonType": "GRASS",
+      "attacks": [
+        {
+          "id": "headbutt",
+          "nameZh": "头锤",
+          "energyCost": {
+            "GRASS": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 30,
+          "damageType": "GRASS",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_006",
+      "kind": "POKEMON",
+      "hitPoints": 90,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "me2_en_005",
+      "weakness": {
+        "type": "FIRE",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Lombre",
+      "evolvesFromName": "Lotad",
+      "pokemonType": "GRASS",
+      "attacks": [
+        {
+          "id": "mega-drain",
+          "nameZh": "超级吸取",
+          "energyCost": {
+            "GRASS": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 30,
+          "damageType": "GRASS",
+          "effectSupport": "SUPPORTED",
+          "selfHealAfterAttack": 30
+        }
+      ]
+    },
+    {
+      "id": "me2_en_007",
+      "kind": "POKEMON",
+      "hitPoints": 160,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "me2_en_006",
+      "weakness": {
+        "type": "FIRE",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Ludicolo",
+      "evolvesFromName": "Lombre",
+      "pokemonType": "GRASS",
+      "attacks": [
+        {
+          "id": "lunge-out",
+          "nameZh": "撞倒",
+          "energyCost": {
+            "GRASS": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 120,
+          "damageType": "GRASS",
+          "effectSupport": "SUPPORTED"
+        }
+      ],
+      "abilities": [
+        {
+          "id": "excited-heal",
+          "nameZh": "激动治愈",
+          "kind": "ACTIVATED_ONCE_PER_TURN",
+          "effects": [
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "POKEMON_COUNT",
+                  "target": "SELF",
+                  "pokemon_families": "MEGA_EVOLUTION_EX",
+                  "pokemon_types": "GRASS",
+                  "value": 1
+                }
+              ],
+              "effects": [
+                {
+                  "type": "select_pokemon",
+                  "target": "SELECT_OWN_POKEMON",
+                  "damage_counters_min": 1,
+                  "effects": [
+                    {
+                      "type": "heal",
+                      "target": "CHOSEN_POKEMON",
+                      "amount": 60
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_008",
+      "kind": "POKEMON",
+      "hitPoints": 120,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIRE",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Genesect",
+      "pokemonType": "GRASS",
+      "attacks": [
+        {
+          "id": "bug-s-cannon",
+          "nameZh": "昆虫加农炮",
+          "energyCost": {
+            "GRASS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "GRASS",
+          "effectSupport": "SUPPORTED",
+          "damageTarget": "OPPONENT_ANY",
+          "targetCount": 1,
+          "effects": [
+            {
+              "type": "damage_per_energy",
+              "target": "SELF",
+              "amount": 20,
+              "energy_type": "GRASS"
+            }
+          ]
+        },
+        {
+          "id": "speed-attack",
+          "nameZh": "高速攻击",
+          "energyCost": {
+            "GRASS": 2,
+            "COLORLESS": 1
+          },
+          "baseDamage": 110,
+          "damageType": "GRASS",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_009",
+      "kind": "POKEMON",
+      "hitPoints": 50,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIRE",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Nymble",
+      "pokemonType": "GRASS",
+      "attacks": [
+        {
+          "id": "flail-around",
+          "nameZh": "跳来跳去",
+          "energyCost": {
+            "GRASS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "GRASS",
+          "effectSupport": "SUPPORTED",
+          "coinDamage": {
+            "flips": 3,
+            "perHeads": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "me2_en_010",
+      "kind": "POKEMON",
+      "hitPoints": 120,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "me2_en_009",
+      "weakness": {
+        "type": "FIRE",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Lokix",
+      "evolvesFromName": "Nymble",
+      "pokemonType": "GRASS",
+      "attacks": [
+        {
+          "id": "low-kick",
+          "nameZh": "踢倒",
+          "energyCost": {
+            "GRASS": 1
+          },
+          "baseDamage": 30,
+          "damageType": "GRASS",
+          "effectSupport": "SUPPORTED"
+        },
+        {
+          "id": "jumping-shot",
+          "nameZh": "跳跃射击",
+          "energyCost": {
+            "COLORLESS": 3
+          },
+          "baseDamage": 150,
+          "damageType": "GRASS",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "shuffle_into_deck",
+                  "target": "SELF"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_011",
+      "kind": "POKEMON",
+      "hitPoints": 80,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Charmander",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "live-coal",
+          "nameZh": "火种",
+          "energyCost": {
+            "FIRE": 1
+          },
+          "baseDamage": 20,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED"
+        }
+      ],
+      "abilities": [
+        {
+          "id": "agile",
+          "nameZh": "一身轻",
+          "kind": "PASSIVE",
+          "effects": [
+            {
+              "type": "free_retreat",
+              "target": "SELF",
+              "conditions": [
+                {
+                  "type": "ENERGY_COUNT",
+                  "target": "SELF",
+                  "value": 0,
+                  "comparison": "==",
+                  "count_mode": "CARDS"
+                }
+              ]
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_012",
+      "kind": "POKEMON",
+      "hitPoints": 110,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "me2_en_011",
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Charmeleon",
+      "evolvesFromName": "Charmander",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "steady-firebreathing",
+          "nameZh": "吐火",
+          "energyCost": {
+            "FIRE": 1
+          },
+          "baseDamage": 40,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_013",
+      "kind": "POKEMON",
+      "hitPoints": 360,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "me2_en_012",
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 3,
+      "pokemonName": "Mega Charizard X ex",
+      "evolvesFromName": "Charmeleon",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "inferno-x",
+          "nameZh": "烈狱狂火X",
+          "energyCost": {
+            "FIRE": 2
+          },
+          "baseDamage": 0,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "damage_per_bound",
+              "target": "OPPONENT_ACTIVE",
+              "bind": "discarded1",
+              "amount": 90
+            }
+          ],
+          "triggers": [
+            {
+              "trigger": "BEFORE_ATTACK",
+              "effects": [
+                {
+                  "type": "plan_energy_discard",
+                  "target": "ALL_OWN_POKEMON",
+                  "bind": "discarded1",
+                  "amount": 60,
+                  "minimum": 0,
+                  "energy_type": "FIRE"
+                }
+              ]
+            },
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "commit_energy_discard",
+                  "ref": "discarded1"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_014",
+      "kind": "POKEMON",
+      "hitPoints": 120,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Moltres",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "fighting-wings",
+          "nameZh": "斗志之翼",
+          "energyCost": {
+            "FIRE": 1
+          },
+          "baseDamage": 20,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "IS_EX",
+                  "target": "OPPONENT_ACTIVE"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "damage",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 90
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_015",
+      "kind": "POKEMON",
+      "hitPoints": 80,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Darumaka",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "blaze-ball",
+          "nameZh": "火焰之球",
+          "energyCost": {
+            "COLORLESS": 3
+          },
+          "baseDamage": 10,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "damage_per_energy",
+              "target": "SELF",
+              "energy_type": "FIRE",
+              "amount": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_016",
+      "kind": "POKEMON",
+      "hitPoints": 150,
+      "retreatCost": 3,
+      "evolvesFromDefinitionId": "me2_en_015",
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Darmanitan",
+      "evolvesFromName": "Darumaka",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "blaze-ball",
+          "nameZh": "火焰之球",
+          "energyCost": {
+            "COLORLESS": 4
+          },
+          "baseDamage": 40,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "damage_per_energy",
+              "target": "SELF",
+              "energy_type": "FIRE",
+              "amount": 40
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_017",
+      "kind": "POKEMON",
+      "hitPoints": 130,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Reshiram",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "combustion",
+          "nameZh": "烈焰",
+          "energyCost": {
+            "FIRE": 1
+          },
+          "baseDamage": 30,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED"
+        },
+        {
+          "id": "burning-flare",
+          "nameZh": "燃烧闪焰",
+          "energyCost": {
+            "FIRE": 4
+          },
+          "baseDamage": 240,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "selfDamage": 60
+        }
+      ]
+    },
+    {
+      "id": "me2_en_018",
+      "kind": "POKEMON",
+      "hitPoints": 190,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Oricorio ex",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "fire-wing",
+          "nameZh": "火焰之翼",
+          "energyCost": {
+            "FIRE": 2,
+            "COLORLESS": 1
+          },
+          "baseDamage": 110,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED"
+        }
+      ],
+      "abilities": [
+        {
+          "id": "excited-turbo",
+          "nameZh": "激动涡轮",
+          "kind": "ACTIVATED_UNLIMITED",
+          "effects": [
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "POKEMON_COUNT",
+                  "target": "SELF",
+                  "pokemon_families": "MEGA_EVOLUTION_EX",
+                  "pokemon_types": "FIRE",
+                  "value": 1
+                }
+              ],
+              "effects": [
+                {
+                  "type": "attach_energy",
+                  "target": "SELECT_OWN_POKEMON",
+                  "source": "HAND",
+                  "target_scope": "OWN_BENCH",
+                  "amount": 1,
+                  "minimum": 1,
+                  "basic_energy_only": true,
+                  "energy_type": "FIRE",
+                  "target_pokemon_type": "FIRE"
+                }
+              ]
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_019",
+      "kind": "POKEMON",
+      "hitPoints": 70,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Charcadet",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "gather-strength",
+          "nameZh": "集力",
+          "energyCost": {
+            "FIRE": 1
+          },
+          "baseDamage": 0,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "search_deck",
+                  "target": "DECK",
+                  "amount": 2,
+                  "minimum": 0,
+                  "card_category": "ENERGY",
+                  "basic_energy_only": true,
+                  "reveal": "true"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "chop",
+          "nameZh": "劈击",
+          "energyCost": {
+            "FIRE": 1
+          },
+          "baseDamage": 10,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_020",
+      "kind": "POKEMON",
+      "hitPoints": 140,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "me2_en_019",
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Ceruledge",
+      "evolvesFromName": "Charcadet",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "infernal-slash",
+          "nameZh": "炼狱斩",
+          "energyCost": {
+            "FIRE": 1
+          },
+          "baseDamage": 0,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "BOUND_COUNT",
+                  "bind": "ceruledge-fire",
+                  "value": 4,
+                  "comparison": "=="
+                }
+              ],
+              "effects": [
+                {
+                  "type": "damage",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 220
+                }
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "trigger": "BEFORE_ATTACK",
+              "effects": [
+                {
+                  "type": "discard",
+                  "target": "HAND",
+                  "amount": 4,
+                  "minimum": 4,
+                  "card_category": "ENERGY",
+                  "basic_energy_only": true,
+                  "energy_type": "FIRE",
+                  "bind": "ceruledge-fire"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_021",
+      "kind": "POKEMON",
+      "hitPoints": 80,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "LIGHTNING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Seel",
+      "pokemonType": "WATER",
+      "attacks": [
+        {
+          "id": "bubble-drain",
+          "nameZh": "泡沫吸取",
+          "energyCost": {
+            "WATER": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 20,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "selfHealAfterAttack": 20
+        }
+      ]
+    },
+    {
+      "id": "me2_en_022",
+      "kind": "POKEMON",
+      "hitPoints": 130,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "me2_en_021",
+      "weakness": {
+        "type": "LIGHTNING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Dewgong",
+      "evolvesFromName": "Seel",
+      "pokemonType": "WATER",
+      "attacks": [
+        {
+          "id": "slam",
+          "nameZh": "摔打",
+          "energyCost": {
+            "WATER": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "coinDamage": {
+            "flips": 2,
+            "perHeads": 70
+          }
+        }
+      ],
+      "abilities": [
+        {
+          "id": "thick-fat",
+          "nameZh": "厚脂肪",
+          "kind": "PASSIVE",
+          "effects": [
+            {
+              "type": "passive_attack_guard",
+              "target": "SELF",
+              "mode": "REDUCE",
+              "attacker_pokemon_types": "FIRE|WATER",
+              "amount": 30
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_023",
+      "kind": "POKEMON",
+      "hitPoints": 70,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "METAL",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Swinub",
+      "pokemonType": "WATER",
+      "attacks": [
+        {
+          "id": "stampede",
+          "nameZh": "踩",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 10,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED"
+        },
+        {
+          "id": "icy-snow",
+          "nameZh": "雪花冰",
+          "energyCost": {
+            "WATER": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 20,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_024",
+      "kind": "POKEMON",
+      "hitPoints": 100,
+      "retreatCost": 3,
+      "evolvesFromDefinitionId": "me2_en_023",
+      "weakness": {
+        "type": "METAL",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Piloswine",
+      "evolvesFromName": "Swinub",
+      "pokemonType": "WATER",
+      "attacks": [
+        {
+          "id": "rising-lunge",
+          "nameZh": "顶起",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 30,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "coinDamage": {
+            "flips": 1,
+            "perHeads": 30
+          }
+        },
+        {
+          "id": "frost-smash",
+          "nameZh": "冰霜粉碎",
+          "energyCost": {
+            "WATER": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 70,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_025",
+      "kind": "POKEMON",
+      "hitPoints": 180,
+      "retreatCost": 4,
+      "evolvesFromDefinitionId": "me2_en_024",
+      "weakness": {
+        "type": "METAL",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Mamoswine",
+      "evolvesFromName": "Piloswine",
+      "pokemonType": "WATER",
+      "attacks": [
+        {
+          "id": "wreck",
+          "nameZh": "摧毀",
+          "energyCost": {
+            "COLORLESS": 3
+          },
+          "baseDamage": 120,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "STADIUM_IN_PLAY"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "damage",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 120
+                }
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "discard_stadium"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "blizzard-edge",
+          "nameZh": "暴雪刀锋",
+          "energyCost": {
+            "WATER": 1,
+            "COLORLESS": 3
+          },
+          "baseDamage": 200,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "discardSelectedAttachedEnergyAfterAttack": 2
+        }
+      ]
+    },
+    {
+      "id": "me2_en_026",
+      "kind": "POKEMON",
+      "hitPoints": 130,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "LIGHTNING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Suicune",
+      "pokemonType": "WATER",
+      "attacks": [
+        {
+          "id": "crystal-fall",
+          "nameZh": "水晶坠落",
+          "energyCost": {
+            "WATER": 2
+          },
+          "baseDamage": 30,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "ENERGY_COUNT",
+                  "target": "ALL_OWN_POKEMON",
+                  "energy_type": "WATER",
+                  "value": 4,
+                  "comparison": ">="
+                }
+              ],
+              "effects": [
+                {
+                  "type": "damage",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 90
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_027",
+      "kind": "POKEMON",
+      "hitPoints": 70,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "LIGHTNING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Piplup",
+      "pokemonType": "WATER",
+      "attacks": [
+        {
+          "id": "call-for-support",
+          "nameZh": "朋友呼唤",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "search_deck",
+                  "target": "DECK",
+                  "amount": 1,
+                  "minimum": 0,
+                  "card_category": "TRAINER",
+                  "trainer_category": "SUPPORTER",
+                  "reveal": "true"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "tackle",
+          "nameZh": "撞击",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 20,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_028",
+      "kind": "POKEMON",
+      "hitPoints": 100,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "me2_en_027",
+      "weakness": {
+        "type": "LIGHTNING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Prinplup",
+      "evolvesFromName": "Piplup",
+      "pokemonType": "WATER",
+      "attacks": [
+        {
+          "id": "peck",
+          "nameZh": "啄",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 20,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED"
+        },
+        {
+          "id": "targeted-dive",
+          "nameZh": "瞄准俯冲",
+          "energyCost": {
+            "COLORLESS": 3
+          },
+          "baseDamage": 70,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "damageTarget": "OPPONENT_BENCH",
+          "targetCount": 1
+        }
+      ]
+    },
+    {
+      "id": "me2_en_029",
+      "kind": "POKEMON",
+      "hitPoints": 190,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Rotom ex",
+      "pokemonType": "LIGHTNING",
+      "attacks": [
+        {
+          "id": "thunderbolt",
+          "nameZh": "十万伏特",
+          "energyCost": {
+            "LIGHTNING": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 130,
+          "damageType": "LIGHTNING",
+          "effectSupport": "SUPPORTED",
+          "discardAllAttachedEnergyAfterAttack": true
+        }
+      ],
+      "abilities": [
+        {
+          "id": "multi-adapter",
+          "nameZh": "多重转接",
+          "kind": "PASSIVE",
+          "effects": [
+            {
+              "type": "tool_capacity",
+              "target": "ALL_OWN_POKEMON",
+              "amount": 2,
+              "conditions": [
+                {
+                  "type": "NAME_CONTAINS",
+                  "target": "SELF",
+                  "value": "rotom"
+                }
+              ]
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_030",
+      "kind": "POKEMON",
+      "hitPoints": 70,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Yamper",
+      "pokemonType": "LIGHTNING",
+      "attacks": [
+        {
+          "id": "play-rough",
+          "nameZh": "嬉闹",
+          "energyCost": {
+            "LIGHTNING": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 20,
+          "damageType": "LIGHTNING",
+          "effectSupport": "SUPPORTED",
+          "coinDamage": {
+            "flips": 1,
+            "perHeads": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "me2_en_031",
+      "kind": "POKEMON",
+      "hitPoints": 130,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "me2_en_030",
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Boltund",
+      "evolvesFromName": "Yamper",
+      "pokemonType": "LIGHTNING",
+      "attacks": [
+        {
+          "id": "electric-run",
+          "nameZh": "电气狂奔",
+          "energyCost": {
+            "LIGHTNING": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 70,
+          "damageType": "LIGHTNING",
+          "effectSupport": "SUPPORTED",
+          "coinDamage": {
+            "flips": 1,
+            "perHeads": 70
+          }
+        }
+      ]
+    },
+    {
+      "id": "me2_en_032",
+      "kind": "POKEMON",
+      "hitPoints": 60,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Pawmi",
+      "pokemonType": "LIGHTNING",
+      "attacks": [
+        {
+          "id": "growl",
+          "nameZh": "叫声",
+          "energyCost": {
+            "LIGHTNING": 1
+          },
+          "baseDamage": 0,
+          "damageType": "LIGHTNING",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "reduce_attack_damage",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 30
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "tiny-charge",
+          "nameZh": "小型电击",
+          "energyCost": {
+            "LIGHTNING": 1
+          },
+          "baseDamage": 10,
+          "damageType": "LIGHTNING",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_033",
+      "kind": "POKEMON",
+      "hitPoints": 90,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "me2_en_032",
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Pawmo",
+      "evolvesFromName": "Pawmi",
+      "pokemonType": "LIGHTNING",
+      "attacks": [
+        {
+          "id": "electric-punch",
+          "nameZh": "霹雳电拳",
+          "energyCost": {
+            "LIGHTNING": 2
+          },
+          "baseDamage": 60,
+          "damageType": "LIGHTNING",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_034",
+      "kind": "POKEMON",
+      "hitPoints": 140,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "me2_en_033",
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Pawmot",
+      "evolvesFromName": "Pawmo",
+      "pokemonType": "LIGHTNING",
+      "attacks": [
+        {
+          "id": "voltaic-fist",
+          "nameZh": "怒气拳",
+          "energyCost": {
+            "LIGHTNING": 2
+          },
+          "baseDamage": 130,
+          "damageType": "LIGHTNING",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "choice",
+                  "optional": true,
+                  "effects": [
+                    {
+                      "type": "self_damage",
+                      "target": "SELF",
+                      "amount": 60
+                    },
+                    {
+                      "type": "paralyze",
+                      "target": "OPPONENT_ACTIVE"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_035",
+      "kind": "POKEMON",
+      "hitPoints": 70,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "DARKNESS",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "FIGHTING",
+        "amount": 30
+      },
+      "prizeCards": 1,
+      "pokemonName": "Misdreavus",
+      "pokemonType": "PSYCHIC",
+      "attacks": [
+        {
+          "id": "petty-grudge",
+          "nameZh": "小哀怨",
+          "energyCost": {
+            "PSYCHIC": 1
+          },
+          "baseDamage": 20,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_036",
+      "kind": "POKEMON",
+      "hitPoints": 260,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "me2_en_035",
+      "weakness": {
+        "type": "DARKNESS",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "FIGHTING",
+        "amount": 30
+      },
+      "prizeCards": 2,
+      "pokemonName": "Mismagius ex",
+      "evolvesFromName": "Misdreavus",
+      "pokemonType": "PSYCHIC",
+      "attacks": [
+        {
+          "id": "hexa-magic",
+          "nameZh": "六之魔法",
+          "energyCost": {
+            "PSYCHIC": 2
+          },
+          "baseDamage": 150,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "choice",
+                  "optional": true,
+                  "effects": [
+                    {
+                      "type": "draw_until",
+                      "target": "SELF",
+                      "amount": 6
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "id": "swirling-prose",
+          "nameZh": "漩涡言灵",
+          "kind": "TRIGGERED",
+          "eventPolicy": {
+            "trigger": "ON_ACTIVE_TO_BENCH",
+            "watch": "OPPONENT_FIELD",
+            "optional": false,
+            "usage": "NONE"
+          },
+          "triggers": [
+            {
+              "trigger": "ON_ACTIVE_TO_BENCH",
+              "conditions": [
+                {
+                  "type": "IS_ACTIVE",
+                  "target": "SELF"
+                },
+                {
+                  "type": "TURN_STATE",
+                  "target": "SELF",
+                  "value": "OPPONENT_TURN"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "confuse",
+                  "target": "OPPONENT_ACTIVE"
+                }
+              ]
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_037",
+      "kind": "POKEMON",
+      "hitPoints": 70,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "METAL",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Snubbull",
+      "pokemonType": "PSYCHIC",
+      "attacks": [
+        {
+          "id": "tackle",
+          "nameZh": "撞击",
+          "energyCost": {
+            "PSYCHIC": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 20,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_038",
+      "kind": "POKEMON",
+      "hitPoints": 130,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "me2_en_037",
+      "weakness": {
+        "type": "METAL",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Granbull",
+      "evolvesFromName": "Snubbull",
+      "pokemonType": "PSYCHIC",
+      "attacks": [
+        {
+          "id": "bite",
+          "nameZh": "咬住",
+          "energyCost": {
+            "PSYCHIC": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 50,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED"
+        },
+        {
+          "id": "finishing-blow",
+          "nameZh": "致命刺击",
+          "energyCost": {
+            "PSYCHIC": 2,
+            "COLORLESS": 1
+          },
+          "baseDamage": 90,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "DAMAGE_COUNTER_COUNT",
+                  "target": "OPPONENT_ACTIVE",
+                  "value": 1
+                }
+              ],
+              "effects": [
+                {
+                  "type": "damage",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 90
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_039",
+      "kind": "POKEMON",
+      "hitPoints": 120,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "DARKNESS",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "FIGHTING",
+        "amount": 30
+      },
+      "prizeCards": 1,
+      "pokemonName": "Cresselia",
+      "pokemonType": "PSYCHIC",
+      "attacks": [
+        {
+          "id": "swelling-light",
+          "nameZh": "充溢之光",
+          "energyCost": {
+            "PSYCHIC": 1
+          },
+          "baseDamage": 0,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "attach_energy",
+                  "source": "DECK",
+                  "target": "SELF",
+                  "target_scope": "OWN_FIELD",
+                  "amount": 2,
+                  "minimum": 0,
+                  "basic_energy_only": true,
+                  "energy_type": "PSYCHIC"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "aurora-beam",
+          "nameZh": "极光束",
+          "energyCost": {
+            "PSYCHIC": 2,
+            "COLORLESS": 1
+          },
+          "baseDamage": 90,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_040",
+      "kind": "POKEMON",
+      "hitPoints": 90,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "DARKNESS",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "FIGHTING",
+        "amount": 30
+      },
+      "prizeCards": 1,
+      "pokemonName": "Meloetta",
+      "pokemonType": "PSYCHIC",
+      "attacks": [
+        {
+          "id": "soothing-melody",
+          "nameZh": "治愈旋律",
+          "energyCost": {
+            "PSYCHIC": 1
+          },
+          "baseDamage": 0,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "select_pokemon",
+                  "target": "SELECT_OWN_POKEMON",
+                  "position": "BENCH",
+                  "pokemon_types": "PSYCHIC",
+                  "effects": [
+                    {
+                      "type": "heal",
+                      "target": "CHOSEN_POKEMON",
+                      "amount": 120
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "magical-shot",
+          "nameZh": "魔法射击",
+          "energyCost": {
+            "PSYCHIC": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 50,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_041",
+      "kind": "POKEMON",
+      "hitPoints": 270,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "METAL",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 3,
+      "pokemonName": "Mega Diancie ex",
+      "pokemonType": "PSYCHIC",
+      "attacks": [
+        {
+          "id": "garland-ray",
+          "nameZh": "花冠射线",
+          "energyCost": {
+            "PSYCHIC": 2
+          },
+          "baseDamage": 0,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "damage_per_bound",
+              "target": "OPPONENT_ACTIVE",
+              "bind": "discarded1",
+              "amount": 120
+            }
+          ],
+          "triggers": [
+            {
+              "trigger": "BEFORE_ATTACK",
+              "effects": [
+                {
+                  "type": "plan_energy_discard",
+                  "target": "SELF",
+                  "bind": "discarded1",
+                  "amount": 2,
+                  "minimum": 0
+                }
+              ]
+            },
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "commit_energy_discard",
+                  "ref": "discarded1"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "id": "diamond-coat",
+          "nameZh": "钻石膜",
+          "kind": "PASSIVE",
+          "effect": {
+            "opcode": "PASSIVE_REDUCE_OPPONENT_ATTACK_DAMAGE",
+            "amount": 30
+          },
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_042",
+      "kind": "POKEMON",
+      "hitPoints": 70,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "METAL",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Mimikyu",
+      "pokemonType": "PSYCHIC",
+      "attacks": [
+        {
+          "id": "call-for-family",
+          "nameZh": "呼朋引伴",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "search_deck",
+                  "target": "DECK",
+                  "amount": 1,
+                  "minimum": 0,
+                  "card_category": "POKEMON",
+                  "basic_pokemon_only": true,
+                  "destination": "BENCH"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "scratch",
+          "nameZh": "抓",
+          "energyCost": {
+            "PSYCHIC": 1
+          },
+          "baseDamage": 20,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_043",
+      "kind": "POKEMON",
+      "hitPoints": 50,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "METAL",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Milcery",
+      "pokemonType": "PSYCHIC",
+      "attacks": [
+        {
+          "id": "draining-kiss",
+          "nameZh": "吸取之吻",
+          "energyCost": {
+            "PSYCHIC": 1
+          },
+          "baseDamage": 10,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED",
+          "selfHealAfterAttack": 10
+        }
+      ]
+    },
+    {
+      "id": "me2_en_044",
+      "kind": "POKEMON",
+      "hitPoints": 90,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "me2_en_043",
+      "weakness": {
+        "type": "METAL",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Alcremie",
+      "evolvesFromName": "Milcery",
+      "pokemonType": "PSYCHIC",
+      "attacks": [
+        {
+          "id": "sweet-circle",
+          "nameZh": "甜点圆阵",
+          "energyCost": {
+            "PSYCHIC": 1
+          },
+          "baseDamage": 0,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "damage_per_pokemon",
+              "target": "ALL_OWN_POKEMON",
+              "amount": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_045",
+      "kind": "POKEMON",
+      "hitPoints": 130,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "METAL",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Zacian",
+      "pokemonType": "PSYCHIC",
+      "attacks": [
+        {
+          "id": "limit-break",
+          "nameZh": "界限破坏",
+          "energyCost": {
+            "PSYCHIC": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 50,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "PRIZE_COUNT",
+                  "target": "OPPONENT_ACTIVE",
+                  "value": 3,
+                  "comparison": "<="
+                }
+              ],
+              "effects": [
+                {
+                  "type": "damage",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 90
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_046",
+      "kind": "POKEMON",
+      "hitPoints": 50,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "DARKNESS",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "FIGHTING",
+        "amount": 30
+      },
+      "prizeCards": 1,
+      "pokemonName": "Bramblin",
+      "pokemonType": "PSYCHIC",
+      "attacks": [
+        {
+          "id": "sneaky-placement",
+          "nameZh": "轻轻放置",
+          "energyCost": {
+            "PSYCHIC": 1
+          },
+          "baseDamage": 0,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "damage_counter",
+                  "target": "SELECT_OPPONENT_POKEMON",
+                  "amount": 1
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_047",
+      "kind": "POKEMON",
+      "hitPoints": 100,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "me2_en_046",
+      "weakness": {
+        "type": "DARKNESS",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "FIGHTING",
+        "amount": 30
+      },
+      "prizeCards": 1,
+      "pokemonName": "Brambleghast",
+      "evolvesFromName": "Bramblin",
+      "pokemonType": "PSYCHIC",
+      "attacks": [
+        {
+          "id": "psychic-sphere",
+          "nameZh": "念动弹",
+          "energyCost": {
+            "PSYCHIC": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 80,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED"
+        }
+      ],
+      "abilities": [
+        {
+          "id": "prison-panic",
+          "nameZh": "恐慌牢笼",
+          "kind": "TRIGGERED",
+          "eventPolicy": {
+            "trigger": "ON_EVOLVE",
+            "watch": "SELF",
+            "source": "HAND",
+            "optional": true,
+            "usage": "NONE"
+          },
+          "triggers": [
+            {
+              "trigger": "ON_EVOLVE",
+              "conditions": [],
+              "effects": [
+                {
+                  "type": "confuse",
+                  "target": "OPPONENT_ACTIVE"
+                }
+              ]
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_048",
+      "kind": "POKEMON",
+      "hitPoints": 130,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "PSYCHIC",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Paldean Tauros",
+      "pokemonType": "FIGHTING",
+      "attacks": [
+        {
+          "id": "raging-charge",
+          "nameZh": "愤怒猛撞",
+          "energyCost": {
+            "FIGHTING": 1
+          },
+          "baseDamage": 0,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "damage_per_pokemon",
+              "target": "ALL_OWN_POKEMON",
+              "amount": 40,
+              "name_contains": "Tauros",
+              "damage_counters_min": 1
+            }
+          ]
+        },
+        {
+          "id": "double-edge",
+          "nameZh": "舍身冲撞",
+          "energyCost": {
+            "FIGHTING": 2
+          },
+          "baseDamage": 70,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "selfDamage": 20
+        }
+      ]
+    },
+    {
+      "id": "me2_en_049",
+      "kind": "POKEMON",
+      "hitPoints": 70,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Gligar",
+      "pokemonType": "FIGHTING",
+      "attacks": [
+        {
+          "id": "poison-jab",
+          "nameZh": "毒击",
+          "energyCost": {
+            "FIGHTING": 1
+          },
+          "baseDamage": 10,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "conditions": [
+            {
+              "target": "DEFENDER",
+              "condition": "POISONED"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_050",
+      "kind": "POKEMON",
+      "hitPoints": 120,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "me2_en_049",
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Gliscor",
+      "evolvesFromName": "Gligar",
+      "pokemonType": "FIGHTING",
+      "attacks": [
+        {
+          "id": "poison-ring",
+          "nameZh": "毒液圆阵",
+          "energyCost": {
+            "FIGHTING": 1
+          },
+          "baseDamage": 50,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "conditions": [
+            {
+              "target": "DEFENDER",
+              "condition": "POISONED"
+            }
+          ],
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "prevent_retreat",
+                  "target": "OPPONENT_ACTIVE"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_051",
+      "kind": "POKEMON",
+      "hitPoints": 70,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Trapinch",
+      "pokemonType": "FIGHTING",
+      "attacks": [
+        {
+          "id": "double-headbutt",
+          "nameZh": "二连头锤",
+          "energyCost": {
+            "FIGHTING": 1
+          },
+          "baseDamage": 0,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "coinDamage": {
+            "flips": 2,
+            "perHeads": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "me2_en_052",
+      "kind": "POKEMON",
+      "hitPoints": 90,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "me2_en_051",
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Vibrava",
+      "evolvesFromName": "Trapinch",
+      "pokemonType": "FIGHTING",
+      "attacks": [
+        {
+          "id": "super-vibration",
+          "nameZh": "超震动",
+          "energyCost": {
+            "FIGHTING": 2
+          },
+          "baseDamage": 60,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_053",
+      "kind": "POKEMON",
+      "hitPoints": 150,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "me2_en_052",
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Flygon",
+      "evolvesFromName": "Vibrava",
+      "pokemonType": "FIGHTING",
+      "attacks": [
+        {
+          "id": "cutting-wind",
+          "nameZh": "利刃之风",
+          "energyCost": {
+            "FIGHTING": 2
+          },
+          "baseDamage": 130,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED"
+        }
+      ],
+      "abilities": [
+        {
+          "id": "sandy-flapping",
+          "nameZh": "沙之羽击",
+          "kind": "TRIGGERED",
+          "eventPolicy": {
+            "trigger": "ON_EVOLVE",
+            "watch": "SELF",
+            "source": "HAND",
+            "optional": true,
+            "usage": "NONE"
+          },
+          "triggers": [
+            {
+              "trigger": "ON_EVOLVE",
+              "conditions": [
+                {
+                  "type": "TURN_STATE",
+                  "target": "SELF",
+                  "value": "ACTOR_TURN"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "discard_top_deck",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 2
+                }
+              ]
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        },
+        {
+          "id": "sandy-flapping-knockout",
+          "nameZh": "沙之羽击",
+          "kind": "TRIGGERED",
+          "eventPolicy": {
+            "trigger": "ON_KNOCKOUT",
+            "cause": "OPPONENT_ATTACK_DAMAGE",
+            "watch": "SELF",
+            "activeOnly": true,
+            "optional": true,
+            "usage": "NONE"
+          },
+          "triggers": [
+            {
+              "trigger": "ON_KNOCKOUT",
+              "conditions": [],
+              "effects": [
+                {
+                  "type": "discard_top_deck",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 2
+                }
+              ]
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_054",
+      "kind": "POKEMON",
+      "hitPoints": 70,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Gastly",
+      "pokemonType": "DARKNESS",
+      "attacks": [
+        {
+          "id": "petty-grudge",
+          "nameZh": "小哀怨",
+          "energyCost": {
+            "DARKNESS": 1
+          },
+          "baseDamage": 10,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_055",
+      "kind": "POKEMON",
+      "hitPoints": 100,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "me2_en_054",
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Haunter",
+      "evolvesFromName": "Gastly",
+      "pokemonType": "DARKNESS",
+      "attacks": [
+        {
+          "id": "spooky-shot",
+          "nameZh": "幽魂射击",
+          "energyCost": {
+            "DARKNESS": 1
+          },
+          "baseDamage": 40,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_056",
+      "kind": "POKEMON",
+      "hitPoints": 350,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "me2_en_055",
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 3,
+      "pokemonName": "Mega Gengar ex",
+      "evolvesFromName": "Haunter",
+      "pokemonType": "DARKNESS",
+      "attacks": [
+        {
+          "id": "void-gale",
+          "nameZh": "空无强风",
+          "energyCost": {
+            "DARKNESS": 2
+          },
+          "baseDamage": 230,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "move_energy",
+                  "target": "SELF",
+                  "amount": 1,
+                  "minimum": 1,
+                  "destination_scope": "OWN_BENCH",
+                  "count_mode": "UNITS"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "id": "shadowy-concealment",
+          "nameZh": "影藏",
+          "kind": "PASSIVE",
+          "effects": [
+            {
+              "type": "prize_reduction_aura",
+              "target": "ALL_OWN_POKEMON",
+              "pokemon_type": "DARKNESS",
+              "attacker_filter": "EX",
+              "amount": 1,
+              "nonstack_group": "shadowy-concealment"
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_057",
+      "kind": "POKEMON",
+      "hitPoints": 60,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "LIGHTNING",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "FIGHTING",
+        "amount": 30
+      },
+      "prizeCards": 1,
+      "pokemonName": "Murkrow",
+      "pokemonType": "DARKNESS",
+      "attacks": [
+        {
+          "id": "ambush",
+          "nameZh": "猛袭",
+          "energyCost": {
+            "DARKNESS": 1
+          },
+          "baseDamage": 10,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED",
+          "coinDamage": {
+            "flips": 1,
+            "perHeads": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "me2_en_058",
+      "kind": "POKEMON",
+      "hitPoints": 130,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "me2_en_057",
+      "weakness": {
+        "type": "LIGHTNING",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "FIGHTING",
+        "amount": 30
+      },
+      "prizeCards": 1,
+      "pokemonName": "Honchkrow",
+      "evolvesFromName": "Murkrow",
+      "pokemonType": "DARKNESS",
+      "attacks": [
+        {
+          "id": "wind-of-darkness",
+          "nameZh": "暗之风",
+          "energyCost": {
+            "DARKNESS": 1
+          },
+          "baseDamage": 30,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED"
+        },
+        {
+          "id": "sniping-feathers",
+          "nameZh": "狙击羽毛",
+          "energyCost": {
+            "DARKNESS": 2,
+            "COLORLESS": 1
+          },
+          "baseDamage": 120,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED",
+          "damageTarget": "OPPONENT_ANY",
+          "targetCount": 1,
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "discard_energy",
+                  "target": "SELF",
+                  "amount": 2,
+                  "minimum": 2
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_059",
+      "kind": "POKEMON",
+      "hitPoints": 80,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Sableye",
+      "pokemonType": "DARKNESS",
+      "attacks": [
+        {
+          "id": "cocky-claw",
+          "nameZh": "动怒爪",
+          "energyCost": {
+            "DARKNESS": 1
+          },
+          "baseDamage": 20,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "POKEMON_COUNT",
+                  "target": "OWN_BENCH",
+                  "pokemon_types": "DARKNESS",
+                  "pokemon_stage": "2",
+                  "value": 1
+                }
+              ],
+              "effects": [
+                {
+                  "type": "damage",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 70
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_060",
+      "kind": "POKEMON",
+      "hitPoints": 70,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Carvanha",
+      "pokemonType": "DARKNESS",
+      "attacks": [
+        {
+          "id": "reckless-charge",
+          "nameZh": "突击",
+          "energyCost": {
+            "DARKNESS": 1
+          },
+          "baseDamage": 30,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED",
+          "selfDamage": 10
+        }
+      ]
+    },
+    {
+      "id": "me2_en_061",
+      "kind": "POKEMON",
+      "hitPoints": 330,
+      "retreatCost": 0,
+      "evolvesFromDefinitionId": "me2_en_060",
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 3,
+      "pokemonName": "Mega Sharpedo ex",
+      "evolvesFromName": "Carvanha",
+      "pokemonType": "DARKNESS",
+      "attacks": [
+        {
+          "id": "greedy-fang",
+          "nameZh": "贪心之牙",
+          "energyCost": {
+            "DARKNESS": 1
+          },
+          "baseDamage": 70,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "draw",
+                  "amount": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hungry-jaws",
+          "nameZh": "饥渴下巴",
+          "energyCost": {
+            "DARKNESS": 2
+          },
+          "baseDamage": 120,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "DAMAGE_COUNTER_COUNT",
+                  "target": "SELF",
+                  "value": 1
+                }
+              ],
+              "effects": [
+                {
+                  "type": "damage",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 150
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_062",
+      "kind": "POKEMON",
+      "hitPoints": 120,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Seviper",
+      "pokemonType": "DARKNESS",
+      "attacks": [
+        {
+          "id": "pitch-black-fangs",
+          "nameZh": "漆黑之牙",
+          "energyCost": {
+            "DARKNESS": 3
+          },
+          "baseDamage": 120,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED"
+        }
+      ],
+      "abilities": [
+        {
+          "id": "excited-power",
+          "nameZh": "激动力量",
+          "kind": "PASSIVE",
+          "effects": [
+            {
+              "type": "attack_damage_modifier",
+              "target": "SELF",
+              "amount": 120,
+              "direction": "DEALT",
+              "opponent_active_only": true,
+              "conditions": [
+                {
+                  "type": "POKEMON_COUNT",
+                  "target": "SELF",
+                  "pokemon_families": "MEGA_EVOLUTION_EX",
+                  "pokemon_types": "DARKNESS",
+                  "value": 1
+                }
+              ]
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_063",
+      "kind": "POKEMON",
+      "hitPoints": 110,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Absol",
+      "pokemonType": "DARKNESS",
+      "attacks": [
+        {
+          "id": "allure",
+          "nameZh": "吸引",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "draw",
+                  "amount": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dark-cutter",
+          "nameZh": "暗黑利刃",
+          "energyCost": {
+            "DARKNESS": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 60,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_064",
+      "kind": "POKEMON",
+      "hitPoints": 70,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Sandile",
+      "pokemonType": "DARKNESS",
+      "attacks": [
+        {
+          "id": "ram",
+          "nameZh": "冲撞",
+          "energyCost": {
+            "DARKNESS": 1
+          },
+          "baseDamage": 10,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED"
+        },
+        {
+          "id": "rear-kick",
+          "nameZh": "后踢",
+          "energyCost": {
+            "DARKNESS": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 20,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_065",
+      "kind": "POKEMON",
+      "hitPoints": 100,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "me2_en_064",
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Krokorok",
+      "evolvesFromName": "Sandile",
+      "pokemonType": "DARKNESS",
+      "attacks": [
+        {
+          "id": "bite",
+          "nameZh": "咬住",
+          "energyCost": {
+            "DARKNESS": 1
+          },
+          "baseDamage": 30,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED"
+        },
+        {
+          "id": "confront",
+          "nameZh": "正面对决",
+          "energyCost": {
+            "DARKNESS": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 60,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_066",
+      "kind": "POKEMON",
+      "hitPoints": 170,
+      "retreatCost": 3,
+      "evolvesFromDefinitionId": "me2_en_065",
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Krookodile",
+      "evolvesFromName": "Krokorok",
+      "pokemonType": "DARKNESS",
+      "attacks": [
+        {
+          "id": "vengeful-fang",
+          "nameZh": "复仇獠牙",
+          "energyCost": {
+            "DARKNESS": 1
+          },
+          "baseDamage": 60,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "KNOCKED_OUT_BY_ATTACK_LAST_TURN",
+                  "target": "SELF"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "damage",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 160
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hammer-in",
+          "nameZh": "头突",
+          "energyCost": {
+            "DARKNESS": 1,
+            "COLORLESS": 3
+          },
+          "baseDamage": 160,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_067",
+      "kind": "POKEMON",
+      "hitPoints": 70,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Toxel",
+      "pokemonType": "DARKNESS",
+      "attacks": [
+        {
+          "id": "call-for-family",
+          "nameZh": "呼朋引伴",
+          "energyCost": {
+            "DARKNESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "search_deck",
+                  "target": "DECK",
+                  "amount": 2,
+                  "minimum": 0,
+                  "card_category": "POKEMON",
+                  "basic_pokemon_only": true,
+                  "destination": "BENCH"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "playful-kick",
+          "nameZh": "顽皮踢",
+          "energyCost": {
+            "DARKNESS": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 20,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_068",
+      "kind": "POKEMON",
+      "hitPoints": 140,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "me2_en_067",
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Toxtricity",
+      "evolvesFromName": "Toxel",
+      "pokemonType": "DARKNESS",
+      "attacks": [
+        {
+          "id": "gentle-slap",
+          "nameZh": "重掴",
+          "energyCost": {
+            "DARKNESS": 2,
+            "COLORLESS": 1
+          },
+          "baseDamage": 100,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED"
+        }
+      ],
+      "abilities": [
+        {
+          "id": "sinister-surge",
+          "nameZh": "恶棍冲天",
+          "kind": "ACTIVATED_ONCE_PER_TURN",
+          "effects": [
+            {
+              "type": "select_pokemon",
+              "target": "SELECT_OWN_POKEMON",
+              "position": "BENCH",
+              "pokemon_types": "DARKNESS",
+              "effects": [
+                {
+                  "type": "attach_energy",
+                  "target": "CHOSEN_POKEMON",
+                  "source": "DECK",
+                  "target_scope": "OWN_FIELD",
+                  "amount": 1,
+                  "minimum": 0,
+                  "basic_energy_only": true,
+                  "energy_type": "DARKNESS",
+                  "bind": "toxtricity-energy"
+                },
+                {
+                  "type": "conditional",
+                  "conditions": [
+                    {
+                      "type": "BOUND_COUNT",
+                      "bind": "toxtricity-energy",
+                      "value": 1
+                    }
+                  ],
+                  "effects": [
+                    {
+                      "type": "damage_counter",
+                      "target": "CHOSEN_POKEMON",
+                      "amount": 2
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_069",
+      "kind": "POKEMON",
+      "hitPoints": 150,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Eternatus",
+      "pokemonType": "DARKNESS",
+      "attacks": [
+        {
+          "id": "shatter",
+          "nameZh": "摔坏",
+          "energyCost": {
+            "DARKNESS": 2
+          },
+          "baseDamage": 50,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "discard_stadium"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "power-rush",
+          "nameZh": "力量突进",
+          "energyCost": {
+            "DARKNESS": 3
+          },
+          "baseDamage": 130,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "coin_flip",
+                  "flips": 1,
+                  "tails": [
+                    {
+                      "type": "prevent_attack",
+                      "target": "SELF",
+                      "duration": "SOURCE_NEXT_TURN_END"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_070",
+      "kind": "POKEMON",
+      "hitPoints": 320,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "me2_en_028",
+      "weakness": {
+        "type": "FIRE",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "GRASS",
+        "amount": 30
+      },
+      "prizeCards": 2,
+      "pokemonName": "Empoleon ex",
+      "evolvesFromName": "Prinplup",
+      "pokemonType": "METAL",
+      "attacks": [
+        {
+          "id": "iron-feathers",
+          "nameZh": "铁羽毛",
+          "energyCost": {
+            "METAL": 2,
+            "COLORLESS": 1
+          },
+          "baseDamage": 210,
+          "damageType": "METAL",
+          "effectSupport": "SUPPORTED",
+          "damageReductionFromOpponentNextTurn": 60
+        }
+      ],
+      "abilities": [
+        {
+          "id": "emperor-s-stance",
+          "nameZh": "皇帝之势",
+          "kind": "PASSIVE",
+          "effects": [
+            {
+              "type": "passive_effect_guard",
+              "target": "SELF",
+              "source": "ATTACK",
+              "from": "OPPONENT",
+              "scope": "EFFECTS_ONLY"
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_071",
+      "kind": "POKEMON",
+      "hitPoints": 80,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIRE",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "GRASS",
+        "amount": 30
+      },
+      "prizeCards": 1,
+      "pokemonName": "Bronzor",
+      "pokemonType": "METAL",
+      "attacks": [
+        {
+          "id": "iron-defense",
+          "nameZh": "铁壁",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "METAL",
+          "effectSupport": "SUPPORTED",
+          "coinProtection": {
+            "flips": 1,
+            "requiredHeads": 1,
+            "scope": "DAMAGE_ONLY"
+          }
+        },
+        {
+          "id": "rollout",
+          "nameZh": "滚动",
+          "energyCost": {
+            "COLORLESS": 3
+          },
+          "baseDamage": 30,
+          "damageType": "METAL",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_072",
+      "kind": "POKEMON",
+      "hitPoints": 140,
+      "retreatCost": 3,
+      "evolvesFromDefinitionId": "me2_en_071",
+      "weakness": {
+        "type": "FIRE",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "GRASS",
+        "amount": 30
+      },
+      "prizeCards": 1,
+      "pokemonName": "Bronzong",
+      "evolvesFromName": "Bronzor",
+      "pokemonType": "METAL",
+      "attacks": [
+        {
+          "id": "triple-draw",
+          "nameZh": "三重抽取",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "METAL",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "draw",
+                  "amount": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "tool-drop",
+          "nameZh": "道具击落",
+          "energyCost": {
+            "COLORLESS": 3
+          },
+          "baseDamage": 0,
+          "damageType": "METAL",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "damage_per_pokemon",
+              "target": "ALL_OWN_POKEMON",
+              "amount": 40,
+              "count_mode": "ATTACHED_TOOLS"
+            },
+            {
+              "type": "damage_per_pokemon",
+              "target": "ALL_OPPONENT_POKEMON",
+              "amount": 40,
+              "count_mode": "ATTACHED_TOOLS"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_073",
+      "kind": "POKEMON",
+      "hitPoints": 80,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIRE",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "GRASS",
+        "amount": 30
+      },
+      "prizeCards": 1,
+      "pokemonName": "Togedemaru",
+      "pokemonType": "METAL",
+      "attacks": [
+        {
+          "id": "find-a-friend",
+          "nameZh": "找朋友",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "METAL",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "search_deck",
+                  "target": "DECK",
+                  "amount": 1,
+                  "minimum": 0,
+                  "card_category": "POKEMON",
+                  "reveal": "true"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gnaw",
+          "nameZh": "啃咬",
+          "energyCost": {
+            "METAL": 1
+          },
+          "baseDamage": 30,
+          "damageType": "METAL",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_074",
+      "kind": "POKEMON",
+      "hitPoints": 130,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIRE",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "GRASS",
+        "amount": 30
+      },
+      "prizeCards": 1,
+      "pokemonName": "Duraludon",
+      "pokemonType": "METAL",
+      "attacks": [
+        {
+          "id": "hyper-beam",
+          "nameZh": "破坏光线",
+          "energyCost": {
+            "METAL": 3
+          },
+          "baseDamage": 70,
+          "damageType": "METAL",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "discard_energy",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 1,
+                  "minimum": 1,
+                  "count_mode": "UNITS"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_075",
+      "kind": "POKEMON",
+      "hitPoints": 180,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "me2_en_074",
+      "weakness": {
+        "type": "FIRE",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "GRASS",
+        "amount": 30
+      },
+      "prizeCards": 1,
+      "pokemonName": "Archaludon",
+      "evolvesFromName": "Duraludon",
+      "pokemonType": "METAL",
+      "attacks": [
+        {
+          "id": "coated-attack",
+          "nameZh": "涂层攻击",
+          "energyCost": {
+            "METAL": 3
+          },
+          "baseDamage": 120,
+          "damageType": "METAL",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "prevent_damage",
+                  "target": "SELF",
+                  "source": "ATTACK",
+                  "from": "OPPONENT",
+                  "scope": "DAMAGE_ONLY",
+                  "duration": "OPPONENT_TURN_END",
+                  "attacker_filter": "BASIC"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_076",
+      "kind": "POKEMON",
+      "hitPoints": 70,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Jigglypuff",
+      "pokemonType": "COLORLESS",
+      "attacks": [
+        {
+          "id": "ball-roll",
+          "nameZh": "滚球",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "coin_flip",
+              "until": "TAILS",
+              "effects": [
+                {
+                  "type": "repeat_per_heads",
+                  "effects": [
+                    {
+                      "type": "damage",
+                      "target": "OPPONENT_ACTIVE",
+                      "amount": 20
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_077",
+      "kind": "POKEMON",
+      "hitPoints": 120,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "me2_en_076",
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Wigglytuff",
+      "evolvesFromName": "Jigglypuff",
+      "pokemonType": "COLORLESS",
+      "attacks": [
+        {
+          "id": "round",
+          "nameZh": "轮唱",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 0,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "damage_per_pokemon",
+              "target": "ALL_OWN_POKEMON",
+              "amount": 40,
+              "attack_id": "round"
+            }
+          ]
+        },
+        {
+          "id": "seismic-toss",
+          "nameZh": "地球上投",
+          "energyCost": {
+            "COLORLESS": 3
+          },
+          "baseDamage": 100,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_078",
+      "kind": "POKEMON",
+      "hitPoints": 70,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Aipom",
+      "pokemonType": "COLORLESS",
+      "attacks": [
+        {
+          "id": "astonish",
+          "nameZh": "惊吓",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 20,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "shuffle_random_hand",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 1
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_079",
+      "kind": "POKEMON",
+      "hitPoints": 110,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "me2_en_078",
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Ambipom",
+      "evolvesFromName": "Aipom",
+      "pokemonType": "COLORLESS",
+      "attacks": [
+        {
+          "id": "slap",
+          "nameZh": "巴掌",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 50,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED"
+        },
+        {
+          "id": "dual-tail",
+          "nameZh": "双尾",
+          "energyCost": {
+            "COLORLESS": 3
+          },
+          "baseDamage": 60,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED",
+          "damageTarget": "OPPONENT_ANY",
+          "targetCount": 2,
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "discard_energy",
+                  "target": "SELF",
+                  "amount": 2,
+                  "minimum": 2
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_080",
+      "kind": "POKEMON",
+      "hitPoints": 80,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Smeargle",
+      "pokemonType": "COLORLESS",
+      "attacks": [
+        {
+          "id": "energizing-sketch",
+          "nameZh": "能量写生",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "coin_flip",
+                  "flips": 3,
+                  "bind": "smeargle-heads",
+                  "effects": []
+                },
+                {
+                  "type": "attach_energy",
+                  "target": "SELECT_OWN_POKEMON",
+                  "source": "DISCARD",
+                  "amount": 3,
+                  "minimum": 0,
+                  "amount_mode": "COIN_HEADS",
+                  "coin": "smeargle-heads",
+                  "basic_energy_only": true,
+                  "target_scope": "OWN_BENCH",
+                  "distribution": "ANY"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hook",
+          "nameZh": "钩住",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 40,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_081",
+      "kind": "POKEMON",
+      "hitPoints": 70,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Zigzagoon",
+      "pokemonType": "COLORLESS",
+      "attacks": [
+        {
+          "id": "surprise-attack",
+          "nameZh": "偷袭",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED",
+          "coinDamage": {
+            "flips": 1,
+            "perHeads": 30
+          }
+        }
+      ]
+    },
+    {
+      "id": "me2_en_082",
+      "kind": "POKEMON",
+      "hitPoints": 100,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "me2_en_081",
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Linoone",
+      "evolvesFromName": "Zigzagoon",
+      "pokemonType": "COLORLESS",
+      "attacks": [
+        {
+          "id": "slash",
+          "nameZh": "劈开",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 70,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED"
+        }
+      ],
+      "abilities": [
+        {
+          "id": "excited-dash",
+          "nameZh": "激动冲刺",
+          "kind": "ACTIVATED_ONCE_PER_TURN",
+          "effects": [
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "NOT",
+                  "conditions": [
+                    {
+                      "type": "IS_ACTIVE",
+                      "target": "SELF"
+                    }
+                  ]
+                },
+                {
+                  "type": "POKEMON_COUNT",
+                  "target": "SELF",
+                  "pokemon_families": "MEGA_EVOLUTION_EX",
+                  "value": 1
+                }
+              ],
+              "effects": [
+                {
+                  "type": "switch_source_with_active",
+                  "target": "SELF"
+                }
+              ]
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_083",
+      "kind": "POKEMON",
+      "hitPoints": 70,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Buneary",
+      "pokemonType": "COLORLESS",
+      "attacks": [
+        {
+          "id": "run-around",
+          "nameZh": "欢闹",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "switch",
+                  "target": "SELECT_OWN_POKEMON"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "kick",
+          "nameZh": "重踢",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 20,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_084",
+      "kind": "POKEMON",
+      "hitPoints": 330,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "me2_en_083",
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 3,
+      "pokemonName": "Mega Lopunny ex",
+      "evolvesFromName": "Buneary",
+      "pokemonType": "COLORLESS",
+      "attacks": [
+        {
+          "id": "gale-thrust",
+          "nameZh": "疾风直撞",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 60,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "BECAME_ACTIVE_THIS_TURN",
+                  "target": "SELF"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "damage",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 170
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "spiky-hopper",
+          "nameZh": "跳跃扣杀",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 160,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED",
+          "ignoresActiveDefenderDamageEffects": true
+        }
+      ]
+    },
+    {
+      "id": "me2_en_085",
+      "kind": "TRAINER",
+      "trainerCategory": "STADIUM",
+      "effects": [
+        {
+          "type": "prevent_bench_damage_counters",
+          "target": "SELF"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_086",
+      "kind": "TRAINER",
+      "trainerCategory": "ITEM",
+      "effects": [
+        {
+          "type": "discard",
+          "target": "HAND",
+          "amount": 1,
+          "minimum": 1,
+          "card_category": "ENERGY",
+          "basic_energy_only": true,
+          "energy_type": "FIRE",
+          "as_cost": true
+        },
+        {
+          "type": "choice",
+          "effects": [
+            {
+              "type": "discard_tool",
+              "target": "ALL_OPPONENT_POKEMON",
+              "amount": 1,
+              "minimum": 1
+            },
+            {
+              "type": "discard_energy",
+              "target": "ALL_OPPONENT_POKEMON",
+              "amount": 1,
+              "minimum": 1,
+              "card_kind": "SPECIAL"
+            },
+            {
+              "type": "discard_stadium"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_087",
+      "kind": "TRAINER",
+      "trainerCategory": "SUPPORTER",
+      "effects": [
+        {
+          "type": "search_deck",
+          "target": "DECK",
+          "amount": 1,
+          "minimum": 0,
+          "card_category": "POKEMON",
+          "basic_pokemon_only": true,
+          "reveal": true
+        },
+        {
+          "type": "search_deck",
+          "target": "DECK",
+          "amount": 1,
+          "minimum": 0,
+          "card_category": "POKEMON",
+          "pokemon_stage": "1",
+          "reveal": true
+        },
+        {
+          "type": "search_deck",
+          "target": "DECK",
+          "amount": 1,
+          "minimum": 0,
+          "card_category": "POKEMON",
+          "pokemon_stage": "2",
+          "reveal": true
+        }
+      ]
+    },
+    {
+      "id": "me2_en_088",
+      "kind": "TRAINER",
+      "trainerCategory": "STADIUM",
+      "effects": [
+        {
+          "type": "retain_confusion_on_evolution",
+          "target": "SELF"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_089",
+      "kind": "TRAINER",
+      "trainerCategory": "SUPPORTER",
+      "effects": [
+        {
+          "type": "search_deck",
+          "target": "DECK",
+          "amount": 7,
+          "minimum": 0,
+          "card_category": "ENERGY",
+          "basic_energy_only": true,
+          "reveal": "true",
+          "energy_type": "FIRE"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_090",
+      "kind": "TRAINER",
+      "trainerCategory": "SUPPORTER",
+      "effects": [
+        {
+          "type": "conditional",
+          "conditions": [
+            {
+              "type": "NOT",
+              "conditions": [
+                {
+                  "type": "TURN_STATE",
+                  "target": "SELF",
+                  "value": "OWN_FIRST_TURN"
+                }
+              ]
+            }
+          ],
+          "effects": [
+            {
+              "type": "search_deck",
+              "target": "DECK",
+              "top_count": 7,
+              "amount": 1,
+              "minimum": 0,
+              "card_category": "POKEMON",
+              "pokemon_types": "DARKNESS",
+              "destination": "BENCH",
+              "any_stage": true,
+              "remainder": "SHUFFLE_BOTTOM"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_091",
+      "kind": "TRAINER",
+      "trainerCategory": "ITEM",
+      "effects": [
+        {
+          "type": "heal",
+          "target": "OWN_ACTIVE",
+          "amount": 80,
+          "conditions": [
+            {
+              "type": "ENERGY_COUNT",
+              "target": "OWN_ACTIVE",
+              "comparison": ">=",
+              "value": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_092",
+      "kind": "TRAINER",
+      "trainerCategory": "TOOL",
+      "automaticEffects": [
+        {
+          "id": "punk-helmet",
+          "nameZh": "朋克头盔",
+          "eventPolicy": {
+            "trigger": "ON_DAMAGE",
+            "from": "OPPONENT_ATTACK",
+            "activeOnly": true,
+            "lethalOnly": false,
+            "optional": false,
+            "usage": "NONE"
+          },
+          "triggers": [
+            {
+              "trigger": "ON_DAMAGE",
+              "conditions": [
+                {
+                  "type": "IS_TYPE",
+                  "target": "SELF",
+                  "pokemon_type": "DARKNESS"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "damage_counter",
+                  "target": "ATTACKING_POKEMON",
+                  "amount": 4
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_093",
+      "kind": "TRAINER",
+      "trainerCategory": "TOOL",
+      "effects": [
+        {
+          "type": "passive_attack_guard",
+          "target": "SELF",
+          "mode": "REDUCE",
+          "amount": 30,
+          "attacker_has_abilities": true
+        }
+      ]
+    },
+    {
+      "id": "me2_en_094",
+      "kind": "TRAINER",
+      "trainerCategory": "ITEM",
+      "effects": [
+        {
+          "type": "select_pokemon",
+          "target": "SELECT_OWN_POKEMON",
+          "position": "BENCH",
+          "pokemon_types": "PSYCHIC",
+          "effects": [
+            {
+              "type": "attach_energy",
+              "target": "CHOSEN_POKEMON",
+              "source": "DISCARD",
+              "target_scope": "OWN_FIELD",
+              "amount": 1,
+              "minimum": 1,
+              "basic_energy_only": true,
+              "energy_type": "PSYCHIC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_095",
+      "kind": "POKEMON",
+      "hitPoints": 160,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "me2_en_006",
+      "weakness": {
+        "type": "FIRE",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Ludicolo",
+      "evolvesFromName": "Lombre",
+      "pokemonType": "GRASS",
+      "attacks": [
+        {
+          "id": "lunge-out",
+          "nameZh": "撞倒",
+          "energyCost": {
+            "GRASS": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 120,
+          "damageType": "GRASS",
+          "effectSupport": "SUPPORTED"
+        }
+      ],
+      "abilities": [
+        {
+          "id": "excited-heal",
+          "nameZh": "激动治愈",
+          "kind": "ACTIVATED_ONCE_PER_TURN",
+          "effects": [
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "POKEMON_COUNT",
+                  "target": "SELF",
+                  "pokemon_families": "MEGA_EVOLUTION_EX",
+                  "pokemon_types": "GRASS",
+                  "value": 1
+                }
+              ],
+              "effects": [
+                {
+                  "type": "select_pokemon",
+                  "target": "SELECT_OWN_POKEMON",
+                  "damage_counters_min": 1,
+                  "effects": [
+                    {
+                      "type": "heal",
+                      "target": "CHOSEN_POKEMON",
+                      "amount": 60
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_096",
+      "kind": "POKEMON",
+      "hitPoints": 50,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIRE",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Nymble",
+      "pokemonType": "GRASS",
+      "attacks": [
+        {
+          "id": "flail-around",
+          "nameZh": "跳来跳去",
+          "energyCost": {
+            "GRASS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "GRASS",
+          "effectSupport": "SUPPORTED",
+          "coinDamage": {
+            "flips": 3,
+            "perHeads": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "me2_en_097",
+      "kind": "POKEMON",
+      "hitPoints": 130,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "me2_en_021",
+      "weakness": {
+        "type": "LIGHTNING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Dewgong",
+      "evolvesFromName": "Seel",
+      "pokemonType": "WATER",
+      "attacks": [
+        {
+          "id": "slam",
+          "nameZh": "摔打",
+          "energyCost": {
+            "WATER": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "coinDamage": {
+            "flips": 2,
+            "perHeads": 70
+          }
+        }
+      ],
+      "abilities": [
+        {
+          "id": "thick-fat",
+          "nameZh": "厚脂肪",
+          "kind": "PASSIVE",
+          "effects": [
+            {
+              "type": "passive_attack_guard",
+              "target": "SELF",
+              "mode": "REDUCE",
+              "attacker_pokemon_types": "FIRE|WATER",
+              "amount": 30
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_098",
+      "kind": "POKEMON",
+      "hitPoints": 70,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "LIGHTNING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Piplup",
+      "pokemonType": "WATER",
+      "attacks": [
+        {
+          "id": "call-for-support",
+          "nameZh": "朋友呼唤",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "search_deck",
+                  "target": "DECK",
+                  "amount": 1,
+                  "minimum": 0,
+                  "card_category": "TRAINER",
+                  "trainer_category": "SUPPORTER",
+                  "reveal": "true"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "tackle",
+          "nameZh": "撞击",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 20,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_099",
+      "kind": "POKEMON",
+      "hitPoints": 70,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Yamper",
+      "pokemonType": "LIGHTNING",
+      "attacks": [
+        {
+          "id": "play-rough",
+          "nameZh": "嬉闹",
+          "energyCost": {
+            "LIGHTNING": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 20,
+          "damageType": "LIGHTNING",
+          "effectSupport": "SUPPORTED",
+          "coinDamage": {
+            "flips": 1,
+            "perHeads": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "me2_en_100",
+      "kind": "POKEMON",
+      "hitPoints": 130,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "METAL",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Zacian",
+      "pokemonType": "PSYCHIC",
+      "attacks": [
+        {
+          "id": "limit-break",
+          "nameZh": "界限破坏",
+          "energyCost": {
+            "PSYCHIC": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 50,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "PRIZE_COUNT",
+                  "target": "OPPONENT_ACTIVE",
+                  "value": 3,
+                  "comparison": "<="
+                }
+              ],
+              "effects": [
+                {
+                  "type": "damage",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 90
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_101",
+      "kind": "POKEMON",
+      "hitPoints": 150,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "me2_en_052",
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Flygon",
+      "evolvesFromName": "Vibrava",
+      "pokemonType": "FIGHTING",
+      "attacks": [
+        {
+          "id": "cutting-wind",
+          "nameZh": "利刃之风",
+          "energyCost": {
+            "FIGHTING": 2
+          },
+          "baseDamage": 130,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED"
+        }
+      ],
+      "abilities": [
+        {
+          "id": "sandy-flapping",
+          "nameZh": "沙之羽击",
+          "kind": "TRIGGERED",
+          "eventPolicy": {
+            "trigger": "ON_EVOLVE",
+            "watch": "SELF",
+            "source": "HAND",
+            "optional": true,
+            "usage": "NONE"
+          },
+          "triggers": [
+            {
+              "trigger": "ON_EVOLVE",
+              "conditions": [
+                {
+                  "type": "TURN_STATE",
+                  "target": "SELF",
+                  "value": "ACTOR_TURN"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "discard_top_deck",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 2
+                }
+              ]
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        },
+        {
+          "id": "sandy-flapping-knockout",
+          "nameZh": "沙之羽击",
+          "kind": "TRIGGERED",
+          "eventPolicy": {
+            "trigger": "ON_KNOCKOUT",
+            "cause": "OPPONENT_ATTACK_DAMAGE",
+            "watch": "SELF",
+            "activeOnly": true,
+            "optional": true,
+            "usage": "NONE"
+          },
+          "triggers": [
+            {
+              "trigger": "ON_KNOCKOUT",
+              "conditions": [],
+              "effects": [
+                {
+                  "type": "discard_top_deck",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 2
+                }
+              ]
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_102",
+      "kind": "POKEMON",
+      "hitPoints": 60,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Paldean Wooper",
+      "pokemonType": "DARKNESS",
+      "attacks": [
+        {
+          "id": "trip-over",
+          "nameZh": "打滚",
+          "energyCost": {
+            "DARKNESS": 1
+          },
+          "baseDamage": 10,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED",
+          "coinDamage": {
+            "flips": 1,
+            "perHeads": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "me2_en_103",
+      "kind": "POKEMON",
+      "hitPoints": 140,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "me2_en_067",
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Toxtricity",
+      "evolvesFromName": "Toxel",
+      "pokemonType": "DARKNESS",
+      "attacks": [
+        {
+          "id": "gentle-slap",
+          "nameZh": "重掴",
+          "energyCost": {
+            "DARKNESS": 2,
+            "COLORLESS": 1
+          },
+          "baseDamage": 100,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED"
+        }
+      ],
+      "abilities": [
+        {
+          "id": "sinister-surge",
+          "nameZh": "恶棍冲天",
+          "kind": "ACTIVATED_ONCE_PER_TURN",
+          "effects": [
+            {
+              "type": "select_pokemon",
+              "target": "SELECT_OWN_POKEMON",
+              "position": "BENCH",
+              "pokemon_types": "DARKNESS",
+              "effects": [
+                {
+                  "type": "attach_energy",
+                  "target": "CHOSEN_POKEMON",
+                  "source": "DECK",
+                  "target_scope": "OWN_FIELD",
+                  "amount": 1,
+                  "minimum": 0,
+                  "basic_energy_only": true,
+                  "energy_type": "DARKNESS",
+                  "bind": "toxtricity-energy"
+                },
+                {
+                  "type": "conditional",
+                  "conditions": [
+                    {
+                      "type": "BOUND_COUNT",
+                      "bind": "toxtricity-energy",
+                      "value": 1
+                    }
+                  ],
+                  "effects": [
+                    {
+                      "type": "damage_counter",
+                      "target": "CHOSEN_POKEMON",
+                      "amount": 2
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_104",
+      "kind": "POKEMON",
+      "hitPoints": 80,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIRE",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "GRASS",
+        "amount": 30
+      },
+      "prizeCards": 1,
+      "pokemonName": "Togedemaru",
+      "pokemonType": "METAL",
+      "attacks": [
+        {
+          "id": "find-a-friend",
+          "nameZh": "找朋友",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "METAL",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "search_deck",
+                  "target": "DECK",
+                  "amount": 1,
+                  "minimum": 0,
+                  "card_category": "POKEMON",
+                  "reveal": "true"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gnaw",
+          "nameZh": "啃咬",
+          "energyCost": {
+            "METAL": 1
+          },
+          "baseDamage": 30,
+          "damageType": "METAL",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_105",
+      "kind": "POKEMON",
+      "hitPoints": 120,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "me2_en_076",
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Wigglytuff",
+      "evolvesFromName": "Jigglypuff",
+      "pokemonType": "COLORLESS",
+      "attacks": [
+        {
+          "id": "round",
+          "nameZh": "轮唱",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 0,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "damage_per_pokemon",
+              "target": "ALL_OWN_POKEMON",
+              "amount": 40,
+              "attack_id": "round"
+            }
+          ]
+        },
+        {
+          "id": "seismic-toss",
+          "nameZh": "地球上投",
+          "energyCost": {
+            "COLORLESS": 3
+          },
+          "baseDamage": 100,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_106",
+      "kind": "POKEMON",
+      "hitPoints": 70,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Meowth",
+      "pokemonType": "COLORLESS",
+      "attacks": [
+        {
+          "id": "fury-swipes",
+          "nameZh": "乱抓",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 0,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED",
+          "coinDamage": {
+            "flips": 3,
+            "perHeads": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "me2_en_107",
+      "kind": "POKEMON",
+      "hitPoints": 110,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "me2_en_078",
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Ambipom",
+      "evolvesFromName": "Aipom",
+      "pokemonType": "COLORLESS",
+      "attacks": [
+        {
+          "id": "slap",
+          "nameZh": "巴掌",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 50,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED"
+        },
+        {
+          "id": "dual-tail",
+          "nameZh": "双尾",
+          "energyCost": {
+            "COLORLESS": 3
+          },
+          "baseDamage": 60,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED",
+          "damageTarget": "OPPONENT_ANY",
+          "targetCount": 2,
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "discard_energy",
+                  "target": "SELF",
+                  "amount": 2,
+                  "minimum": 2
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_108",
+      "kind": "POKEMON",
+      "hitPoints": 280,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIRE",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 3,
+      "pokemonName": "Mega Heracross ex",
+      "pokemonType": "GRASS",
+      "attacks": [
+        {
+          "id": "juggernaut-horn",
+          "nameZh": "重装角击",
+          "energyCost": {
+            "GRASS": 2
+          },
+          "baseDamage": 100,
+          "damageType": "GRASS",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "damage_from_last_opponent_attack",
+              "target": "SELF"
+            }
+          ]
+        },
+        {
+          "id": "mountain-ramming",
+          "nameZh": "推山",
+          "energyCost": {
+            "GRASS": 3
+          },
+          "baseDamage": 170,
+          "damageType": "GRASS",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "discard_top_deck",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 2
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_109",
+      "kind": "POKEMON",
+      "hitPoints": 360,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "me2_en_012",
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 3,
+      "pokemonName": "Mega Charizard X ex",
+      "evolvesFromName": "Charmeleon",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "inferno-x",
+          "nameZh": "烈狱狂火X",
+          "energyCost": {
+            "FIRE": 2
+          },
+          "baseDamage": 0,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "damage_per_bound",
+              "target": "OPPONENT_ACTIVE",
+              "bind": "discarded1",
+              "amount": 90
+            }
+          ],
+          "triggers": [
+            {
+              "trigger": "BEFORE_ATTACK",
+              "effects": [
+                {
+                  "type": "plan_energy_discard",
+                  "target": "ALL_OWN_POKEMON",
+                  "bind": "discarded1",
+                  "amount": 60,
+                  "minimum": 0,
+                  "energy_type": "FIRE"
+                }
+              ]
+            },
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "commit_energy_discard",
+                  "ref": "discarded1"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_110",
+      "kind": "POKEMON",
+      "hitPoints": 190,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Oricorio ex",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "fire-wing",
+          "nameZh": "火焰之翼",
+          "energyCost": {
+            "FIRE": 2,
+            "COLORLESS": 1
+          },
+          "baseDamage": 110,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED"
+        }
+      ],
+      "abilities": [
+        {
+          "id": "excited-turbo",
+          "nameZh": "激动涡轮",
+          "kind": "ACTIVATED_UNLIMITED",
+          "effects": [
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "POKEMON_COUNT",
+                  "target": "SELF",
+                  "pokemon_families": "MEGA_EVOLUTION_EX",
+                  "pokemon_types": "FIRE",
+                  "value": 1
+                }
+              ],
+              "effects": [
+                {
+                  "type": "attach_energy",
+                  "target": "SELECT_OWN_POKEMON",
+                  "source": "HAND",
+                  "target_scope": "OWN_BENCH",
+                  "amount": 1,
+                  "minimum": 1,
+                  "basic_energy_only": true,
+                  "energy_type": "FIRE",
+                  "target_pokemon_type": "FIRE"
+                }
+              ]
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_111",
+      "kind": "POKEMON",
+      "hitPoints": 190,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Rotom ex",
+      "pokemonType": "LIGHTNING",
+      "attacks": [
+        {
+          "id": "thunderbolt",
+          "nameZh": "十万伏特",
+          "energyCost": {
+            "LIGHTNING": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 130,
+          "damageType": "LIGHTNING",
+          "effectSupport": "SUPPORTED",
+          "discardAllAttachedEnergyAfterAttack": true
+        }
+      ],
+      "abilities": [
+        {
+          "id": "multi-adapter",
+          "nameZh": "多重转接",
+          "kind": "PASSIVE",
+          "effects": [
+            {
+              "type": "tool_capacity",
+              "target": "ALL_OWN_POKEMON",
+              "amount": 2,
+              "conditions": [
+                {
+                  "type": "NAME_CONTAINS",
+                  "target": "SELF",
+                  "value": "rotom"
+                }
+              ]
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_112",
+      "kind": "POKEMON",
+      "hitPoints": 260,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "me2_en_035",
+      "weakness": {
+        "type": "DARKNESS",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "FIGHTING",
+        "amount": 30
+      },
+      "prizeCards": 2,
+      "pokemonName": "Mismagius ex",
+      "evolvesFromName": "Misdreavus",
+      "pokemonType": "PSYCHIC",
+      "attacks": [
+        {
+          "id": "hexa-magic",
+          "nameZh": "六之魔法",
+          "energyCost": {
+            "PSYCHIC": 2
+          },
+          "baseDamage": 150,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "choice",
+                  "optional": true,
+                  "effects": [
+                    {
+                      "type": "draw_until",
+                      "target": "SELF",
+                      "amount": 6
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "id": "swirling-prose",
+          "nameZh": "漩涡言灵",
+          "kind": "TRIGGERED",
+          "eventPolicy": {
+            "trigger": "ON_ACTIVE_TO_BENCH",
+            "watch": "OPPONENT_FIELD",
+            "optional": false,
+            "usage": "NONE"
+          },
+          "triggers": [
+            {
+              "trigger": "ON_ACTIVE_TO_BENCH",
+              "conditions": [
+                {
+                  "type": "IS_ACTIVE",
+                  "target": "SELF"
+                },
+                {
+                  "type": "TURN_STATE",
+                  "target": "SELF",
+                  "value": "OPPONENT_TURN"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "confuse",
+                  "target": "OPPONENT_ACTIVE"
+                }
+              ]
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_113",
+      "kind": "POKEMON",
+      "hitPoints": 330,
+      "retreatCost": 0,
+      "evolvesFromDefinitionId": "me2_en_060",
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 3,
+      "pokemonName": "Mega Sharpedo ex",
+      "evolvesFromName": "Carvanha",
+      "pokemonType": "DARKNESS",
+      "attacks": [
+        {
+          "id": "greedy-fang",
+          "nameZh": "贪心之牙",
+          "energyCost": {
+            "DARKNESS": 1
+          },
+          "baseDamage": 70,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "draw",
+                  "amount": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hungry-jaws",
+          "nameZh": "饥渴下巴",
+          "energyCost": {
+            "DARKNESS": 2
+          },
+          "baseDamage": 120,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "DAMAGE_COUNTER_COUNT",
+                  "target": "SELF",
+                  "value": 1
+                }
+              ],
+              "effects": [
+                {
+                  "type": "damage",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 150
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_114",
+      "kind": "POKEMON",
+      "hitPoints": 320,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "me2_en_028",
+      "weakness": {
+        "type": "FIRE",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "GRASS",
+        "amount": 30
+      },
+      "prizeCards": 2,
+      "pokemonName": "Empoleon ex",
+      "evolvesFromName": "Prinplup",
+      "pokemonType": "METAL",
+      "attacks": [
+        {
+          "id": "iron-feathers",
+          "nameZh": "铁羽毛",
+          "energyCost": {
+            "METAL": 2,
+            "COLORLESS": 1
+          },
+          "baseDamage": 210,
+          "damageType": "METAL",
+          "effectSupport": "SUPPORTED",
+          "damageReductionFromOpponentNextTurn": 60
+        }
+      ],
+      "abilities": [
+        {
+          "id": "emperor-s-stance",
+          "nameZh": "皇帝之势",
+          "kind": "PASSIVE",
+          "effects": [
+            {
+              "type": "passive_effect_guard",
+              "target": "SELF",
+              "source": "ATTACK",
+              "from": "OPPONENT",
+              "scope": "EFFECTS_ONLY"
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_115",
+      "kind": "POKEMON",
+      "hitPoints": 330,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "me2_en_083",
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 3,
+      "pokemonName": "Mega Lopunny ex",
+      "evolvesFromName": "Buneary",
+      "pokemonType": "COLORLESS",
+      "attacks": [
+        {
+          "id": "gale-thrust",
+          "nameZh": "疾风直撞",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 60,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "BECAME_ACTIVE_THIS_TURN",
+                  "target": "SELF"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "damage",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 170
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "spiky-hopper",
+          "nameZh": "跳跃扣杀",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 160,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED",
+          "ignoresActiveDefenderDamageEffects": true
+        }
+      ]
+    },
+    {
+      "id": "me2_en_116",
+      "kind": "TRAINER",
+      "trainerCategory": "STADIUM",
+      "effects": [
+        {
+          "type": "prevent_bench_damage_counters",
+          "target": "SELF"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_117",
+      "kind": "TRAINER",
+      "trainerCategory": "ITEM",
+      "effects": [
+        {
+          "type": "discard",
+          "target": "HAND",
+          "amount": 1,
+          "minimum": 1,
+          "card_category": "ENERGY",
+          "basic_energy_only": true,
+          "energy_type": "FIRE",
+          "as_cost": true
+        },
+        {
+          "type": "choice",
+          "effects": [
+            {
+              "type": "discard_tool",
+              "target": "ALL_OPPONENT_POKEMON",
+              "amount": 1,
+              "minimum": 1
+            },
+            {
+              "type": "discard_energy",
+              "target": "ALL_OPPONENT_POKEMON",
+              "amount": 1,
+              "minimum": 1,
+              "card_kind": "SPECIAL"
+            },
+            {
+              "type": "discard_stadium"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_118",
+      "kind": "TRAINER",
+      "trainerCategory": "SUPPORTER",
+      "effects": [
+        {
+          "type": "search_deck",
+          "target": "DECK",
+          "amount": 1,
+          "minimum": 0,
+          "card_category": "POKEMON",
+          "basic_pokemon_only": true,
+          "reveal": true
+        },
+        {
+          "type": "search_deck",
+          "target": "DECK",
+          "amount": 1,
+          "minimum": 0,
+          "card_category": "POKEMON",
+          "pokemon_stage": "1",
+          "reveal": true
+        },
+        {
+          "type": "search_deck",
+          "target": "DECK",
+          "amount": 1,
+          "minimum": 0,
+          "card_category": "POKEMON",
+          "pokemon_stage": "2",
+          "reveal": true
+        }
+      ]
+    },
+    {
+      "id": "me2_en_119",
+      "kind": "TRAINER",
+      "trainerCategory": "SUPPORTER",
+      "effects": [
+        {
+          "type": "search_deck",
+          "target": "DECK",
+          "amount": 7,
+          "minimum": 0,
+          "card_category": "ENERGY",
+          "basic_energy_only": true,
+          "reveal": "true",
+          "energy_type": "FIRE"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_120",
+      "kind": "TRAINER",
+      "trainerCategory": "SUPPORTER",
+      "effects": [
+        {
+          "type": "conditional",
+          "conditions": [
+            {
+              "type": "NOT",
+              "conditions": [
+                {
+                  "type": "TURN_STATE",
+                  "target": "SELF",
+                  "value": "OWN_FIRST_TURN"
+                }
+              ]
+            }
+          ],
+          "effects": [
+            {
+              "type": "search_deck",
+              "target": "DECK",
+              "top_count": 7,
+              "amount": 1,
+              "minimum": 0,
+              "card_category": "POKEMON",
+              "pokemon_types": "DARKNESS",
+              "destination": "BENCH",
+              "any_stage": true,
+              "remainder": "SHUFFLE_BOTTOM"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_121",
+      "kind": "TRAINER",
+      "trainerCategory": "TOOL",
+      "automaticEffects": [
+        {
+          "id": "punk-helmet",
+          "nameZh": "朋克头盔",
+          "eventPolicy": {
+            "trigger": "ON_DAMAGE",
+            "from": "OPPONENT_ATTACK",
+            "activeOnly": true,
+            "lethalOnly": false,
+            "optional": false,
+            "usage": "NONE"
+          },
+          "triggers": [
+            {
+              "trigger": "ON_DAMAGE",
+              "conditions": [
+                {
+                  "type": "IS_TYPE",
+                  "target": "SELF",
+                  "pokemon_type": "DARKNESS"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "damage_counter",
+                  "target": "ATTACKING_POKEMON",
+                  "amount": 4
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_122",
+      "kind": "TRAINER",
+      "trainerCategory": "TOOL",
+      "effects": [
+        {
+          "type": "passive_attack_guard",
+          "target": "SELF",
+          "mode": "REDUCE",
+          "amount": 30,
+          "attacker_has_abilities": true
+        }
+      ]
+    },
+    {
+      "id": "me2_en_123",
+      "kind": "TRAINER",
+      "trainerCategory": "ITEM",
+      "effect": {
+        "opcode": "SWITCH_ACTIVE",
+        "amount": 0
+      }
+    },
+    {
+      "id": "me2_en_124",
+      "kind": "ENERGY",
+      "energyUnits": [
+        [
+          "COLORLESS"
+        ]
+      ],
+      "automaticEffects": [
+        {
+          "id": "end-turn-discard",
+          "nameZh": "特殊能量效果",
+          "eventPolicy": {
+            "trigger": "ON_TURN_END",
+            "turn": "OWN",
+            "optional": false,
+            "usage": "NONE"
+          },
+          "triggers": [
+            {
+              "trigger": "ON_TURN_END",
+              "conditions": [],
+              "effects": [
+                {
+                  "type": "discard_source"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "provisionRules": [
+        {
+          "conditions": [
+            {
+              "type": "IS_EVOLVED"
+            }
+          ],
+          "energyUnits": [
+            [
+              "COLORLESS"
+            ],
+            [
+              "COLORLESS"
+            ],
+            [
+              "COLORLESS"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_125",
+      "kind": "POKEMON",
+      "hitPoints": 360,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "me2_en_012",
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 3,
+      "pokemonName": "Mega Charizard X ex",
+      "evolvesFromName": "Charmeleon",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "inferno-x",
+          "nameZh": "烈狱狂火X",
+          "energyCost": {
+            "FIRE": 2
+          },
+          "baseDamage": 0,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "damage_per_bound",
+              "target": "OPPONENT_ACTIVE",
+              "bind": "discarded1",
+              "amount": 90
+            }
+          ],
+          "triggers": [
+            {
+              "trigger": "BEFORE_ATTACK",
+              "effects": [
+                {
+                  "type": "plan_energy_discard",
+                  "target": "ALL_OWN_POKEMON",
+                  "bind": "discarded1",
+                  "amount": 60,
+                  "minimum": 0,
+                  "energy_type": "FIRE"
+                }
+              ]
+            },
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "commit_energy_discard",
+                  "ref": "discarded1"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_126",
+      "kind": "POKEMON",
+      "hitPoints": 190,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Rotom ex",
+      "pokemonType": "LIGHTNING",
+      "attacks": [
+        {
+          "id": "thunderbolt",
+          "nameZh": "十万伏特",
+          "energyCost": {
+            "LIGHTNING": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 130,
+          "damageType": "LIGHTNING",
+          "effectSupport": "SUPPORTED",
+          "discardAllAttachedEnergyAfterAttack": true
+        }
+      ],
+      "abilities": [
+        {
+          "id": "multi-adapter",
+          "nameZh": "多重转接",
+          "kind": "PASSIVE",
+          "effects": [
+            {
+              "type": "tool_capacity",
+              "target": "ALL_OWN_POKEMON",
+              "amount": 2,
+              "conditions": [
+                {
+                  "type": "NAME_CONTAINS",
+                  "target": "SELF",
+                  "value": "rotom"
+                }
+              ]
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "me2_en_127",
+      "kind": "POKEMON",
+      "hitPoints": 330,
+      "retreatCost": 0,
+      "evolvesFromDefinitionId": "me2_en_060",
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 3,
+      "pokemonName": "Mega Sharpedo ex",
+      "evolvesFromName": "Carvanha",
+      "pokemonType": "DARKNESS",
+      "attacks": [
+        {
+          "id": "greedy-fang",
+          "nameZh": "贪心之牙",
+          "energyCost": {
+            "DARKNESS": 1
+          },
+          "baseDamage": 70,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "draw",
+                  "amount": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hungry-jaws",
+          "nameZh": "饥渴下巴",
+          "energyCost": {
+            "DARKNESS": 2
+          },
+          "baseDamage": 120,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "DAMAGE_COUNTER_COUNT",
+                  "target": "SELF",
+                  "value": 1
+                }
+              ],
+              "effects": [
+                {
+                  "type": "damage",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 150
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2_en_128",
+      "kind": "POKEMON",
+      "hitPoints": 330,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "me2_en_083",
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 3,
+      "pokemonName": "Mega Lopunny ex",
+      "evolvesFromName": "Buneary",
+      "pokemonType": "COLORLESS",
+      "attacks": [
+        {
+          "id": "gale-thrust",
+          "nameZh": "疾风直撞",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 60,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "BECAME_ACTIVE_THIS_TURN",
+                  "target": "SELF"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "damage",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 170
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "spiky-hopper",
+          "nameZh": "跳跃扣杀",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 160,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED",
+          "ignoresActiveDefenderDamageEffects": true
+        }
+      ]
+    },
+    {
+      "id": "me2_en_129",
+      "kind": "TRAINER",
+      "trainerCategory": "SUPPORTER",
+      "effects": [
+        {
+          "type": "search_deck",
+          "target": "DECK",
+          "amount": 1,
+          "minimum": 0,
+          "card_category": "POKEMON",
+          "basic_pokemon_only": true,
+          "reveal": true
+        },
+        {
+          "type": "search_deck",
+          "target": "DECK",
+          "amount": 1,
+          "minimum": 0,
+          "card_category": "POKEMON",
+          "pokemon_stage": "1",
+          "reveal": true
+        },
+        {
+          "type": "search_deck",
+          "target": "DECK",
+          "amount": 1,
+          "minimum": 0,
+          "card_category": "POKEMON",
+          "pokemon_stage": "2",
+          "reveal": true
+        }
+      ]
+    },
+    {
+      "id": "me2_en_130",
+      "kind": "POKEMON",
+      "hitPoints": 360,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "me2_en_012",
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 3,
+      "pokemonName": "Mega Charizard X ex",
+      "evolvesFromName": "Charmeleon",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "inferno-x",
+          "nameZh": "烈狱狂火X",
+          "energyCost": {
+            "FIRE": 2
+          },
+          "baseDamage": 0,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "damage_per_bound",
+              "target": "OPPONENT_ACTIVE",
+              "bind": "discarded1",
+              "amount": 90
+            }
+          ],
+          "triggers": [
+            {
+              "trigger": "BEFORE_ATTACK",
+              "effects": [
+                {
+                  "type": "plan_energy_discard",
+                  "target": "ALL_OWN_POKEMON",
+                  "bind": "discarded1",
+                  "amount": 60,
+                  "minimum": 0,
+                  "energy_type": "FIRE"
+                }
+              ]
+            },
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "commit_energy_discard",
+                  "ref": "discarded1"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,312 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "scope": "Newest-first ME5: Dark Bell2, Gladion Final Battle3 and Rust Syndicate Grunt2; artwork and true BREAK excluded.",
+  "ruleReferences": [
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50289",
+      "facts": "Dark Bell both Active except Darkness become Confused; type sprite omitted in page text."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%80%E3%83%BC%E3%82%AF%E3%83%99%E3%83%AB&regulation_faq_main_item1=all",
+      "facts": "Explicit official FAQ: cannot play if both Active are Darkness; cannot play if both are already Confused."
+    },
+    {
+      "url": "https://www.pokemon-card.com/info/005504.html",
+      "facts": "Official deck article explicitly says Dark Bell does not affect Darkness Pokemon; resolves missing type sprite without downloading artwork."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50295",
+      "facts": "Gladion’s Final Battle only card in Hand; this turn nonRuleBox own Pokemon attacks +80 to opposing Active."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50296",
+      "facts": "Rust Syndicate Grunt requires own Pokemon KO in last opponent turn; discard1 Energy from opponent field Pokemon."
+    }
+  ],
+  "evidence": [
+    {
+      "cardId": "me5_en_075",
+      "textEn": "Both Active non-<sprite name=\"darkness\" tint=1> Pokémon are now Confused.",
+      "textZh": "令双方战斗宝可梦（除<sprite name=\"darkness\" tint=1>宝可梦外）陷入混乱状态。",
+      "mapping": {
+        "rules": [
+          "trainer-confuse-both-non-darkness"
+        ],
+        "fields": {},
+        "program": [
+          {
+            "type": "conditional",
+            "conditions": [
+              {
+                "type": "NOT",
+                "conditions": [
+                  {
+                    "type": "IS_TYPE",
+                    "target": "OWN_ACTIVE",
+                    "pokemon_type": "DARKNESS"
+                  }
+                ]
+              }
+            ],
+            "effects": [
+              {
+                "type": "confuse",
+                "target": "OWN_ACTIVE"
+              }
+            ]
+          },
+          {
+            "type": "conditional",
+            "conditions": [
+              {
+                "type": "NOT",
+                "conditions": [
+                  {
+                    "type": "IS_TYPE",
+                    "target": "OPPONENT_ACTIVE",
+                    "pokemon_type": "DARKNESS"
+                  }
+                ]
+              }
+            ],
+            "effects": [
+              {
+                "type": "confuse",
+                "target": "OPPONENT_ACTIVE"
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5_en_077",
+      "textEn": "You can use this card only when it is the last card in your hand.\nDuring this turn, attacks used by your Pokémon that don't have a Rule Box do 80 more damage to your opponent's Active Pokémon <i>(before applying Weakness and Resistance)</i>. <i>(Pokémon {ex}, Pokémon <sprite name=\"v_atk\" tint=1>, etc. have Rule Boxes.)</i>",
+      "textZh": "这张卡牌，只有在自己的手牌只剩这1张时才可使用。\n在这个回合，自己的宝可梦（除「拥有规则的宝可梦」外）使用的招式，给对手的战斗宝可梦造成的伤害「+80」<i>[在计算弱点、抗性之前]</i>。<i>[宝可梦{ex}、宝可梦<sprite name=\"v_atk\" tint=1>等即为拥有规则的宝可梦。]</i>",
+      "mapping": {
+        "rules": [
+          "trainer-last-hand-card-non-rulebox-bonus"
+        ],
+        "fields": {},
+        "program": [
+          {
+            "type": "conditional",
+            "conditions": [
+              {
+                "type": "HAND_SIZE",
+                "target": "SELF",
+                "value": 0,
+                "comparison": "=="
+              }
+            ],
+            "effects": [
+              {
+                "type": "turn_attack_bonus",
+                "target": "SELF",
+                "amount": 80,
+                "pokemon_families": "RULE_BOX",
+                "family_match": "NONE"
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5_en_081",
+      "textEn": "You can use this card only if any of your Pokémon were Knocked Out during your opponent's last turn.\n\nDiscard an Energy from 1 of your opponent's Pokémon.",
+      "textZh": "这张卡牌，只有在上一个对手的回合，自己的宝可梦昏厥时才可使用。\n\n选择对手的场上宝可梦身上附着的1个能量，放于弃牌区。",
+      "mapping": {
+        "rules": [
+          "trainer-last-opponent-turn-ko-discard-energy"
+        ],
+        "fields": {},
+        "program": [
+          {
+            "type": "conditional",
+            "conditions": [
+              {
+                "type": "KNOCKED_OUT_LAST_TURN",
+                "target": "OWN_ACTIVE"
+              }
+            ],
+            "effects": [
+              {
+                "type": "discard_energy",
+                "target": "ALL_OPPONENT_POKEMON",
+                "amount": 1,
+                "minimum": 1
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5_en_106",
+      "textEn": "Both Active non-<sprite name=\"darkness\" tint=1> Pokémon are now Confused.",
+      "textZh": "令双方战斗宝可梦（除<sprite name=\"darkness\" tint=1>宝可梦外）陷入混乱状态。",
+      "mapping": {
+        "rules": [
+          "trainer-confuse-both-non-darkness"
+        ],
+        "fields": {},
+        "program": [
+          {
+            "type": "conditional",
+            "conditions": [
+              {
+                "type": "NOT",
+                "conditions": [
+                  {
+                    "type": "IS_TYPE",
+                    "target": "OWN_ACTIVE",
+                    "pokemon_type": "DARKNESS"
+                  }
+                ]
+              }
+            ],
+            "effects": [
+              {
+                "type": "confuse",
+                "target": "OWN_ACTIVE"
+              }
+            ]
+          },
+          {
+            "type": "conditional",
+            "conditions": [
+              {
+                "type": "NOT",
+                "conditions": [
+                  {
+                    "type": "IS_TYPE",
+                    "target": "OPPONENT_ACTIVE",
+                    "pokemon_type": "DARKNESS"
+                  }
+                ]
+              }
+            ],
+            "effects": [
+              {
+                "type": "confuse",
+                "target": "OPPONENT_ACTIVE"
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5_en_108",
+      "textEn": "You can use this card only when it is the last card in your hand.\nDuring this turn, attacks used by your Pokémon that don't have a Rule Box do 80 more damage to your opponent's Active Pokémon <i>(before applying Weakness and Resistance)</i>. <i>(Pokémon {ex}, Pokémon <sprite name=\"v_atk\" tint=1>, etc. have Rule Boxes.)</i>",
+      "textZh": "这张卡牌，只有在自己的手牌只剩这1张时才可使用。\n在这个回合，自己的宝可梦（除「拥有规则的宝可梦」外）使用的招式，给对手的战斗宝可梦造成的伤害「+80」<i>[在计算弱点、抗性之前]</i>。<i>[宝可梦{ex}、宝可梦<sprite name=\"v_atk\" tint=1>等即为拥有规则的宝可梦。]</i>",
+      "mapping": {
+        "rules": [
+          "trainer-last-hand-card-non-rulebox-bonus"
+        ],
+        "fields": {},
+        "program": [
+          {
+            "type": "conditional",
+            "conditions": [
+              {
+                "type": "HAND_SIZE",
+                "target": "SELF",
+                "value": 0,
+                "comparison": "=="
+              }
+            ],
+            "effects": [
+              {
+                "type": "turn_attack_bonus",
+                "target": "SELF",
+                "amount": 80,
+                "pokemon_families": "RULE_BOX",
+                "family_match": "NONE"
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5_en_112",
+      "textEn": "You can use this card only if any of your Pokémon were Knocked Out during your opponent's last turn.\n\nDiscard an Energy from 1 of your opponent's Pokémon.",
+      "textZh": "这张卡牌，只有在上一个对手的回合，自己的宝可梦昏厥时才可使用。\n\n选择对手的场上宝可梦身上附着的1个能量，放于弃牌区。",
+      "mapping": {
+        "rules": [
+          "trainer-last-opponent-turn-ko-discard-energy"
+        ],
+        "fields": {},
+        "program": [
+          {
+            "type": "conditional",
+            "conditions": [
+              {
+                "type": "KNOCKED_OUT_LAST_TURN",
+                "target": "OWN_ACTIVE"
+              }
+            ],
+            "effects": [
+              {
+                "type": "discard_energy",
+                "target": "ALL_OPPONENT_POKEMON",
+                "amount": 1,
+                "minimum": 1
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5_en_118",
+      "textEn": "You can use this card only when it is the last card in your hand.\nDuring this turn, attacks used by your Pokémon that don't have a Rule Box do 80 more damage to your opponent's Active Pokémon <i>(before applying Weakness and Resistance)</i>. <i>(Pokémon {ex}, Pokémon <sprite name=\"v_atk\" tint=1>, etc. have Rule Boxes.)</i>",
+      "textZh": "这张卡牌，只有在自己的手牌只剩这1张时才可使用。\n在这个回合，自己的宝可梦（除「拥有规则的宝可梦」外）使用的招式，给对手的战斗宝可梦造成的伤害「+80」<i>[在计算弱点、抗性之前]</i>。<i>[宝可梦{ex}、宝可梦<sprite name=\"v_atk\" tint=1>等即为拥有规则的宝可梦。]</i>",
+      "mapping": {
+        "rules": [
+          "trainer-last-hand-card-non-rulebox-bonus"
+        ],
+        "fields": {},
+        "program": [
+          {
+            "type": "conditional",
+            "conditions": [
+              {
+                "type": "HAND_SIZE",
+                "target": "SELF",
+                "value": 0,
+                "comparison": "=="
+              }
+            ],
+            "effects": [
+              {
+                "type": "turn_attack_bonus",
+                "target": "SELF",
+                "amount": 80,
+                "pokemon_families": "RULE_BOX",
+                "family_match": "NONE"
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    }
+  ]
+}

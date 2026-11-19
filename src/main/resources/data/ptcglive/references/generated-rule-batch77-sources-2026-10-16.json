@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-16",
+  "scope": "ME4 Chesnaught Needly Armor and preserved Impound; no artwork, BREAK or JAR.",
+  "cardIds": [
+    "me4_en_007"
+  ],
+  "ruleReferences": [
+    {
+      "url": "https://asia.pokemon-card.com/my/card-search/detail/25198/",
+      "facts": "Chesnaught180HP Stage2 from Quilladin, retreat4, Needly Armor: when Active damaged by opponent attack, even lethal,3 counters per Grass Energy attached to source onto attacking Pokemon; Impound GGC160 plus next-turn defending retreat ban."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%80%E3%83%A1%E3%82%AB%E3%83%B3%E3%82%92%E3%81%AE%E3%81%9B%E3%82%8B&page=2&regulation=XY&regulation_faq_main_item1=XY",
+      "facts": "Official Needly Armor FAQ: two Basic Grass Energy cards under Meganium energy-doubling provide4 Grass units and yield12 counters, not6. Must query current provided units rather than attached card count."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%80%E3%83%A1%E3%82%AB%E3%83%B3%E3%82%92%E4%B9%97%E3%81%9B%E3%82%8B&regulation_faq_main_item1=XY",
+      "facts": "Official Needly Armor FAQ: Claydol attack devolves Chesnaught to Quilladin before response, so removed Needly Armor does not place counters. Existing captured event must recheck current source Ability/top card."
+    }
+  ],
+  "reviewedSemantics": [
+    "Mandatory ON_DAMAGE from opponent attack while source was Active; whole attack finishes before live current Ability is captured. Resolve before KO cleanup; captured source and attacker remain their original field identities even after switching.",
+    "Count current Grass supplied Energy units on source, including Special Energy and flexible units once per matching unit. Wrong type and zero-supply contribute zero. Conditional supply is resolved after damage. Synthetic doubled Basic profile verifies unit counting; Meganium Basic-energy doubling Ability remains separate unsupported work.",
+    "Computed counter placement checks target effect protection once before placing the full amount, even above60. Retain public effect API1..60 bounds and resolve KO once. Skip irrelevant or zero passive numerical results before asking their protection, avoiding HP-guard recursion on guard-only programs.",
+    "Preserve actual Stage2 evolution,180HP,Fire weakness,retreat4,one prize and Impound GGC160 with next-opponent-turn retreat lock."
+  ],
+  "validationAtReview": {
+    "pythonTests": 561,
+    "catalogLoad": "passed",
+    "actualCardAndComponentRegressions": "passed",
+    "fullCheck": "pending; see final batch77 docs for terminal result"
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "scope": "Newest-first ME5 Iron Defender and its identical earlier ME1 printing. Artwork and true BREAK excluded.",
+  "ruleReferences": [
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50322",
+      "facts": "M5 Item: own Metal Pokemon take30 less damage from opposing Pokemon attacks during next opponent turn, including later entrants. Metal icon are omitted by text extraction; FAQ and bilingual source explicitly identify Metal."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/47790/regu/XY",
+      "facts": "Original M1L Iron Defender printing, same effect as ME5 reprint."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%82%A2%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%87%E3%82%A3%E3%83%95%E3%82%A7%E3%83%B3%E3%83%80%E3%83%BC&regulation_faq_main_item1=all",
+      "facts": "Direct official FAQ: legal with no own Metal Pokemon; two uses stack to60 reduction."
+    },
+    {
+      "url": "https://www.pokemon-card.com/assets/document/advanced_manual.pdf",
+      "facts": "B-05 pp19 and B-07 pp20 explicitly use Iron Defender as received-damage effect, after weakness/resistance. Sonic Edge bypasses this effect on opposing Active. This is direct example, not an assumption that player storage makes it unbypassable."
+    }
+  ],
+  "evidence": [
+    {
+      "cardId": "me1_en_118",
+      "textEn": "During your opponent's next turn, all of your <sprite name=\"metal\" tint=1> Pokémon take 30 less damage from attacks from your opponent's Pokémon <i>(after applying Weakness and Resistance)</i>. <i>(This includes new Pokémon that come into play.)</i>",
+      "textZh": "在下一个对手的回合，自己所有<sprite name=\"metal\" tint=1>宝可梦，受到对手的宝可梦的招式的伤害「-30」<i>[在计算弱点、抗性之后]</i>。<i>[也包括新出场的宝可梦。]</i>",
+      "mapping": {
+        "rules": [
+          "trainer-next-opponent-turn-own-metal-damage-reduction"
+        ],
+        "fields": {},
+        "program": [
+          {
+            "type": "turn_damage_reduction",
+            "target": "SELF",
+            "amount": 30,
+            "pokemon_types": "METAL",
+            "duration": "OPPONENT_NEXT_TURN"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5_en_110",
+      "textEn": "During your opponent's next turn, all of your <sprite name=\"metal\" tint=1> Pokémon take 30 less damage from attacks from your opponent's Pokémon <i>(after applying Weakness and Resistance)</i>. <i>(This includes new Pokémon that come into play.)</i>",
+      "textZh": "在下一个对手的回合，自己所有<sprite name=\"metal\" tint=1>宝可梦，受到对手的宝可梦的招式的伤害「-30」<i>[在计算弱点、抗性之后]</i>。<i>[也包括新出场的宝可梦。]</i>",
+      "mapping": {
+        "rules": [
+          "trainer-next-opponent-turn-own-metal-damage-reduction"
+        ],
+        "fields": {},
+        "program": [
+          {
+            "type": "turn_damage_reduction",
+            "target": "SELF",
+            "amount": 30,
+            "pokemon_types": "METAL",
+            "duration": "OPPONENT_NEXT_TURN"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    }
+  ]
+}

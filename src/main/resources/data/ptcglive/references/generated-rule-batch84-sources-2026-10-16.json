@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-16",
+  "scope": "ME4 Golisopod; no artwork, BREAK or JAR.",
+  "cardIds": [
+    "me4_en_026"
+  ],
+  "ruleReferences": [
+    {
+      "url": "https://asia.pokemon-card.com/my/card-search/detail/25217/",
+      "kind": "Official English card",
+      "facts": "Chaos Rising Golisopod: Stage1,140HP, Critical Slash W30 with actual attack-damage-KO conditional next-opponent-turn attack damage/effect guard; Boundless Power CCC150 with next-own-turn all-attack prohibition. Wimpod evolution, Lightning weakness2,retreat2,no resistance."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50110",
+      "kind": "Official Japanese corresponding card",
+      "facts": "M4 026/083 confirms the corresponding きゅうしょぎり30 and そこぢから150 text,140HP Stage1 and Wimpod evolution."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%82%A2%E3%83%BC%E3%83%9E%E3%83%BC%E3%82%AC%E3%82%A2&regulation_faq_main_item1=all",
+      "kind": "Official identical-text analogue FAQ",
+      "facts": "Corviknight Accelerate protection does not activate when Hariyama's Guts leaves it in play with10HP. It does activate when the attack Knocks Out Lillie's Poke Doll, despite its zero-Prize rule.",
+      "application": "Critical Slash has the same English conditional guard as the local Corviknight Accelerate record; apply the shared KO/protection semantics, without activating the older Corviknight card. This is an explicit analogue, not a Golisopod-specific FAQ."
+    },
+    {
+      "url": "https://www.pokemon-card.com/assets/document/advanced_manual.pdf",
+      "kind": "Official advanced rules v3.4",
+      "sections": [
+        "Attack use steps,printed page5",
+        "C-15,printed page33",
+        "C-16/C-17,printed pages34-35",
+        "E-01/E-02/E-03,printed page51",
+        "E-04,printed page52"
+      ],
+      "facts": "Attack effects precede damage reactions; KO confirmation follows them. Next-opponent-turn wording excludes Pokemon Checkup. Protection concerns attack damage and effects; ignoring target effects bypasses its damage protection. Attack prohibitions prevent declaration and clear when the affected Pokemon goes to the Bench, evolves/devolves or leaves play."
+    }
+  ],
+  "reviewedSemantics": [
+    "One root atomic registration per attack, AFTER_ATTACK only, no nested program, conditions or targets beyond SELF; all six arguments exact and required. Existing prevent_effects parser supplies the ProtectionEffect after removing scheduling fields.",
+    "Registration captures actual AttackCheckpoint.attacker owner, Pokemon UUID and entry, including the real copier. It places a delayedMarker only; it does not add effective protection or inspect current damage/Prizes.",
+    "The marker is placed at the actual AFTER_ATTACK application point before captureDamageReactions. Earlier actions are earlier than this effect; subsequent switch/evolve/devolve/leave immediately invalidate it. Never restore an invalidated marker.",
+    "finishAttackCheckpoint transfers the registration to this attack's KnockoutCheckpoint before captureKnockoutReactions can drain, or removes it when no KO exists. No global lastAttack.knockedOut condition.",
+    "Final commitKnockoutCheckpoint, after every ON_KNOCKOUT reaction and HP-removal cascade, qualifies iff confirmed intersects attackDamage for an owner unequal to original attacker owner. attackDamage already preserves current-attack damage and same-entry provenance and is cleared by survival/healing/directKO. Prizes/awards never participate.",
+    "Qualification consumes the checkpoint registration once and moves a still-valid marker to a server waiting list. Actual guard activation occurs only in beginTurn when currentPlayer differs from original controller, after battlefield.beginTurn and before runTurnStart. Extra own turns neither activate nor consume it.",
+    "At activation, check original field entry and same token again; remove marker/queue entry once and call existing BattlefieldState.addProtection with original controller and parsed policy. This completes an already applied conditional effect, so it does not reacquire a new Active, top card or source donor and does not re-run effect-immunity checks.",
+    "Initial registration checks preventCardEffect using original ATTACK origin, as ordinary self protection does. Later defensive changes do not retroactively remove an already-applied marker; switch/evolve/devolve do. Active continuous protection uses existing clearing and OPPONENT_TURN_END expiry.",
+    "finish removes pending marker state from attack checkpoint, KO checkpoint and waiting list before resetting fields. No-KO and invalid-source branches also consume pending state. Reads never consume RNG; token UUIDs are server bookkeeping and labels/replay avoid hidden card identities."
+  ],
+  "evidenceLimitations": {
+    "searched": [
+      "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%82%B0%E3%82%BD%E3%82%AF%E3%83%A0%E3%82%B7%E3%83%A3&regulation_faq_main_item1=all",
+      "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%82%B0%E3%82%BD%E3%82%AF%E3%83%A0%E3%82%B7%E3%83%A3&page=2&regulation=all&regulation_faq_main_item1=all"
+    ],
+    "result": "The two Golisopod FAQ pages returned older cards' interactions, not a specific Critical Slash ruling. Exact Japanese attack-name FAQ requests returned tool internal errors; no special Golisopod-only ruling is claimed. The stable Corviknight FAQ supplies the critical survival and zero-Prize edge cases."
+  },
+  "deferredInteractions": [
+    {
+      "name": "Lillie's Poke Doll / zero-prize Item Pokemon",
+      "reason": "No supported zero-prize ItemPokemon contract exists. prizeCardsForKnockout clamps ordinary prizes 1..6; PokemonProfile constructor only accepts 1..3; TrainerProfile PLAY_AS_POKEMON only accepts FOSSIL_ITEM with prizeCards=1. No bypass in full commit path.",
+      "scope": "Do not modify prize rules or enable an old Doll. Qualification method accepts only confirmed opponent/current-attack-damage facts; a pure predicate test demonstrates absence of award dependency without claiming real zero-prize runtime support."
+    }
+  ],
+  "sameTextNotActivated": [
+    {
+      "cardIds": [
+        "me1_en_080",
+        "me1_en_146"
+      ],
+      "name": "Marshadow",
+      "attack": "Shadowy Side Kick",
+      "baseDamage": 60,
+      "note": "Same conditional guard sentence but different Pokemon/attack/era queue position. Do not activate in ME4 batch84."
+    },
+    {
+      "cardIds": [
+        "sv2_en_148"
+      ],
+      "name": "Corviknight",
+      "attack": "Accelerate",
+      "baseDamage": 50,
+      "note": "Same conditional guard and primary analogue FAQ; older SV card stays deferred."
+    }
+  ],
+  "validationAtReview": {
+    "pythonTests": 592,
+    "catalogLoad": "passed",
+    "actualCardAndComponentRegressions": "passed",
+    "fullCheck": "pending; see final batch84 docs for terminal result"
+  },
+  "testLimitations": [
+    "No actual zero-Prize Item Pokemon runtime support exists; qualification predicate has no award argument.",
+    "No dedicated guard plus HP-aura-removal cascade test; source placement reviewed after final cascade."
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-16",
+  "scope": "ME4 Delibird; no artwork, BREAK or JAR.",
+  "cardIds": [
+    "me4_en_018"
+  ],
+  "ruleReferences": [
+    {
+      "url": "https://asia.pokemon-card.com/my/card-search/detail/25209/",
+      "facts": "Basic Delibird90HP Water,Metal weakness2,retreat1,one prize. C Pleasing Present: each may attach up to3 Basic Energy from own hand across own Pokemon; opponent first. CC Flap40."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%87%E3%83%AA%E3%83%90%E3%83%BC%E3%83%89&regulation_faq_main_item1=all",
+      "facts": "Opponent completes attaching before attacker decides. Opponent declining permits either own attachment or decline. Calamitous Snowy Mountain counters on both fields are simultaneous, although attachment decisions run opponent first."
+    }
+  ],
+  "reviewedSemantics": [
+    "Reuse attach_energy HAND/ANY selection and distribution. Narrow optional source_owner:OPPONENT plus chooser:OPPONENT contract, Basic only, OPPONENT_FIELD, zero minimum and AFTER_ATTACK only.",
+    "Private transaction belongs to chooser; attack continuation, original protection source, target scope and turn remain with actual attack executor. Preserve stale-card/entry validation, partial-assignment rejection and session visibility.",
+    "Sequence opponent then own effect. Each permits zero, empty private sources skip, opponent commits before own decision; no extra optional wrapper needed.",
+    "Actual attached cards retain physical owner and HAND source. Own-hand-only events captured for correct owner and deferred until both choices end; effect attachments bypass manual cap.",
+    "Retain printed C and CC costs,90HP,Water,Metal weakness,retreat1,one prize and40-damage Flap. Copy uses actual controller."
+  ],
+  "deferredInteraction": {
+    "cardId": "sv2_en_174",
+    "name": "Calamitous Snowy Mountain / 灾祸雪山",
+    "reason": "Older SV card remains UNSUPPORTED in existing catalog. Official simultaneous counter placement needs its own event-resolution support and regression when that card is implemented; do not mark this interaction tested or silently activate the Stadium in this Mega batch."
+  },
+  "validationAtReview": {
+    "pythonTests": 578,
+    "catalogLoad": "passed",
+    "actualCardAndComponentRegressions": "passed",
+    "fullCheck": "pending; see final batch81 docs for terminal result"
+  }
+}

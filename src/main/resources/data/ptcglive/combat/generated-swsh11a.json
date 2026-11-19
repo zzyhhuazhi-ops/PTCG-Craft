@@ -1,0 +1,1166 @@
+{
+  "schemaVersion": 1,
+  "dataVersion": "ptcgcardcn-swsh11a-2026.10.14",
+  "region": "international",
+  "noteZh": "PTCGCardCN 0.1.0 由 Rainier（PTCG Live 客户端卡牌数据库）自动转换；审核策略 rainier-db。详见 reports/conversion-report.json。",
+  "cards": [
+    {
+      "id": "swsh11a_en_002",
+      "kind": "POKEMON",
+      "hitPoints": 120,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "sm5_en_004",
+      "weakness": {
+        "type": "FIRE",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Roserade",
+      "evolvesFromName": "Roselia",
+      "pokemonType": "GRASS",
+      "attacks": [
+        {
+          "id": "poisonous-whip",
+          "nameZh": "毒鞭",
+          "energyCost": {
+            "GRASS": 1
+          },
+          "baseDamage": 30,
+          "damageType": "GRASS",
+          "effectSupport": "SUPPORTED",
+          "conditions": [
+            {
+              "target": "DEFENDER",
+              "condition": "POISONED"
+            }
+          ]
+        },
+        {
+          "id": "assassin-s-rose",
+          "nameZh": "奇袭玫瑰",
+          "energyCost": {
+            "GRASS": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 60,
+          "damageType": "GRASS",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：if your opponent's active pokemon is affected by a special condition"
+        }
+      ]
+    },
+    {
+      "id": "swsh11a_en_004",
+      "kind": "POKEMON",
+      "hitPoints": 150,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "me5_en_037",
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Chandelure",
+      "evolvesFromName": "Lampent",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "heat-blast",
+          "nameZh": "高温爆破",
+          "energyCost": {
+            "FIRE": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 90,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED"
+        }
+      ],
+      "abilities": [
+        {
+          "id": "mountain-roasting",
+          "nameZh": "放火烧山",
+          "kind": "TRIGGERED",
+          "eventPolicy": {
+            "trigger": "ON_EVOLVE",
+            "watch": "SELF",
+            "source": "HAND",
+            "optional": true,
+            "usage": "NONE"
+          },
+          "triggers": [
+            {
+              "trigger": "ON_EVOLVE",
+              "conditions": [
+                {
+                  "type": "TURN_STATE",
+                  "target": "SELF",
+                  "value": "ACTOR_TURN"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "discard_top_deck",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 3
+                }
+              ]
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "swsh11a_en_005",
+      "kind": "POKEMON",
+      "hitPoints": 60,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Pikachu",
+      "pokemonType": "LIGHTNING",
+      "attacks": [
+        {
+          "id": "whimsy-tackle",
+          "nameZh": "胡思乱撞",
+          "energyCost": {
+            "LIGHTNING": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 0,
+          "damageType": "LIGHTNING",
+          "effectSupport": "SUPPORTED",
+          "coinDamage": {
+            "flips": 1,
+            "perHeads": 50
+          }
+        }
+      ],
+      "abilities": [
+        {
+          "id": "pika-dash",
+          "nameZh": "皮卡冲刺",
+          "kind": "PASSIVE",
+          "effects": [
+            {
+              "type": "free_retreat",
+              "target": "SELF",
+              "conditions": [
+                {
+                  "type": "ENERGY_COUNT",
+                  "target": "SELF",
+                  "value": 1,
+                  "comparison": ">=",
+                  "count_mode": "CARDS"
+                }
+              ]
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "swsh11a_en_007",
+      "kind": "POKEMON",
+      "hitPoints": 80,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "me2-5_en_090",
+      "weakness": {
+        "type": "DARKNESS",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "FIGHTING",
+        "amount": 30
+      },
+      "prizeCards": 1,
+      "pokemonName": "Banette",
+      "evolvesFromName": "Shuppet",
+      "pokemonType": "PSYCHIC",
+      "attacks": [
+        {
+          "id": "resolute-spite",
+          "nameZh": "觉悟怨恨",
+          "energyCost": {
+            "PSYCHIC": 1
+          },
+          "baseDamage": 20,
+          "damageType": "PSYCHIC",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "印刷伤害 20x 带 x，但没有识别出加成来源；未识别的效果：put up to 7 damage counters on this pokemon. this attack does 20 damage for each damage counter you placed in this way"
+        },
+        {
+          "id": "eerie-light",
+          "nameZh": "不祥之光",
+          "energyCost": {
+            "PSYCHIC": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 50,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED",
+          "conditions": [
+            {
+              "target": "DEFENDER",
+              "condition": "CONFUSED"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "swsh11a_en_008",
+      "kind": "POKEMON",
+      "hitPoints": 130,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "sv6_en_099",
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Hisuian Arcanine",
+      "evolvesFromName": "Hisuian Growlithe",
+      "pokemonType": "FIGHTING",
+      "attacks": [
+        {
+          "id": "very-vulnerable",
+          "nameZh": "诱敌深入",
+          "energyCost": {},
+          "baseDamage": 10,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "HAND_SIZE",
+                  "target": "SELF",
+                  "value": 0,
+                  "comparison": "="
+                }
+              ],
+              "effects": [
+                {
+                  "type": "damage",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 150
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sharp-fang",
+          "nameZh": "锐利之牙",
+          "energyCost": {
+            "FIGHTING": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 100,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "swsh11a_en_009",
+      "kind": "POKEMON",
+      "hitPoints": 60,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "GRASS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Spiritomb",
+      "pokemonType": "DARKNESS",
+      "attacks": [
+        {
+          "id": "chain-of-spirits",
+          "nameZh": "孤魂连锁",
+          "energyCost": {
+            "DARKNESS": 2
+          },
+          "baseDamage": 10,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "damage_per_discard_card",
+              "target": "SELF",
+              "amount": 60,
+              "card_category": "POKEMON",
+              "pokemon_names": "Spiritomb"
+            }
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "id": "cursed-message",
+          "nameZh": "咒术遗言",
+          "kind": "TRIGGERED",
+          "eventPolicy": {
+            "trigger": "ON_KNOCKOUT",
+            "cause": "OPPONENT_ATTACK_DAMAGE",
+            "watch": "SELF",
+            "activeOnly": false,
+            "optional": false,
+            "usage": "NONE"
+          },
+          "triggers": [
+            {
+              "trigger": "ON_KNOCKOUT",
+              "conditions": [],
+              "effects": [
+                {
+                  "type": "search_deck",
+                  "target": "DECK",
+                  "amount": 1,
+                  "minimum": 1
+                }
+              ]
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "swsh11a_en_010",
+      "kind": "POKEMON",
+      "hitPoints": 150,
+      "retreatCost": 4,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Snorlax",
+      "pokemonType": "COLORLESS",
+      "attacks": [
+        {
+          "id": "thumping-snore",
+          "nameZh": "轰隆鼾声",
+          "energyCost": {
+            "COLORLESS": 3
+          },
+          "baseDamage": 180,
+          "damageType": "COLORLESS",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：during pokemon checkup, flip 2 coins instead of 1. if either of them is tails, this pokemon is still asleep"
+        }
+      ],
+      "abilities": [
+        {
+          "id": "unfazed-fat",
+          "nameZh": "无畏脂肪",
+          "kind": "PASSIVE",
+          "effects": [
+            {
+              "type": "passive_effect_guard",
+              "target": "SELF",
+              "source": "ATTACK",
+              "from": "OPPONENT",
+              "scope": "EFFECTS_ONLY"
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "swsh11a_en_011",
+      "kind": "POKEMON",
+      "hitPoints": 70,
+      "retreatCost": 0,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Castform",
+      "pokemonType": "COLORLESS",
+      "attacks": [
+        {
+          "id": "weather-force",
+          "nameZh": "气象之力",
+          "energyCost": {
+            "COLORLESS": 3
+          },
+          "baseDamage": 80,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "draw_until",
+                  "target": "SELF",
+                  "amount": 6
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "id": "weather-reading",
+          "nameZh": "预测天气",
+          "kind": "PASSIVE",
+          "effects": [
+            {
+              "type": "attack_cost_override",
+              "target": "SELF",
+              "energy_type": "COLORLESS",
+              "amount": 0,
+              "conditions": [
+                {
+                  "type": "DISCARD_COUNT",
+                  "target": "SELF",
+                  "card_category": "TRAINER",
+                  "trainer_category": "STADIUM",
+                  "value": 8,
+                  "comparison": ">="
+                }
+              ]
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "swsh11a_en_012",
+      "kind": "POKEMON",
+      "hitPoints": 180,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIRE",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Orbeetle V",
+      "pokemonType": "GRASS",
+      "attacks": [
+        {
+          "id": "strafe",
+          "nameZh": "折返瞬击",
+          "energyCost": {
+            "GRASS": 1
+          },
+          "baseDamage": 20,
+          "damageType": "GRASS",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "choice",
+                  "optional": true,
+                  "effects": [
+                    {
+                      "type": "switch",
+                      "target": "SELECT_OWN_POKEMON"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mysterious-wave",
+          "nameZh": "神秘波",
+          "energyCost": {
+            "GRASS": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 50,
+          "damageType": "GRASS",
+          "effectSupport": "SUPPORTED",
+          "damageModifiers": [
+            {
+              "basis": "DEFENDER_ATTACHED_ENERGY_COUNT",
+              "amountPerUnit": 30
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "swsh11a_en_014",
+      "kind": "POKEMON",
+      "hitPoints": 210,
+      "retreatCost": 3,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Centiskorch V",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "radiating-heat",
+          "nameZh": "高热放射",
+          "energyCost": {
+            "FIRE": 1
+          },
+          "baseDamage": 20,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "choice",
+                  "optional": true,
+                  "effects": [
+                    {
+                      "type": "discard_energy",
+                      "target": "OWN_ACTIVE",
+                      "amount": 1,
+                      "minimum": 1,
+                      "bind": "done1"
+                    }
+                  ]
+                },
+                {
+                  "type": "conditional",
+                  "conditions": [
+                    {
+                      "type": "BOUND_COUNT",
+                      "bind": "done1",
+                      "value": 1
+                    }
+                  ],
+                  "effects": [
+                    {
+                      "type": "discard_energy",
+                      "target": "OPPONENT_ACTIVE",
+                      "amount": 1,
+                      "minimum": 1
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "burning-train",
+          "nameZh": "燃烧列车",
+          "energyCost": {
+            "FIRE": 4
+          },
+          "baseDamage": 180,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "swsh11a_en_015",
+      "kind": "POKEMON",
+      "hitPoints": 320,
+      "retreatCost": 3,
+      "evolvesFromDefinitionId": "swsh11a_en_014",
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 3,
+      "pokemonName": "Centiskorch VMAX",
+      "evolvesFromName": "Centiskorch V",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "g-max-centiferno",
+          "nameZh": "超极巨百火焚野",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 40,
+          "damageType": "FIRE",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：if you did any damage with this attack, you may"
+        }
+      ]
+    },
+    {
+      "id": "swsh11a_en_016",
+      "kind": "POKEMON",
+      "hitPoints": 190,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Pikachu V",
+      "pokemonType": "LIGHTNING",
+      "attacks": [
+        {
+          "id": "charge",
+          "nameZh": "充电",
+          "energyCost": {
+            "LIGHTNING": 1
+          },
+          "baseDamage": 0,
+          "damageType": "LIGHTNING",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "attach_energy",
+                  "source": "DECK",
+                  "target": "SELF",
+                  "target_scope": "OWN_FIELD",
+                  "amount": 2,
+                  "minimum": 0,
+                  "basic_energy_only": true,
+                  "energy_type": "LIGHTNING"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "thunderbolt",
+          "nameZh": "十万伏特",
+          "energyCost": {
+            "LIGHTNING": 2,
+            "COLORLESS": 1
+          },
+          "baseDamage": 200,
+          "damageType": "LIGHTNING",
+          "effectSupport": "SUPPORTED",
+          "discardAllAttachedEnergyAfterAttack": true
+        }
+      ]
+    },
+    {
+      "id": "swsh11a_en_017",
+      "kind": "POKEMON",
+      "hitPoints": 310,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "swsh11a_en_016",
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 3,
+      "pokemonName": "Pikachu VMAX",
+      "evolvesFromName": "Pikachu V",
+      "pokemonType": "LIGHTNING",
+      "attacks": [
+        {
+          "id": "g-max-volt-tackle",
+          "nameZh": "超极巨伏特攻击",
+          "energyCost": {
+            "LIGHTNING": 3
+          },
+          "baseDamage": 120,
+          "damageType": "LIGHTNING",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "BOUND_COUNT",
+                  "bind": "paid1",
+                  "value": 1
+                }
+              ],
+              "effects": [
+                {
+                  "type": "damage",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 150
+                }
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "trigger": "BEFORE_ATTACK",
+              "effects": [
+                {
+                  "type": "choice",
+                  "optional": true,
+                  "effects": [
+                    {
+                      "type": "plan_energy_discard",
+                      "target": "OWN_ACTIVE",
+                      "all": true,
+                      "bind": "paid1"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "commit_energy_discard",
+                  "ref": "paid1"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "swsh11a_en_019",
+      "kind": "POKEMON",
+      "hitPoints": 220,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "PSYCHIC",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Gallade V",
+      "pokemonType": "FIGHTING",
+      "attacks": [
+        {
+          "id": "rising-sword",
+          "nameZh": "璀璨之剑",
+          "energyCost": {
+            "FIGHTING": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 20,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "damage_per_prize",
+              "target": "SELF",
+              "amount": 50,
+              "prize_count": "TAKEN"
+            }
+          ]
+        },
+        {
+          "id": "buster-swing",
+          "nameZh": "狂乱挥打",
+          "energyCost": {
+            "FIGHTING": 2,
+            "COLORLESS": 1
+          },
+          "baseDamage": 130,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "ignoresResistance": true
+        }
+      ]
+    },
+    {
+      "id": "swsh11a_en_020",
+      "kind": "POKEMON",
+      "hitPoints": 180,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Crobat V",
+      "pokemonType": "DARKNESS",
+      "attacks": [
+        {
+          "id": "venomous-fang",
+          "nameZh": "毒牙",
+          "energyCost": {
+            "DARKNESS": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 70,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED",
+          "conditions": [
+            {
+              "target": "DEFENDER",
+              "condition": "POISONED"
+            }
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "id": "dark-asset",
+          "nameZh": "暗夜资产",
+          "kind": "TRIGGERED",
+          "eventPolicy": {
+            "trigger": "ON_ENTER_PLAY",
+            "watch": "SELF",
+            "source": "HAND",
+            "optional": true,
+            "usage": "NONE"
+          },
+          "triggers": [
+            {
+              "trigger": "ON_ENTER_PLAY",
+              "conditions": [
+                {
+                  "type": "TURN_STATE",
+                  "target": "SELF",
+                  "value": "ACTOR_TURN"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "draw_until",
+                  "target": "SELF",
+                  "amount": 6
+                }
+              ]
+            }
+          ],
+          "usageLimit": {
+            "group": "dark-asset",
+            "period": "TURN"
+          },
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "swsh11a_en_021",
+      "kind": "POKEMON",
+      "hitPoints": 220,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Eternatus V",
+      "pokemonType": "DARKNESS",
+      "attacks": [
+        {
+          "id": "power-accelerator",
+          "nameZh": "力量加速",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 30,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "attach_energy",
+                  "source": "HAND",
+                  "target": "SELECT_OWN_POKEMON",
+                  "target_scope": "OWN_BENCH",
+                  "amount": 1,
+                  "minimum": 0,
+                  "basic_energy_only": true,
+                  "energy_type": "DARKNESS"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dynamax-cannon",
+          "nameZh": "极巨炮",
+          "energyCost": {
+            "DARKNESS": 1,
+            "COLORLESS": 3
+          },
+          "baseDamage": 120,
+          "damageType": "DARKNESS",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "IS_VMAX",
+                  "target": "OPPONENT_ACTIVE"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "damage",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 120
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "swsh11a_en_023",
+      "kind": "TRAINER",
+      "trainerCategory": "SUPPORTER",
+      "effects": [
+        {
+          "type": "search_deck",
+          "target": "DECK",
+          "amount": 3,
+          "minimum": 0,
+          "card_category": "POKEMON",
+          "pokemon_families": "V",
+          "reveal": true
+        }
+      ]
+    },
+    {
+      "id": "swsh11a_en_024",
+      "kind": "TRAINER",
+      "trainerCategory": "SUPPORTER",
+      "effect": {
+        "opcode": "SWITCH_OPPONENT_ACTIVE",
+        "amount": 0
+      }
+    },
+    {
+      "id": "swsh11a_en_025",
+      "kind": "TRAINER",
+      "trainerCategory": "SUPPORTER",
+      "effects": [
+        {
+          "type": "heal",
+          "target": "OWN_ACTIVE",
+          "amount": 70
+        }
+      ]
+    },
+    {
+      "id": "swsh11a_en_026",
+      "kind": "TRAINER",
+      "trainerCategory": "SUPPORTER",
+      "effects": [
+        {
+          "type": "shuffle_hand",
+          "target": "SELF"
+        },
+        {
+          "type": "conditional",
+          "conditions": [
+            {
+              "type": "NOT",
+              "conditions": [
+                {
+                  "type": "BENCH_COUNT",
+                  "target": "SELF",
+                  "comparison": "==",
+                  "value": 0
+                }
+              ]
+            }
+          ],
+          "effects": [
+            {
+              "type": "draw",
+              "target": "SELF",
+              "amount": 4
+            }
+          ]
+        },
+        {
+          "type": "conditional",
+          "conditions": [
+            {
+              "type": "BENCH_COUNT",
+              "target": "SELF",
+              "comparison": "==",
+              "value": 0
+            }
+          ],
+          "effects": [
+            {
+              "type": "draw",
+              "target": "SELF",
+              "amount": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "swsh11a_en_027",
+      "kind": "TRAINER",
+      "trainerCategory": "SUPPORTER",
+      "effects": [
+        {
+          "type": "search_discard_pile",
+          "target": "DISCARD",
+          "amount": 4,
+          "minimum": 0,
+          "card_kinds": "POKEMON|BASIC_ENERGY",
+          "destination": "HAND",
+          "pokemon_or_basic_energy_type": "WATER"
+        }
+      ]
+    },
+    {
+      "id": "swsh11a_en_029",
+      "kind": "POKEMON",
+      "hitPoints": 310,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "swsh11a_en_016",
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 3,
+      "pokemonName": "Pikachu VMAX",
+      "evolvesFromName": "Pikachu V",
+      "pokemonType": "LIGHTNING",
+      "attacks": [
+        {
+          "id": "g-max-volt-tackle",
+          "nameZh": "超极巨伏特攻击",
+          "energyCost": {
+            "LIGHTNING": 3
+          },
+          "baseDamage": 120,
+          "damageType": "LIGHTNING",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "type": "BOUND_COUNT",
+                  "bind": "paid1",
+                  "value": 1
+                }
+              ],
+              "effects": [
+                {
+                  "type": "damage",
+                  "target": "OPPONENT_ACTIVE",
+                  "amount": 150
+                }
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "trigger": "BEFORE_ATTACK",
+              "effects": [
+                {
+                  "type": "choice",
+                  "optional": true,
+                  "effects": [
+                    {
+                      "type": "plan_energy_discard",
+                      "target": "OWN_ACTIVE",
+                      "all": true,
+                      "bind": "paid1"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "commit_energy_discard",
+                  "ref": "paid1"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "swsh11a_en_030",
+      "kind": "POKEMON",
+      "hitPoints": 310,
+      "retreatCost": 0,
+      "evolvesFromDefinitionId": "swsh12-5_en_060",
+      "weakness": {
+        "type": "DARKNESS",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "FIGHTING",
+        "amount": 30
+      },
+      "prizeCards": 3,
+      "pokemonName": "Mew VMAX",
+      "evolvesFromName": "Mew V",
+      "pokemonType": "PSYCHIC",
+      "attacks": [
+        {
+          "id": "cross-fusion-strike",
+          "nameZh": "交错汇流",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 0,
+          "damageType": "PSYCHIC",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：choose 1 of your benched fusion strike pokemon's attacks and use it as this attack"
+        },
+        {
+          "id": "max-miracle",
+          "nameZh": "极巨奇迹",
+          "energyCost": {
+            "PSYCHIC": 2
+          },
+          "baseDamage": 130,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED",
+          "ignoresActiveDefenderDamageEffects": true
+        }
+      ]
+    }
+  ]
+}

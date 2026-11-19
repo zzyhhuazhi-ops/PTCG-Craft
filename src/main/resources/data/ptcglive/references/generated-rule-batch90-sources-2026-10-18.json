@@ -1,0 +1,306 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-18",
+  "scope": "树才怪的指定卡检索和两张变化之书同时使用、弃牌区基础宝可梦替换; no artwork, BREAK or JAR.",
+  "cardIds": [
+    "me4_en_043",
+    "me4_en_083"
+  ],
+  "ruleReferences": [
+    {
+      "url": "https://asia.pokemon-card.com/sg/card-search/detail/25274/",
+      "type": "Actual printed English Tome",
+      "supports": "Exactly2 simultaneous played cards, one effect; discard Basic swap with own Basic and retained state."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50158/regu/all",
+      "type": "Actual printed Japanese Tome",
+      "supports": "Outgoing Basic is discarded."
+    },
+    {
+      "url": "https://asia.pokemon-card.com/my/card-search/detail/25234/",
+      "type": "Actual printed English Sudowoodo",
+      "supports": "Up to2 named Tome search/reveal/hand/shuffle, C cost; F30 ignores Resistance."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E5%A4%89%E5%8C%96%E3%81%AE%E6%9B%B8&regulation_header_search_item1=all",
+      "type": "Six actual Tome FAQs, independently reopened",
+      "supports": [
+        "Seismitoad gate flips once for pair",
+        "Patrat does not stop damage inheritance",
+        "Mega Kangaskhan ex100damage to Budew legal then KO",
+        "Same used Erika Tangela Ability stays used",
+        "Different Larry Komala/Tangela Ability may be used",
+        "Prior-turn tenure permits evolution after replacement"
+      ]
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%8B%E3%83%B3%E3%82%B8%E3%83%A3%E3%81%94%E3%81%A3%E3%81%93",
+      "type": "Analogous Ninja Boy replacement FAQ, independently reopened 2026-10-18",
+      "supports": "Lines80–83 replacing protected Mimikyu V by another Mimikyu V loses Dummy Doll;96–99 Wishiwashi→WishiwashiGX→Wishiwashi does not restore used Schooling;91–94 inherited excess Tools must be discarded to new capacity. These are analogous rulings, not additional Tome FAQs."
+    },
+    {
+      "url": "https://asia.pokemon-card.com/my/card-search/detail/25234/",
+      "opened": true,
+      "role": "Actual English Sudowoodo; Basic110, exact up-to2 named Tome search, F30 ignores Resistance. Energy links resolve Fighting/Colorless/Grass, confirming cost/type/weakness/retreat."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50127",
+      "opened": true,
+      "role": "Actual Japanese Sudowoodo M4 043/083; same search/Rock Hurl."
+    },
+    {
+      "url": "https://asia.pokemon-card.com/sg/card-search/detail/25274/",
+      "opened": true,
+      "role": "Actual English Tome, Item, two simultaneous copies one effect; discard Basic replaces own in-play Basic and inherits state/tenure."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50158/regu/all",
+      "opened": true,
+      "role": "Actual Japanese Tome M4 074/083; explicit outgoing Pokemon goes to discard. Japanese074 is not another international canonical card."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E5%A4%89%E5%8C%96%E3%81%AE%E6%9B%B8&regulation_header_search_item1=all",
+      "opened": true,
+      "role": "Exactly6 actual Tome Q&A entries, lines80..112; all six independently read."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%8B%E3%83%B3%E3%82%B8%E3%83%A3%E3%81%94%E3%81%A3%E3%81%93",
+      "opened": true,
+      "role": "Analogous Ninja Boy replacement only: original Mimikyu V Dummy Doll protection is lost; A→B→A Schooling remains used; excess Tool capacity corrected. Not additional Tome-specific FAQs."
+    }
+  ],
+  "reviewedSemantics": [
+    "Strict pairedPlay metadata and two-card atomic Trainer action, one existing attempt gate and one completion envelope; both definition IDs enter history Set.",
+    "Existing session-issued options enumerate exact unordered physical pairs with both hand anchors. Public resolvingTrainerCards preserves singular/constructor compatibility; no new network command.",
+    "Strict resumable own Basic replacement from public discard preserves logical identity, state, usage and tenure; printed incoming Fossil Item excluded and effective field Basic Fossil allowed.",
+    "Existing physical-card-bound guard exception remains; ordinary continuous effects persist. Existing attachment correction/KO boundary reused.",
+    "Read-only exact registered source lookup fixes used Ability → absent Ability → differently structured same Ability replacement authorization; both deck/discard paths share validate→commit→authorize with usage retained.",
+    "Concession/finish cleans all pending played physical cards to actual-owner discard, without completion history/listeners. Reproduced old lost-second-card bug and verified both prompt stages, either conceding player and original/foreign owner combinations."
+  ],
+  "schema": {
+    "trainerMetadata": {
+      "pairedPlay": {
+        "count": 2,
+        "definitionIds": [
+          "me4_en_083"
+        ]
+      }
+    },
+    "trainerProgram": {
+      "triggers": [
+        {
+          "trigger": "ON_CARD_PLAYED",
+          "effects": [
+            {
+              "type": "select_pokemon",
+              "target": "SELECT_OWN_POKEMON",
+              "stage": "BASIC",
+              "effects": [
+                {
+                  "type": "replace_basic_from_discard",
+                  "target": "CHOSEN_POKEMON",
+                  "amount": 1,
+                  "minimum": 1,
+                  "card_category": "POKEMON",
+                  "basic_pokemon_only": true,
+                  "preserve_state": "ALL",
+                  "return_old_card": "DISCARD"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "sudowoodo": "Existing AFTER_ATTACK search_deck DECK amount2 minimum0 card_category TRAINER trainer_category ITEM definition_ids me4_en_083 reveal:true; existing search completion shuffles once. Rock Hurl F30 ignoresResistance already supported.",
+    "strictMetadata": [
+      "New PairedTrainerPlay helper parses exactly count and definitionIds. count must be integer 2; IDs must be a nonempty set of distinct nonblank strings. Unknown/missing keys, wrong primitive types, duplicate IDs and counts other than 2 reject.",
+      "TrainerProfile adds nullable pairedPlay while preserving all existing constructors. Paired profiles must be COMPOSED ITEM, with no endsTurn, inPlayPokemon or stadium activation. Existing persistent/automatic constraints still apply.",
+      "BundledCombatData.trainer forwards pairedPlay explicitly and requires the containing card ID in its declared set. At actual pair validation, both profiles must have identical pair metadata and effectProgram. Every physical definition must be included in that group and both cards must pass the ordinary supported Trainer/category checks.",
+      "No runtime card-name switch; converter matches exact reviewed full card text and ITEM category and emits only the audited canonical identity. No second Tome as an activation discard cost. No capability flag is required merely to bypass a validation; source and parsed schema support must actually exist before activation."
+    ],
+    "strictEffect": [
+      "PokemonDiscardReplacement helper accepts only replace_basic_from_discard, CHOSEN_POKEMON and the exact declared fields/values above. Source is intrinsically actor DISCARD. No source/to/bind/as_cost or nested effects are accepted.",
+      "Only a resumable Trainer ON_CARD_PLAYED program can execute this operation, inside a selected own-Pokemon scope. Runtime requires current effective field Basic and own controller even if a forged broader select scope were supplied. Attacks, Abilities, passive/automatic programs and standalone zone-selection APIs must reject the operation.",
+      "Incoming discard card must be printed POKEMON, printed Basic, supported and have an audited Pokemon profile with placement rule permitting this replacement. A discarded Fossil Item is not a Pokemon candidate. An in-play Fossil Item is an effective Basic Pokemon and can be the outgoing host; its actual physical Item card is discarded normally.",
+      "Add permitsDiscardReplacement to PokemonPlacementRule (ANY_EFFECT only), preserving existing deck/Bench methods. No new placement-rule bypass is implied."
+    ]
+  },
+  "localPrintAudit": {
+    "files": 109,
+    "rows": 25598,
+    "matches": [
+      {
+        "file": "me4.json",
+        "rawId": "me4_43",
+        "name": "Sudowoodo",
+        "number": "43",
+        "archetypeID": -1223478393
+      },
+      {
+        "file": "me4.json",
+        "rawId": "me4_43_ph",
+        "name": "Sudowoodo",
+        "number": "43",
+        "archetypeID": -1223478393
+      },
+      {
+        "file": "me4.json",
+        "rawId": "me4_83",
+        "name": "Transformation Tome",
+        "number": "83",
+        "archetypeID": 579148194
+      },
+      {
+        "file": "me4.json",
+        "rawId": "me4_83_ph",
+        "name": "Transformation Tome",
+        "number": "83",
+        "archetypeID": 579148194
+      }
+    ],
+    "me4Sha256": "f74a17944d45aa60ae6a74572a61f9e02184bea66c5665253511144d76d946b5"
+  },
+  "evidenceLimitations": [
+    "First freeword URL using regulation_faq_main_item1 returned tool error; alternate regulation_header_search_item1 succeeded. No absence-of-FAQ claim.",
+    "No Sudowoodo-specific FAQ was sought beyond printed exact named search; use existing generic up-to deck search semantics, including zero selection, with actual-card tests.",
+    "No runtime or implementation performed here. General entry-trigger, paired-play history and copying behavior require engine design review before claiming support.",
+    "Design and source audit only at this point; no new implementation/runtime claim in this file.",
+    "Formal root build/check and actual-card runtime remain mandatory before production activation.",
+    "No unconditional claim that every future paired-card physical-count interaction is covered.",
+    "Do not modify frozen88 or89, activate older unsupported FAQ actors, generate art, run Gradle/JAR or touch production/Git in this subtask."
+  ],
+  "testLimitations": [
+    "One completion event is the approved logical-action engine contract, not an extra official physical-card-count FAQ.",
+    "No Minecraft graphical runtime claim; session/action/layout/DTO component coverage only.",
+    "No production/build/resources/Git mutations and no Gradle/JAR. Root owns integration/formal checks.",
+    "Historical immutable attempts1/2 remain untouched. Final Java source revision3 is separately snapshotted; actual retry must reference attempt3.",
+    "Exactly six actual Tome FAQs independently verified; Ninja Boy is analogous and clearly labelled.",
+    "One paired history/event envelope is approved engine semantics, not claimed as additional official FAQ.",
+    "The older deferred Tangela/Komala and Mimikyu cards remain unsupported; no fabricated actual profiles.",
+    "Legal opening followed by synthetic fixture draw/pool setup tests gameplay; over-four-copy fixture decks do not assert tournament legality.",
+    "No Gradle/Git/JAR/production writes; no repeated88/89 execution."
+  ],
+  "validationAtReview": {
+    "pythonTests": 645,
+    "catalogLoad": "passed",
+    "actualCardAndComponentRegressions": "passed",
+    "fullCheck": "pending; see final batch90 docs for terminal result"
+  },
+  "mapperScope": "Sudowoodo exact attack name/C cost/printed blank damage/full text/no reminders. Tome retains text-only map_trainer API: exact full body and exactly one normalized reviewed italic reminder; no name argument claimed. Build explicitly gates pairedPlay to ITEM, reviewed current ID, and a single text entry. Older paired Trainers unchanged.",
+  "corrections": [
+    {
+      "kind": "Actual fixture authority",
+      "detail": [
+        "Fetch mixed invalid Tool before snapshot so fixture setup cannot masquerade as rejected action mutation; use three distinct actual Tome instances for size3 rejection.",
+        "Use actual Kakuna as discarded Evolution exclusion while retaining synthetic evolved physical copy for field Evolution exclusion; avoid demanding a missing second synthetic Evolution.",
+        "Existing moveDamageCountersByEffect is a no-op under Watchful Eye, not exception; assert unchanged source/destination damage.",
+        "Correct Java var multi-declaration before first compilation; no production rules changed."
+      ]
+    },
+    {
+      "kind": "Ability source registration",
+      "detail": {
+        "evidence": "batch90-draft/ability-replacement-gap-evidence.json",
+        "contract": "Read-only EffectLifecycleDispatcher.registeredSource lookup matches logical Pokemon source ID plus ability ID/entry. Common inheritedAbilityDefinitions helper obtains incoming programs only from loaded profiles, validates before physical replacement, then authorizes after commit. Same-ID usage is retained when the intermediate form had no such Ability. Applies to existing deck and new discard replacement. No legacy/composed cross-adapter semantics added.",
+        "regression": "A used X → B without X → C with structurally different server-loaded X remains used this turn and can activate next turn. Existing GeneratedRuleBatch53Test and lifecycle authority regressions pass."
+      }
+    },
+    {
+      "kind": "Independent audit P2",
+      "detail": {
+        "reproduction": "concession-pair-gap-reproduction.json",
+        "fix": "ServerMatch.finish calls moveCardsToOwnerDiscard(pendingResolution.playedCards())",
+        "test": "PairedTrainerPlayTest.concedePair; eight combinations PASS",
+        "validation": "23 component/regression mains repeated and PASS"
+      }
+    }
+  ],
+  "pairedStateMachine": [
+    "READY: authenticate seat/turn and require no previous pending resolution; snapshot exactly 2 distinct physical IDs located in actor hand. Reject 0/1/3, duplicates, foreign-zone IDs, stale cards, wrong group/profile, unsupported cards and locks before any mutation or RNG.",
+    "PREFLIGHT: create one representative Trainer origin and one context whose resolving Trainer set contains BOTH IDs. Existing context hand-size, hand-effect candidates and activation-cost candidate projections exclude the whole set before removal; nested contexts retain the set. Run ordinary Trainer program schema, capability, affordability and EffectPotential checks once for the logical play. No effect if there is no selectable own Basic or no eligible discard Basic; protected hosts cannot provide false positive potential.",
+    "ATTEMPT: after full validation, run the player's Trainer-attempt gate exactly once for the pair. Reuse ordinary single-card implementation through a list-aware helper, keeping its RNG label/order stable for singletons. Tails moves BOTH selected physical cards directly to their actual owners' discard; no effect cursor, history, completed event or cost. Heads proceeds without a second gate.",
+    "COMMIT: remove BOTH physical cards from hand together after validation, create one PendingResolution with immutable playedCards plus the existing representative card/category/cursor. No second pending play and no secondary discard cost. Their temporary zone is resolution, not hand/discard.",
+    "PAUSE: existing target and card transactions own authorization, revision, selection cardinality and retry semantics. Invalid target/card submissions do not move anything, reroll the attempt, discard either source, reset the cursor or release the already declared play. Reconnection resumes the same pending action. There is no post-declaration cancel/refund.",
+    "COMPLETE: after the one program finishes, move both played cards to actual-owner discard once; write both definition IDs to the turn history presence Set and capture one logical ITEM completion event batch, visiting each eligible listener once. Then use the ordinary whole-effect checkpoint for reactions, attachment correction and KOs.",
+    "A before-declaration UI cancel is purely local and consumes nothing. A newer server revision invalidates every old pair option and clears client popup/drag state.",
+    "FINISH/CONCESSION: any pending playedCards are each moved exactly once to actual owner discard; clearing pending resolution must not emit successful completion history/events. Covers both target and discard prompts and either conceding player."
+  ],
+  "eventAndHistoryContract": {
+    "physicalCards": "Both are played: actual printed text says to play 2 cards at once. Both physical cards are kept in the resolution payload and both definition IDs are added to handPlays upon successful completion.",
+    "history": "Existing handPlays is LinkedHashSet<String>, used only by CARD_PLAYED_THIS_TURN presence checks. It has no physical-card or play-count arithmetic. The pair does not create a new inferred numerical rule; two copies of the same definition naturally occupy one Set entry.",
+    "completion": "Root-approved engine contract: one simultaneous use is one ITEM completion envelope and one trigger batch. Current CardPlayedTriggerPolicy observes only public category/subcategory, not physical card counts or hidden IDs, so a representative identical ITEM classification is sufficient while all cards are retained in the payload/history.",
+    "evidenceLimit": "The six actual Tome FAQs directly confirm one attempt coin and its printed text confirms one effect. They do not separately rule on every possible future count-based Trainer-use listener. One completion envelope is the explicit implementation contract, not an invented seventh official FAQ. A future physical-card-count policy needs its own audited contract."
+  },
+  "clientAndNetwork": {
+    "entry": "MatchSession generates pair actions before ordinary hand Trainer actions, in stable private-hand order i<j. Only one action per unordered pair, so four copies yield six actions. Both handKey anchors are included. Ordinary singlecard action generation skips paired profiles.",
+    "label": "Use existing prefix: 使用：变化之书 ×2（手牌第i、j张）. Ordinals refer to the current recipient-visible hand order, distinguishing copies without exposing opaque IDs in text or silently selecting an arbitrary second card.",
+    "existingUI": "MatchActionMatcher.forCards uses containsAll; either card finds its pairs. MatchTableScreen.mayStartDrag accepts either hand anchor. canTarget highlights the matching second hand card, and dropping onto it selects the one exact pair. Clicking a hand card or dragging to arena (使用： prefix) lists all matching pairs when more than one exists. MatchRegionScreen/MatchCardActionScreen already list the same server options.",
+    "cancelAndStale": "Before submit, popup Cancel/outside click and invalid drop are local only. MatchTableScreen.update clears popup/drag on any snapshot; MatchCardActionScreen.update returns to the rebuilt parent. Existing submit(connection,seat,revision,option) authenticates the actual controller, rejects stale revisions and regenerates authoritative current actions. No custom pair IDs are accepted from the client and no new command protocol is introduced.",
+    "display": "Append public List<CardInstance> resolvingTrainerCards to MatchClientView, retaining resolvingTrainer as the representative compatibility field and preserving existing constructors. Ordinary pending Trainers expose a singleton, pair exposes two, stadium activation retains its existing source behavior. Both cards are already publicly played. MatchSession adds both names; MatchRegionModel renders all played cards in the existing resolving zone. Do not expose unplayed hand identities. Snapshot transport remains the existing DTO/JSON path; no new IntentPayload.",
+    "verification": "Session integration plus MatchActionMatcher and MatchRegionModel tests must prove both anchors, pair uniqueness/ordinals, target matching from either card, spectator/foreign-seat denial, revision replay denial, both public resolving faces, and no hidden hand IDs leaked. No claim of live Minecraft UI rendering from component tests; root performs normal build/client checks."
+  },
+  "replacementTransaction": [
+    "Potential and host choice use the selected context, public own field Basic status and actual public discard candidates. The outgoing host need not have spare HP and may be Active or Bench, including rule-box Basics. Lower incoming HP can be immediately lethal and is still legal.",
+    "At opening the discard prompt, capture selected logical Pokemon ID, owner, entrySequence and physical topCardId in PokemonReplacementSource. Revalidate all four plus effective Basic state, source card still in actor discard, printed incoming Basic/profile/placement rule, physical uniqueness and effect protection before movement.",
+    "Validate ability-definition transition authorization before mutation, then call existing BattlefieldState.replaceTopCardByEffect. Remove incoming physical card from discard and put outgoing top physical card in its actual owner's discard exactly once. No shuffle or reveal acknowledgement is needed: discard is already public.",
+    "Keep logical Pokemon ID, entrySequence, enteredTurn/lastEvolvedTurn, lower stack if present, attachment physical cards/owners/entry lifetimes, damage, Special Conditions, weakness override, ordinary continuous effects, delayed marker identity, damage/heal history and Ability usage. Do not perform remove+reenter, evolve/devolve, attachment reattachment or counter-movement operations.",
+    "The host remains the same in-play Pokemon. No ON_ENTER_PLAY, ON_EVOLVE, ON_LEAVE_PLAY or energy-attachment event arises from the replacement. Current passive facts and HP/Tool capacity recompute from the incoming profile; existing settleHitPointChanges handles invalid inherited attachments and overflow prompts. KO remains deferred until the entire paired card effect has completed, and prizes use the incoming profile.",
+    "Patrat's counter-movement prohibition cannot prevent inherited damage because no counters are moved between Pokemon. Preserve old attack/received-damage history rather than rewriting the prior attacker species to the incoming species.",
+    "Physical-card-bound protection is an intentional exception: keep existing replaceTopCardByEffect pruning of cardBoundEffects tied to outgoing physical top. Ordinary equal protection remains independently inherited. Do not remap the physical token to the incoming card or change deck replacement semantics."
+  ],
+  "abilityIdentityAudit": {
+    "sameAndDifferent": "Keep existing per-incarnation Ability ID usage. Same Ability remains used; genuinely different unused Ability can be used. Shared player-level usage stays intact. Do not reset usage on replacement or speculate about evolution/devolution resets.",
+    "definitionAuthorization": "Reuse the existing server-owned validateDefinitionReplacement/authorizeDefinitionReplacement path for overlapping composed Ability IDs. Factor only if needed for deck/discard reuse without weakening arbitrary-program rejection. Test same ID with the same program and changed audited program, and A→B→A preserving prior usage. Existing dispatcher recognizes prior known programs on return.",
+    "inventoryLimit": "A focused current-production supported Basic manual-Ability scan found no ID crossing legacy opcode and composed adapters; effects vs triggers are both composed and must not be mistaken for separate adapters. No new generic cross-adapter usage semantics is needed for this batch. If implementation tests reveal a legal existing same-ID gap, report it before broadening the design.",
+    "unsupportedFAQActors": "Erika's Tangela and Larry's Komala are currently unsupported; use clearly synthetic same/different Ability fixtures for those mechanisms, without enabling the actual cards.",
+    "implementedGapCorrection": {
+      "evidence": "batch90-draft/ability-replacement-gap-evidence.json",
+      "contract": "Read-only EffectLifecycleDispatcher.registeredSource lookup matches logical Pokemon source ID plus ability ID/entry. Common inheritedAbilityDefinitions helper obtains incoming programs only from loaded profiles, validates before physical replacement, then authorizes after commit. Same-ID usage is retained when the intermediate form had no such Ability. Applies to existing deck and new discard replacement. No legacy/composed cross-adapter semantics added.",
+      "regression": "A used X → B without X → C with structurally different server-loaded X remains used this turn and can activate next turn. Existing GeneratedRuleBatch53Test and lifecycle authority regressions pass."
+    }
+  },
+  "actualCoverage": [
+    "Actual Sudowoodo Basic110 Fighting/Grassx2/no Resistance/retreat1/prize1; actual C base0 up-to2 named Tome search and F30 Rock Hurl ignoresResistance; actual Tome Item with exactly2 pair identity group.",
+    "Actual search selects0/1/2; rejects wrong/duplicate/over-limit/hand/foreign-owner inputs atomically; selected faces revealed before hand movement or shuffle, opponent acknowledgement per existing search-reveal contract, stale/replayed acknowledgements rejected; hidden hand/deck physical IDs absent from foreign/spectator views.",
+    "Search copies actual attack with actual copying controller deck; missing C rejects, wrong F rejects Rock Hurl, weakness remains while Resistance bypassed; printed0 search does not gain synthetic Tool damage bonus. Empty exact-name search still shuffles once.",
+    "Pair single-card bypass and zero/one/three/duplicate/mixed/foreign/stale instances rejected without zones/history/RNG changes; one stable i<j session action carries exactly two hand keys; wrong actor and stale revision rejected.",
+    "Both actual played physical Tomes reserved simultaneously and public during both prompts, singular representative retained, remaining hidden cards stay private; pair goes to discard once on completion and resolving DTO clears; host ID retained and incoming/outgoing zones correct.",
+    "Mandatory host/discard selections enforce ownership and exact1, reject zero/duplicate/Fossil/evolved candidates and evolved field host; no discard Basic means no-effect denial. Actual Budew Itchy Pollen Item lock blocks pair.",
+    "Retains logical ID, damage, Special Conditions, Energy, Tool, temporary Ability/attack restriction, delayed marker; no RNG. Temporary suppression expires normally and actual Run Errand becomes usable.",
+    "Actual Patrat Watchful Eye blocks ordinary movement by no-op, but actual Tome replacement keeps counters for both Active and Bench host; actual damaged Mega Kangaskhan100 to actual Budew30 is legal then KO for exactly1 prize.",
+    "Real Weedle/Kakuna named evolution after replacement proves preserved prior-turn tenure; fresh entry and owner first turn remain unable to evolve.",
+    "Explicit synthetic alpha/beta once-per-turn identities prove same ability used remains used, different ability available, A→B→A retains usage, reset at next own turn. Actual Mega Kangaskhan shared Run Errand cannot reset by physical replacement.",
+    "Explicit synthetic Item Fossil is legal outgoing field Basic and remains Item in discard; it is excluded as incoming discard Pokemon.",
+    "Actual normally evolved Seismitoad Quaking Fist deterministic heads/tails branches: exactly one attempt coin for both actual Tomes, heads one replacement/history, tails both discarded without replacement/completion/history. One synthetic Trainer observer draws once per paired ITEM completion (implementation contract, not separate official FAQ).",
+    "Actual Tome pair concession while choosing Basic or discard replacement, by either player: both reserved physical cards discarded exactly once to owner, resolving DTO cleared, host/candidate unchanged, no completed hand-play history."
+  ],
+  "explicitSynthetic": [
+    "plain opponents/copier/Evolution and alpha-beta Ability hosts",
+    "basic Fighting/Water Energy",
+    "plain and damage-boost Tools",
+    "Item-in-play Fossil analogue",
+    "temporary effect/marker server setup hooks",
+    "active-only opposing Trainer observer"
+  ],
+  "deferredActualActors": [
+    {
+      "ids": [
+        "me2-5_en_007",
+        "me2-5_en_218"
+      ],
+      "name": "Erika's Tangela",
+      "support": "UNSUPPORTED; no combat profile",
+      "substitute": "Explicit synthetic Basic with activated once-per-turn ability-alpha. Never assign fake support/profile to these actual IDs."
+    },
+    {
+      "ids": [
+        "me2-5_en_175"
+      ],
+      "name": "Larry's Komala",
+      "support": "UNSUPPORTED; no combat profile",
+      "substitute": "Explicit synthetic Basic with distinct once-per-turn ability-beta. No actual card activation."
+    }
+  ]
+}

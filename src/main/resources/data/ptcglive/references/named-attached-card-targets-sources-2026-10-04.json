@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "version": "named-attached-card-targets-v1",
+  "checkedDate": "2026-10-04",
+  "implementationVersion": "0.6.0-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Roserade — Diamond & Pearl Secret Wonders 23 official card page",
+      "url": "https://www.pokemon.com/uk/pokemon-tcg/pokemon-cards/series/dp7/23/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official card database entry",
+      "verification": "Used only as a public-target-then-attached-resource data-modeling example; publication and effective dates are unverified.",
+      "supportsZh": "用于同一公开宝可梦在多步骤内保持身份的需求；不表示已启用该真实卡。"
+    },
+    {
+      "title": "Play! Pokémon Competitive Pokémon Rules and Formats",
+      "url": "https://play.pokemon.com/en-us/resources/rules/?category=tcg",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official resources index, retrieved 2026-10-04",
+      "verification": "The official index provides the current rulebook, tournament handbook, legality and errata entry points.",
+      "supportsZh": "用于持续核验卡文、勘误和规则包；不把目录页面当作单项附着效果的完整裁定。"
+    }
+  ],
+  "retrievalLimitations": [
+    "No general official ruling for every multistep attached-card interaction was newly obtained.",
+    "No PTCG Live behavior, Japanese, Asian, Pocket or community material is treated as international rules authority.",
+    "Every real card remains disabled until its own official text, legality and timing are audited."
+  ],
+  "implementationLimits": [
+    "Supports a server-captured CHOSEN_POKEMON host for private-zone reviewed Energy/Tool attachment and public discard/return/move Energy plus discard/return Tool continuations.",
+    "The host owner, card instance and in-play entry sequence are revalidated before the attachment-card transaction commits.",
+    "Multi-host allocation, replacement effects and last-known information remain unsupported."
+  ]
+}

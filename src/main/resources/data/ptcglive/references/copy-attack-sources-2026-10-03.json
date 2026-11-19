@@ -1,0 +1,47 @@
+{
+  "schemaVersion":1,
+  "version":"public-field-copy-attack-v1",
+  "checkedDate":"2026-10-03",
+  "implementationVersion":"0.6.0-development",
+  "region":"international",
+  "sources":[
+    {
+      "title":"Mew ex — Scarlet and Violet Black Star Promos 53",
+      "url":"https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/svp/53/",
+      "publishedDate":null,
+      "effectiveDate":null,
+      "documentVersion":"Official international card database SVP53",
+      "verification":"Official indexed Genome Hacking card text retrieved on checkedDate; current direct card-page access may return iframe shell",
+      "supportsZh":"此招式选择对方战斗宝可梦的一个招式作为本次攻击，不能复制特性或任意隐藏卡。未据此启用整张真实卡。"
+    },
+    {
+      "title":"Pokemon TCG: Mew VMAX League Battle Deck",
+      "url":"https://www.pokemon.com/us/pokemon-tcg/product-gallery/mew-vmax-league-battle-deck",
+      "publishedDate":null,
+      "effectiveDate":null,
+      "productReleaseDate":"2022-11-11",
+      "documentVersion":"Official international product article, 2022 product",
+      "verification":"Official search-index article text retrieved; direct page returned iframe shell. Product launch is not asserted as rule effective date",
+      "supportsZh":"官方例子中原本三能量的高科技光炮经梦幻VMAX复制只需两能量，证明要区分复制招式费用与被复制招式费用。融合筛选及禁止下回合攻击不是本次完整实现。"
+    },
+    {
+      "title":"Rapid Strike Urshifu VMAX Deck Strategy: Sword and Shield Battle Styles",
+      "url":"https://www.pokemon.com/us/strategy/rapid-strike-urshifu-vmax-deck-strategy-sword-shield-battle-styles",
+      "publishedDate":null,
+      "effectiveDate":null,
+      "documentVersion":"Official international strategy article, Sword and Shield era",
+      "verification":"Official indexed strategy article read; direct page returned iframe shell",
+      "supportsZh":"文章以超梦与梦幻GX利用复制命中超属性弱点为例。由此交叉推断复制不应移植原卡属性；其Perfection属于赋予攻击的特性，不与本次按复制招式付费的模式混同。",
+      "inference":true
+    }
+  ],
+  "priorRuleReferences":["before-damage-attack-sources-2026-10-03.json"],
+  "dataContractZh":"独立ON_ATTACK copy_attack、公开场上范围、显式cost_policy=DECLARED_ATTACK。实际攻击者必须有pokemonType；卡文伤害、前后阶段和已声明共享资格复用统一攻击流程。",
+  "limitations":[
+    "No new verification of the latest official Rulebook PDF; no PTCG Live access or behavior comparison",
+    "No whole-card Mew, Mew VMAX or Mewtwo and Mew GX binding added",
+    "Recursive copy, copied same-attack-name cooldown, Fusion Strike or other source filters, type-changing effects and granted-attack Abilities remain unsupported",
+    "Shared GX/VSTAR qualification tests validate generic ledger composition, not every real copied Power's additional card-text conditions",
+    "No community user post, Japanese local ruling or TCG Pocket behavior used as an international ruling"
+  ]
+}

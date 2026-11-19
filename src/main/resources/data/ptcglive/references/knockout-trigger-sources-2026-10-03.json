@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "version": "knockout-reaction-checkpoint-v1",
+  "checkedDate": "2026-10-03",
+  "implementationVersion": "0.6.0-development",
+  "sources": [
+    {
+      "title": "February 2026 Rule Book Updates - What you need to know!",
+      "url": "https://professorprogram.pokemon.com/news/11473085",
+      "region": "international Play! Pokémon",
+      "publishedDate": "2026-02-26",
+      "effectiveDate": null,
+      "documentVersion": "official Professor Community 11473085",
+      "retrievalStatus": "official full body read 2026-10-03",
+      "supportsZh": "回合内多个击倒引发效果由当前玩家排序；回合间由下一回合玩家排序；原卡全文先完成再处理其它卡触发。",
+      "dateNoteZh": "页首2月26日与正文昨天2月20日冲突，精确生效日保留null。"
+    },
+    {
+      "title": "Pokémon Card Game Advanced Player’s Rulebook Ver. 3.4",
+      "url": "https://asia.pokemon-card.com/sg/wp-content/uploads/sites/6/2025/10/EN_advanced_manual-2025.pdf",
+      "region": "Singapore/Malaysia/Philippines English; mechanics cross-check only",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "3.4; printed date 01/08/2025 (literal)",
+      "retrievalStatus": "official PDF text of page 12 section D and page 52 E-04 read; screenshot request failed, no new visual rendering claimed",
+      "supportsZh": "先确定击倒并处理击倒触发，全部完成后同时弃置相关宝可梦及附属卡，再拿奖及替补；E-04举Maractus与Huntail例子。只复核机制，不导入亚洲赛事卡池。"
+    },
+    {
+      "title": "Pyukumuku — Sun & Moon 47/149",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm1/47",
+      "region": "international English",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "official card database sm1/47",
+      "retrievalStatus": "official search-index card text read 2026-10-03",
+      "supportsZh": "击倒反击需要战斗位及对手攻击伤害等独立条件，不能把放置指示物或回合间中毒误当攻击伤害。仅通用语义例子，未新增真实卡绑定。"
+    }
+  ],
+  "implementationZh": [
+    "KnockoutTriggerPolicy由事件ID、ANY或OPPONENT_ATTACK_DAMAGE原因、activeOnly、optional及usage声明自身击倒反应。",
+    "KnockoutCheckpoint保留来源和完整公开场地直到所有同步反应结束；确定击倒后不因后续偶然回复取消。新产生的击倒加入同一检查点且每实例捕获一次，先算全体奖赏值再同时移场。",
+    "攻击伤害致命原因仅由服务端保存；回复到存活后清除，之后指示物击倒不继承旧原因。明确直接KO单独处理，不冒充伤害。",
+    "回合内当前方、回合间下一方排序；可选确认始终归来源拥有者。固定目标抽牌、回复、指示物、异常状态与直接KO复用Effect组件、来源免疫和服务器随机。"
+  ],
+  "limitationsZh": [
+    "不是所有ON_KNOCKOUT卡文均支持：其他宝可梦监听、工具与能量动态来源、离场替换、附能转移、复杂私有选牌与离场后的最后已知状态仍待实现。",
+    "当前来源保留在场，未宣称实现通用离场快照；OPPONENT_ACTIVE也不能代替所有卡文的特定攻击者目标。",
+    "ANY原因可能发生在回合间，未定义归属的TURN使用次数明确拒绝，整局一次必须GAME共享组。",
+    "未开启客户端窗口，Fabric正式消息测试不是两名真实登录客户端或跨进程恢复；未操作Live，未新增真实支持绑定或安装中间JAR。"
+  ]
+}

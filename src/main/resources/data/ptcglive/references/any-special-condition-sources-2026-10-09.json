@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "version": "any-special-condition-v1",
+  "checkedDate": "2026-10-09",
+  "implementationVersion": "0.6.8-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Salazzle — Sun & Moon Ultra Prism 26/156（Hunter's Nails）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm5/26/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-09",
+      "supportsZh": "“If your opponent's Active Pokémon is affected by a Special Condition, this attack does 60 more damage.”：对方战斗宝可梦处于任意一种特殊状态（中毒、灼伤、睡眠、麻痹、混乱）时追加伤害。"
+    },
+    {
+      "title": "Sableye — Scarlet & Violet Paldea Evolved 136/193（Unseen Claw）",
+      "url": "https://limitlesstcg.com/cards/PAL/136",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Card text as printed (Limitless card page); cross-checked against the Rainier card database 2026-10-09",
+      "supportsZh": "同一写法的朱紫印刷，确认现行卡文仍用 “affected by a Special Condition”；BW 年代的 “If the Defending Pokémon is affected by a Special Condition” 意思相同。"
+    },
+    {
+      "title": "Pokémon TCG Rulebook — Special Conditions",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/rules",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official rulebook (Special Conditions section)",
+      "supportsZh": "特殊状态共五种：睡眠、灼伤、混乱、麻痹、中毒。"
+    }
+  ],
+  "dataContractZh": "HAS_STATUS / TARGET_HAS_STATUS 的 status 新增取值 ANY：目标处于五种特殊状态中的任意一种即成立。其它参数与原来相同（target 单只公开宝可梦），未知的状态名仍然拒绝。",
+  "serverAuthorityZh": "ConditionEvaluator 逐一询问服务器条件上下文五种状态，不新增客户端可见字段；各条件上下文（伤害计算、攻击后、触发特性）都走同一个判断。",
+  "limitations": [
+    "“如果对方战斗宝可梦处于特殊状态，它会被击倒” 等其它后半句由卡牌数据另行组合，不在本条件内。"
+  ]
+}

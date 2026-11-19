@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-14",
+  "scope": "1 newly recognized component, 1 fully supported card. Prior supported programs and metadata unchanged.",
+  "source": "Rainier English card text included verbatim per component; conversion input matched by stable card ID.",
+  "ruleReferences": [
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50706/regu/all",
+      "usedFor": "Official Eevee Fetch and Hide: view opponent hand, choose one Item, put it on bottom of that opponent deck. Rainier English says opponent reveals the hand."
+    },
+    {
+      "url": "https://www.pokemon-card.com/assets/document/advanced_manual.pdf",
+      "usedFor": "Resolve text in order and move only a card from the specified shown hand, preserving ownership; bottom placement does not shuffle. Existing current-ruleset Item classification keeps Tools separate."
+    }
+  ],
+  "evidence": [
+    {
+      "cardId": "me5-5_en_116",
+      "component": "attack",
+      "name": "Fetch and Hide",
+      "textEn": "Your opponent reveals their hand, and you put an Item card you find there on the bottom of your opponent's deck.",
+      "textZh": "查看对手的手牌，选择其中1张物品放回对手的牌库下方。",
+      "mapping": {
+        "rules": [
+          "revealed-opponent-item-to-deck-bottom"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "reveal_hand",
+                "target": "OPPONENT_ACTIVE"
+              },
+              {
+                "type": "opponent_hand_to_bottom",
+                "target": "OPPONENT_ACTIVE",
+                "amount": 1,
+                "trainer_category": "ITEM"
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    }
+  ]
+}

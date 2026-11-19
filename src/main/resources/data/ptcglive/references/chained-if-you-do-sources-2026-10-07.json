@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "version": "chained-if-you-do-v1",
+  "checkedDate": "2026-10-07",
+  "implementationVersion": "0.6.7-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Palkia（Rainier 卡号 me5-5_en_020，招式 Wormhole）",
+      "url": "https://limitlesstcg.com/cards/30C/20",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Limitless card page used by PTCGCardCN for this card's English image (Rainier me5-5 → Limitless 30C); English card text from the Rainier card database 2026-10-07",
+      "supportsZh": "“Switch this Pokémon with 1 of your Benched Pokémon. If you do, switch out your opponent's Active Pokémon to the Bench. (Your opponent chooses the new Active Pokémon.)”：自己真的换了位，对手才换下战斗宝可梦；没有备战宝可梦时两句都不发生。"
+    },
+    {
+      "title": "Donphan（Rainier 卡号 sm7_en_073，招式 Rapid Spin）",
+      "url": "https://limitlesstcg.com/cards/CES/73",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Limitless card page used by PTCGCardCN for this card's English image (Rainier sm7 → Limitless CES); English card text from the Rainier card database 2026-10-07",
+      "supportsZh": "“Switch this Pokémon with 1 of your Benched Pokémon. If you do, your opponent switches their Active Pokémon with 1 of their Benched Pokémon.”：同上，伤害之后结算。"
+    },
+    {
+      "title": "Floette（Rainier 卡号 sm6_en_085，招式 Swirling Petals）",
+      "url": "https://limitlesstcg.com/cards/FLI/85",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Limitless card page used by PTCGCardCN for this card's English image (Rainier sm6 → Limitless FLI); English card text from the Rainier card database 2026-10-07",
+      "supportsZh": "“Switch 1 of your opponent's Benched Pokémon with their Active Pokémon. If you do, switch this Pokémon with 1 of your Benched Pokémon.”：先由使用者换上对手的备战宝可梦，换成了才把自己换下。"
+    },
+    {
+      "title": "Litten（Rainier 卡号 sm10_en_027，招式 Caturday）",
+      "url": "https://limitlesstcg.com/cards/UNB/27",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Limitless card page used by PTCGCardCN for this card's English image (Rainier sm10 → Limitless UNB); English card text from the Rainier card database 2026-10-07",
+      "supportsZh": "“Draw a card. If you do, this Pokémon is now Asleep.”：牌库为空、一张都没抽到时不会睡眠。"
+    },
+    {
+      "title": "Kleavor V（Rainier 卡号 swsh10_en_087，招式 Axe Slash）",
+      "url": "https://limitlesstcg.com/cards/ASR/87",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Limitless card page used by PTCGCardCN for this card's English image (Rainier swsh10 → Limitless ASR); English card text from the Rainier card database 2026-10-07",
+      "supportsZh": "“Discard an Energy from this Pokémon. If you do, discard an Energy from your opponent's Active Pokémon.”：自己身上没有能量可弃时，不弃对手的能量。"
+    },
+    {
+      "title": "Finizen（Rainier 卡号 sv3_en_060，招式 Valiant Evolution）",
+      "url": "https://limitlesstcg.com/cards/OBF/60",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Limitless card page used by PTCGCardCN for this card's English image (Rainier sv3 → Limitless OBF); English card text from the Rainier card database 2026-10-07",
+      "supportsZh": "“Switch this Pokémon with 1 of your Benched Pokémon. If you do, search your deck for a card that evolves from this Pokémon and put it onto this Pokémon to evolve it.”：换位成功后检索进化，“this Pokémon” 仍是这只换到备战区的宝可梦。"
+    }
+  ],
+  "dataContractZh": "攻击计数（AttackCountBindings）扩展：switch、gust、force_switch 可加 bind，真的换了位记 1（被“防止效果”挡住记 0）；draw 可加 bind，记实际抽到的张数。discard_energy 等原有的可记录效果也可以在伤害后（AFTER_ATTACK）记录。后面的 “If you do, …” 写成 conditional + BOUND_COUNT（value 1）。伤害后记录的计数只能被之后的伤害后文字读取（按 BEFORE→ON→AFTER 的结算顺序检查）；opt_in 仍只能在伤害前。训练家、特性等非攻击入口一律拒绝 bind。",
+  "serverAuthorityZh": "是否做成由服务器在真正执行时判断：没有备战宝可梦、牌库为空、身上没有能量时这一步根本不执行，计数从未记录，按 0 算，后半句不结算。回放记录“攻击计数绑定：名字；数量”。",
+  "limitations": [
+    "训练家的 “If you do”（如 Surfer、Guzma）不用攻击计数：卡牌只有在第一步能做成时才可以使用，由 PTCGCardCN 写成按备战区数量的条件。",
+    "“If you do” 前面是检索、附能、放伤害指示物等其他步骤的写法还没有接入计数。"
+  ]
+}

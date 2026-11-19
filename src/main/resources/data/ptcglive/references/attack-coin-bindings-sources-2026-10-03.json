@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "version": "attack-coin-bindings-v1",
+  "implementationVersion": "0.6.0-development",
+  "checkedDate": "2026-10-03",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Breloom — XY Primal Clash 16/160",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/xy5/16/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "International official card database, xy5/16",
+      "verification": "Official indexed card text inspected on 2026-10-03; direct HTML open returned an iframe-only wrapper",
+      "supportsZh": "Dynamic Punch的一次硬币共同决定追加20伤害与对方战斗宝可梦混乱；不是为两段结果各投一次。只核验该通用机制，不代表整卡已审核或当前Standard合法。"
+    },
+    {
+      "title": "Poliwrath — HS Unleashed 21/96",
+      "url": "https://www.pokemon.com/uk/pokemon-tcg/pokemon-cards/series/hgss2/21/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "International official card database, hgss2/21",
+      "verification": "Official indexed card text inspected on 2026-10-03; direct HTML open returned an iframe-only wrapper",
+      "supportsZh": "另一版Dynamic Punch同样由一次硬币共同决定追加伤害与混乱，差异由数值参数表达，不新建单卡攻击类。目录分母以所引官方HTML索引为记录，不据此补填未核验整卡数据。"
+    }
+  ],
+  "implementationZh": [
+    "coin_flip可声明bind名称；COIN_RESULT通过coin引用同一次攻击内的服务器结果。BEFORE_ATTACK、ON_ATTACK、AFTER_ATTACK共享AttackCheckpoint内存。",
+    "目标选择、私有选牌、Choice暂停及复制攻击均复用该检查点；前缀和随机数不重执行。下一次攻击重新创建结果域。",
+    "原HEADS/TAILS仍表示至少一个正面/反面；新增ALL_HEADS/ALL_TAILS是整组逻辑谓词，不隐含取消整次攻击或额外规则。",
+    "按实际阶段顺序静态校验先定义后引用，禁止拼错、覆盖和循环内重复定义；互斥Choice分支可各定义同名结果。",
+    "可选路径没有产生的结果为不可用；NOT不能将其反转为成功，OR的已知真分支仍可成立。",
+    "训练家、特性、自动事件及未来延迟程序不继承当前攻击命名结果，入口整体拒绝，不执行前缀。"
+  ],
+  "unsupportedZh": [
+    "投到反面为止、重掷替代、动态投掷次数和按命名结果正面数量乘伤害尚未由本次扩展实现",
+    "跨攻击或跨未来延迟复用、循环内可变结果重绑定、任意命名目标绑定仍未开放",
+    "完整离场替代、复杂复制分支、跨进程恢复与双真实客户端验收仍未完成"
+  ],
+  "customEffectsAdded": 0,
+  "auditedRealCardCount": 39,
+  "ptcgLiveObserved": false,
+  "notesZh": "没有新建逐卡类或启用这两张真实卡。未知日期明确为null，不用页面抓取时间充当发布日期。未读取PTCG Live，未将日本、亚洲、Pocket或社区普通用户帖当国际规则证据。本轮未打开PDF；搜索返回的历史PDF摘录不当作整页已核验资料。"
+}

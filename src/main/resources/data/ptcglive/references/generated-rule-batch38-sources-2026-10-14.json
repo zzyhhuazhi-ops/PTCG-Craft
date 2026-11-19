@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-14",
+  "scope": "6 newly recognized components, 6 fully supported cards. Prior supported programs and metadata unchanged.",
+  "source": "Rainier English card text included verbatim per component; conversion input matched by stable card ID.",
+  "ruleReference": {
+    "url": "https://www.pokemon-card.com/assets/document/advanced_manual.pdf",
+    "usedFor": "General damage/Weakness order, Bench damage and attack effects, Energy units, KO checks and effect source timing. Card-specific text is retained below."
+  },
+  "evidence": [
+    {
+      "cardId": "me5-5_en_069",
+      "component": "attack",
+      "name": "Miraculous Shine",
+      "textEn": "Devolve each of your opponent's evolved Pokémon by putting the highest Stage Evolution card on it into your opponent's hand.",
+      "textZh": "从对手所有已经进化的宝可梦身上各移除1张「进化卡」使其退化。将被移除的卡牌放回对手的手牌。",
+      "mapping": {
+        "rules": [
+          "whole-opponent-devolution"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "devolve",
+                "target": "ALL_OPPONENT_POKEMON"
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_071",
+      "component": "attack",
+      "name": "Colorful Harmony",
+      "textEn": "This attack does 50 damage for each type of Basic Energy attached to all of your Pokémon.",
+      "textZh": "造成自己所有宝可梦身上附着的基本能量的属性种类数量×50伤害。",
+      "mapping": {
+        "rules": [
+          "basic-energy-distinct-types-damage"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [
+          {
+            "type": "damage_per_energy",
+            "target": "ALL_OWN_POKEMON",
+            "amount": 50,
+            "count_mode": "DISTINCT_TYPES",
+            "card_kind": "BASIC"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_103",
+      "component": "attack",
+      "name": "Reversed Clock",
+      "textEn": "Shuffle up to 3 in any combination of Pokémon and Basic Energy cards from your discard pile into your deck.",
+      "textZh": "选择自己弃牌区中的宝可梦和基本能量合计最多3张，在给对手看过之后放回牌库并重洗牌库。",
+      "mapping": {
+        "rules": [
+          "mixed-pokemon-basic-energy-recovery"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "search_discard_pile",
+                "target": "DISCARD",
+                "amount": 3,
+                "minimum": 0,
+                "card_kinds": "POKEMON|BASIC_ENERGY",
+                "destination": "DECK_SHUFFLED"
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_120",
+      "component": "attack",
+      "name": "Bouncy Circle",
+      "textEn": "This attack does 30 damage for each of your Benched Pokémon that has a maximum HP of 30.",
+      "textZh": "造成自己最大HP为「30」的备战宝可梦数量×30伤害。",
+      "mapping": {
+        "rules": [
+          "bench-current-maximum-hp-damage"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [
+          {
+            "type": "damage_per_pokemon",
+            "target": "OWN_BENCH",
+            "amount": 30,
+            "maximum_hp_equals": 30
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_153",
+      "component": "attack",
+      "name": "Colorful Harmony",
+      "textEn": "This attack does 50 damage for each type of Basic Energy attached to all of your Pokémon.",
+      "textZh": "造成自己所有宝可梦身上附着的基本能量的属性种类数量×50伤害。",
+      "mapping": {
+        "rules": [
+          "basic-energy-distinct-types-damage"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [
+          {
+            "type": "damage_per_energy",
+            "target": "ALL_OWN_POKEMON",
+            "amount": 50,
+            "count_mode": "DISTINCT_TYPES",
+            "card_kind": "BASIC"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "mebsp_en_100",
+      "component": "attack",
+      "name": "Colorful Harmony",
+      "textEn": "This attack does 50 damage for each type of Basic Energy attached to all of your Pokémon.",
+      "textZh": "造成自己所有宝可梦身上附着的基本能量的属性种类数量×50伤害。",
+      "mapping": {
+        "rules": [
+          "basic-energy-distinct-types-damage"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [
+          {
+            "type": "damage_per_energy",
+            "target": "ALL_OWN_POKEMON",
+            "amount": 50,
+            "count_mode": "DISTINCT_TYPES",
+            "card_kind": "BASIC"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    }
+  ]
+}

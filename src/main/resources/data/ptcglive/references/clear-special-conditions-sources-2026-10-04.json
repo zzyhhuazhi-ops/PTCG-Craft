@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "version": "clear-special-conditions-v1",
+  "checkedDate": "2026-10-04",
+  "implementationVersion": "0.6.3-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Blissey — Sun & Moon: Lost Thunder 153/214",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm8/153",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; indexed text checked 2026-10-04",
+      "supportsZh": "Natural Cure 是“从己方战斗宝可梦身上移除1个特殊状态”的官方英文机制例，用于指定状态的 clear_status 参数化建模；不代表该整卡已经审核为可玩。"
+    },
+    {
+      "title": "Pokémon Trading Card Game Rules — Scarlet & Violet Rulebook",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/pal_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English rulebook; official indexed page checked 2026-10-04",
+      "supportsZh": "特殊状态只存在于战斗宝可梦，并在宝可梦进入备战区或进化时移除；因此基础组件只对一个当前战斗位目标结算，不把状态存到备战区。"
+    }
+  ],
+  "dataContractZh": "clear_status(target, statuses) 的 statuses 必须是 ALL 或逗号分隔的 POISONED、BURNED、ASLEEP、PARALYZED、CONFUSED 非重复列表。目标必须解析为一个当前战斗宝可梦；选择目标时必须使用 position=ACTIVE 的服务器选择作用域。",
+  "serverAuthorityZh": "服务器加载时验证状态列表，预检与执行时再次验证目标仍是当前战斗位且至少含一个所声明状态；然后经既有卡牌效果防护、战场状态与审计记录接口移除状态。客户端不能提交状态集合、目标实例或空操作结果。",
+  "limitations": [
+    "本轮不猜测“治疗”“撤退”“进化”是否同时移除状态；这些已有规则或真实卡的额外文本须分别以数据组合表达。",
+    "没有据此自动启用 Blissey 或其它真实卡；整卡仍需审核原文、版本、合法性、发动时机和所有附带效果。",
+    "未将 PTCG Live、社区、日本、亚洲或 Pocket 行为混入国际规则包。"
+  ]
+}

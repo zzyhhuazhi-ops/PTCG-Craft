@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "scope": "Newest-first ME5 Dhelmise three printings, including the identical MEP084 promo. Artwork and true BREAK excluded; older Garbodor cards not promoted.",
+  "ruleReferences": [
+    {
+      "url": "https://asia.pokemon-card.com/sg/card-search/detail/25781/",
+      "facts": "Dhelmise Vengeful Anchor30+140 if own discard has4+Pokemon withHide n Sneak."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%80%E3%83%80%E3%83%AA%E3%83%B3&regulation_faq_main_item1=all",
+      "facts": "Garbotoxin removes discarded Abilities so no bonus; field-only Legendary Lava Cave leaves discarded Sinistcha counted."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/details.php?id=8642",
+      "facts": "Garbotoxin affects field,hand,discard, not PokePowers/PokeBodies."
+    }
+  ],
+  "evidence": [
+    {
+      "cardId": "me5_en_039",
+      "name": "Vengeful Anchor",
+      "textEn": "If you have 4 or more Pokémon that have the Hide 'n' Sneak Ability in your discard pile, this attack does 140 more damage.",
+      "textZh": "如果自己弃牌区有4张及以上拥有特性「化隐」的宝可梦的话，则追加造成140伤害。",
+      "fields": {
+        "baseDamage": 30
+      },
+      "program": [
+        {
+          "type": "conditional",
+          "conditions": [
+            {
+              "type": "DISCARD_COUNT",
+              "target": "SELF",
+              "ability_id": "hide-n-sneak",
+              "value": 4,
+              "comparison": ">="
+            }
+          ],
+          "effects": [
+            {
+              "type": "damage",
+              "target": "OPPONENT_ACTIVE",
+              "amount": 140
+            }
+          ]
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "cardId": "me5_en_091",
+      "name": "Vengeful Anchor",
+      "textEn": "If you have 4 or more Pokémon that have the Hide 'n' Sneak Ability in your discard pile, this attack does 140 more damage.",
+      "textZh": "如果自己弃牌区有4张及以上拥有特性「化隐」的宝可梦的话，则追加造成140伤害。",
+      "fields": {
+        "baseDamage": 30
+      },
+      "program": [
+        {
+          "type": "conditional",
+          "conditions": [
+            {
+              "type": "DISCARD_COUNT",
+              "target": "SELF",
+              "ability_id": "hide-n-sneak",
+              "value": 4,
+              "comparison": ">="
+            }
+          ],
+          "effects": [
+            {
+              "type": "damage",
+              "target": "OPPONENT_ACTIVE",
+              "amount": 140
+            }
+          ]
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "cardId": "mebsp_en_084",
+      "name": "Vengeful Anchor",
+      "textEn": "If you have 4 or more Pokémon that have the Hide 'n' Sneak Ability in your discard pile, this attack does 140 more damage.",
+      "textZh": "如果自己弃牌区有4张及以上拥有特性「化隐」的宝可梦的话，则追加造成140伤害。",
+      "fields": {
+        "baseDamage": 30
+      },
+      "program": [
+        {
+          "type": "conditional",
+          "conditions": [
+            {
+              "type": "DISCARD_COUNT",
+              "target": "SELF",
+              "ability_id": "hide-n-sneak",
+              "value": 4,
+              "comparison": ">="
+            }
+          ],
+          "effects": [
+            {
+              "type": "damage",
+              "target": "OPPONENT_ACTIVE",
+              "amount": 140
+            }
+          ]
+        }
+      ],
+      "triggers": []
+    }
+  ]
+}

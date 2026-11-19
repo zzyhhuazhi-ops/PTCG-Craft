@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "version": "trainer-play-lock-v1",
+  "checkedDate": "2026-10-07",
+  "implementationVersion": "0.6.7-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Budew（Rainier 卡号 sv8-5_en_004，招式 Itchy Pollen）",
+      "url": "https://limitlesstcg.com/cards/PRE/4",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Limitless card page used by PTCGCardCN for this card's English image (Rainier sv8-5 → Limitless PRE); English card text from the Rainier card database 2026-10-07",
+      "supportsZh": "“During your opponent's next turn, they can't play any Item cards from their hand.”：对手的下个回合不能从手牌使用物品卡；只限制“从手牌使用”，不影响已在场上的卡。"
+    },
+    {
+      "title": "Luxio（Rainier 卡号 sm5_en_047，招式 Disconnect）",
+      "url": "https://limitlesstcg.com/cards/UPR/47",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Limitless card page used by PTCGCardCN for this card's English image (Rainier sm5 → Limitless UPR); English card text from the Rainier card database 2026-10-07",
+      "supportsZh": "旧写法 “Your opponent can't play any Item cards from their hand during their next turn.”，意思相同（xy8 的 “his or her” 写法亦同）。"
+    },
+    {
+      "title": "Vileplume（Rainier 卡号 swsh11_en_003，招式 Allergy Storm）",
+      "url": "https://limitlesstcg.com/cards/LOR/3",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Limitless card page used by PTCGCardCN for this card's English image (Rainier swsh11 → Limitless LOR); English card text from the Rainier card database 2026-10-07",
+      "supportsZh": "“… they can't play any Supporter cards from their hand …”：同一机制也用于支援者卡，所以 trainer_category 可以是 ITEM 或 SUPPORTER。"
+    }
+  ],
+  "dataContractZh": "新效果 prevent_trainer_play：target 只能是 OPPONENT_ACTIVE（表示对手玩家），只接受 trainer_category（ITEM 或 SUPPORTER）；只在攻击的 AFTER_ATTACK 结算，训练家不能用。",
+  "serverAuthorityZh": "服务器在对手的玩家状态上记一条“不能从手牌使用某类训练家卡”的限制，拥有者是使用招式的玩家，到其下个回合开始时解除（正好覆盖对手的下个回合）。对手使用训练家卡的唯一入口 validateTrainer 会拒绝被限制的卡；是否算“物品卡”按规则包的训练家分类判断（现行规则下宝可梦道具不是物品卡）。对局界面把被限制的手牌列为“本回合不能使用”，回放记录施加与被拒绝。",
+  "limitations": [
+    "特性写的持续限制（“As long as this Pokémon is in the Active Spot, your opponent can't play any Item cards …”）不用本组件。",
+    "限制目前只显示在对局操作列表和回放里，玩家状态面板还没有单独的标记。"
+  ]
+}

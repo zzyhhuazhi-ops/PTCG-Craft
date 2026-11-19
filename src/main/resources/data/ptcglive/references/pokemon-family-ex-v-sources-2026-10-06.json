@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "version": "pokemon-family-ex-v-v1",
+  "checkedDate": "2026-10-06",
+  "implementationVersion": "0.6.4-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Pokémon Trading Card Game Rules — Scarlet & Violet Rulebook（Appendix: Pokémon ex; Pokémon VSTAR; Pokémon V-UNION）",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/pal_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English rulebook PDF; text extracted and checked 2026-10-06",
+      "supportsZh": "规则书：“Pokémon ex 和 Pokémon-EX 不是同一个名称”（可以各放 4 张）；Pokémon VSTAR 虽是不同阶段，仍算 Pokémon V，影响 Pokémon V 的效果也影响它；Pokémon V-UNION 也仍算 Pokémon V。"
+    },
+    {
+      "title": "Pokémon Rulings Compendium — Boltund “Fighting Fangs”（Pokémon VMAX are Pokémon V）",
+      "url": "https://compendium.pokegym.net/ruling/442/",
+      "publishedDate": "2020-05-07",
+      "effectiveDate": null,
+      "documentVersion": "TPCi Rules Team ruling (2020-05-07); Brilliant Stars FAQ (2022-02-24) restates that Pokémon V includes Pokémon V, VMAX, VSTAR and V-UNION; read 2026-10-06",
+      "supportsZh": "官方裁定：Pokémon VMAX 一律算 Pokémon V；“Pokémon V”包括 Pokémon V、VMAX、VSTAR 和 V-UNION。"
+    }
+  ],
+  "dataContractZh": "PokemonFamily 新增 EX_LEGACY（印刷的“Pokémon-EX”，BW／XY 年代），条件新增 IS_LEGACY_EX。EX 只表示“Pokémon ex”（小写），IS_EX 不再能代指 Pokémon-EX。按裁定，Pokémon VMAX、VSTAR、V-UNION 的卡牌数据应同时带 V 标记，这样 IS_V 才会匹配它们。",
+  "serverAuthorityZh": "服务器只读取卡牌数据里审核过的印刷标记（当前顶层卡），不从名称、年代或卡号推断；条件在各入口照常校验目标与参数。",
+  "limitations": [
+    "模组自带的已审核卡牌数据目前没有写任何 pokemonFamilies；标记来自 PTCGCardCN 生成的数据，以后手工审核卡牌时也要按本说明写。",
+    "Tera Pokémon ex 的 TERA 标记需要卡牌数据另外提供，名称后缀无法判断。"
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "version": "attack-cost-binding-v1",
+  "checkedDate": "2026-10-07",
+  "implementationVersion": "0.6.7-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Pikachu VMAX（Rainier 卡号 swsh4_en_044，招式 G-Max Volt Tackle）",
+      "url": "https://limitlesstcg.com/cards/VIV/44",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Limitless card page used by PTCGCardCN for this card's English image (Rainier swsh4 → Limitless VIV); English card text from the Rainier card database 2026-10-07",
+      "supportsZh": "“You may discard all Energy from this Pokémon. If you do, this attack does 150 more damage.”：伤害前由使用者决定是否弃掉这只宝可梦身上全部能量；真的弃了（至少 1 张）才追加 150 点。"
+    },
+    {
+      "title": "Ice Rider Calyrex VMAX（Rainier 卡号 swsh6_en_046，招式 Max Lance）",
+      "url": "https://limitlesstcg.com/cards/CRE/46",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Limitless card page used by PTCGCardCN for this card's English image (Rainier swsh6 → Limitless CRE); English card text from the Rainier card database 2026-10-07",
+      "supportsZh": "“You may discard up to 2 Energy from this Pokémon. If you do, this attack does 120 more damage for each card you discarded in this way.”：选 0 到 2 张弃掉，每实际弃 1 张追加 120 点。"
+    },
+    {
+      "title": "Kommo-o（Rainier 卡号 sm12_en_163，招式 Scaly Uppercut）",
+      "url": "https://limitlesstcg.com/cards/CEC/163",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Limitless card page used by PTCGCardCN for this card's English image (Rainier sm12 → Limitless CEC); English card text from the Rainier card database 2026-10-07",
+      "supportsZh": "“You may discard a Pokémon Tool card from this Pokémon. If you do, this attack does 90 more damage.”：代价是弃掉身上的工具。"
+    },
+    {
+      "title": "Pangoro（Rainier 卡号 xy3_en_068，招式 Clobber）",
+      "url": "https://limitlesstcg.com/cards/FFI/68",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Limitless card page used by PTCGCardCN for this card's English image (Rainier xy3 → Limitless FFI); English card text from the Rainier card database 2026-10-07",
+      "supportsZh": "“You may discard an Item card from your hand. If you do, this attack does 40 more damage.”：代价是弃 1 张手牌里的物品卡。"
+    },
+    {
+      "title": "Bewear（Rainier 卡号 sm1_en_112，招式 Superpower）",
+      "url": "https://limitlesstcg.com/cards/SUM/112",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Limitless card page used by PTCGCardCN for this card's English image (Rainier sm1 → Limitless SUM); English card text from the Rainier card database 2026-10-07",
+      "supportsZh": "“You may do 40 more damage. If you do, this Pokémon does 20 damage to itself.”：伤害前决定是否追加；追加了，伤害后这只宝可梦对自己造成 20 点伤害。"
+    }
+  ],
+  "dataContractZh": "新增攻击计数（AttackCountBindings，与命名硬币一样只在一次攻击内有效）：discard_energy、discard（手牌）、discard_tool 可加 bind，记录这一步实际弃置的张数；新效果 opt_in（只接受 bind，放在 optional choice 里，选择发动时记 1）。新条件 BOUND_COUNT（bind、value≥1）读计数，从未记录的名字按 0 算；新效果 damage_per_bound（bind、amount，10 的倍数）只在伤害计算阶段（ON_ATTACK）按计数追加伤害。计数只能在伤害前（BEFORE_ATTACK）记录，读取必须在记录之后（按 BEFORE→ON→AFTER 的结算顺序检查），同名不能重复，repeat 里不能记录；训练家、特性等非攻击入口一律拒绝。",
+  "serverAuthorityZh": "张数由服务器在真正弃置时统计：被“防止效果”挡住的、身上本来就没有的都不算；可选选择不发动或这一步没有执行时计数为 0，等于“没做”。伤害阶段读这个数决定追加伤害，伤害后的代价（如自伤）也读同一个数。回放记录“攻击计数绑定：名字；数量”。",
+  "limitations": [
+    "“You may turn 1 of your face-down Prize cards face up.”、“You may discard the top 3 cards of each player's deck … for each Energy card you discarded” 等其他代价不在本组件内。",
+    "“You may discard 3 {T} Energy … If you do” 这类要求正好 N 张的写法：能量不足时选择发动只会弃掉现有的几张，计数不足 N 就不追加；匹配规则用 BOUND_COUNT value=N 表达。"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "version": "attack-damage-per-prize-v1",
+  "checkedDate": "2026-10-04",
+  "implementationVersion": "0.6.4-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Mega Mawile ex — Mega Evolution 94/132",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/me01/94",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; indexed text checked 2026-10-04",
+      "supportsZh": "Gobble Down 的英文卡文以“每张你已拿取的奖赏卡”作为攻击伤害乘数，是攻击读取公开奖赏数的直接机制例。"
+    },
+    {
+      "title": "Pokémon Trading Card Game Rules — Scarlet & Violet Rulebook",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/pal_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English rulebook; official indexed text checked 2026-10-04",
+      "supportsZh": "攻击伤害通过统一伤害流程处理；实现先从服务器状态读公开奖赏数量，再将模板计算的伤害交给弱点、抵抗、减伤、防护和击倒层。"
+    }
+  ],
+  "dataContractZh": "damage_per_prize(amount, prize_count?) 当前仅用于攻击 ON_ATTACK。prize_count 省略或为 REMAINING 时按目标所属方的剩余奖赏卡数计算；为 TAKEN 时按该方在开局由服务器设置的初始奖赏数减当前剩余数计算。amount 为每张奖赏增加的基础伤害，目标必须是公开场上宝可梦。",
+  "serverAuthorityZh": "客户端只声明攻击；服务器在攻击检查点读取对应玩家的公开奖赏区数量和开局奖赏快照，计算 amount×数量后交给统一攻击伤害层，客户端不能指定奖赏数、修改乘数或绕过弱点、抵抗、伤害修正、免疫、击倒与奖赏处理。",
+  "limitations": [
+    "该组件可明确表示剩余或已拿取奖赏卡数；真实卡仍须审核其目标所属方、基础伤害、文字时机、合法性及其它附带语义，当前不会因组件存在而自动启用 Mega Mawile ex。",
+    "按双方奖赏差、按某类奖赏、面朝上奖赏、奖赏交换、Rule Box 或其它限制仍由独立条件与效果组件处理。",
+    "未将 PTCG Live、社区、日本、亚洲或 Pocket 行为混入国际规则包。"
+  ]
+}

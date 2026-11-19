@@ -1,0 +1,76 @@
+# =========================
+# Gradle
+# =========================
+.gradle/
+.gradle-cache/
+build/
+out/
+
+# =========================
+# Minecraft / Fabric runtime
+# =========================
+run/
+run-visible/
+logs/
+
+# GameTest runtime
+**/gametest-run/
+**/world/
+
+# =========================
+# Temporary files
+# =========================
+tmp/
+*.tmp
+*.log
+hs_err_pid*.log
+
+# =========================
+# IDE
+# =========================
+.idea/
+*.iml
+.vscode/
+
+# =========================
+# OS
+# =========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =========================
+# Generated packages
+# =========================
+*.zip
+*.7z
+*.rar
+# Reproducible builds require the generated catalogue, models and compact art.
+# Original-resolution artwork remains an optional, separate resource pack.
+src/generated/resources/assets/ptcglive_mc/card_art/*
+# Two original JPEGs are regression fixtures for Minecraft image decoding.
+!src/generated/resources/assets/ptcglive_mc/card_art/rsv10-5_en_024.jpg
+!src/generated/resources/assets/ptcglive_mc/card_art/swshbsp_en_307.jpg
+
+# Local credentials and tooling caches must not enter source releases.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.keystore
+__pycache__/
+*.pyc
+local-deps/
+
+# Local work and release artifacts
+outputs/
+output/
+research/
+.tools/
+.codex/
+.agents/
+*.jar
+!gradle/wrapper/gradle-wrapper.jar

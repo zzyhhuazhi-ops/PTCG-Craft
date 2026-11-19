@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-12",
+  "scope": "126 newly recognized components (110 attacks, 12 abilities, 4 Trainers), 85 fully supported additional cards; no previous supported program or metadata changes.",
+  "sources": [
+    {
+      "title": "Scolipede Dastardly Jab",
+      "url": "https://asia.pokemon-card.com/my/card-search/detail/12600/",
+      "checkedFacts": "Place counters until the opposing Active has 10 remaining HP."
+    },
+    {
+      "title": "Genesect Bug’s Cannon",
+      "url": "https://asia.pokemon-card.com/sg/card-search/detail/22132/",
+      "checkedFacts": "Choose one opponent Pokemon and deal 20 damage per attached Grass Energy; no Weakness or Resistance on Bench."
+    },
+    {
+      "title": "Incineroar-GX Hustling Strike",
+      "url": "https://www.pokemon.com/uk/pokemon-tcg/pokemon-cards/series/sm2/147/",
+      "checkedFacts": "10 base plus 20 per own Benched Fire Pokemon."
+    },
+    {
+      "title": "Advanced Players Rulebook, C-10, move Energy",
+      "url": "https://asia.pokemon-card.com/ph/wp-content/uploads/sites/6/2022/08/advanced-manual_EN.pdf",
+      "checkedFacts": "Psychic Transfer moves one attached Psychic Energy to another own Pokemon, repeatedly. Moving one Energy can move one multi-unit Energy card."
+    },
+    {
+      "title": "Zapdos ex Multishot Lightning",
+      "url": "https://asia.pokemon-card.com/sg/card-search/detail/10385/",
+      "checkedFacts": "120 Active damage plus 90 damage to one opposing Benched Pokemon that already has damage counters, with no Bench Weakness or Resistance."
+    },
+    {
+      "title": "Mega Absol ex Terminal Period",
+      "url": "https://asia.pokemon-card.com/sg/card-search/detail/21678/",
+      "checkedFacts": "The opposing Active is Knocked Out only at exactly six damage counters."
+    }
+  ],
+  "boundaries": [
+    "Selected Bench damage requires a lexical BENCH scope; damaged-target filters exclude the Active and undamaged Bench.",
+    "Damage uses the attack pipeline, whereas placing counters does not apply Weakness/Resistance.",
+    "Fixed multi-target counters select distinct Pokemon and resolve as much as possible on short fields.",
+    "Remaining-HP counters never heal; exact counter Knock Out uses equality.",
+    "Stadium damage bonus reads presence before the after-attack Stadium discard.",
+    "Unlimited Energy transfers move one physical card currently providing the type and cannot select the same destination host.",
+    "Private deck searches may fail to find; mandatory public discard recovery selects all available cards up to the printed quantity.",
+    "Unrecognized companion text keeps the whole card unsupported."
+  ]
+}

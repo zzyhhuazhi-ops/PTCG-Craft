@@ -1,0 +1,320 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-18",
+  "scope": "小木灵与朽木妖的手牌自我进化、成功后指示物、附能限制和全场指示物加伤; no artwork, BREAK or JAR.",
+  "cardIds": [
+    "me4_en_038",
+    "me4_en_039"
+  ],
+  "ruleReferences": [
+    {
+      "url": "https://asia.pokemon-card.com/sg/card-search/detail/25229/",
+      "kind": "Actual printed English Phantump",
+      "supports": "Spiteful Evolution, once during own turn, hand self evolution then2 counters, first-own-turn prohibition."
+    },
+    {
+      "url": "https://asia.pokemon-card.com/sg/card-search/detail/25230/",
+      "kind": "Actual printed English Trevenant",
+      "supports": "Cursed Roots Pokemon-specific hand attachment restriction and Overwhelming Pain."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%9C%E3%82%AF%E3%83%AC%E3%83%BC&regulation_faq_main_item1=all",
+      "kind": "Actual Phantump FAQ",
+      "supports": "Second-own-turn newly entered and same-turn freshly devolved use allowed. Does not directly establish already-used same-source repeat use."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%82%AA%E3%83%BC%E3%83%AD%E3%83%83%E3%83%88&regulation_faq_main_item1=all",
+      "kind": "Actual Trevenant FAQ",
+      "supports": "Gorebyss may choose Crescendo Wave attachment; attempted Basic Water discarded. Bench/evolve/devolve clears lock."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%89%E3%83%9F%E3%83%8D%E3%83%BC%E3%83%88%E3%82%A8%E3%82%B3%E3%83%BC&regulation_header_search_item1=all",
+      "kind": "Direct official Noivern ex / Wigglytuff FAQ",
+      "supports": "After Dominating Echo, Balloon Therapy cannot attach Therapy Energy from hand. Supports retaining PLAYER/SPECIAL effect-attachment prohibition."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/43194/regu/all",
+      "kind": "Official Noivern ex printed text",
+      "supports": "Dominating Echo restricts opponent playing Special Energy and Stadium from hand; player wording differs from Cursed Roots host wording."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/33903",
+      "kind": "Official Noivern GX printed text",
+      "supports": "Sonic Volume restricts opponent playing Special Energy from hand."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%81%93%E3%81%8F%E3%81%B0%E3%83%90%E3%83%89%E3%83%AC%E3%83%83%E3%82%AF%E3%82%B9V&regulation_faq_main_item1=all",
+      "kind": "Official Shadow Rider Calyrex V FAQ",
+      "supports": "After Shadow Mist, Houndoom Single Strike Roar may attach from deck; hand Aurora Energy remains forbidden even with Ghost Breach. Preserves source-zone distinction."
+    },
+    {
+      "url": "https://www.pokemon-card.com/assets/document/advanced_manual.pdf",
+      "kind": "Official general rules, version3.4 recorded by batch88 research",
+      "supports": "Ability/evolution order, effect evolution exceptions, hand evolution events and leave/reentry. No claim of a direct already-used Phantump repeat FAQ."
+    }
+  ],
+  "reviewedSemantics": [
+    "Group adjacent same-release Phantump038 and Trevenant039; no older unsupported card or BREAK activation.",
+    "Introduce one narrow resumable self-evolution-from-hand primitive, then reuse an existing success count condition and Ability-origin damage counters.",
+    "Fix existing Pokemon-scoped hand-Energy locks for card-effect attempted attachment only: selected blocked Energy goes to its owner's discard. Manual attachment remains forbidden and atomic.",
+    "Preserve PLAYER/SPECIAL prohibited-play restrictions, including effect attachments from hand. Direct official Noivern ex / Wigglytuff FAQ supports this different behavior.",
+    "Do not add speculative Ability usage resets, broad devolution timing fixes, new attachment invalid-host options, or unrelated old-card support.",
+    "New strict HandEvolutionEffect is only a resumable ONCE_PER_TURN Pokemon Ability atom; first-owner-turn gate remains in approved data and permission; source-entry and physical top-card are frozen until selection commit.",
+    "Commit rechecks activeAbilities for the original ability ID, not validateAbility or beginActivation, so reserved usage does not reject its own valid continuation. Successful evolution uses existing hand-evolution events, then bind1; original same-entry context continues the counter suffix after old Ability disappears.",
+    "No-candidate after earlier depletion completes the selection with bound0 before issuing a prompt. Public/new data minimum remains exactly1; it is not relaxed to0. Activation potential still rejects the actual no-effect card.",
+    "Pokemon hand-lock effect attempts directly move whole physical cards to actual-owner discard before any attachment event capture; distributed all-discard groups do not increment triggerEventBatch. Existing player-Special prohibition, host restrictions, prevention ordering, nonhand zones and manual semantics remain.",
+    "SpecialEnergyAttachmentTest initially caught an error-message compatibility regression; restored existing unreviewed host-override wording. No gameplay behavior was changed for this old restriction.",
+    "StarterDeck100HandLockTest corrects only sd100_cn_160 effect attachment expectation; manual denial and source/expiry/immunity remain, sd100_cn_203 PLAYER/SPECIAL rejection remains.",
+    "Meaningful components include staged invalid-authority/empty/wrong evolution, both seats first turn, no-effect potential, source top and hand-lock stale commit, old Ability disappearance, replay evolution-before-counters, deferred evolution reaction healing new counters, optional/forced attachment, attached bind0, no events, mixed distribution, paid requires_effect cost retained, actual physical owner conservation and independent host restriction under hand lock."
+  ],
+  "schema": {
+    "phantumpBinding": {
+      "trigger": "ONCE_PER_TURN",
+      "conditions": [
+        {
+          "type": "NOT",
+          "conditions": [
+            {
+              "type": "TURN_STATE",
+              "target": "SELF",
+              "value": "OWN_FIRST_TURN"
+            }
+          ]
+        }
+      ],
+      "effects": [
+        {
+          "type": "evolve_from_hand",
+          "target": "SELF",
+          "amount": 1,
+          "minimum": 1,
+          "card_category": "POKEMON",
+          "timing": "AFTER_OWNER_FIRST_TURN",
+          "bind": "evolved"
+        },
+        {
+          "type": "conditional",
+          "conditions": [
+            {
+              "type": "BOUND_COUNT",
+              "bind": "evolved",
+              "value": 1
+            }
+          ],
+          "effects": [
+            {
+              "type": "damage_counter",
+              "target": "SELF",
+              "amount": 2
+            }
+          ]
+        }
+      ]
+    },
+    "serializationNote": "Exact JSON above uses conditions for NOT children, accepted by EffectRegistry.parseCondition. Logical contract is NOT(TURN_STATE OWN_FIRST_TURN).",
+    "evolutionAtomic": {
+      "type": "evolve_from_hand",
+      "target": "SELF only",
+      "arguments": [
+        "amount",
+        "minimum",
+        "card_category",
+        "timing",
+        "bind"
+      ],
+      "exactValues": {
+        "amount": "1",
+        "minimum": "1",
+        "card_category": "POKEMON",
+        "timing": "AFTER_OWNER_FIRST_TURN"
+      },
+      "bind": "Required valid AttackCountBindings name; producer writes 1 only after one actual successful evolution, otherwise0 on a legitimate no-op. Existing bind dominance/duplicate/order checks apply.",
+      "entry": "Only a manually activated Pokemon ONCE_PER_TURN Ability with actual source and resumable private selection. Reject attack, trainer, automatic trigger, standalone atomic/zone API, delayed/repeat capability broadening and source substitution.",
+      "permission": "new EvolutionPermission(false, true, true, false)",
+      "restrictions": "No source_owner, chooser, destination, skip_stage, arbitrary name/filter sets, nested effects, or alternative timing value. New helper rejects unknown/missing/malformed fields. Global schema conditions remain interpreter-owned.",
+      "minimumRationale": "Exact raw text says 'may use this Ability. Choose a card ...', so choosing to activate is optional, but a successfully activated choice must select exactly one eligible card. It does not say 'up to one'. No minimum0 or decline-after-activation option.",
+      "rootGate": "NOT OWN_FIRST_TURN is checked before beginActivation reserves usage. The permission independently retains the same timing restriction during candidate/commit checks."
+    },
+    "trevenantCursedRoots": {
+      "trigger": "AFTER_ATTACK",
+      "effects": [
+        {
+          "type": "prevent_hand_energy",
+          "target": "OPPONENT_ACTIVE",
+          "scope": "DEFENDING_POKEMON",
+          "card_kind": "ANY"
+        }
+      ]
+    },
+    "trevenantOverwhelmingPain": {
+      "printedBaseDamage": 60,
+      "trigger": "ON_ATTACK",
+      "effects": [
+        {
+          "type": "damage_per_damage_counter",
+          "target": "ALL_OPPONENT_POKEMON",
+          "amount": 10
+        }
+      ]
+    },
+    "attachmentSchema": "No new JSON field. Existing prevent_hand_energy scope/card_kind contract determines the restriction kind; existing attach_energy source/filter/optional/minimum/distribution/count contract remains unchanged."
+  },
+  "localPrintAudit": {
+    "rawFile": "D:/我的mod/rainier-localization-chinese/rainier-localization-chinese (1)/card-databases/me4.json",
+    "rawSha256": "f74a17944d45aa60ae6a74572a61f9e02184bea66c5665253511144d76d946b5",
+    "report": "outputs/rules-20261012/batch83/reports/conversion-report.json",
+    "reportSha256": "8aed3ae408d9b0ee748e08d406b5dfb16900dd1d7e861d9f12aeb632415cfd90",
+    "currentCardsSha256AtRead": "c680ad883f06365ae175b773dfc68f0731804d58951ef906a2c861bb574a87d8",
+    "currentCombatSha256AtRead": "558b5bd158bdcf99478fdf9163337ee3dfb47f03bea1e3ff92c4658b9a481ff9",
+    "exactPrintScan": {
+      "databaseFiles": 109,
+      "rows": 25598,
+      "method": "Scanned all rows for both archetypeIDs, Spiteful Evolution text, and Trevenant with Cursed Roots.",
+      "matches": [
+        "me4_38",
+        "me4_38_ph",
+        "me4_39",
+        "me4_39_ph"
+      ],
+      "canonicalCombatIds": [
+        "me4_en_038",
+        "me4_en_039"
+      ],
+      "result": "Only these two canonical prints; foil variants collapse into their same numbered definitions."
+    },
+    "currentSupport": {
+      "me4_en_038": "UNSUPPORTED cards entry, no active combat entry; report combatDraft has full profile plus unsupported ability.",
+      "me4_en_039": "UNSUPPORTED cards entry and both attacks; existing combat entry has full metadata and direct evolution from038."
+    },
+    "relatedCurrentSupport": {
+      "sv10_en_056": "Actual Gorebyss Crescendo Wave remains UNSUPPORTED. Do not activate it for this batch; use an explicitly synthetic attachment effect fixture for its official interaction.",
+      "me1_en_128": "Actual Mysterious Clock / 奇异时钟 remains UNSUPPORTED. Do not activate it; an explicit synthetic devolution fixture may establish timing semantics.",
+      "alreadySupportedOlderTrevenantExamples": [
+        "sm2_en_007",
+        "sm12_en_094",
+        "sv6_en_013",
+        "swsh2_en_015",
+        "swsh8_en_017",
+        "xybsp_en_014"
+      ],
+      "break": "Raw evolvesInto and official navigation mention Trevenant BREAK. This is not a scope dependency and must remain excluded per user instruction."
+    }
+  },
+  "evidenceLimitations": [
+    "Research only; no implementation schema was committed and no tests executed.",
+    "Current-resource hashes record an observation while parent may legitimately integrate other batches; they are not a freeze requirement.",
+    "No exact actual-card repeated-used-Phantump devolution FAQ found; distinction recorded above.",
+    "English FAQ detail endpoints unavailable; Japanese actual FAQ and English printed card pages were available.",
+    "Older actual Gorebyss and Mysterious Clock interactions use explicit synthetic mechanisms until their own batches; no older-era activation or BREAK work.",
+    "No direct already-used Spiteful Evolution→devolution→reuse FAQ found. No source-generation reset is proposed.",
+    "Noivern ex has a direct effect-attachment FAQ; Noivern GX/Calyrex preservation also relies on their shared player-action wording and Calyrex zone-specific FAQ. Do not label each as having the same direct Wigglytuff FAQ.",
+    "Gorebyss sv10_en_056 and Mysterious Clock me1_en_128 remain unsupported; their interaction mechanisms may be synthetic tests only.",
+    "General ordinary post-devolution manual-evolution timing gap is deferred and must not be reported as fixed or introduced by88.",
+    "Original report was design-only. Revision2 records approved isolated implementation and the actual-runtime correction; see batch88-draft/engine-validation.json for precise component results. No production activation or package was performed."
+  ],
+  "testLimitations": [
+    "Actual isolated runtime PASS verified against saved result and exact test source hash. This is exploratory output-only verification, not a claim of formal production integration.",
+    "Actual raw card text has only one canonical print of each038/039; parallel-foil records collapse to canonical IDs.",
+    "No direct official FAQ establishes already-used Spiteful Evolution -> evolve -> devolve -> reuse. Existing logical-entry once-per-turn usage is intentionally preserved and tested as compatibility, not asserted as new ruling.",
+    "Ordinary manual evolution timing after devolution remains outside88 scope.",
+    "Engine component suite owns stale-source mutation, primitive validation, deferred trigger reactions, bulk/distributed attachment consistency and PLAYER/SPECIAL lock distinctions. Actual draft focuses real card wiring plus public authority and actions."
+  ],
+  "validationAtReview": {
+    "pythonTests": 625,
+    "catalogLoad": "passed",
+    "actualCardAndComponentRegressions": "passed",
+    "fullCheck": "pending; see final batch88 docs for terminal result"
+  },
+  "evolutionRuntime": {
+    "helper": "New effect/HandEvolutionEffect.java: handles, strict validation/from, selection spec and reviewed EvolutionPermission. Keep the timing exception explicit in data; only one reviewed timing enum accepted.",
+    "zoneIntegration": [
+      "ZoneSelectionEffect.handles/from recognizes evolve_from_hand before generic discard validation; source HAND, category POKEMON, min=max1, no recovery destination. Add a distinct hand-evolution predicate; do not redefine existing deck-only evolvesSelf/evolutionPermission behavior.",
+      "ServerMatch preflight requires a resumable, nonautomatic ABILITY context with actual source. ResumableProgramRules permits only pokemonSource + ONCE_PER_TURN. Do not silently accept standalone atomic context.",
+      "effectCandidateAllowed requires an actual supported Pokemon combat profile and canEvolveByEffect(actor, originalSourcePokemon, cardId, permission), preserving direct evolution by canonical name, general evolution locks and HAND_EVOLUTION_LOCK. Item/Fossil cards in hand fail Pokemon category; Stage2-on-Basic skip fails.",
+      "openPendingZone retains source owner, Pokemon instance ID, entry sequence and original physical top-card ID for this operation. Reuse the shape of existing PokemonReplacementSource or a neutrally named captured evolution source, without changing deck replacement semantics.",
+      "Commit validates server-issued transaction/revision/turn/RNG, actor authority, exact one issued card still in owner's hand, original source entry and original top card unchanged, ability eligibility and current evolution locks. An invalid client response leaves the pending prompt and already reserved use intact; it is distinct from activation-time rejection."
+    ],
+    "commit": [
+      "Add a dedicated private resolver (proposed evolveOwnPokemonFromHandByEffect) for the new zone operation. Do not route it into the existing HAND discard arm.",
+      "After validation and existing origin-aware effect protection, reuse evolveByEffect with reviewed permission to move exactly the selected card from hand onto the captured Pokemon, preserving damage/Energy/Tool and clearing old conditions/effects via existing BattlefieldState.evolve.",
+      "Write success bind1 only after actual movement/evolution. Protection/no-op writes0; no counters in that case. Exact no-candidate source/lock state is rejected before activation, so no prompt, card movement or usage is spent.",
+      "The subsequent guarded damage_counter SELF amount2 follows the same Pokemon entry after successful evolution. Do not re-require possession of the old Phantump Ability or the old top card during this continuation. If the source genuinely left/reentered, do not hit its replacement.",
+      "Keep origin ABILITY for counters. Evolved profile/HP is installed before counters; counter placement is not attack damage or recoil. Reuse existing counter immunity/protection and KO settlement.",
+      "Reuse HAND ON_EVOLVE and CARD_PLAYED events from evolveByEffect. While resolvingEffectProgram is true, defer queued reaction draining until the ability sequence (including counters) completes. No deck search, shuffle or RNG."
+    ],
+    "potential": [
+      "New canAffect atomic returns true only for a live actual source with at least one legal hand evolution candidate and unblocked evolution effect.",
+      "Existing EffectPotential evaluates BOUND_COUNT guard with absent count0; therefore the later SELF counters do not independently authorize a no-candidate activation. Add explicit regression for no candidate, wrong evolution, HAND_EVOLUTION_LOCK and general evolution lock.",
+      "A legal evolution itself is meaningful even if subsequent damage counters are prevented. No broad hypothetical binding-state rewrite is needed for this card."
+    ],
+    "usageAndTimingLimits": [
+      "Use existing per-source ONCE_PER_TURN lifecycle. Leave/reentry new entry permits another use; switching or suppression/restoration alone does not reset.",
+      "Actual Phantump FAQ permits just-entered second-or-later-own-turn use and fresh just-devolved same-turn use. It does not explicitly say the same Phantump already used Spiteful Evolution before the devolution.",
+      "No speculative change to usage keys on evolution/devolution in88. Existing entrySequence-preserving lifecycle is documented, not relabeled as an official repeat-use ruling.",
+      "BattlefieldState.devolveByEffect does not presently update enteredTurn/lastEvolvedTurn; ordinary manual re-evolution timing after some devolution histories is a separate potential engine gap. Ability's explicit permission handles this batch's actual FAQ without broadening ordinary evolution. Do not assert that all ordinary devolution timing cases are fixed by88."
+    ]
+  },
+  "handEnergyRuntime": {
+    "currentProblem": "energyAttachmentAllowed rejects both player Special-Energy prohibition and Pokemon HAND_ENERGY_LOCK; energyEffectAllowed uses it during private card/target candidate filtering, and attachEnergyByEffect / distributed attachment use it again at commit. Thus the current engine rejects the officially allowed attempted attachment instead of discarding the selected Energy.",
+    "proposedMethods": [
+      "Keep existing energyAttachmentAllowed overloads unchanged for manual attachEnergy/canAttachEnergy.",
+      "Add private energyAttachmentByEffectAllowed(energy, owner, host, sourceOwner, sourceZone, discardInvalid) that preserves current player Special restriction and actual energyHostAllowed/invalid-host policy but permits the narrow Pokemon hand-lock attempt.",
+      "Add private handEnergyLockDiscardsEffectAttempt(owner, host, sourceOwner, sourceZone): true only for HAND during the source owner's current turn, own host (owner==sourceOwner), and !battlefield.energyFromHandAllowed(owner,host). This matches existing effect scope and expiry logic.",
+      "Have energyEffectAllowed use effect eligibility, so selection candidates, energyEffectTargets, distribution candidates and commit validation agree. Use the same helper inside direct single/bulk attachEnergyByEffect and attachEnergyDistributedByEffect; do not leave a public server-only bypass inconsistent."
+    ],
+    "orderedResolution": [
+      "Validate the entire issued selection and all distribution groups before mutating any source zone: exact physical IDs, no duplicates, source owner/zone, amount/minimum, filters, audited energy profile, current source/target entry, player Special prohibition and host restrictions.",
+      "Preserve existing preventCardEffect ordering: targets whose incoming effect is prevented are not attempted and their source Energy remains in place. Do not broaden immunity semantics under the lock fix.",
+      "For each unprevented Pokemon-hand-lock attempt, remove the selected whole physical Energy card from its actual source hand and put it in state(card.ownerId()).discard. Do not attach it even transiently, and do not translate multi-unit Energy into multiple physical cards.",
+      "For unlocked allowed targets, keep existing attachment path and reaction capture. A distributed effect may discard locked groups and attach unlocked groups within the same validated resolution.",
+      "A discarded attempt emits no ON_ENERGY_ATTACHED Ability or persistent trigger, no successful attachment accounting/event, and does not spend manual attachment quota. Count binding remains the number actually attached: existing resolveEnergySelection physical membership check yields0 for discarded attempts.",
+      "Optional selection0 performs no move. Required minimum1 may select and discard one legal Energy under a Pokemon lock. Preserve all original printed source/filter/max/min/selection authority and any earlier paid cost; do not refund or invent an attachment because the attempt was blocked.",
+      "HAND path introduces no RNG. Existing DECK/DISCARD attachment, shuffling, move_energy and invalid_host_policy semantics stay unchanged. Existing manual attach stays atomic with no Energy loss or quota consumption."
+    ],
+    "playerSpecialPreservation": "If PLAYER/SPECIAL prohibition applies, effect eligibility still rejects Special Energy from hand and excludes it from prompts; direct effect APIs reject atomically. Basic Energy and non-hand sources retain existing behavior. This is not a Pokemon-host attempt and must not discard the card.",
+    "identity": "Use actual card owner for discard, original issued target entry for host and actual source zone owner for restrictions. Keep ownership and target-snapshot checks even if common actual cards have only own-hand/own-host paths.",
+    "changedSupportedCard": {
+      "id": "sd100_cn_160",
+      "name": "Dracozolt V / Primeval Beak",
+      "dataChange": false,
+      "behaviorChange": "Existing DEFENDING_POKEMON/ANY lock now allows effect attempts and discards selected hand Energy. Existing StarterDeck100HandLockTest expectation of throwing and retaining that Energy must be corrected.",
+      "testUpdate": "Retain manual-denial assertions, change effect-attachment expectation to discard/no-attachment/no-event, and supply a fresh hand Energy for subsequent switch/expiry clearing checks."
+    },
+    "preservedSupportedCards": [
+      "Noivern GX: sm3_en_099, sm3_en_141, sm3_en_160, sm11-5_en_147 (Sonic Volume, PLAYER/SPECIAL).",
+      "Noivern ex: sv2_en_153, sv2_en_246, sv4-5_en_069, sv4-5_en_220 (Dominating Echo, PLAYER/SPECIAL plus Stadium).",
+      "Shadow Rider Calyrex V: swsh6_en_074, swsh6_en_171, swsh6_en_172, swsh10a_en_017, sd100_cn_203 (Shadow Mist, PLAYER/SPECIAL plus Stadium)."
+    ]
+  },
+  "mapperScope": "Spiteful Evolution uses the unchanged text-only map_ability API: exact full normalized text, supported Ability prefix and no reminders. All raw matches prove only actual Phantump038. No API name/profile guard is claimed. Both Trevenant attacks require exact name, cost, base/suffix, complete normalized text and no reminders.",
+  "deferredInteractions": [
+    "Actual Gorebyss sv10_en_056 and Mysterious Clock me1_en_128 remain unsupported; actual-card regression explicitly uses synthetic effect mechanisms.",
+    "No direct already-used Spiteful→evolution→devolution→reuse FAQ found; preserve existing once-per-entry semantics as compatibility, not a new official ruling."
+  ],
+  "corrections": [
+    {
+      "attempt": 1,
+      "kind": "Real engine gap",
+      "detail": "Actual Overwhelming Pain failed because AttackDamageEffectContext.count assumed one target. Reused existing public-group damage-counter aggregation before singleton guard; added FieldDamageCounterAttackTest and repeated21 engine mains."
+    },
+    {
+      "attempt": 2,
+      "kind": "Synthetic test configuration",
+      "detail": "Synthetic Water attack incorrectly paired SELF with OWN_ACTIVE scope. Changed fixture to existing required OWN_FIELD scope, retaining SELF target, optional0..60 Water and bind. No engine/schema broadening."
+    },
+    {
+      "attempt": 3,
+      "kind": "Passed",
+      "detail": "All real Phantump/Trevenant assertions passed after the preceding explicit fixes."
+    }
+  ],
+  "previouslySupportedBehaviorChanges": [
+    {
+      "id": "sd100_cn_160",
+      "name": "Dracozolt V / Primeval Beak",
+      "dataChange": false,
+      "behaviorChange": "Existing DEFENDING_POKEMON/ANY lock now allows effect attempts and discards selected hand Energy. Existing StarterDeck100HandLockTest expectation of throwing and retaining that Energy must be corrected.",
+      "testUpdate": "Retain manual-denial assertions, change effect-attachment expectation to discard/no-attachment/no-event, and supply a fresh hand Energy for subsequent switch/expiry clearing checks."
+    }
+  ]
+}

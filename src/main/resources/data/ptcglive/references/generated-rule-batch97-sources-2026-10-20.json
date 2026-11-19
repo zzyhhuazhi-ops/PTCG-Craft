@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-20",
+  "cardIds": [
+    "me4_en_065",
+    "me4_en_104",
+    "me4_en_118"
+  ],
+  "ruleReferences": [
+    {
+      "url": "https://asia.pokemon-card.com/sg/card-search/detail/25256/",
+      "kind": "Actual English card opened and verified2026-10-18",
+      "supports": "Corrosive Liquid removes all Tools and Special Energy across opposing Pokemon. Pernicious Poison applies Poison with sixteen counters per Checkup. Stage1 HP330, no weakness/resistance, retreat2."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50147",
+      "kind": "Actual Japanese base card opened and verified2026-10-18",
+      "supports": "Same effects and Mega ex three prizes. Evolves from Skrelp, not ordinary Dragalge."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50201",
+      "kind": "Actual Japanese alternate print opened and verified2026-10-18",
+      "supports": "Identical rules; Japanese numbering102 is not an extra international canonical print."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%82%B8%E3%82%AC%E3%83%AB%E3%83%87EX&regulation_faq_main_item1=all",
+      "kind": "Direct Mega Dragalge FAQ retrieved by official-domain search",
+      "supports": "Tools and Special Energy are discarded simultaneously. Mega Zygarde with Rock Fighting Energy keeps Core Memory because its attack-effect protection applies to the simultaneous operation."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%AF%E3%82%B6%E3%81%AE%E5%8A%B9%E6%9E%9C&page=11&regulation=all&regulation_header_search_item1=all",
+      "kind": "Direct Mega Dragalge FAQ opened and verified2026-10-18",
+      "supports": "Rock Fighting Energy itself also cannot be removed from an opposing Fighting Pokemon protected by it. Actual Crobat Toxic Sound after sixteen-counter Poison replaces it with one-counter Poison."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?sc_group_id=952",
+      "kind": "Direct simultaneous-discard and Rock Fighting protection FAQ opened2026-10-18",
+      "supports": "Both Core Memory and Rock Fighting Energy remain when Fighting host has Rock Fighting attack-effect protection; simultaneous attachment operation."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%82%B3%E3%82%A2%E3%83%A1%E3%83%A2%E3%83%AA&regulation_header_search_item1=all",
+      "kind": "Exact Core Memory keyword FAQ opened2026-10-18",
+      "supports": "Independent directly retrieved same simultaneous-discard ruling."
+    }
+  ],
+  "implementation": [
+    "One AFTER_ATTACK operation freezes protections and physical attachments across the entire opponent field before removing any card; all removals finish before HP settlement.",
+    "Special Energy classified by physical card definition, independent of current provision. Basic Energy and own field unchanged. Discards return to each physical owner.",
+    "Existing poison counter mechanism reused with16; ordinary re-poison overwrites it."
+  ],
+  "evidenceLimits": [
+    "Official evidence retrieved2026-10-18 and reused unchanged; no claim of a new retrieval.",
+    "Rocky Fighting Energy and Brave Bangle are actual supported cards; Fighting/high-HP hosts and the suppression dependency fixture are synthetic. Mega Zygarde ex and Core Memory are not enabled or claimed tested.",
+    "Actual Crobat attack on synthetic host isolates poison overwrite; no new Crobat evolution/Ability verification."
+  ]
+}

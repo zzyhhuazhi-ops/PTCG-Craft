@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "version": "automatic-pokemon-selection-v1",
+  "checkedDate": "2026-10-03",
+  "implementationVersion": "0.6.0-development",
+  "sources": [
+    {
+      "title": "February 2026 Rule Book Updates - What you need to know!",
+      "url": "https://professorprogram.pokemon.com/news/11473085",
+      "region": "international Play! Pokémon",
+      "publishedDate": "2026-02-26",
+      "effectiveDate": null,
+      "documentVersion": "official Professor Community 11473085",
+      "retrievalStatus": "full official body read 2026-10-03",
+      "dateNoteZh": "页面发布日期与正文昨天2月20日冲突；不推定具体生效日。",
+      "supportsZh": "原效果全部完成后才处理由它引发的其它触发；选择步骤不能让后续触发提前插入。"
+    }
+  ],
+  "implementationZh": [
+    "在现有自动特性续接程序内，每个受支持SELECT原子步骤各自请求服务器候选；同类SELECT可以在不同步骤选择不同对象，不继承上一选择。",
+    "回复、指示物与状态复用原子结算；所选直接击倒仍只在已支持的ON_KNOCKOUT事件开放。状态候选限定当前战斗位。",
+    "服务器保存发行时的拥有者、实体卡UUID和登场序号；提交再次校验。同一卡离场再登场不接收旧步骤，刷新也不把新对象加入旧候选。",
+    "每步保留原特性来源和免疫归属；原程序完成前不提前统一击倒、拿奖、替补或推进回合。现有正式选项消息与场上卡面点击入口复用。"
+  ],
+  "limitationsZh": [
+    "这是工程目标选择契约，不是单张卡的官方裁定，也不代表所有目标语义都已支持。每一步新选择与跨步骤引用同一个对象是不同语义；后者尚需显式绑定系统，不能自动猜测。",
+    "条件引用尚未选择的SELECT对象继续拒绝；动态工具、场地、特殊能量来源、完整最后已知状态、离场替代和跨进程恢复仍未完成。未新增真实卡审核绑定。",
+    "原子状态和击倒结算沿用已有规则层，本次来源不作为新的单卡文本证据。未读取、Hook或操作PTCG Live，无新增实机对照日志。",
+    "无窗口Fabric正式消息测试不等同两名真实登录客户端可视验收；源文件加入不代表已发布或替换人工测试JAR。"
+  ]
+}

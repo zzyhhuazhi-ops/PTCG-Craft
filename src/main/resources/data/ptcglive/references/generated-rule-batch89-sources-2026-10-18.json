@@ -1,0 +1,210 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-18",
+  "scope": "两版南瓜怪人ex的受伤备战宝可梦只数加伤及随机弃牌; no artwork, BREAK or JAR.",
+  "cardIds": [
+    "me4_en_041",
+    "me4_en_102"
+  ],
+  "ruleReferences": [
+    {
+      "url": "https://asia.pokemon-card.com/sg/card-search/detail/25293/",
+      "status": "OPENED",
+      "kind": "Official English card",
+      "supports": "Matches both exact local attack sentences, Stage1, HP270, one/two Psychic energy cost, Darknessweak2, Fightingresist30, retreat2 and evolution fromPumpkaboo. Energy icon URLs were inspected to resolve their types."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50125/regu/all",
+      "status": "OPENED",
+      "kind": "Official Japanese base card",
+      "supports": "M4 041/083, Stage1 HP270, same30+ damaged-own-Bench-host count and140 blind hand discard; ex knockout awards2 prizes."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50199",
+      "status": "OPENED",
+      "kind": "Official Japanese alternate print",
+      "supports": "M4 100/083 has the same two rules. Japanese numbering100 is not a third international ID and must not be mapped to a nonexistent me4_en_100 Gourgeist."
+    },
+    {
+      "url": "https://www.pokemon-card.com/ex/m4/",
+      "status": "OPENED_VIA_OFFICIAL_SEARCH_RESULT",
+      "kind": "Official product explanation",
+      "supports": "Explicitly describes damage increasing with the number of damaged own Benched Pokemon and calls Phantump Spiteful Evolution into Trevenant with2 counters a synergy. This independently supports the preceding88-to89 group sequence. Japanese release March13,2026."
+    },
+    {
+      "url": "https://www.pokemon-card.com/assets/document/advanced_manual.pdf",
+      "status": "OPENED_VER3.4",
+      "kind": "Official general rulebook",
+      "supports": "Pages5-6: compute printed plus damage before source modifiers/Weakness/Resistance; non-damage attack text follows damage. Page8: evolution retains damage counters. Pages34-37 distinguish protection of Pokemon from player effects and explain copied attacks. These support proposed timing/copy/protection tests; they are general rules, not Gourgeist-specific FAQ answers."
+    }
+  ],
+  "reviewedSemantics": [
+    "Add strict positive1..60 damage_counters_min to existing PokemonCountEffect, only POKEMON mode. Absence means no damage filter; explicit0, negative, >60, malformed and DISTINCT_TYPES combinations reject.",
+    "Extend canonical record with minimumDamageCounters; preserve previous8/6/5/4/3 argument constructors with absent filter. Old matches overloads reject when required damage facts are missing; new five-argument matches receives live count and ANDs all existing predicates.",
+    "ServerMatch.fieldPokemonCount reads authoritative pokemonView.damage()/10 at each actual damage computation, after BEFORE_ATTACK effects. Count each resolved in-play host once; Active/opponent exclusions follow existing target. No hardcoded Bench capacity, card category exclusion or attack donor ownership.",
+    "No new opcode, registry, global condition or broad old-card mapper. Existing validator/preflight FIELDS delegation and attack-only contexts retained.",
+    "Real Gourgeist ex P30+ adds50 per damaged own Benched Pokemon; PP140 random hand discard retained. Only041/102 active. Same-release real Phantump/Trevenant synergy tested after88integration."
+  ],
+  "schema": {
+    "type": "damage_per_pokemon",
+    "target": "OWN_BENCH",
+    "amount": 50,
+    "damage_counters_min": 1
+  },
+  "localPrintAudit": {
+    "databaseFiles": 109,
+    "rows": 25598,
+    "nonemptyAttackOrAbilityEntries": 42100,
+    "namedGourgeistExRows": [
+      {
+        "file": "me4.json",
+        "rawId": "me4_41"
+      },
+      {
+        "file": "me4.json",
+        "rawId": "me4_102"
+      }
+    ],
+    "exactFullFirstAttackSentenceMatches": [
+      {
+        "file": "me4.json",
+        "rawId": "me4_41",
+        "cardName": "Gourgeist ex",
+        "attackName": "Horrifying Rondo",
+        "damage": "30+",
+        "text": "This attack does 50 more damage for each of your Benched Pokémon that has any damage counters on it."
+      },
+      {
+        "file": "me4.json",
+        "rawId": "me4_102",
+        "cardName": "Gourgeist ex",
+        "attackName": "Horrifying Rondo",
+        "damage": "30+",
+        "text": "This attack does 50 more damage for each of your Benched Pokémon that has any damage counters on it."
+      }
+    ],
+    "samePatternOlderRows": [
+      {
+        "file": "bw11.json",
+        "rawId": "bw11_81",
+        "cardName": "Gallade",
+        "attackName": "Pandemonium Blade",
+        "damage": "60+",
+        "text": "Does 20 more damage for each of your Benched Pokémon that has any damage counters on it."
+      },
+      {
+        "file": "bw11.json",
+        "rawId": "bw11_81_ph",
+        "cardName": "Gallade",
+        "attackName": "Pandemonium Blade",
+        "damage": "60+",
+        "text": "Does 20 more damage for each of your Benched Pokémon that has any damage counters on it."
+      },
+      {
+        "file": "me4.json",
+        "rawId": "me4_41",
+        "cardName": "Gourgeist ex",
+        "attackName": "Horrifying Rondo",
+        "damage": "30+",
+        "text": "This attack does 50 more damage for each of your Benched Pokémon that has any damage counters on it."
+      },
+      {
+        "file": "me4.json",
+        "rawId": "me4_102",
+        "cardName": "Gourgeist ex",
+        "attackName": "Horrifying Rondo",
+        "damage": "30+",
+        "text": "This attack does 50 more damage for each of your Benched Pokémon that has any damage counters on it."
+      },
+      {
+        "file": "sm12.json",
+        "rawId": "sm12_117",
+        "cardName": "Seismitoad",
+        "attackName": "Tremulous Fist",
+        "damage": "80+",
+        "text": "This attack does 30 more damage for each of your Benched Pokémon that has any damage counters on it."
+      },
+      {
+        "file": "sm12.json",
+        "rawId": "sm12_117_ph",
+        "cardName": "Seismitoad",
+        "attackName": "Tremulous Fist",
+        "damage": "80+",
+        "text": "This attack does 30 more damage for each of your Benched Pokémon that has any damage counters on it."
+      },
+      {
+        "file": "swsh5.json",
+        "rawId": "swsh5_67",
+        "cardName": "Primeape",
+        "attackName": "Steamin' Mad Strike",
+        "damage": "50x",
+        "text": "This attack does 50 damage for each of your Benched Pokémon that has any damage counters on it."
+      },
+      {
+        "file": "swsh5.json",
+        "rawId": "swsh5_67_ph",
+        "cardName": "Primeape",
+        "attackName": "Steamin' Mad Strike",
+        "damage": "50x",
+        "text": "This attack does 50 damage for each of your Benched Pokémon that has any damage counters on it."
+      },
+      {
+        "file": "xy11.json",
+        "rawId": "xy11_70",
+        "cardName": "Bastiodon",
+        "attackName": "Fortress of Rage",
+        "damage": "100+",
+        "text": "This attack does 10 more damage for each of your Benched Pokémon that has any damage counters on it."
+      },
+      {
+        "file": "xy11.json",
+        "rawId": "xy11_70_ph",
+        "cardName": "Bastiodon",
+        "attackName": "Fortress of Rage",
+        "damage": "100+",
+        "text": "This attack does 10 more damage for each of your Benched Pokémon that has any damage counters on it."
+      }
+    ],
+    "canonicalPrints": [
+      "me4_en_041",
+      "me4_en_102"
+    ],
+    "archetypeID": 900992323,
+    "rawFile": "D:/我的mod/rainier-localization-chinese/rainier-localization-chinese (1)/card-databases/me4.json",
+    "rawSha256": "f74a17944d45aa60ae6a74572a61f9e02184bea66c5665253511144d76d946b5"
+  },
+  "evidenceLimitations": [
+    "No specific Gourgeist ex FAQ obtained in research; use printed text and official product synergy, do not invent FAQ evidence."
+  ],
+  "testLimitations": [
+    "Standalone query verifies in-play Fossil predicate; actual whole-match Fossil and expanded Bench coverage belongs to actual89 test if run.",
+    "No existing older damaged-Bench card is activated by this engine component."
+  ],
+  "validationAtReview": {
+    "pythonTests": 633,
+    "catalogLoad": "passed",
+    "actualCardAndComponentRegressions": "passed",
+    "fullCheck": "pending; see final batch89 docs for terminal result"
+  },
+  "faqSearch": {
+    "actualSpecificAnswerFound": false,
+    "limits": "The official English card Q&A link and Japanese name/attack search endpoints returned cache/internal errors; restricted official-domain searches found no directly retrievable Gourgeist ex/Horrifying Rondo/Ghostly Touch question. This does not prove no FAQ exists. Do not invent an actual-card FAQ or mark inference as an official direct answer.",
+    "attemptedUrls": [
+      "https://asia.pokemon-card.com/sg/rules/search/?keyword=Gourgeist+ex",
+      "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%91%E3%83%B3%E3%83%97%E3%82%B8%E3%83%B3ex&regulation_header_search_item1=all",
+      "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%9B%E3%83%A9%E3%83%BC%E3%83%AD%E3%83%B3%E3%83%89&regulation_faq_main_item1=all"
+    ],
+    "queries": [
+      "site:pokemon-card.com/rules/faq HorrifyingRondoJapanese",
+      "site:pokemon-card.com/rules/faq GourgeistExJapanese",
+      "site:pokemon-card.com/rules/faq GhostlyTouchJapanese"
+    ]
+  },
+  "olderCanonicalTargetsRemainDeferred": [
+    "bw11_en_081 Gallade PandemoniumBlade60+20",
+    "xy11_en_070 Bastiodon FortressOfRage100+10",
+    "sm12_en_117 Seismitoad TremulousFist80+30",
+    "swsh5_en_067 Primeape SteaminMadStrike50x"
+  ],
+  "fixtureCorrection": "Before execution, independent review found unsupported direct OWN_BENCH counter placement in phase test. Changed only synthetic fixture to supported SELECT_OWN_POKEMON BENCH/CHOSEN_POKEMON and answered prompt; no engine capability broadened."
+}

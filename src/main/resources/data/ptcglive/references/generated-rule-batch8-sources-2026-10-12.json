@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-12",
+  "sources": [
+    {
+      "title": "Dhelmise 59 — official Guardians Rising card translation",
+      "url": "https://assets.pokemon.com/assets/cms2-ru-ru/pdf/trading-card-game/tcg_sun_moon_2_card_translation.pdf",
+      "accessStatus": "Official English card text retrieved from PDF search index",
+      "supportsZh": "Steelworker 只增加己方钢属性宝可梦对对手战斗宝可梦的招式伤害；在弱点与抵抗力之前应用。"
+    },
+    {
+      "title": "Emboar BW21 — official card database",
+      "url": "https://www.pokemon.com/uk/pokemon-tcg/pokemon-cards/series/bwp/BW21/",
+      "accessStatus": "Official English card text retrieved",
+      "supportsZh": "Inferno Fandango 在己方回合可反复从手牌附火能量至己方宝可梦；不占手动附能次数。"
+    },
+    {
+      "title": "Black Bolt and White Flare Battle Pass deck strategies — official Pokemon",
+      "url": "https://www.pokemon.com/us/features/pokemon-tcg-scarlet-violet-black-bolt-and-scarlet-violet-white-flare-battle-pass-deck-strategies",
+      "accessStatus": "Official strategy text retrieved",
+      "supportsZh": "新卡文显式写 Basic Fire Energy；本批仅转换手牌中的基本属性能量。"
+    },
+    {
+      "title": "Frosmoth — official Asia card database",
+      "url": "https://asia.pokemon-card.com/ph/card-search/detail/1113/",
+      "accessStatus": "Official English card text retrieved",
+      "supportsZh": "Ice Dance 从手牌附水能量，目标须为己方备战区水属性宝可梦。"
+    },
+    {
+      "title": "Cherrim Battle Styles 8 — official card database",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/swsh5/8/",
+      "accessStatus": "Official English card text retrieved from search index",
+      "supportsZh": "Spring Bloom 可反复从手牌附草能量至己方无规则栏的宝可梦。"
+    },
+    {
+      "title": "Revavroom ex — official Asia card database",
+      "url": "https://asia.pokemon-card.com/my/card-search/detail/9738/",
+      "accessStatus": "Official English card text retrieved",
+      "supportsZh": "Tune-Up 容量为四件工具；失去特性后弃至一件，由工具拥有者处理规则选择。"
+    },
+    {
+      "title": "Corviknight VMAX — official Asia card database",
+      "url": "https://asia.pokemon-card.com/sg/card-search/detail/1256/",
+      "accessStatus": "Official English card text retrieved",
+      "supportsZh": "Lustrous Body 防止对手宝可梦特性对自身造成的所有效果；不是招式伤害防护。"
+    },
+    {
+      "title": "Judge Paldean Fates 228 — official card database",
+      "url": "https://www.pokemon.com/uk/pokemon-tcg/pokemon-cards/series/sv4pt5/228/",
+      "accessStatus": "Official English card text retrieved",
+      "supportsZh": "双方各将手牌洗回牌库，再各抽四张；正在使用的裁判不在手牌中。"
+    },
+    {
+      "title": "Energy Recycler Battle Styles 124 — official card database",
+      "url": "https://www.pokemon.com/uk/pokemon-tcg/pokemon-cards/series/swsh5/124/",
+      "accessStatus": "Official English card text retrieved",
+      "supportsZh": "将弃牌区至多五张基本能量洗回牌库，不包含特殊能量。"
+    },
+    {
+      "title": "Official Pokemon TCG errata",
+      "url": "https://www.pokemon.com/static-assets/content-assets/cms2/pdf/trading-card-game/tcg_errata.pdf",
+      "accessStatus": "Official errata retrieved",
+      "supportsZh": "能量回收旧卡的五张已勘误为至多五张；当前转换源已提供 up to 卡文，未放宽其他精确数量文本。"
+    }
+  ],
+  "delta": "docs/rule-data-batch8-20261012.json",
+  "regressions": ["tests/GeneratedRuleBatch8Test.java", "tools/PTCGCardCN/tests/test_rule_data_batch8.py"],
+  "limitations": [
+    "复用现有能力与训练家组件，仅完整精确匹配的卡文成为支持；古代能力等非 Ability 前缀仍拒绝。",
+    "真实生成程序在受控宿主上验证，未覆盖逐张印刷卡人工核验、客户端实战或 Minecraft GameTest。",
+    "部分 Rainier 卡号尚无游戏物品；规则支持不等于官方发行、赛事合法或可在游戏中取得。",
+    "没有修改卡图或安装游戏 JAR。"
+  ]
+}

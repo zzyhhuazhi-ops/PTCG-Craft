@@ -1,0 +1,52 @@
+import dev.hua.ptcglive.ai.*;
+import dev.hua.ptcglive.engine.*;
+import dev.hua.ptcglive.engine.effect.*;
+import dev.hua.ptcglive.engine.field.*;
+import dev.hua.ptcglive.rules.*;
+import java.util.*;
+
+public final class NonPokemonBatch127Test {
+    static final UUID A=GeneratedRuleBatch8Test.A,B=GeneratedRuleBatch8Test.B;
+    static final List<String> IDS=List.of("sm11_en_186");
+    static void check(boolean ok,String why){if(!ok)throw new AssertionError(why);}
+    static void reject(Runnable r){GeneratedRuleBatch8Test.reject(r);}
+    static UUID other(UUID p){return p.equals(A)?B:A;}
+    static CardInstance hand(ServerMatch m,UUID p,String id){return DynamicPassiveModifierTest.hand(m,p,id);}
+    static TrainerProfile profile(){return NonPokemonBatch2Test.DATA.trainer(IDS.getFirst()).orElseThrow();}
+    static ServerMatch game(){var c=new GeneratedRuleBatch28Test.Config();c.trainer=profile();c.attack=GeneratedRuleBatch8Test.hit(300,false);c.defenderAttack=c.attack;return GeneratedRuleBatch28Test.fixture(c);}
+    static ServerMatch aiGame(String id){return game();}
+    static List<CardInstance> zone(ServerMatch m,UUID p,String zone){return PairedTrainerPlayTest.zone(m,p,zone);}
+    static void choose(ServerMatch m,UUID p,int n){var q=m.effectChoicePrompt(p);m.chooseEffectOption(p,q.resolutionId(),q.step(),n);}
+    static CardInstance select(ServerMatch m,UUID p,String key){m.playTrainer(p,hand(m,p,"trainer").instanceId(),null);var q=m.effectCardPrompt(p);var card=q.candidates().stream().filter(c->c.definitionId().equals(key)).findFirst().orElseThrow();m.submitEffectCards(p,q.resolutionId(),q.step(),List.of(card.instanceId()));return card;}
+    static void answer(ServerMatch m,UUID p,String name){choose(m,p,0);var q=m.effectChoicePrompt(p);int option=-1;for(int i=0;i<q.optionsZh().size();i++)if(q.optionsZh().get(i).endsWith("回答："+name))option=i;check(option>=0,"Name option missing "+name);choose(m,p,option);}
+    public static void main(String[] args){outcomes();privacy();authority();eligibility();shortDeck();sameName();attackChoice();pages();ai();schema();System.out.println("NonPokemonBatch127Test passed: actual Blaine Quiz private set-aside/multiple attack choice, opponent-only paged name guess, correct/wrong draw and return, immutable public name universe, stale/foreign guards, full-card conservation on concede, V-UNION exclusion, short decks and four AI difficulties");}
+    static void outcomes(){for(UUID p:List.of(A,B))for(boolean correct:List.of(false,true)){
+        var m=game();if(p.equals(B))m.endTurn(A);int own=m.privateView(p).hand().size(),opponent=m.privateView(other(p)).hand().size();var card=select(m,p,p.equals(A)?"attacker":"defender");
+        check(m.privateView(p).hand().size()==own-2&&!m.privateView(p).hand().contains(card),"Quiz card was not set aside");check(m.pendingChoicePlayer().equals(p),"Opponent chose the announced attack");choose(m,p,0);check(m.pendingChoicePlayer().equals(other(p)),"Wrong quiz guesser");
+        answer(m,other(p),correct?card.definitionId():p.equals(A)?"defender":"attacker");check(!m.hasPendingEffectChoice(),"Quiz did not finish");check(m.privateView(p).hand().size()==own-1+(correct?0:4)&&m.privateView(other(p)).hand().size()==opponent+(correct?4:0),"Quiz drew for wrong player");check(m.privateView(p).hand().contains(card),"Quiz did not return chosen Pokemon");check(!m.mayPlaySupporter(p),"Quiz did not consume Supporter allowance");
+    }}
+    static void privacy(){List<String> labels=null;for(String key:List.of("attacker","new")){
+        var m=game();int before=m.replayTranscript().size();var card=select(m,A,key);var session=MatchSession.multiplayer(m,A,B);check(session.view(B,B).options().stream().noneMatch(o->o.labelZh().contains("公布招式")),"Opponent can choose private attack");
+        check(m.replayTranscript().subList(before,m.replayTranscript().size()).stream().noneMatch(e->e.operation().contains(card.instanceId().toString())||e.operation().contains(card.definitionId())),"Quiz leaked identity before attack declaration");
+        choose(m,A,0);var options=m.effectChoicePrompt(B).optionsZh();if(labels==null)labels=options;else check(labels.equals(options),"Name universe depends on selected hidden Pokemon");
+        check(session.view(A,A).options().stream().noneMatch(o->o.labelZh().contains("选择名称范围")),"Owner can answer opponent question");
+        choose(m,B,0);var page=m.effectChoicePrompt(B);choose(m,B,page.optionsZh().size()-1);check(m.effectChoicePrompt(B).optionsZh().equals(options),"Back changed public name universe");answer(m,B,"attacker");
+    }}
+    static void authority(){for(int stage:List.of(0,1,2)){
+        var m=game();var card=select(m,A,"attacker");if(stage>0)choose(m,A,0);if(stage>1)choose(m,B,0);UUID player=stage==0?A:B;var q=m.effectChoicePrompt(player);var own=m.privateView(A);var opp=m.privateView(B);
+        reject(()->m.effectChoicePrompt(other(player)));reject(()->m.chooseEffectOption(other(player),q.resolutionId(),q.step(),0));reject(()->m.chooseEffectOption(player,UUID.randomUUID(),q.step(),0));reject(()->m.chooseEffectOption(player,q.resolutionId(),q.step()+1,0));reject(()->m.chooseEffectOption(player,q.resolutionId(),q.step(),-1));reject(()->m.chooseEffectOption(player,q.resolutionId(),q.step(),q.optionsZh().size()));reject(()->m.endTurn(A));check(own.equals(m.privateView(A))&&opp.equals(m.privateView(B)),"Invalid quiz request mutated zones");
+        choose(m,player,0);reject(()->m.chooseEffectOption(player,q.resolutionId(),q.step(),0));if(m.hasPendingEffectChoice())m.concede(B);else m.concede(A);check(!m.hasPendingEffectChoice()&&m.privateView(A).hand().contains(card),"Concede lost/repeated set-aside card");
+        check(m.privateView(A).hand().stream().filter(c->c.instanceId().equals(card.instanceId())).count()==1,"Set-aside card duplicated");
+    }}
+    static void eligibility(){var c=new GeneratedRuleBatch28Test.Config();c.trainer=profile();c.ownName="Pikachu V-UNION";var m=GeneratedRuleBatch28Test.fixture(c);var source=hand(m,A,"trainer");check(!m.canPlayTrainer(A,source.instanceId(),null),"V-UNION printed attacks read outside play");var before=m.privateView(A);reject(()->m.playTrainer(A,source.instanceId(),null));check(before.equals(m.privateView(A)),"Ineligible quiz consumed supporter");
+        var normal=game();var nonPokemon=new ArrayList<>(zone(normal,A,"hand").stream().filter(card->normal.cardDefinition(card.definitionId()).category()==CardCategory.POKEMON).toList());zone(normal,A,"hand").removeAll(nonPokemon);zone(normal,A,"deck").addAll(nonPokemon);check(!normal.canPlayTrainer(A,hand(normal,A,"trainer").instanceId(),null),"Quiz playable with no Pokemon");
+    }
+    static void shortDeck(){for(boolean correct:List.of(false,true))for(int n:List.of(0,2)){
+        var m=game();UUID drawer=correct?B:A;var extras=new ArrayList<>(zone(m,drawer,"deck").subList(n,zone(m,drawer,"deck").size()));zone(m,drawer,"deck").removeAll(extras);zone(m,drawer,"discard").addAll(extras);int count=m.privateView(drawer).hand().size();select(m,A,"attacker");choose(m,A,0);answer(m,B,correct?"attacker":"defender");check(m.privateView(drawer).hand().size()==count+n-(correct?0:1),"Short deck quiz drew too many or failed no cards");check(m.phase()==MatchPhase.TURN,"Effect draw incorrectly caused deck-out");
+    }}
+    static void sameName(){var c=new GeneratedRuleBatch28Test.Config();c.trainer=profile();c.ownName="Pikachu";c.names=Map.of("new","Pikachu");var m=GeneratedRuleBatch28Test.fixture(c);select(m,A,"new");choose(m,A,0);choose(m,B,0);var q=m.effectChoicePrompt(B);check(q.optionsZh().stream().filter(s->s.endsWith("回答：attacker")).count()==1,"Same canonical names not deduplicated");int before=m.privateView(B).hand().size();int index=0;while(!q.optionsZh().get(index).endsWith("回答：attacker"))index++;choose(m,B,index);check(m.privateView(B).hand().size()==before+4,"Guess used printing ID instead of same canonical name");}
+    static void ai(){for(var level:AiDifficulty.values()){var m=aiGame(IDS.getFirst());var s=MatchSession.multiplayer(m,A,B);m.playTrainer(A,hand(m,A,"trainer").instanceId(),null);AiCardOperationTest.settle(s,level);AiCardOperationTest.finish(s,level);check(m.phase()==MatchPhase.FINISHED,"Quiz AI stalled "+level);}}
+    static void attackChoice(){var c=new GeneratedRuleBatch28Test.Config();c.trainer=profile();var second=BundledCombatData.attack(com.google.gson.JsonParser.parseString("{\"id\":\"second\",\"nameZh\":\"第二个招式\",\"energyCost\":{},\"baseDamage\":40,\"effectSupport\":\"SUPPORTED\"}").getAsJsonObject(),EffectRegistry.standard());c.restoredProfiles=Map.of("attacker",new PokemonProfile(1000,1,null,null,0,null,0,1,List.of(c.attack,second),List.of(),EnergyType.FIRE));var m=GeneratedRuleBatch28Test.fixture(c);select(m,A,"attacker");var q=m.effectChoicePrompt(A);check(q.optionsZh().size()==2&&q.optionsZh().get(1).contains("第二个招式"),"Quiz lost printed attack choices");choose(m,A,1);check(m.effectChoicePrompt(B).optionsZh().stream().allMatch(s->s.contains("第二个招式")),"Opponent did not receive chosen attack name");answer(m,B,"attacker");}
+    static void pages(){var m=game();try{var f=ServerMatch.class.getDeclaredField("definitions");f.setAccessible(true);var defs=new ArrayList<>(((CardDatabase)f.get(m)).all());for(int i=0;i<95;i++)defs.add(new CardDefinition("guess-"+i,String.format("Z%03d",i),CardCategory.POKEMON,TrainerCategory.NONE,"H",Set.of("international"),true,false,4,Map.of(),EffectSupport.SUPPORTED,null));f.set(m,new CardDatabase(defs));}catch(ReflectiveOperationException e){throw new AssertionError(e);}select(m,A,"attacker");choose(m,A,0);var ranges=m.effectChoicePrompt(B).optionsZh();check(ranges.size()==3,"Large public name universe not paged");var answers=new HashSet<String>();for(int i=0;i<ranges.size();i++){choose(m,B,i);var q=m.effectChoicePrompt(B);for(var label:q.optionsZh())if(label.contains("回答："))check(answers.add(label),"Name repeated across pages");choose(m,B,q.optionsZh().size()-1);}check(answers.size()==101,"Paging omitted a public Pokemon name");choose(m,B,2);choose(m,B,0);check(!m.hasPendingEffectChoice(),"Last-page answer did not complete");}
+    static void schema(){var e=profile().effectProgram().triggers().getFirst().effects().getFirst();reject(()->BlainesQuiz.validate(new EffectDefinition(e.type(),EffectTarget.DECK,Map.of(),List.of(),List.of())));reject(()->BlainesQuiz.validate(new EffectDefinition(e.type(),EffectTarget.HAND,Map.of("amount","4"),List.of(),List.of())));}
+}

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "version": "composed-energy-attachment-v1",
+  "checkedDate": "2026-10-03",
+  "region": "international",
+  "implementationVersion": "0.6.0-development",
+  "sources": [
+    {
+      "title": "Energy Sticker — 151 159/165 — Official Card Database",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv3pt5/159/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "151 / sv3pt5 / 159",
+      "retrievalStatus": "official-search-index; direct page returned iframe without card text",
+      "supportsZh": "硬币正面分支、基础能量、弃牌来源、己方备战目标的分层数据表达。",
+      "limitationsZh": "只作为通用规则示例，没有因此启用此真实卡；发行日期、Standard 合法性及完整当期裁定另行核验。"
+    },
+    {
+      "title": "February 2026 Rule Book Updates - What you need to know!",
+      "url": "https://professorprogram.pokemon.com/news/11473085",
+      "publishedDate": "2026-02-26",
+      "effectiveDate": null,
+      "effectiveDateNoteZh": "页面标题发布日期与正文 February 20th / yesterday 不一致，不猜测精确生效日。",
+      "documentVersion": "February 2026 official Professor Community rules update",
+      "supportsZh": "最少选择数量取决于攻击／其他效果与卡文；当前卡牌全部文本完成后，才处理其它卡牌被触发的效果。",
+      "limitationsZh": "本阶段只确保既有整卡结算检查点；自动附能触发队列与同时触发排序尚未接通。"
+    }
+  ],
+  "dataContract": {
+    "effect": "attach_energy",
+    "sources": ["HAND", "DECK", "DISCARD"],
+    "required": ["amount", "minimum", "source", "target", "target_scope"],
+    "filters": ["basic_energy_only", "energy_type (Basic Energy only)", "definition_ids"],
+    "targetSemanticsZh": "一次效果选取若干实际能量卡，再选一个符合范围的目标；Repeat 中每步可以另选目标。群体拆分分配不得冒用此语义。"
+  },
+  "compatibilityZh": [
+    "选择数由审核 JSON 明确提供，不能根据 up to 文字或当前候选自行猜测原卡最少数量。结算中不足指定数量按实际候选尽量执行。",
+    "手动附能和效果附能分开计数；选择期间不移牌，最终同一事务复核来源、筛选、目标和状态。",
+    "类型过滤只用基础能量类型数据，不把特殊能量提供的颜色推断为其卡牌类型。",
+    "未覆盖能量多目标分配、待选目标上的条件绑定、附能触发队列、来源受限制的特殊能量附着条件、攻击／特性暂停、重启续局。",
+    "尚未实际操作 PTCG Live 交叉验证，也未完成双可视客户端验收。"
+  ]
+}

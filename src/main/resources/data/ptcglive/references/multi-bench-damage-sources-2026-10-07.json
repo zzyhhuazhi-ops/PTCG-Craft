@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "version": "multi-bench-damage-v1",
+  "checkedDate": "2026-10-07",
+  "implementationVersion": "0.6.7-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Pokémon Trading Card Game Rules — Scarlet & Violet Rulebook（damage to Benched Pokémon）",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/pal_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English rulebook PDF; checked 2026-10-07",
+      "supportsZh": "对备战宝可梦造成的伤害不计算弱点和抵抗力（卡文括号里的 “Don't apply Weakness and Resistance for Benched Pokémon.” 也是这个意思）。"
+    },
+    {
+      "title": "Rhydon（Rainier 卡号 swsh1_en_098，招式 Rock Slide）",
+      "url": "https://limitlesstcg.com/cards/SSH/98",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Limitless card page used by PTCGCardCN for this card's English image (Rainier swsh1 → Limitless SSH); English card text from the Rainier card database 2026-10-07",
+      "supportsZh": "“This attack also does 10 damage to 2 of your opponent's Benched Pokémon.”：印刷伤害照常打战斗宝可梦，另外由攻击方选对方 2 只不同的备战宝可梦，各受 10 点伤害。"
+    },
+    {
+      "title": "Hydreigon ex（Rainier 卡号 sv8_en_119，招式 Obsidian）",
+      "url": "https://limitlesstcg.com/cards/SSP/119",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Limitless card page used by PTCGCardCN for this card's English image (Rainier sv8 → Limitless SSP); English card text from the Rainier card database 2026-10-07",
+      "supportsZh": "同一写法（130 点）。"
+    },
+    {
+      "title": "Chinchou（Rainier 卡号 sm7_en_049，招式 Spark）",
+      "url": "https://limitlesstcg.com/cards/CES/49",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Limitless card page used by PTCGCardCN for this card's English image (Rainier sm7 → Limitless CES); English card text from the Rainier card database 2026-10-07",
+      "supportsZh": "旧写法 “This attack does 10 damage to 2 of your opponent's Benched Pokémon.”，有印刷伤害 10：战斗宝可梦照常受印刷伤害，另外 2 只备战宝可梦各受 10 点（与第 1 步对 “1 of your opponent's Benched Pokémon” 旧写法的处理相同）。"
+    }
+  ],
+  "dataContractZh": "bench_damage 的选择目标写法（target SELECT_OPPONENT_POKEMON / SELECT_OWN_POKEMON）新增可选参数 target_count（2–5，选 1 只时省略），只接受 amount、target_count；全体目标 OWN_BENCH / OPPONENT_BENCH 不接受 target_count。仍只能在攻击的 AFTER_ATTACK 结算。",
+  "serverAuthorityZh": "服务器在同一步里逐只发出选择：候选只有当时的备战宝可梦，已选的不再出现，同一只不能选两次；选够 N 只，或备战区已经没有别的可选时，才一起结算，每只各受 amount 点攻击伤害（不计弱点和抵抗力，防止伤害、减伤、受伤触发、击倒与奖赏都在同一个攻击检查点）。备战区只有 1 只时选这 1 只即可，没有备战宝可梦时这一步不产生作用。",
+  "limitations": [
+    "带条件的写法（“If there are 3 or fewer cards in your deck, …”、“If you played a Rapid Strike Supporter card …”、“… that has any damage counters on it”）不在本组件内。",
+    "“Discard all {L} Energy from this Pokémon. This attack also does …” 这类把弃能量与备战伤害写在一起的卡，要看弃能量部分能否识别。"
+  ]
+}

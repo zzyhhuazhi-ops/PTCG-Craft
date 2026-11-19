@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-16",
+  "scope": "ME4 first four cards: Beedrill ex two prints, Carnivine and Ho-Oh. No artwork, no BREAK, no JAR.",
+  "cardIds": [
+    "me4_en_003",
+    "me4_en_098",
+    "me4_en_004",
+    "me4_en_010"
+  ],
+  "ruleReferences": [
+    {
+      "url": "https://asia.pokemon-card.com/my/card-search/detail/25194/",
+      "facts": "Beedrill ex: Stage2,310HP,Rumbling Bees printed110x, each own in-play Beedrill or Beedrill ex contributes110. Exact current printed names, not a substring or family, including the user itself. Grass1,Fire weakness,retreat1."
+    },
+    {
+      "url": "https://asia.pokemon-card.com/my/card-search/detail/25195/",
+      "facts": "Carnivine: Basic110HP,Chomp Whole80+ for Colorless3; add80 if defending Active has no Retreat Cost. Current cost, not ability to retreat or printed cost; locks/Special Conditions/fossil printed ban do not create a nonzero cost."
+    },
+    {
+      "url": "https://asia.pokemon-card.com/my/card-search/detail/25201/",
+      "facts": "Ho-Oh: Basic130HP,Fire1 Flames of Revival puts up to3 Basic Pokemon from own discard toBench. Bright Wing130 forFire3 discards1Fire Energy. Public discard, physical identity/capacity/optional0, no hand-play event; Item fossils are not eligible in discard."
+    },
+    {
+      "url": "https://www.pokemon.com/uk/strategy/pokemon-tcg-learn-how-to-build-and-play-a-beedrill-ex-deck",
+      "facts": "Official strategy confirms Rumbling Bees counts both Beedrill and Beedrill ex, with 220 for2 or330 for3."
+    }
+  ],
+  "reviewedSemantics": [
+    "Count own current top-card exact names Beedrill or Beedrill ex, including Active; exclude opponent/covered cards and similar names.",
+    "Carnivine uses current server-owned opponent Active Retreat Cost after Tool/Stadium/Ability/temporary changes, before damage Weakness and Resistance. Action locks and fossil printed retreat ban do not alter cost. Copied attacks use actual attacker context. Predicate is currently limited to ON_ATTACK damage calculation.",
+    "Ho-Oh selects zero to three Basic Pokemon from own public discard, bounded by free Bench spaces. Validate all physical card identities before transfer. Item fossils remain ineligible outside play; no shuffle or hand-entry event. Preserve Bright Wing Fire3/130 and mandatory Fire Energy discard."
+  ],
+  "validationAtReview": {
+    "pythonTests": 558,
+    "catalogLoad": "passed",
+    "actualCardAndComponentRegressions": "passed",
+    "fullCheck": "pending; see final batch76 docs for terminal result"
+  }
+}

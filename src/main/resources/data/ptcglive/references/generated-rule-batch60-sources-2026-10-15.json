@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "scope": "Newest-first ME5: all three Gwynn prints; artwork and true BREAK excluded.",
+  "ruleReferences": [
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50297",
+      "facts": "Up to2 Hand Pokemon except RuleBox; draw3 for each actually discarded."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%80%8C%E3%83%A0%E3%82%AF%E3%80%8D&regulation_faq_main_item1=all",
+      "facts": "Empty deck and deck3-or-fewer permit discard2; last Hand card cannot be used; Pokemon ex excluded."
+    },
+    {
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/pal_rulebook_en.pdf",
+      "facts": "p21: up-to requires1..maximum except drawing; card-effect draw draws remaining cards if deck is short, with no immediate loss."
+    }
+  ],
+  "evidence": [
+    {
+      "cardId": "me5_en_078",
+      "textEn": "Discard up to 2 Pokémon that don't have a Rule Box from your hand, and draw 3 cards for each card you discarded in this way. <i>(Pokémon {ex}, Pokémon <sprite name=\"v_atk\" tint=1>, etc. have Rule Boxes.)</i>",
+      "textZh": "从自己的手牌选择最多2张宝可梦（「拥有规则的宝可梦」除外），放于弃牌区，然后为放弃的每张卡各抽取3张卡牌。<i>[宝可梦{ex}、宝可梦<sprite name=\"v_atk\" tint=1>等即为「拥有规则的宝可梦」。]</i>",
+      "mapping": {
+        "rules": [
+          "trainer-discard-non-rulebox-draw-per-actual-card"
+        ],
+        "fields": {},
+        "program": [
+          {
+            "type": "discard",
+            "target": "HAND",
+            "amount": 2,
+            "minimum": 1,
+            "card_category": "POKEMON",
+            "rule_box": "NONE",
+            "bind": "gwynn-discard"
+          },
+          {
+            "type": "conditional",
+            "conditions": [
+              {
+                "type": "BOUND_COUNT",
+                "bind": "gwynn-discard",
+                "value": 1
+              },
+              {
+                "type": "NOT",
+                "conditions": [
+                  {
+                    "type": "BOUND_COUNT",
+                    "bind": "gwynn-discard",
+                    "value": 2
+                  }
+                ]
+              }
+            ],
+            "effects": [
+              {
+                "type": "draw",
+                "target": "SELF",
+                "amount": 3
+              }
+            ]
+          },
+          {
+            "type": "conditional",
+            "conditions": [
+              {
+                "type": "BOUND_COUNT",
+                "bind": "gwynn-discard",
+                "value": 2
+              },
+              {
+                "type": "NOT",
+                "conditions": [
+                  {
+                    "type": "BOUND_COUNT",
+                    "bind": "gwynn-discard",
+                    "value": 3
+                  }
+                ]
+              }
+            ],
+            "effects": [
+              {
+                "type": "draw",
+                "target": "SELF",
+                "amount": 6
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5_en_109",
+      "textEn": "Discard up to 2 Pokémon that don't have a Rule Box from your hand, and draw 3 cards for each card you discarded in this way. <i>(Pokémon {ex}, Pokémon <sprite name=\"v_atk\" tint=1>, etc. have Rule Boxes.)</i>",
+      "textZh": "从自己的手牌选择最多2张宝可梦（「拥有规则的宝可梦」除外），放于弃牌区，然后为放弃的每张卡各抽取3张卡牌。<i>[宝可梦{ex}、宝可梦<sprite name=\"v_atk\" tint=1>等即为「拥有规则的宝可梦」。]</i>",
+      "mapping": {
+        "rules": [
+          "trainer-discard-non-rulebox-draw-per-actual-card"
+        ],
+        "fields": {},
+        "program": [
+          {
+            "type": "discard",
+            "target": "HAND",
+            "amount": 2,
+            "minimum": 1,
+            "card_category": "POKEMON",
+            "rule_box": "NONE",
+            "bind": "gwynn-discard"
+          },
+          {
+            "type": "conditional",
+            "conditions": [
+              {
+                "type": "BOUND_COUNT",
+                "bind": "gwynn-discard",
+                "value": 1
+              },
+              {
+                "type": "NOT",
+                "conditions": [
+                  {
+                    "type": "BOUND_COUNT",
+                    "bind": "gwynn-discard",
+                    "value": 2
+                  }
+                ]
+              }
+            ],
+            "effects": [
+              {
+                "type": "draw",
+                "target": "SELF",
+                "amount": 3
+              }
+            ]
+          },
+          {
+            "type": "conditional",
+            "conditions": [
+              {
+                "type": "BOUND_COUNT",
+                "bind": "gwynn-discard",
+                "value": 2
+              },
+              {
+                "type": "NOT",
+                "conditions": [
+                  {
+                    "type": "BOUND_COUNT",
+                    "bind": "gwynn-discard",
+                    "value": 3
+                  }
+                ]
+              }
+            ],
+            "effects": [
+              {
+                "type": "draw",
+                "target": "SELF",
+                "amount": 6
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5_en_119",
+      "textEn": "Discard up to 2 Pokémon that don't have a Rule Box from your hand, and draw 3 cards for each card you discarded in this way. <i>(Pokémon {ex}, Pokémon <sprite name=\"v_atk\" tint=1>, etc. have Rule Boxes.)</i>",
+      "textZh": "从自己的手牌选择最多2张宝可梦（「拥有规则的宝可梦」除外），放于弃牌区，然后为放弃的每张卡各抽取3张卡牌。<i>[宝可梦{ex}、宝可梦<sprite name=\"v_atk\" tint=1>等即为「拥有规则的宝可梦」。]</i>",
+      "mapping": {
+        "rules": [
+          "trainer-discard-non-rulebox-draw-per-actual-card"
+        ],
+        "fields": {},
+        "program": [
+          {
+            "type": "discard",
+            "target": "HAND",
+            "amount": 2,
+            "minimum": 1,
+            "card_category": "POKEMON",
+            "rule_box": "NONE",
+            "bind": "gwynn-discard"
+          },
+          {
+            "type": "conditional",
+            "conditions": [
+              {
+                "type": "BOUND_COUNT",
+                "bind": "gwynn-discard",
+                "value": 1
+              },
+              {
+                "type": "NOT",
+                "conditions": [
+                  {
+                    "type": "BOUND_COUNT",
+                    "bind": "gwynn-discard",
+                    "value": 2
+                  }
+                ]
+              }
+            ],
+            "effects": [
+              {
+                "type": "draw",
+                "target": "SELF",
+                "amount": 3
+              }
+            ]
+          },
+          {
+            "type": "conditional",
+            "conditions": [
+              {
+                "type": "BOUND_COUNT",
+                "bind": "gwynn-discard",
+                "value": 2
+              },
+              {
+                "type": "NOT",
+                "conditions": [
+                  {
+                    "type": "BOUND_COUNT",
+                    "bind": "gwynn-discard",
+                    "value": 3
+                  }
+                ]
+              }
+            ],
+            "effects": [
+              {
+                "type": "draw",
+                "target": "SELF",
+                "amount": 6
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    }
+  ]
+}

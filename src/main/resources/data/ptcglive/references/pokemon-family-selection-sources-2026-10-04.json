@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "version": "pokemon-family-selection-v1",
+  "checkedDate": "2026-10-04",
+  "implementationVersion": "0.6.0-development",
+  "region": "international historical reference",
+  "sources": [
+    {
+      "title": "Pokémon TCG Rules — Sword & Shield—Fusion Strike",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/swsh8_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English historical rulebook PDF",
+      "verification": "The V-UNION appendix distinguishes card characteristics in private zones and states that Pokémon V-UNION are considered Pokémon V only while in play.",
+      "supportsZh": "说明家族特征的适用区域和卡牌形态必须来自可审核数据，不能根据名称、图片或另一种家族标记推断。"
+    },
+    {
+      "title": "EX Legend Maker official Card-Dex",
+      "url": "https://assets.pokemon.com/assets/cms/pdf/tcg/carddex/EX_Legend_Maker.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English historical card-dex PDF",
+      "verification": "The Card-Dex includes card text that searches a deck for a Pokémon-ex, demonstrating a printed Pokémon-family selection criterion.",
+      "supportsZh": "用于通用私有区域家族筛选的资料例子；不表示该历史整卡、当年规则包或其它家族已经可用。"
+    },
+    {
+      "title": "Play! Pokémon Competitive Pokémon Rules and Formats",
+      "url": "https://play.pokemon.com/en-us/resources/rules/?category=tcg",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official resources index, retrieved 2026-10-04",
+      "verification": "The official index provides maintained entry points for rulebooks, legality notices and errata.",
+      "supportsZh": "用于后续逐卡、逐格式核验；索引页不被当作任何单卡的完整裁定。"
+    }
+  ],
+  "retrievalLimitations": [
+    "No PTCG Live behavior, Chinese translation, image, filename or community source is used as rules authority.",
+    "No Pokémon family, including V, ex, Radiant or V-UNION, is inferred from another marker."
+  ],
+  "implementationLimits": [
+    "Supports explicit audited Pokémon-family metadata only in reviewed private-zone card-selection filters.",
+    "Supported filter expressions are ANY, ALL and NONE over a non-empty pokemon_families set and require card_category POKEMON.",
+    "The engine does not make a real card playable until its full text, timing, format legality and family metadata are audited."
+  ]
+}

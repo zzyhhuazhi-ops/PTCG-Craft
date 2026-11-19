@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "version": "dynamic-energy-provision-v1",
+  "checkedDate": "2026-10-03",
+  "implementationVersion": "0.6.0-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Twin Energy - Rebel Clash 174/192",
+      "url": "https://www.pokemon.com/uk/pokemon-tcg/pokemon-cards/series/swsh2/174/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "official international card database printing SWSH2 174",
+      "verification": "official search index exposes both relevant provision clauses; direct request returns validation iframe",
+      "supportsZh": "对非V/GX宿主与V/GX宿主提供不同数量的无色能量，可用通用条件分支而非单卡Java类表达。未据索引将整张卡数据或所有历史合法性标记为已审核。"
+    },
+    {
+      "title": "Temple of Sinnoh - Astral Radiance 155/189",
+      "url": "https://www.pokemon.com/uk/pokemon-tcg/pokemon-cards/series/swsh10/155",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "official international card database printing SWSH10 155",
+      "verification": "official search index exposes the complete relevant Special Energy clause; direct request returns validation iframe",
+      "supportsZh": "场地同时改变双方宝可梦附着的特殊能量供给，并令这些能量没有其它效果。实现将此视为作用在能量卡上的替换，与作用在宝可梦身上的数值修正分层；不能由宝可梦自身的效果防护错误拦截。后一句为根据卡文作用对象作出的实现解释，不宣称额外官方裁定。"
+    },
+    {
+      "title": "A first look at Tinkatuff, Chi-Yu ex, and More in Pokémon TCG: Scarlet & Violet—Paldea Evolved",
+      "url": "https://www.pokemon.com/uk/news/a-first-look-at-tinkatuff-chi-yu-ex-and-more-in-pokemon-tcg-scarlet-violet-paldea-evolved",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "official international Paldea Evolved product preview",
+      "verification": "official indexed paragraph on Reversal Energy; publication/effective date not verified",
+      "supportsZh": "确认还存在依赖双方奖赏比较、进化卡及Rule Box的供能；这些附加条件尚未完整接入，保留为明确未支持，不能用IS_EVOLVED或固定奖赏阈值近似。"
+    }
+  ],
+  "implementationZh": [
+    "EnergyProfile保留默认energyUnits，增加provisionRules；每项只含conditions与energyUnits，按数据声明顺序首个匹配替换，而不是叠加。复用AND/OR/NOT及已有宿主状态条件。该优先级是数据格式约定，不推定多个真实来源的官方优先级。",
+    "服务端每次先查无条件场地替换，再解析能量自身的宿主条件，最后供持续修正查询使用；不依赖客户端、无缓存、无随机。供能条件不能查询ENERGY_COUNT/HAS_ENERGY，未建立依赖模型前拒绝循环。",
+    "攻击支付、撤退支付、ENERGY_COUNT、HAS_ENERGY、damage_per_energy及旧附能伤害计数共享实时供能。实体卡的附着限次、弃置数量和区域身份仍按卡片处理。",
+    "special_energy_override只接受场地根层、整方范围、明确关闭其它效果，不能嵌套/带条件/重复覆盖范围。唯一场地提供替换，不静默实现其它来源冲突。",
+    "场地关闭能量效果后不执行其持续伤害/撤退/容量等修正；离场后恢复。基本能量不受特殊能量替换影响。未解析的动态档案不能直接用于费用算法。",
+    "会话快捷撤退按服务端当前供能提出无冗余支付建议，不再要求卡片张数达到费用数；最终操作重新校验。完整任意手选支付界面仍待实现。"
+  ],
+  "limitationsZh": [
+    "本阶段是通用供能规则，不新增Twin Energy、Temple of Sinnoh或Reversal Energy的真实卡绑定；已审核真实卡仍39。",
+    "尚未支持任意来源覆盖优先级、来源失效依赖图、工具/场地/能量自动触发、零供能及附着限制、任意能量类型筛选、双方动态奖赏比较及完整Rule Box分类。",
+    "未读取或操作PTCG Live，没有行为实测差异结论；正式费用和隐藏信息使用既有服务端规则。没有混用日本或简中本地规则。",
+    "未以社区论坛讨论作为官方裁定；全文访问受限与日期未知如实保留。四项主阶段仍未全部完成，尚不发布JAR。"
+  ]
+}

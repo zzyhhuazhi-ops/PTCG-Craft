@@ -1,0 +1,215 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-20",
+  "cardIds": [
+    "me4_en_063"
+  ],
+  "ruleReferences": [
+    {
+      "url": "https://asia.pokemon-card.com/sg/card-search/detail/25254/",
+      "kind": "Actual English Ferrothorn",
+      "supports": "Opponent-turn deck-to-discard caused by opposing Pokemon attack/Ability or opposing Item/Supporter mills opponent top8. Special Whip gets70 more with physical Special Energy."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50145/regu/all",
+      "kind": "Actual Japanese Ferrothorn",
+      "supports": "Same deck-only trigger and exact source list; Stage1 HP130 and Special Whip70+."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%8A%E3%83%83%E3%83%88%E3%83%AC%E3%82%A4&regulation_faq_main_item1=all",
+      "kind": "Actual Ferrothorn FAQ",
+      "supports": "Own Goodra Dragon Pulse discarding own Ferrothorn does not trigger Startling Drop; own attack is not opposing-source discard."
+    },
+    {
+      "id": "actual-en",
+      "url": "https://asia.pokemon-card.com/sg/card-search/detail/25254/",
+      "level": "ACTUAL_CARD",
+      "supports": "Exact four opposing source categories, opponent turn, own deck to discard, mandatory opponent top8. English printed text documented by root research."
+    },
+    {
+      "id": "actual-jp",
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50145/regu/all",
+      "level": "ACTUAL_CARD",
+      "supports": "Same Japanese card scope. Independently reopened during this design."
+    },
+    {
+      "id": "actual-faq",
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%8A%E3%83%83%E3%83%88%E3%83%AC%E3%82%A4&regulation_faq_main_item1=all",
+      "level": "ACTUAL_FERROTHORN_FAQ",
+      "supports": "Own Goodra Dragon Pulse milling own Ferrothorn does not trigger. Does not rule on KO ordering, suppression capture or multiple copies."
+    },
+    {
+      "id": "analogous-amoonguss",
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%A2%E3%83%AD%E3%83%90%E3%83%AC%E3%83%AB&regulation_faq_main_item1=all",
+      "level": "ANALOGOUS_OFF_FIELD_DISCARD_TRIGGER_FAQ",
+      "supports": "Surprise Spores is mandatory; original Jessie and James effect finishes before trigger; victim choosing forced discard does not change opposing causation; White Hole example gives its particular priority. Hand-source analogue, not direct Ferrothorn ruling."
+    },
+    {
+      "id": "garbotoxin",
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/31512",
+      "level": "ACTUAL_SUPPRESSION_CARD_TEXT",
+      "supports": "Garbotoxin removes Abilities of Pokemon in play, in hand and in discard while its Tool condition holds. Deck is NOT listed. This region fact alone does not decide Ferrothorn capture timing."
+    },
+    {
+      "id": "garbotoxin-emergency-entry",
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%80%E3%82%B9%E3%83%88%E3%83%80%E3%82%B9",
+      "level": "DISTINCT_SPECIAL_TIMING_FAQ",
+      "supports": "Emergency Entry acts before a drawn card enters hand, so its Garbotoxin ruling is not a direct counterexample to the proposed after-discard Ferrothorn snapshot."
+    },
+    {
+      "id": "e20-update",
+      "url": "https://www.pokemon-card.com/info/005161.html",
+      "level": "OFFICIAL_GENERAL_RULE_UPDATE",
+      "date": "2025-08-01",
+      "supports": "E20 clarification: finish the latter part of the currently resolving text before newly enabled automatic effect. Independently reopened. Its simultaneous-order update explicitly discusses KO and Energy attachment; do not claim it directly rules every other trigger."
+    },
+    {
+      "id": "advanced-manual",
+      "url": "https://www.pokemon-card.com/assets/document/advanced_manual.pdf",
+      "level": "OFFICIAL_GENERAL_RULES",
+      "version": "3.4 (2025-08-01)",
+      "supports": "Attack text/reactions/KO sequence, mandatory automatic Abilities, owner discard destination and current Tool category. KO-before/after this specific off-field trigger remains a documented implementation inference."
+    }
+  ],
+  "reviewedSemantics": [
+    "New ON_DISCARDED_FROM_DECK policy has exactly trigger/turn/cause/optional/usage. Only mandatory, unlimited Pokemon Ability with one fixed opponent-deck discard node; no SELF host, conditions, costs, binds or generic card triggers.",
+    "Provenance exists only in private loaded Attack, manual/automatic Pokemon Ability, and played Item/Supporter contexts. No public provenance API and no inference from origin UUID. Public generic rule with a real field source and identical program remains unattributed.",
+    "Capture only actual physical DECK->DISCARD moves, after complete batch movement; inspect-top and top-recovery use same entry. Existing attackDeckWindow can discard only nonPokemon. Old discard cards and unmoved next cards are never scanned.",
+    "Discard-zone suppression is latched after movement. Source later moved or suppression changed is not rescanned. Last-known token stores fixed loaded program and physical movement, never creates a field host.",
+    "Original complete text finishes first. Only genuine queued/in-flight95 holds nonattack checkpoint; directKO sets are merged and restored. Both attack and ON_KNOCKOUT gates permit the pending reaction before KO commitment; unrelated old events keep old semantics.",
+    "Empty opponent deck does not drop captured mandatory event; prefix/suffix may refill it. Runtime fixed mill does as much as possible and cannot itself create a field KO. Own-turn counter-mill does not recursively capture.",
+    "Public trigger view uses null field/source anchors and replay omits hidden physical source UUID. Existing session handling works without UI/network changes."
+  ],
+  "schema": {
+    "kind": "TRIGGERED",
+    "eventPolicy": {
+      "trigger": "ON_DISCARDED_FROM_DECK",
+      "turn": "OPPONENT",
+      "cause": "OPPONENT_POKEMON_ATTACK_ABILITY_OR_ITEM_SUPPORTER",
+      "optional": false,
+      "usage": "NONE"
+    },
+    "triggers": [
+      {
+        "trigger": "ON_DISCARDED_FROM_DECK",
+        "conditions": [],
+        "effects": [
+          {
+            "type": "discard_top_deck",
+            "target": "OPPONENT_ACTIVE",
+            "amount": 8
+          }
+        ]
+      }
+    ]
+  },
+  "evidenceLimitations": [
+    "Actual printed scope and direct own-Goodra FAQ are verified; analogous Amoonguss and general timing evidence are recorded in the approved design. Multiple-source ordering, suppression capture and pre-KO placement retain the explicit inference boundaries below.",
+    "Actual Goodra068 remains unsupported; use explicitly synthetic own-deck-mill interaction if needed rather than activating it before its turn.",
+    "Pre-KO placement and discard-time suppression/last-known snapshot are the approved general-rule inference, not a Ferrothorn-specific FAQ.",
+    "Last-known component moves source discard->hand/deck with an explicitly test-only fixture mutation during original suffix pause; it is not evidence of an existing supported opponent-discard recovery card.",
+    "Cost exclusion is schema rejection before any match. No supported deck discard cost is newly implemented.",
+    "New component tests are synthetic contracts; actual Ferrothorn data/official cases are independently run by greninja_tests."
+  ],
+  "testLimitations": [
+    "Printed cause/turn/physicaldeck-discard/mandatorytop8 supported directly by actual card. Ownmill negative has direct FerrothornFAQ.",
+    "Originaltext fullyfinishes supported by independently opened Amoonguss/JessieJames analogue; not an actual Ferrothorn-specificFAQ.",
+    "Capture-time FIELD_HAND_DISCARD suppression, latched last-known token and before-KO checkpoint are approved engine-contract inferences, not presented as directFAQ.",
+    "Complex direct-KO/ON_KNOCKOUT/ToolOverflow gates and strict malformed newpolicy matrix are engine component responsibilities.",
+    "Energy-only deckattachment cannot select this Pokemon. No unsupported deck-discard activationcost invented; schema rejection only.",
+    "LostZone setup mutation is a zone exclusion probe rather than an available actual opposing mill-to-Lost card."
+  ],
+  "actualCoverage": {
+    "printedAndWhip": "Exact profile, genuine named evolution, no manual Ability, MMpayment and actual SpecialEnergy boolean bonus.",
+    "realAttack": "Real Sizzlipede positive, exact8 identities/order, no RNG, correct turn, hidden remainingdeck.",
+    "realAbility": "Real Durant acceptance/decline and correct controller.",
+    "samePhysicalAgain": "Same physical source genuinely remilled by second real Durant, independent newmovement.",
+    "multipleAndShort": "Two physical Centiskorch targets, olddiscard/nonmatching exclusions, mandatory issuedorder authority/stale rejection,0/1/7/8/9 and9/15/16/20 available, counter-milled current-player Ferrothorn no recursion.",
+    "laterDrawLoss": "No immediate mill loss; later mandatory own draw finishes.",
+    "ownCauseAndZones": "Actual Shovel/Avalugg owncause negative; BasicWater binding unaffected; public untrusted rule helpers, hand,draw,search,LostZone and actual fieldKO negative; malformeddeckcost rejected.",
+    "sourceCategories": "Full syntheticItem/Supporter/manualPokemon positives; persistentTool/Stadium/Energy andCheckup negative; Pokemonturnend positive andownturn opponentcause exclusion.",
+    "copied": "Borrowed actual ControlledBurn attributed to actual copying controller.",
+    "sourceLeaves": "Genuine loaded synthetic attack/Ability complete returnself suffix before mandatory response, source-departure doesnot cancelcausation.",
+    "originalTextAndAuthority": "Four sourcecategories mill then private search then draw; originaltext wholecompletion barrier, wrongactor/spectator/stale rejection, sourceTrainerquota, nohiddenUUID, concede cleanup.",
+    "emptyThenRefill": "Fourcategories Adeckempty atcapture, suffixshuffle_hand refills0/1/8/9; eventmust surviveemptycheckpoint and resolvingTrainerexcluded.",
+    "lethalCheckpoint": "ActualMegaHeracross versus realFerrothorn; reaction before ordinaryKOchoice or lastPokemonwin. Inference explicitlylabelled.",
+    "suppression": "StaticphysicalTool/noTool/Tooldisabled/removed/Abilitydisabled andfield-onlycontrol.",
+    "captureLatch": "True synthetic originaltext mill->returnToolbearingsuppressor (noevent) andmill->attachTool (captured95survives), actualprivate selection before counterresponse.",
+    "lastKnownPhysicalProbe": "Explicitboundary lifecyclemutation, eventstillresolves once aftersourcehidden, nohiddenUUID clientleak."
+  },
+  "validationScope": "Reviewed immutable draft component and actual-card runs passed; combined production validation documented in docs/rule-data-batch93-96-20261020.json. No per-batch full-check claim.",
+  "previouslySupportedBehaviorChanges": [
+    {
+      "kind": "Discard effects can now capture newly-supported off-field Pokemon reaction",
+      "programDataChanged": false,
+      "behavior": "Real opposing attack/Ability/Item/Supporter deck discard captures mandatory Ferrothorn reaction; full original text and existing damage reactions precede it, while original KO commitment waits. Public unattributed helpers and Tool/Stadium/Energy do not gain cause authority.",
+      "limit": "Only actual queued/in-flight new event opens new checkpoint. Existing filtered discard counts and source programs remain unchanged."
+    }
+  ],
+  "offFieldTriggerContract": {
+    "schemaContract": {
+      "policy": "New DeckDiscardTriggerPolicy implementing sealed AbilityEventPolicy. Exact required keys trigger,turn,cause,optional,usage; string enum literals only, optional genuine JSON false, usage NONE. Only turn OPPONENT and the named four-kind cause are currently admitted. Missing/unknown/null/wrong-type fields fail closed.",
+      "binding": "Exactly one matching ON_DISCARDED_FROM_DECK program binding, no binding conditions and exactly one discard_top_deck node. That node has target OPPONENT_ACTIVE, exact arguments amount only (integer1..60), no conditions or children. Actual converter amount is exactly8.",
+      "limits": "No optional branch, rate/shared usage limit, activation cost, bind/count/filter, other atomic operation, field SELF/CHOSEN/event-bound target, nested condition/choice, or additional timing. Reject new policy from CardTriggerDefinition (Tool/Stadium/Energy automatic effect). Existing policies keep their existing validation.",
+      "loader": "Existing AbilityDefinition TRIGGERED plus BundledCombatData default trigger already routes top-level effects to eventPolicy.trigger. Add enum/policy parser and narrow TriggeredAbilityRules branch; no new combat-profile field or generic opcode. Converter can use existing kind/eventPolicy/effects export after engine approval. Runtime unknown trigger fails closed in older engine.",
+      "authorization": "New ServerEffectExecutionContext preflight for this trigger requires the private captured deck-discard source token. Merely providing a trigger/program/source UUID through a generic rule hook must not create this permission. No manual useAbility option for this event."
+    },
+    "sourceAndCausation": {
+      "positivePredicate": [
+        "Actual physical card was removed from that owner deck by this committed move and inserted into discard, not merely found there afterward.",
+        "The card has a server-loaded supported Pokemon Ability with the exact new policy. Physical owner equals deck owner; invalid foreign-owned deck state does not acquire an off-field entitlement.",
+        "At movement, current player is other(card.owner) and phase is an actual player-turn phase (TURN, including turn-start processing, or TURN_END). Checkup is excluded even though currentPlayer retains an ID.",
+        "Movement reason is EFFECT, never cost, rule/manual preparation, draw, shuffle, return, Lost Zone or Pokemon field departure.",
+        "Frozen causal controller is the opponent and eligible source kind is one of POKEMON_ATTACK, POKEMON_ABILITY, ITEM, SUPPORTER. The executor/chooser may differ and is never substituted for causal controller."
+      ],
+      "causeRecord": "Planned private DeckDiscardCause: trusted controller, one eligible kind or NONE, original source card/field identities as appropriate, source definition/attack/Ability identity, enclosing server resolution token, reason EFFECT/COST/RULE. Construct only at existing real server-loaded Attack/Ability/Trainer/automatic-Pokemon entry points; clients never submit it.",
+      "attackIdentity": "An actual or copied attack remains attributed to its actual attacking controller/Pokemon, not donor or current replacement Active. Snapshot original source facts before any source switch/devolution/leave. Eligibility means a genuine in-play Pokemon attack; do not incorrectly require its printed card category POKEMON if the engine permits an Item-as-Pokemon attacker.",
+      "abilityIdentity": "Manual and existing automatic Pokemon Abilities both qualify. Snapshot their original controller/program from server-loaded AbilityDefinition, even if the field source later leaves. New off-field counter-mill is also a Pokemon Ability, but the discarded opposing Ferrothorn belongs to the current player and fails the opponent-turn condition, preventing an invented ping-pong chain.",
+      "trainerIdentity": "Use real TrainerProfile category ITEM/SUPPORTER for the originating played card. Stadium, Tool and Energy effects do not qualify; do not use historical search-filter pokemonToolsAreItems aliases in current ME4 rules. Pair-play Item remains one authorized origin if ever relevant.",
+      "compatibility": "Keep public exact/up-to top-deck helper signatures. Private overloads accept the trusted cause; public unattributed hooks retain RULE/NONE behavior and cannot forge a positive event. Propagate immutable cause through cloned/selected/nested contexts; do not derive it from a UUID after the original source moved.",
+      "costs": "No existing deck-discard activation cost is supported: TopDeckDiscardEffect disallows as_cost; current ActivationCostRules costs are hand discard. Document that negative boundary and keep it tested; do not add a deck cost just to test95."
+    },
+    "physicalCommit": {
+      "plannedRecord": "DeckDiscardEvent(sequence, deckOwner, immutable actualMovedCards, capturedCause, turnPlayer, turnNumber). One serial per completed physical removal batch. Per-card captured source additionally carries physical UUID, printed definition, Ability identity and sequence.",
+      "order": [
+        "Validate request/authority and compute actual top cards.",
+        "Move the complete immutable batch into discard once, maintaining existing top order/replay/owner invariants.",
+        "Only after the batch is physically in discard, evaluate each moved card against cause, turn and suppression and create independent server event entries.",
+        "Append captured entries without recursively draining or executing them inside removal. Existing caller computes filtered actual-moved count before any reaction is allowed to run."
+      ],
+      "countCompatibility": "Current discard_top_deck uses discard-size before and subList(before,before+moved) afterward. Queue-only capture leaves that exact slice intact; preserve it or use an equivalently immutable actualMoved list, with explicit83 tests. No tail scan, old-discard scan, or trigger execution may change that slice before count is latched.",
+      "identity": "One event per eligible physical card per batch; duplicate queued request cannot replay it. Two copies yield two events even with identical definition IDs. A card legitimately returned to deck and milled again gets a new event serial, with no invented once-per-turn cap.",
+      "ownerMovement": "Do not broaden the existing top-deck zone movement in95. Card-owner/deck-owner invariant is checked for event eligibility; generic foreign-owned zone normalization is out of scope."
+    },
+    "suppressionAndLastKnown": {
+      "capture": "After movement, read the captured card printed profile in discard and reuse zoneSuppressionSourceId/AbilitySuppressionProgram FIELD_HAND_DISCARD facts. Garbotoxin active at this instant suppresses; it does not suppress the deck before the move. Do not call field-only activeAbilities or invent a field host.",
+      "latched": "Once captured, later original-text removal of the discarded card, adding/removing a suppressor or evolution of that suppressor does not rescan or create/revoke the event. A suppressed card at capture does not gain a late trigger when suppression ends. A captured event stays valid if the physical source is recovered/shuffled/otherwise leaves discard.",
+      "authority": "QueuedAbility gains a nullable private CapturedDeckDiscardSource variant with strict invariants: pokemonId null, EffectEventBindings.NONE, origin ABILITY with original owner and physical card ID, cardEntry0, supported new policy and matching captured server program. Existing in-play-source invariants unchanged. Do not abuse departedSourceLastKnown for ON_LEAVE_PLAY.",
+      "lifecycle": "Use physical card UUID plus Ability ID and movement serial for EffectLifecycleDispatcher.Source identity. This protects repeated legitimate events and stale/duplicate ordering responses without inventing Pokemon entrySequence. beginCaptured whitelist adds new trigger only after schema validation.",
+      "noEarlyPotentialFilter": "Never omit this mandatory event merely because opponent deck is empty at capture. Original text may put cards back before the event resolves. Existing capturedAbilities must treat this exact event as latched independent of EffectPotential. At resolution empty deck safely performs0; no delayed opportunity or manual option is created.",
+      "evidenceLimit": "After-discard suppression snapshot, later last-known validity and KO-relative timing are the proposed consistent engine contract inferred from printed event/region text and general completion rules. No direct Ferrothorn suppression/KO/multiple-copy FAQ was found; do not label these as card-specific official rulings."
+    },
+    "timingAndCheckpoints": {
+      "requiredOrder": "Committed discard captures -> finish ALL original card/Ability/attack text (including pending choices/reveals and AFTER_ATTACK) -> eligible captured95 reactions -> KO commitment/prize/replacement/turn completion. Existing attack damage-reaction phase is retained before new95 dispatch; relative priority between unlike newly introduced reaction families is a documented design inference, not a direct95FAQ.",
+      "attack": "Do not drain at top-deck commit or between BEFORE_ATTACK/damage/AFTER_ATTACK. Existing attackCheckpoint.textComplete barrier holds. captureDamageReactions retains its current ON_DAMAGE priority. When those finish, promote the earliest captured95 batch ahead of ordinary post-card triggers and finishAttackCheckpoint; allow this explicit event through the pre-KO gate. Never let a generic older queued event at index0 cause finishAttackCheckpoint to bypass pending95 entries.",
+      "nonAttack": "Planned private DeferredDeckDiscardCheckpoint saves pendingEffectKnockouts and pendingDirectKnockouts before clearEffectCheckpoint when95 is pending. Original text completes and resolving/pending flags clear, but no KO is committed. Each reaction finishes without overwriting this saved set. Once95 queue is empty, restore/merge the saved sets and resume existing finishEffectCheckpoint exactly once. Preserve direct-KO irreversibility and recalculate live HP KOs at this final point.",
+      "existingKOReaction": "If a qualifying Pokemon Ability during an existing ON_KNOCKOUT reaction mills a card, its full text finishes first and captured95 must resolve before commitKnockoutCheckpoint. Keep existing ON_KNOCKOUT priority within that checkpoint; add the explicit pending95 exception rather than globally running all events before KOs.",
+      "guardedMethods": [
+        "drainTriggeredAbilities: deliberate new pre-KO eligibility/promotion; no generic arbitrary-trigger exception",
+        "finishEffectCheckpoint: defer only when actual95 events exist, snapshot directKO sets before the existing finally clear",
+        "settleHitPointChanges / settleEmptyActives / finishResumableAttackTurn: do not bypass a pending new checkpoint",
+        "toolOverflow continuation: existing required correction remains first; saved direct/effect KO sets survive both correction and95 barrier",
+        "finish/concede: clear event entries, optional private tokens and deferred checkpoint; do not run remaining mills"
+      ],
+      "mandatoryDraw": "Top8 uses existing up-to behavior0..8; neither the original mill nor the reaction itself loses by deck-out. Only the later required turn draw can lose. If a pending KO ends the game after95, retain milling replay before final result.",
+      "simultaneous": "Each moved physical Ferrothorn has an independent queue entry within its movement batch. Reuse existing ruleset ordering UI/current-player ordering for this same-owner, identical single-mill batch; no decline button. Identical top8 operations commute. Do not use this to assert a new broad both-player ordering rule or override the specific White Hole analogue. Cross-family/global ordering expansion is out of scope."
+    },
+    "clientAndPrivacy": {
+      "noNewCommand": "Reuse TriggerOrderPrompt server-issued IDs and chooseTriggeredEffect authorization. Every entry removed once before resolution. Actor/observer cannot select an invalid entry, old prompt or later batch. No manual activation or optional decline.",
+      "dto": "AbilityResolution already permits nullable pokemonId for non-field effects. New entry uses null Pokemon/trigger/attacker anchors and originKind ABILITY. Public sourceCardId should be null for this variant, while private event token retains physical identity.",
+      "replay": "Use Ability ID/name, owner and public event sequence/DECK->DISCARD fact. Do not stringify EffectOrigin.sourceId or physical UUID after source was recovered to a hidden zone. Cards actually milled are public only on entry to discard; never reveal untouched deck cards or counts by scanning hidden deck before event.",
+      "label": "Existing name-only trigger option works with null anchors. If clearer caption needed, MatchSession may prefix this event with discard-trigger wording without changing protocol or printed Ability name; no nonexistent field location.",
+      "playerZone": "discard_top_deck OPPONENT_ACTIVE already maps directly to other(actor).id in exactlyOneOwner; it does not require a live opposing Active. Use that existing player-zone semantics rather than fake SELF host."
+    }
+  }
+}

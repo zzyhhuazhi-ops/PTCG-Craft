@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-16",
+  "scope": "Newest-first ME5 Backtrack Badge; actual bundled card catalog, no artwork or BREAK work.",
+  "ruleReferences": [
+    {
+      "url": "https://asia.pokemon-card.com/sg/card-search/detail/25764/",
+      "facts": "Backtrack Badge me5_en_074, Tool: once during own turn, after coins for attached Colorless Pokemon's attack, optionally ignore all results and begin those flips again."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50293",
+      "facts": "Japanese Backtrack Badge text explicitly says the attached Pokemon attack and own coin tossing. English page supplies the Colorless icon omitted by text extraction. No Backtrack-specific FAQ was retrieved; do not equate all older Trick Coin rulings blindly."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%82%A4%E3%82%AB%E3%82%B5%E3%83%9E%E3%82%B3%E3%82%A4%E3%83%B3",
+      "facts": "Older Trick Coin cannot stack a second retry with Glimwood Tangle or Victory Star. Older Trick Coin may cause an opponent to reroll Brain Trash. Last ruling needs separate review for Backtrack which explicitly says own coin tossing."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%81%97%E3%82%87%E3%81%86%E3%82%8A%E3%81%AE%E3%81%BB%E3%81%97&page=5&regulation_faq_main=BW",
+      "facts": "Victory Star: Assist copying Crunch restarts the original Assist coin. Acrobatics restarts both coins. Dive starts again from first toss and old healing does not survive. Confusion, Burn Checkup and previous-turn Attract are excluded. Copied attacks eligible. These are analogous general-retry rulings, not directly Backtrack-specific."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?page=12&regulation=all&regulation_faq_main=&sc_group_id=511",
+      "facts": "Victory Star may be elected after the first OR second coin of Double Chop. Retry must not force a player to wait until all flips; until-tails sequences must be restartable from first toss."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%81%97%E3%82%87%E3%81%86%E3%82%8A%E3%81%AE%E3%81%BB%E3%81%97&regulation_faq_main_item1=BW",
+      "facts": "Victory Star cannot reroll only one Pokemon from Tyranitar Sweep Away multi-coin attack. All its coin results are reset. Conditional sequences must recompute subsequent path, not retain old status effects."
+    }
+  ],
+  "evidence": [
+    {
+      "cardId": "me5_en_074",
+      "textEn": "Once during your turn, after you flip any coins for an attack of the <sprite name=\"colorless\" tint=1> Pokémon this card is attached to, you may ignore all results of those coin flips and begin flipping those coins again.",
+      "textZh": "在每个自己的回合可以使用1次，自己因身上放有这张卡牌的<sprite name=\"colorless\" tint=1>宝可梦的招式而抛掷硬币时，可将抛掷硬币的结果全部消除，重新抛掷硬币。",
+      "program": [
+        {
+          "type": "reroll_attack_coins",
+          "target": "SELF",
+          "pokemon_type": "COLORLESS"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-12",
+  "sources": [{
+    "title": "Seismitoad — Black Bolt, official Asia card database",
+    "url": "https://asia.pokemon-card.com/ph/card-search/detail/21138/",
+    "accessStatus": "Official English card text retrieved",
+    "supportsZh": "Round 按己方场上具有轮唱招式的宝可梦数量计算伤害，包括战斗位与备战区；对手宝可梦不计入。"
+  }, {
+    "title": "Seismitoad — official Black & White Noble Victories Card-Dex",
+    "url": "https://assets.pokemon.com/assets/cms/pdf/tcg/carddex/bw_noble_victories.pdf",
+    "accessStatus": "Official English card text retrieved from PDF search index",
+    "supportsZh": "旧卡文 times the number of your Pokémon that have the Round attack 与当前计数语义相同；转换严格核对印刷倍数。"
+  }],
+  "relatedReferences": [
+    "evolution-attack-guard-sources-2026-10-12.json",
+    "unrestricted-attack-prize-sources-2026-10-12.json",
+    "supporter-turn-condition-sources-2026-10-12.json"
+  ],
+  "delta": "docs/rule-data-batch7-20261012.json",
+  "regressions": ["tests/GeneratedRuleBatch7Test.java", "tools/PTCGCardCN/tests/test_rule_data_batch7.py", "tests/StarterDeck100FieldCountTest.java"],
+  "limitations": [
+    "没有放宽额外能量、按名称限定支援者或持续奖赏修正的未支持卡文。",
+    "只匹配本次攻击伤害击倒，不包含效果、中毒检查或后续攻击的击倒。",
+    "生成程序测试使用免费用与中性属性夹具隔离效果；不代表客户端实战或逐张印刷卡人工验收。",
+    "来源包含尚无对应游戏物品的 Rainier 卡号；规则支持不等于官方发行、赛事合法或可在游戏中取得。"
+  ]
+}

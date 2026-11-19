@@ -1,0 +1,64 @@
+import com.google.gson.*;
+import dev.hua.ptcglive.engine.*;
+import dev.hua.ptcglive.engine.effect.*;
+import dev.hua.ptcglive.engine.field.*;
+import dev.hua.ptcglive.rules.*;
+import java.util.*;
+
+/** Public Energy choices must finish on the captured KO source before discard, prizes or replacement. */
+public final class KnockoutEnergyTransferTest {
+    static final UUID A=GeneratedRuleBatch8Test.A,B=GeneratedRuleBatch8Test.B;
+    static final String MOVE="{\"type\":\"move_energy\",\"target\":\"SELF\",\"amount\":2,\"minimum\":0,\"energy_type\":\"LIGHTNING\",\"card_kind\":\"BASIC\",\"count_mode\":\"CARDS\",\"destination_scope\":\"OWN_BENCH\"}";
+    static void check(boolean b,String s){GeneratedRuleBatch8Test.check(b,s);}
+    static void atomic(ServerMatch m,Runnable r){GeneratedRuleBatch44Test.assertRejectedAtomic(m,r);}
+    static UUID active(ServerMatch m,UUID p){return m.activePokemonView(p).pokemonId();}
+    static UUID bench(ServerMatch m,UUID p){return m.benchPokemonView(p).getFirst().pokemonId();}
+    static CardInstance hand(ServerMatch m,UUID p,String id){return GeneratedRuleBatch13Test.hand(m,p,id);}
+    static AbilityDefinition ability(){return KnockoutTriggeredAbilityTest.ability("cord","OPPONENT_ATTACK_DAMAGE",true,false,MOVE);}
+    static AttackDefinition hit(int damage,String extra){return TemporaryReceivedDamageTest.attack("hit",damage,EnergyType.COLORLESS,extra);}
+    static class Config {String id="source";CardDefinition definition;PokemonProfile profile;AttackDefinition incoming=hit(200,"");List<AbilityDefinition> benchAbilities=List.of();}
+    static ServerMatch game(){return game(new Config());}
+    static ServerMatch game(Config config){
+        var defs=new ArrayList<CardDefinition>();for(String id:List.of(config.id,"plain","lightning","water","special","wild","stadium","tool")){
+            boolean source=id.equals(config.id),pokemon=source||id.equals("plain"),trainer=id.equals("stadium")||id.equals("tool");
+            defs.add(source&&config.definition!=null?config.definition:new CardDefinition(id,id,pokemon?CardCategory.POKEMON:trainer?CardCategory.TRAINER:CardCategory.ENERGY,trainer?(id.equals("tool")?TrainerCategory.TOOL:TrainerCategory.STADIUM):TrainerCategory.NONE,"J",Set.of("international"),pokemon,id.equals("lightning")||id.equals("water"),source?4:60,Map.of(),EffectSupport.SUPPORTED,null));
+        }
+        var profile=config.profile==null?new PokemonProfile(120,1,null,EnergyType.FIGHTING,2,null,0,1,List.of(hit(90,"")),List.of(ability()),EnergyType.LIGHTNING):config.profile;
+        var plain=new PokemonProfile(1000,0,null,null,0,null,0,1,List.of(config.incoming),config.benchAbilities,EnergyType.COLORLESS);
+        var catalog=new CombatCatalog(Map.of(config.id,profile,"plain",plain),Map.of("lightning",EnergyType.LIGHTNING,"water",EnergyType.WATER),Map.of("stadium",DynamicEnergyProvisionTest.stadium(),"tool",DynamicPassiveModifierTest.plainTool()),Map.of("special",EnergyProfile.fixed(EnergyType.LIGHTNING,2),"wild",new EnergyProfile(List.of(new EnergyProfile.Unit(EnumSet.allOf(EnergyType.class))))));
+        var decks=new ArrayList<List<CardInstance>>();for(UUID owner:List.of(A,B)){var ids=new ArrayList<String>();for(String id:List.of(config.id,"plain","lightning","water","special","wild","stadium","tool")){int n=id.equals("plain")||id.equals("lightning")?16:id.equals("water")?8:4;for(int i=0;i<n;i++)ids.add(id);}check(ids.size()==60,"Fixture must have60 cards");var cards=new ArrayList<CardInstance>();for(int i=0;i<60;i++)cards.add(new CardInstance(new UUID(owner.getLeastSignificantBits(),i+1),owner,ids.get(i)));decks.add(cards);}
+        for(int seed=0;seed<3000;seed++){
+            var m=new ServerMatch(A,B,decks.get(0),decks.get(1),GeneratedRuleBatch8Test.RULES,new CardDatabase(defs),catalog,new ServerRandom(seed));OpeningTestSupport.decideOrder(m,A,B);
+            if(m.privateView(A).hand().stream().filter(c->c.definitionId().equals("plain")).count()<3||m.privateView(B).hand().stream().noneMatch(c->c.definitionId().equals(config.id))||m.privateView(B).hand().stream().filter(c->c.definitionId().equals("plain")).count()<2)continue;
+            m.chooseOpeningActive(A,hand(m,A,"plain").instanceId());m.chooseOpeningActive(B,hand(m,B,config.id).instanceId());for(UUID p:List.of(A,B)){for(int i=0;i<2;i++)m.placeOpeningBench(p,hand(m,p,"plain").instanceId());m.startAfterOpening(p);}OpeningTestSupport.complete(m,A,B,0);m.drawCardsByEffect(A,A,28);m.drawCardsByEffect(A,B,28);m.endTurn(A);m.endTurn(B);
+            if(List.of(A,B).stream().allMatch(p->m.privateView(p).hand().stream().filter(c->c.definitionId().equals("lightning")).count()>=4&&List.of("water","special","wild","stadium","tool").stream().allMatch(id->m.privateView(p).hand().stream().filter(c->c.definitionId().equals(id)).count()>=(id.equals("wild")?2:1))))return m;
+        }throw new AssertionError("No KO Energy fixture");
+    }
+    static CardInstance attach(ServerMatch m,UUID owner,UUID host,String id){var card=hand(m,owner,id);m.attachEnergyByEffect(m.currentPlayer(),owner,EffectSourceZone.HAND,card.instanceId(),owner,host);return card;}
+    static List<CardInstance> energy(ServerMatch m,int n){var cards=new ArrayList<CardInstance>();for(int i=0;i<n;i++)cards.add(attach(m,B,active(m,B),"lightning"));return cards;}
+    static void choose(ServerMatch m,List<CardInstance> cards,UUID host){var p=m.effectCardPrompt(B);m.submitEffectCards(B,p.resolutionId(),p.step(),cards.stream().map(CardInstance::instanceId).toList());if(!cards.isEmpty()){var q=m.effectAttachmentPrompt(B);check(q!=null,"Selected Energy must wait for one Bench host");m.chooseEffectAttachmentTarget(B,q.resolutionId(),q.step(),host);}}
+    static void finish(ServerMatch m){check(m.phase()==MatchPhase.PRIZE_SELECTION&&m.pendingChoicePlayer().equals(A),"KO move failed to resume Prize checkpoint");m.takePrizeAt(A,0);m.chooseReplacement(B,bench(m,B));check(m.phase()==MatchPhase.TURN&&m.currentPlayer().equals(B),"KO cleanup advanced wrong turn");}
+    public static void main(String[] args){countsAndFilters();authority();causes();noBench();suppressed();pushDown();benchDamageThenPromote();System.out.println("KnockoutEnergyTransferTest passed: pre-discard KO source,0..2 physical Basic Lightning, single own Bench, filter and ownership, no-valid-target, cause/position/suppression, atomic authority and stale choices");}
+    static void countsAndFilters(){for(int count=0;count<=3;count++)for(int chosen=0;chosen<=Math.min(count,2);chosen++){
+        var m=game();UUID source=active(m,B),target=bench(m,B);var eligible=energy(m,count);var wrong=new ArrayList<CardInstance>();for(String id:List.of("water","special","wild"))wrong.add(attach(m,B,source,id));var selected=eligible.subList(0,chosen);var rng=m.randomTranscript();m.attack(A,"hit");
+        if(count>0){var p=m.effectCardPrompt(B);check(new HashSet<>(p.candidates()).equals(new HashSet<>(eligible))&&p.minimum()==0&&p.maximum()==Math.min(2,count)&&active(m,B).equals(source)&&m.privateView(A).prizes().size()==6,"KO source/filter/selection bounds wrong");choose(m,selected,target);}
+        var field=m.benchPokemonView(B).stream().filter(v->v.pokemonId().equals(target)).findFirst().orElseThrow();check(new HashSet<>(field.attachedEnergyIds()).equals(new HashSet<>(selected.stream().map(CardInstance::instanceId).toList())),"Selected cards not all on one Bench");check(m.privateView(B).discard().containsAll(wrong)&&m.privateView(B).discard().containsAll(eligible.subList(chosen,eligible.size()))&&selected.stream().noneMatch(m.privateView(B).discard()::contains)&&m.randomTranscript().equals(rng),"KO cleanup lost/duplicated/misowned Energy or used RNG");finish(m);
+    }}
+    static void authority(){var m=game();var cards=energy(m,3);UUID ownBench=bench(m,B);var wrong=attach(m,B,active(m,B),"special");m.attack(A,"hit");var p=m.effectCardPrompt(B);var ids=cards.subList(0,2).stream().map(CardInstance::instanceId).toList();
+        atomic(m,()->m.submitEffectCards(A,p.resolutionId(),p.step(),ids));atomic(m,()->m.submitEffectCards(B,p.resolutionId(),p.step(),List.of(wrong.instanceId())));atomic(m,()->m.submitEffectCards(B,p.resolutionId(),p.step(),cards.stream().map(CardInstance::instanceId).toList()));atomic(m,()->m.submitEffectCards(B,p.resolutionId(),p.step(),List.of(ids.getFirst(),ids.getFirst())));
+        m.submitEffectCards(B,p.resolutionId(),p.step(),ids);var q=m.effectAttachmentPrompt(B);atomic(m,()->m.chooseEffectAttachmentTarget(A,q.resolutionId(),q.step(),ownBench));atomic(m,()->m.chooseEffectAttachmentTarget(B,q.resolutionId(),q.step(),active(m,B)));atomic(m,()->m.chooseEffectAttachmentTarget(B,q.resolutionId(),q.step(),bench(m,A)));m.chooseEffectAttachmentTarget(B,q.resolutionId(),q.step(),ownBench);atomic(m,()->m.submitEffectCards(B,p.resolutionId(),p.step(),ids));atomic(m,()->m.chooseEffectAttachmentTarget(B,q.resolutionId(),q.step(),ownBench));finish(m);
+    }
+    static void causes(){for(String mode:List.of("COUNTERS","DIRECT","POISON","BENCH","NONLETHAL")){
+        var c=new Config();if(mode.equals("COUNTERS"))c.incoming=hit(0,",\"triggers\":[{\"trigger\":\"AFTER_ATTACK\",\"effects\":[{\"type\":\"damage_counter\",\"target\":\"OPPONENT_ACTIVE\",\"amount\":12}]}]");if(mode.equals("DIRECT"))c.incoming=hit(0,",\"triggers\":[{\"trigger\":\"AFTER_ATTACK\",\"effects\":[{\"type\":\"knock_out\",\"target\":\"OPPONENT_ACTIVE\"}]}]");if(mode.equals("BENCH"))c.incoming=hit(200,",\"damageTarget\":\"ALL_OPPONENT_BENCH\"");if(mode.equals("NONLETHAL"))c.incoming=hit(10,"");var m=game(c);var cards=energy(m,2);
+        if(mode.equals("BENCH"))m.switchActiveByEffect(A,B,bench(m,B));
+        if(mode.equals("POISON")){m.placeDamageCountersByEffect(A,B,active(m,B),11);m.applySpecialConditionByEffect(A,B,SpecialCondition.POISONED);m.endTurn(A);}else m.attack(A,"hit");
+        check(!m.hasPendingCardSelection()&&!m.hasPendingEffectChoice(),"Wrong cause/position produced KO Energy choice "+mode);
+        if(mode.equals("NONLETHAL"))check(m.currentPlayer().equals(B)&&m.activePokemonView(B).attachedEnergyIds().size()==2,"Nonlethal attack moved Energy");else check(m.privateView(B).discard().containsAll(cards),"Wrong cause rescued Energy "+mode);
+    }}
+    static void noBench(){var m=game();var cards=energy(m,2);for(var p:List.copyOf(m.benchPokemonView(B)))m.movePokemonByEffect(A,B,p.pokemonId(),LeavePlayDestination.HAND);m.attack(A,"hit");check(m.phase()==MatchPhase.FINISHED&&m.privateView(B).discard().containsAll(cards),"No-Bench KO stalled on impossible Energy move");}
+    static void suppressed(){var m=game();var cards=energy(m,2);m.disableAbilityEffectsByEffect(A,B,active(m,B));m.attack(A,"hit");check(m.phase()==MatchPhase.PRIZE_SELECTION&&m.privateView(B).discard().containsAll(cards),"Suppressed Photon Cord still transferred Energy");}
+    static void pushDown(){var c=new Config();c.incoming=BundledCombatData.attack(JsonParser.parseString("{\"id\":\"push-down\",\"nameZh\":\"撞飞\",\"energyCost\":{\"FIGHTING\":2},\"baseDamage\":70,\"damageType\":\"FIGHTING\",\"effectSupport\":\"SUPPORTED\",\"triggers\":[{\"trigger\":\"AFTER_ATTACK\",\"effects\":[{\"type\":\"force_switch\",\"target\":\"SELECT_OPPONENT_POKEMON\"}]}]}").getAsJsonObject(),EffectRegistry.standard());var m=game(c);energy(m,2);attach(m,A,active(m,A),"wild");attach(m,A,active(m,A),"wild");m.attack(A,"push-down");var swap=m.effectPokemonPrompt(B);check(swap!=null,"Push Down must finish its forced switch before KO");UUID replacement=bench(m,B);m.chooseEffectPokemon(B,swap.resolutionId(),swap.step(),replacement);check(m.hasPendingCardSelection()&&m.pendingChoicePlayer().equals(B),"Official Cranidos damage-KO must still trigger Active Photon Cord");var p=m.effectCardPrompt(B);check(p.candidates().size()==2,"Push Down lost KO source Energy");choose(m,List.of(p.candidates().getFirst()),m.benchPokemonView(B).stream().filter(v->v.damage()==0).findFirst().orElseThrow().pokemonId());check(active(m,B).equals(replacement)&&m.phase()==MatchPhase.PRIZE_SELECTION,"Forced switch must precede KO cleanup");m.takePrizeAt(A,0);check(m.phase()==MatchPhase.TURN&&m.currentPlayer().equals(B),"Benched KO must not ask for another replacement");}
+
+    static void benchDamageThenPromote(){var c=new Config();c.incoming=hit(200,",\"damageTarget\":\"ALL_OPPONENT_BENCH\",\"triggers\":[{\"trigger\":\"AFTER_ATTACK\",\"effects\":[{\"type\":\"force_switch\",\"target\":\"SELECT_OPPONENT_POKEMON\"}]}]");var m=game(c);var cards=energy(m,2);UUID source=active(m,B);m.switchActiveByEffect(A,B,bench(m,B));m.attack(A,"hit");var q=m.effectPokemonPrompt(B);m.chooseEffectPokemon(B,q.resolutionId(),q.step(),source);check(!m.hasPendingCardSelection()&&m.privateView(B).discard().containsAll(cards),"Bench damage KO acquired Active-only trigger after later promotion");finish(m);}
+
+}

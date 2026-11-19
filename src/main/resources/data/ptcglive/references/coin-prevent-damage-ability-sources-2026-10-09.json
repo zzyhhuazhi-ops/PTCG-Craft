@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "version": "coin-prevent-damage-ability-v1",
+  "checkedDate": "2026-10-09",
+  "implementationVersion": "0.6.8-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Cinccino ex — Mega Evolution Chaos Rising 73（Ability: Smooth Coat）",
+      "url": "https://limitlesstcg.com/cards/CRI/73",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Card text as printed (Limitless card page); cross-checked against the Rainier card database 2026-10-09",
+      "supportsZh": "“If any damage is done to this Pokémon by attacks, flip a coin. If heads, prevent that damage.”：招式要对它造成伤害时掷一次硬币，正面就防止这次伤害；没有伤害时不掷。"
+    },
+    {
+      "title": "Whimsicott-GX — Sun & Moon Unbroken Bonds 140/214（Ability: Fluffy Cotton）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm10/140/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-09",
+      "supportsZh": "不同名字的特性（太阳月亮年代），卡文相同；全库共 20 张印刷。"
+    }
+  ],
+  "dataContractZh": "特性操作码 PASSIVE_COIN_PREVENT_ATTACK_DAMAGE（被动，amount 必须为 0）。",
+  "serverAuthorityZh": "服务器在两条招式伤害管线（攻击伤害；备战区伤害组件）里，算出这只宝可梦确实要受到伤害（大于 0）之后才掷币（随机记录 ability-coin-prevent-damage:<拥有者>:<宝可梦>），正面时这次伤害为 0；双方的招式都算，特性被压制时不掷。“招式伤害不受对方战斗宝可梦身上任何效果影响”的招式不读这个特性，与其它被动免伤一致。",
+  "limitations": []
+}

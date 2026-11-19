@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 2,
+  "trainerClassification": {"pokemonToolsAreItems": false},
+  "id": "custom-open-all",
+  "version": "1.0.1",
+  "triggerTiming": "AFTER_CARD_ACTIVE_PLAYER_V1",
+  "displayNameZh": "开放全卡池（自定义）",
+  "region": "custom",
+  "effectiveDate": "2026-10-03",
+  "edition": {
+    "seasonYear": 0,
+    "effectiveUntil": null,
+    "availability": "PLAYABLE_SNAPSHOT",
+    "casualOnly": true,
+    "noticeZh": "允许全部年代和地区卡池；仍须满足60张、同名与特殊构筑限制，且所有卡牌效果已经实现。不是官方简中开放赛制或国际 Expanded。"
+  },
+  "cardPool": {
+    "mode": "ALL_CARDS",
+    "legalCardIds": [],
+    "asOfDate": null,
+    "legalFromDates": {}
+  },
+  "legalRegulationMarks": [],
+  "legalBasicEnergyIds": [],
+  "bannedCardIds": [],
+  "deckTagLimits": {
+    "光辉宝可梦": 1,
+    "ACE SPEC": 1
+  },
+  "setupProcedure": "international-setup-v1",
+  "matchSetup": {
+    "deckSize": 60,
+    "openingHandSize": 7,
+    "prizeCards": 6,
+    "benchLimit": 5
+  },
+  "firstTurn": {
+    "firstPlayerMayAttack": false,
+    "firstPlayerMayPlaySupporter": false
+  },
+  "turnActions": {
+    "energyAttachmentsFromHand": 1,
+    "retreats": 1,
+    "supporters": 1,
+    "stadiums": 1
+  },
+  "sources": [],
+  "changeLogZh": [
+    "2026-10-03（1.0.1）：显式采用 AFTER_CARD_ACTIVE_PLAYER_V1 触发时序；完成原卡后由当前回合玩家排序附能触发。其它历史地区规则不继承此策略。",
+    "2026-10-03：按用户要求建立全卡池自定义休闲模式，不冒称官方赛事规则。",
+    "卡池不限制年代、语言地区或规则标记；基础流程明确选用当前已实现的 international-setup-v1，不按卡牌印刷年份自动切换旧规则。",
+    "保留同名／卡牌自身特殊构筑限制与效果支持校验；未实现效果不能按无效果运行。无官方来源是因为此模式由用户自定义，并非官方标准。"
+  ]
+}

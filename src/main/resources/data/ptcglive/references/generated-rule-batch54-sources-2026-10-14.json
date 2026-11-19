@@ -1,0 +1,657 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-14",
+  "scope": "Newest-first ME5 existing-component combinations; incidental same-text older prints enabled; artwork and true BREAK excluded",
+  "source": "Exact Rainier card component text, stable IDs, primary rule evidence and actual server regressions",
+  "ruleReferences": [
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50224/regu/all",
+      "usedFor": "Poltchageist printed opponent attack/Ability effect immunity and one Active counter. Ordinary attack damage is still applied; two independently attributed passive guards reuse existing behavior."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%81%E3%83%A3%E3%83%87%E3%82%B9&regulation_faq_main_item1=all",
+      "usedFor": "Hide n Sneak prevents opponent Froslass Ability counters and Rampardos ex Ability Energy discard; ordinary attack damage and the controller own effects remain outside the opponent-effect guard."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50238/regu/all",
+      "usedFor": "Primarina optional one-use healing on each actual hand-evolution event during its controller turn. Heals all damage from one own Pokemon, not necessarily the source."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E9%80%80%E5%8C%96%E3%82%B9%E3%83%97%E3%83%AC%E3%83%BC&page=2",
+      "usedFor": "Analogous triggered Servine Ability may be used again after a second legal hand-evolution event in the same turn. Applying this event-local wording to Primarina is an inference from the same official event wording, not a per-turn Ability quota."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50247/regu/all",
+      "usedFor": "Slowpoke optionally discards any number of cards of any category from its own Hand, including zero."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50254/regu/all",
+      "usedFor": "Lampent named Deck search puts up to three Lampent directly onto Bench, including Evolution prints, within free Bench slots; failed inspected search still shuffles under general rules."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50258/regu/all",
+      "usedFor": "Annihilape does printed100 attack damage before placing5 counters on one opponent Bench Pokemon, without converting counters to attack damage."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50262/regu/all",
+      "usedFor": "Rampardos ex once-per-turn Ability only while Active: one coin, heads selects one actual attached Energy card of opponent Active, including Special Energy."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50313",
+      "usedFor": "Silvally once-per-turn search only with empty own Hand, one Supporter revealed before moving to Hand, then Deck shuffle. It has no Active-only restriction."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50269/regu/XY",
+      "usedFor": "Malamar Brain Crush printed130 damage only when opponent Active is Confused; same audited mapping covers Slurpuff distinct printed amount."
+    },
+    {
+      "url": "https://www.pokemon-card.com/assets/document/advanced_manual.pdf",
+      "usedFor": "General named/filtered Deck search, zero/failure and inspection shuffle rules; damage and subsequent attack effects resolve in card order. No specific new exception is inferred."
+    }
+  ],
+  "evidence": [
+    {
+      "cardId": "me3_en_049",
+      "component": "attack",
+      "name": "Haunt",
+      "textEn": "Place 3 damage counters on your opponent's Active Pokémon.",
+      "textZh": "给对手的战斗宝可梦身上，放置3个伤害指示物。",
+      "mapping": {
+        "rules": [
+          "place-active-counters"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "damage_counter",
+                "target": "OPPONENT_ACTIVE",
+                "amount": 3
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5_en_005",
+      "component": "ability",
+      "name": "Hide 'n' Sneak",
+      "textEn": "Prevent all effects of your opponent's Pokémon's attacks and Abilities done to this Pokémon. <i>(Damage is not an effect.)</i>",
+      "textZh": "这只宝可梦不会受到对手的招式与特性的效果影响。<i>[伤害不属于效果。]</i>",
+      "mapping": {
+        "rules": [
+          "ability-attack-and-ability-effect-guard"
+        ],
+        "fields": {
+          "abilityKind": "PASSIVE"
+        },
+        "program": [
+          {
+            "type": "passive_effect_guard",
+            "target": "SELF",
+            "source": "ATTACK",
+            "from": "OPPONENT",
+            "scope": "EFFECTS_ONLY"
+          },
+          {
+            "type": "passive_effect_guard",
+            "target": "SELF",
+            "source": "ABILITY",
+            "from": "OPPONENT",
+            "scope": "DAMAGE_AND_EFFECTS"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5_en_005",
+      "component": "attack",
+      "name": "Furtive Drop",
+      "textEn": "Place 1 damage counter on your opponent's Active Pokémon.",
+      "textZh": "给对手的战斗宝可梦身上，放置1个伤害指示物。",
+      "mapping": {
+        "rules": [
+          "place-active-counters"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "damage_counter",
+                "target": "OPPONENT_ACTIVE",
+                "amount": 1
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5_en_006",
+      "component": "ability",
+      "name": "Hide 'n' Sneak",
+      "textEn": "Prevent all effects of your opponent's Pokémon's attacks and Abilities done to this Pokémon. <i>(Damage is not an effect.)</i>",
+      "textZh": "这只宝可梦不会受到对手的招式与特性的效果影响。<i>[伤害不属于效果。]</i>",
+      "mapping": {
+        "rules": [
+          "ability-attack-and-ability-effect-guard"
+        ],
+        "fields": {
+          "abilityKind": "PASSIVE"
+        },
+        "program": [
+          {
+            "type": "passive_effect_guard",
+            "target": "SELF",
+            "source": "ATTACK",
+            "from": "OPPONENT",
+            "scope": "EFFECTS_ONLY"
+          },
+          {
+            "type": "passive_effect_guard",
+            "target": "SELF",
+            "source": "ABILITY",
+            "from": "OPPONENT",
+            "scope": "DAMAGE_AND_EFFECTS"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5_en_020",
+      "component": "ability",
+      "name": "Enriching Melody",
+      "textEn": "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may use this Ability. Heal all damage from 1 of your Pokémon.",
+      "textZh": "在自己的回合，当将这张卡牌从手牌使出并进行进化时，可使用1次。将自己1只宝可梦的HP，全部回复。",
+      "mapping": {
+        "rules": [
+          "ability-hand-evolution-full-heal"
+        ],
+        "fields": {
+          "abilityKind": "TRIGGERED",
+          "abilityEventPolicy": {
+            "trigger": "ON_EVOLVE",
+            "watch": "SELF",
+            "source": "HAND",
+            "optional": true,
+            "usage": "NONE"
+          },
+          "abilityTriggerConditions": [
+            {
+              "type": "TURN_STATE",
+              "target": "SELF",
+              "value": "ACTOR_TURN"
+            }
+          ]
+        },
+        "program": [
+          {
+            "type": "heal",
+            "target": "SELECT_OWN_POKEMON",
+            "mode": "ALL"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5_en_029",
+      "component": "attack",
+      "name": "All-You-Can-Yeet",
+      "textEn": "You may discard any number of cards from your hand.",
+      "textZh": "选择任意数量的自己的手牌，放于弃牌区。",
+      "mapping": {
+        "rules": [
+          "optional-any-hand-discard"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "discard",
+                "target": "HAND",
+                "amount": 60,
+                "minimum": 0
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5_en_033",
+      "component": "ability",
+      "name": "Hide 'n' Sneak",
+      "textEn": "Prevent all effects of your opponent's Pokémon's attacks and Abilities done to this Pokémon. <i>(Damage is not an effect.)</i>",
+      "textZh": "这只宝可梦不会受到对手的招式与特性的效果影响。<i>[伤害不属于效果。]</i>",
+      "mapping": {
+        "rules": [
+          "ability-attack-and-ability-effect-guard"
+        ],
+        "fields": {
+          "abilityKind": "PASSIVE"
+        },
+        "program": [
+          {
+            "type": "passive_effect_guard",
+            "target": "SELF",
+            "source": "ATTACK",
+            "from": "OPPONENT",
+            "scope": "EFFECTS_ONLY"
+          },
+          {
+            "type": "passive_effect_guard",
+            "target": "SELF",
+            "source": "ABILITY",
+            "from": "OPPONENT",
+            "scope": "DAMAGE_AND_EFFECTS"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5_en_034",
+      "component": "ability",
+      "name": "Hide 'n' Sneak",
+      "textEn": "Prevent all effects of your opponent's Pokémon's attacks and Abilities done to this Pokémon. <i>(Damage is not an effect.)</i>",
+      "textZh": "这只宝可梦不会受到对手的招式与特性的效果影响。<i>[伤害不属于效果。]</i>",
+      "mapping": {
+        "rules": [
+          "ability-attack-and-ability-effect-guard"
+        ],
+        "fields": {
+          "abilityKind": "PASSIVE"
+        },
+        "program": [
+          {
+            "type": "passive_effect_guard",
+            "target": "SELF",
+            "source": "ATTACK",
+            "from": "OPPONENT",
+            "scope": "EFFECTS_ONLY"
+          },
+          {
+            "type": "passive_effect_guard",
+            "target": "SELF",
+            "source": "ABILITY",
+            "from": "OPPONENT",
+            "scope": "DAMAGE_AND_EFFECTS"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5_en_037",
+      "component": "attack",
+      "name": "Spreading Light",
+      "textEn": "Search your deck for up to 3 Lampent and put them onto your Bench. Then, shuffle your deck.",
+      "textZh": "选择自己牌库中最多3张「灯火幽灵」，放于备战区。并重洗牌库。",
+      "mapping": {
+        "rules": [
+          "lampent-deck-bench"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "search_deck",
+                "target": "DECK",
+                "amount": 3,
+                "minimum": 0,
+                "card_category": "POKEMON",
+                "pokemon_names": "Lampent",
+                "destination": "BENCH"
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5_en_041",
+      "component": "attack",
+      "name": "Ghostly Blow",
+      "textEn": "Place 5 damage counters on 1 of your opponent's Benched Pokémon.",
+      "textZh": "给对手的1只备战宝可梦身上，放置5个伤害指示物。",
+      "mapping": {
+        "rules": [
+          "place-bench-counters"
+        ],
+        "fields": {
+          "baseDamage": 100
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "select_pokemon",
+                "target": "SELECT_OPPONENT_POKEMON",
+                "position": "BENCH",
+                "effects": [
+                  {
+                    "type": "damage_counter",
+                    "target": "CHOSEN_POKEMON",
+                    "amount": 5
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5_en_045",
+      "component": "ability",
+      "name": "Destructive Headbutting",
+      "textEn": "Once during your turn, if this Pokémon is in the Active Spot, you may use this Ability. Flip a coin. If heads, discard an Energy from your opponent's Active Pokémon.",
+      "textZh": "如果这只宝可梦在战斗场上的话，则在自己的回合可以使用1次。抛掷1次硬币，如果为正面，则选择对手战斗宝可梦身上附着的1个能量，放于弃牌区。",
+      "mapping": {
+        "rules": [
+          "ability-active-coin-opponent-energy-discard"
+        ],
+        "fields": {
+          "abilityKind": "ACTIVATED_ONCE_PER_TURN"
+        },
+        "program": [
+          {
+            "type": "conditional",
+            "conditions": [
+              {
+                "type": "IS_ACTIVE",
+                "target": "SELF"
+              }
+            ],
+            "effects": [
+              {
+                "type": "coin_flip",
+                "flips": 1,
+                "heads": [
+                  {
+                    "type": "discard_energy",
+                    "target": "OPPONENT_ACTIVE",
+                    "amount": 1,
+                    "minimum": 1
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5_en_052",
+      "component": "attack",
+      "name": "Brain Crush",
+      "textEn": "If your opponent's Active Pokémon isn't Confused, this attack does nothing.",
+      "textZh": "如果对手的战斗宝可梦没有处于混乱状态的话，这个招式失败。",
+      "mapping": {
+        "rules": [
+          "confused-defender-damage-gate"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [
+          {
+            "type": "conditional",
+            "conditions": [
+              {
+                "type": "HAS_STATUS",
+                "target": "OPPONENT_ACTIVE",
+                "status": "CONFUSED"
+              }
+            ],
+            "effects": [
+              {
+                "type": "damage",
+                "target": "OPPONENT_ACTIVE",
+                "amount": 130
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5_en_070",
+      "component": "ability",
+      "name": "Call a Buddy",
+      "textEn": "Once during your turn, if you have no cards in your hand, you may use this Ability. Search your deck for a Supporter card, reveal it, and put it into your hand. Then, shuffle your deck.",
+      "textZh": "如果自己1张手牌都没有的话，则在自己的回合可以使用1次。选择自己牌库中的1张支援者，在给对手看过之后加入手牌。并重洗牌库。",
+      "mapping": {
+        "rules": [
+          "ability-empty-hand-supporter-search"
+        ],
+        "fields": {
+          "abilityKind": "ACTIVATED_ONCE_PER_TURN"
+        },
+        "program": [
+          {
+            "type": "conditional",
+            "conditions": [
+              {
+                "type": "HAND_SIZE",
+                "target": "SELF",
+                "value": 0,
+                "comparison": "=="
+              }
+            ],
+            "effects": [
+              {
+                "type": "search_deck",
+                "target": "DECK",
+                "amount": 1,
+                "minimum": 0,
+                "card_category": "TRAINER",
+                "trainer_category": "SUPPORTER",
+                "reveal": true
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5_en_088",
+      "component": "ability",
+      "name": "Enriching Melody",
+      "textEn": "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may use this Ability. Heal all damage from 1 of your Pokémon.",
+      "textZh": "在自己的回合，当将这张卡牌从手牌使出并进行进化时，可使用1次。将自己1只宝可梦的HP，全部回复。",
+      "mapping": {
+        "rules": [
+          "ability-hand-evolution-full-heal"
+        ],
+        "fields": {
+          "abilityKind": "TRIGGERED",
+          "abilityEventPolicy": {
+            "trigger": "ON_EVOLVE",
+            "watch": "SELF",
+            "source": "HAND",
+            "optional": true,
+            "usage": "NONE"
+          },
+          "abilityTriggerConditions": [
+            {
+              "type": "TURN_STATE",
+              "target": "SELF",
+              "value": "ACTOR_TURN"
+            }
+          ]
+        },
+        "program": [
+          {
+            "type": "heal",
+            "target": "SELECT_OWN_POKEMON",
+            "mode": "ALL"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5_en_095",
+      "component": "ability",
+      "name": "Call a Buddy",
+      "textEn": "Once during your turn, if you have no cards in your hand, you may use this Ability. Search your deck for a Supporter card, reveal it, and put it into your hand. Then, shuffle your deck.",
+      "textZh": "如果自己1张手牌都没有的话，则在自己的回合可以使用1次。选择自己牌库中的1张支援者，在给对手看过之后加入手牌。并重洗牌库。",
+      "mapping": {
+        "rules": [
+          "ability-empty-hand-supporter-search"
+        ],
+        "fields": {
+          "abilityKind": "ACTIVATED_ONCE_PER_TURN"
+        },
+        "program": [
+          {
+            "type": "conditional",
+            "conditions": [
+              {
+                "type": "HAND_SIZE",
+                "target": "SELF",
+                "value": 0,
+                "comparison": "=="
+              }
+            ],
+            "effects": [
+              {
+                "type": "search_deck",
+                "target": "DECK",
+                "amount": 1,
+                "minimum": 0,
+                "card_category": "TRAINER",
+                "trainer_category": "SUPPORTER",
+                "reveal": true
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5_en_100",
+      "component": "ability",
+      "name": "Destructive Headbutting",
+      "textEn": "Once during your turn, if this Pokémon is in the Active Spot, you may use this Ability. Flip a coin. If heads, discard an Energy from your opponent's Active Pokémon.",
+      "textZh": "如果这只宝可梦在战斗场上的话，则在自己的回合可以使用1次。抛掷1次硬币，如果为正面，则选择对手战斗宝可梦身上附着的1个能量，放于弃牌区。",
+      "mapping": {
+        "rules": [
+          "ability-active-coin-opponent-energy-discard"
+        ],
+        "fields": {
+          "abilityKind": "ACTIVATED_ONCE_PER_TURN"
+        },
+        "program": [
+          {
+            "type": "conditional",
+            "conditions": [
+              {
+                "type": "IS_ACTIVE",
+                "target": "SELF"
+              }
+            ],
+            "effects": [
+              {
+                "type": "coin_flip",
+                "flips": 1,
+                "heads": [
+                  {
+                    "type": "discard_energy",
+                    "target": "OPPONENT_ACTIVE",
+                    "amount": 1,
+                    "minimum": 1
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "sm12_en_154",
+      "component": "attack",
+      "name": "Sweet Panic",
+      "textEn": "If your opponent's Active Pokémon isn't Confused, this attack does nothing.",
+      "textZh": "如果对手的战斗宝可梦没有处于混乱状态的话，这个招式失败。",
+      "mapping": {
+        "rules": [
+          "confused-defender-damage-gate"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [
+          {
+            "type": "conditional",
+            "conditions": [
+              {
+                "type": "HAS_STATUS",
+                "target": "OPPONENT_ACTIVE",
+                "status": "CONFUSED"
+              }
+            ],
+            "effects": [
+              {
+                "type": "damage",
+                "target": "OPPONENT_ACTIVE",
+                "amount": 110
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "scope": "Unmodified generated attack drafts; unresolved other components keep each complete card unsupported. Test resources only.",
+  "cards": [
+    {
+      "id": "sm3_en_063",
+      "attacks": [
+        {
+          "id": "prismatic-burst",
+          "nameZh": "棱镜爆破",
+          "energyCost": {
+            "COLORLESS": 3
+          },
+          "baseDamage": 10,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "damage_per_bound",
+              "target": "OPPONENT_ACTIVE",
+              "bind": "discarded1",
+              "amount": 60
+            }
+          ],
+          "triggers": [
+            {
+              "trigger": "BEFORE_ATTACK",
+              "effects": [
+                {
+                  "type": "discard_energy",
+                  "target": "SELF",
+                  "bind": "discarded1",
+                  "all": true,
+                  "energy_type": "PSYCHIC"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sm6_en_095",
+      "attacks": [
+        {
+          "id": "photon-geyser",
+          "nameZh": "光子喷涌",
+          "energyCost": {
+            "PSYCHIC": 1,
+            "METAL": 1
+          },
+          "baseDamage": 20,
+          "damageType": "DRAGON",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "damage_per_bound",
+              "target": "OPPONENT_ACTIVE",
+              "bind": "discarded1",
+              "amount": 80
+            }
+          ],
+          "triggers": [
+            {
+              "trigger": "BEFORE_ATTACK",
+              "effects": [
+                {
+                  "type": "discard_energy",
+                  "target": "SELF",
+                  "bind": "discarded1",
+                  "all": true,
+                  "card_kind": "BASIC",
+                  "energy_type": "PSYCHIC"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "me2-5_en_079",
+      "attacks": [
+        {
+          "id": "erasure-ball",
+          "nameZh": "擦除球",
+          "energyCost": {
+            "PSYCHIC": 2,
+            "COLORLESS": 1
+          },
+          "baseDamage": 160,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "damage_per_bound",
+              "target": "OPPONENT_ACTIVE",
+              "bind": "discarded1",
+              "amount": 60
+            }
+          ],
+          "triggers": [
+            {
+              "trigger": "BEFORE_ATTACK",
+              "effects": [
+                {
+                  "type": "discard_energy",
+                  "target": "OWN_BENCH",
+                  "bind": "discarded1",
+                  "amount": 2,
+                  "minimum": 0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

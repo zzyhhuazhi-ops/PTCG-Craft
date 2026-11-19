@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "scope": "Newest-first ME5: three printed deck-selection attacks; artwork and true BREAK excluded.",
+  "ruleReferences": [
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50220",
+      "usedFor": "Tropius Fruity Aroma: physical top6, reveal any Pokemon to Hand, shuffle unchosen cards back."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50174/regu/all",
+      "usedFor": "Mega Delphox ex promo with identical Trick Portal: top9 any Pokemon directly Bench, shuffle rest. Local ME5 printed costs/stats/evolution remain authoritative and unchanged."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50288",
+      "usedFor": "Bombirdier Challenging Delivery: flip2, only both heads search one Pokemon to Bench and shuffle."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%82%AA%E3%83%88%E3%82%B7%E3%83%89%E3%83%AA&regulation_faq_main_item1=all",
+      "usedFor": "Official FAQ explicitly allows Evolution Pokemon directly onto Bench with Challenging Delivery."
+    },
+    {
+      "url": "https://www.pokemon-card.com/assets/document/advanced_manual.pdf",
+      "usedFor": "Advanced Rules3.4 p31 C-11: full Bench ends deck placement without inspecting deck; fewer free slots limit placed cards. Existing semantics retained for top-window Bench placement."
+    }
+  ],
+  "evidence": [
+    {
+      "cardId": "me5_en_001",
+      "name": "Fruity Aroma",
+      "textEn": "Look at the top 6 cards of your deck, and you may reveal any number of Pokémon you find there and put them into your hand. Shuffle the other cards back into your deck.",
+      "textZh": "查看自己牌库上方6张卡牌，选择其中任意数量的宝可梦，在给对手看过之后，加入手牌。将剩余的卡牌放回牌库并重洗牌库。",
+      "mapping": {
+        "rules": [
+          "attack-top-six-pokemon-hand"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "search_deck",
+                "target": "DECK",
+                "top_count": 6,
+                "amount": 6,
+                "minimum": 0,
+                "card_category": "POKEMON",
+                "reveal": true
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5_en_008",
+      "name": "Trick Portal",
+      "textEn": "Look at the top 9 cards of your deck, and you may put any number of Pokémon you find there onto your Bench. Shuffle the other cards back into your deck.",
+      "textZh": "查看自己牌库上方9张卡牌，选择其中任意数量的宝可梦，放于备战区。将剩余的卡牌放回牌库并重洗牌库。",
+      "mapping": {
+        "rules": [
+          "attack-top-nine-any-stage-bench"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "search_deck",
+                "target": "DECK",
+                "top_count": 9,
+                "amount": 9,
+                "minimum": 0,
+                "card_category": "POKEMON",
+                "destination": "BENCH",
+                "any_stage": true
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5_en_071",
+      "name": "Challenging Delivery",
+      "textEn": "Flip 2 coins. If both of them are heads, search your deck for a Pokémon and put it onto your Bench. Then, shuffle your deck.",
+      "textZh": "抛掷2次硬币，如果全部为正面的话，则选择自己牌库中的1张宝可梦，放于备战区。并重洗牌库。",
+      "mapping": {
+        "rules": [
+          "attack-two-heads-any-stage-bench"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "coin_flip",
+                "flips": 2,
+                "effects": [
+                  {
+                    "type": "conditional",
+                    "conditions": [
+                      {
+                        "type": "COIN_RESULT",
+                        "value": "ALL_HEADS"
+                      }
+                    ],
+                    "effects": [
+                      {
+                        "type": "search_deck",
+                        "target": "DECK",
+                        "amount": 1,
+                        "minimum": 0,
+                        "card_category": "POKEMON",
+                        "destination": "BENCH",
+                        "any_stage": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "version": "benched-damage-prevention-ability-v1",
+  "checkedDate": "2026-10-09",
+  "implementationVersion": "0.6.8-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Bidoof — Sword & Shield Crown Zenith 111/159（Ability: Carefree Countenance）",
+      "url": "https://limitlesstcg.com/cards/CRZ/111",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Card text as printed (Limitless card page); cross-checked against the Rainier card database 2026-10-09",
+      "supportsZh": "“As long as this Pokémon is on your Bench, prevent all damage done to this Pokémon by attacks.”：在备战区时，任何招式（双方的招式都算）对它造成的伤害都被防止；在战斗位时不生效。"
+    },
+    {
+      "title": "Rayquaza — XY Black Star Promos XY64（Ability: Ozone Wall）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/xy-series/xyp/XY64/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-09 (pokemon.com page not read automatically)",
+      "supportsZh": "同一特性写明 “(both yours and your opponent's)”，确认“招式”包括自己的招式。"
+    }
+  ],
+  "dataContractZh": "特性操作码 PASSIVE_PREVENT_ATTACK_DAMAGE_WHILE_BENCHED（被动，amount 必须为 0）。只防止伤害，不防止招式的其它效果。",
+  "serverAuthorityZh": "与太晶规则走同一个判断（ServerMatch.benchedPreventsAttackDamage）：目标不在战斗位、并且是太晶宝可梦或带这个被动特性；特性被压制时不生效。攻击伤害与备战区伤害组件两条管线都读它。",
+  "limitations": [
+    "只写 “by attacks from your opponent's Pokémon” 的版本（只挡对手的招式）以及 “prevent all damage from and effects of attacks” 的版本不在本操作码内。"
+  ]
+}

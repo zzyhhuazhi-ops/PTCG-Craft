@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "version": "pokemon-change-triggers-v1",
+  "checkedDate": "2026-10-04",
+  "implementationVersion": "0.6.0-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "February 2026 Rule Book Updates — official Professor Program editorial",
+      "url": "https://professorprogram.pokemon.com/news/11473085",
+      "publishedDate": "2026-02-26",
+      "effectiveDate": null,
+      "documentVersion": "February 2026 editorial rule update",
+      "verification": "Existing project source snapshot; it distinguishes finishing the original card effect from resolving subsequently triggered effects.",
+      "supportsZh": "服务器先完成登场、进化、撤退或效果换位的原始动作，再捕获自动事件；不会让客户端在两者之间插入普通行动。"
+    },
+    {
+      "title": "Pokémon TCG Rulebook — Paradox Rift edition (historical)",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/par_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "PAR English historical rulebook; relevant pages were previously visually reviewed in this project",
+      "verification": "Historical reference only; it is not represented as the current complete rulebook.",
+      "supportsZh": "用于区分普通进化、撤退／换位与开局设置的既有规则边界；本轮不将该历史PDF当成所有2026优先级的依据。"
+    },
+    {
+      "title": "Jet Energy — Scarlet & Violet Surging Sparks 252 official card page",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv08/252/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official card database entry",
+      "verification": "Previously recorded official-card reference; direct pages may be delivered through a verification iframe.",
+      "supportsZh": "作为“附着后发生公开换位”这一类持续卡自动事件的建模用例；不表示本卡或任何真实换位卡已完成整卡审核。"
+    }
+  ],
+  "retrievalLimitations": [
+    "No current comprehensive official priority text for every simultaneous enter-play, evolve, retreat and switch interaction was newly obtained.",
+    "No PTCG Live behavior or log is treated as a rules authority or used for this implementation.",
+    "No Japanese, Asian or community source is mixed into the international ruleset."
+  ],
+  "implementationLimits": [
+    "Supports audited ON_ENTER_PLAY, ON_EVOLVE, ON_RETREAT and ON_SWITCH programs for Pokémon, Tool, Stadium and Special Energy sources.",
+    "Opening setup, mulligan bonus Bench placement and Knock Out replacement intentionally do not produce these ordinary field-change events.",
+    "Full simultaneous-trigger priority, leave-play replacement effects and last-known-information predicates remain unsupported and reject unaudited card programs."
+  ]
+}

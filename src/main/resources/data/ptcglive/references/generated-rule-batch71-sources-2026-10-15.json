@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "scope": "Newest-first ME5 Sizzlipede Bug Out. Artwork and true BREAK excluded.",
+  "ruleReferences": [
+    {
+      "url": "https://asia.pokemon-card.com/sg/card-search/detail/25699/",
+      "facts": "Basic80HP, Controlled Burn and Bug Out50x, bottom7 revealed, count printed Bug Out Pokemon; shuffle every revealed Pokemon, discard nonPokemon."
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50227/regu/all",
+      "facts": "Japanese normal M5 008/081 same exact effect."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%A4%E3%82%AF%E3%83%87&regulation_faq_main_item1=all",
+      "facts": "Direct official FAQ confirms non-Bug-Out Pokemon also shuffled back, not discarded."
+    }
+  ],
+  "evidence": [
+    {
+      "cardId": "me5_en_009",
+      "name": "Bug Out",
+      "textEn": "Reveal the bottom 7 cards of your deck, and this attack does 50 damage for each Pokémon you find there that has the Bug Out attack. Then, shuffle any revealed Pokémon back into your deck. Discard the other cards.",
+      "textZh": "将自己牌库下方7张卡牌翻到正面，造成其中持有招式「虫虫恐慌」的宝可梦张数×50伤害。将翻到正面的宝可梦放回牌库并重洗牌库。将剩余的卡牌放于弃牌区。",
+      "fields": {
+        "baseDamage": 0
+      },
+      "program": [
+        {
+          "type": "damage_per_bound",
+          "target": "OPPONENT_ACTIVE",
+          "amount": 50,
+          "bind": "bugs"
+        }
+      ],
+      "triggers": [
+        {
+          "trigger": "BEFORE_ATTACK",
+          "effects": [
+            {
+              "type": "reveal_deck_window",
+              "target": "DECK",
+              "amount": 7,
+              "position": "BOTTOM",
+              "attack_id": "bug-out",
+              "bind": "bugs"
+            }
+          ]
+        },
+        {
+          "trigger": "AFTER_ATTACK",
+          "effects": [
+            {
+              "type": "resolve_deck_window",
+              "target": "DECK",
+              "ref": "bugs",
+              "shuffle_category": "POKEMON"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

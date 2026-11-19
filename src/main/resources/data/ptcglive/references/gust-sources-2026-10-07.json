@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "version": "gust-v1",
+  "checkedDate": "2026-10-07",
+  "implementationVersion": "0.6.7-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Alolan Persian — Sun & Moon 79/149（Taunt）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm1/79/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-07 (pokemon.com page blocked automated reading)",
+      "supportsZh": "“Switch 1 of your opponent's Benched Pokémon with their Active Pokémon.”：由使用招式的玩家选对方 1 只备战宝可梦，与对方战斗宝可梦交换。新写法 “Switch in 1 of your opponent's Benched Pokémon to the Active Spot.” 意思相同。"
+    },
+    {
+      "title": "Gothitelle — Sun & Moon Guardians Rising 54/145（Tractorbeam）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm2/54/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-07 (pokemon.com page blocked automated reading)",
+      "supportsZh": "“Switch 1 of your opponent's Benched Pokémon with their Active Pokémon. This attack does 30 damage to the new Active Pokémon.”：先换位，再对新的战斗宝可梦造成伤害（换位写在伤害前 BEFORE_ATTACK）。"
+    },
+    {
+      "title": "Pokémon Catcher — Sun & Moon 126/149",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm1/126/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-07 (pokemon.com page blocked automated reading)",
+      "supportsZh": "物品 “Flip a coin. If heads, switch 1 of your opponent's Benched Pokémon with their Active Pokémon.”：正面时由使用者选对方备战宝可梦换上（coin_flip 的 heads 分支里放 gust）。"
+    }
+  ],
+  "dataContractZh": "新效果 gust：target 只能是 SELECT_OPPONENT_POKEMON，不接受参数。与 switch（选自己的备战宝可梦）、force_switch（由对方自己选）并列。",
+  "serverAuthorityZh": "服务器只把对方当前的备战宝可梦作为候选，提示发给效果操控方；确认后用与 force_switch 相同的服务器换位（不是撤退，不付费用，原战斗宝可梦的特殊状态与攻击效果清除）。对方没有备战宝可梦时这一步不产生作用。",
+  "limitations": [
+    "“During your opponent's next turn, that Pokémon can't retreat.” 等对“被换上的那只”施加的后续效果，若写成 OPPONENT_ACTIVE 即指换上后的战斗宝可梦。"
+  ]
+}

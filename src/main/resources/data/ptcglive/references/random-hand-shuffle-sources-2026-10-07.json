@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "version": "random-hand-shuffle-v1",
+  "checkedDate": "2026-10-07",
+  "implementationVersion": "0.6.7-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Zubat — Sun & Moon 54/149（Astonish）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm1/54/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-07 (pokemon.com page blocked automated reading)",
+      "supportsZh": "“Choose a random card from your opponent's hand. Your opponent reveals that card and shuffles it into their deck.”：随机选对手 1 张手牌，对手公开后洗回自己的牌库。XY 时代写法 “… shuffles it into his or her deck.”（Phantump xy1 54 等）意思相同。"
+    },
+    {
+      "title": "Pokémon Trading Card Game Rules — Scarlet & Violet Rulebook（effects that ask for more cards than are available）",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/pal_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English rulebook PDF; checked 2026-10-07",
+      "supportsZh": "效果要求的张数多于实际张数时能做多少做多少；对手没有手牌时什么都不发生，招式其余文字照常结算。"
+    }
+  ],
+  "dataContractZh": "新效果 shuffle_random_hand(amount 1–60)：目标 SELF/HAND/DECK 表示来源控制者，OPPONENT_ACTIVE 表示对手（与 draw、discard_random_hand 相同的玩家约定）。只接受 amount，不接受其它参数或子效果。",
+  "serverAuthorityZh": "服务器用可重放随机源从该玩家手牌中选牌，放进其牌库后洗牌；所选卡写进公开记录（相当于“公开”）。张数不足时尽量处理，手牌为空时不做任何事。",
+  "limitations": [
+    "“放到牌库底”“公开后若是支援者就弃置”等变体不在本组件内。",
+    "对局画面目前只在公开记录里显示被洗回的卡，没有单独的展示窗口。"
+  ]
+}

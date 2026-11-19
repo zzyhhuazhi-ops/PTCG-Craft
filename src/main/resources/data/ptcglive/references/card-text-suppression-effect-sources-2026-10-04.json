@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "version": "card-text-suppression-effects-v1",
+  "checkedDate": "2026-10-04",
+  "implementationVersion": "0.6.0-development",
+  "region": "international historical reference",
+  "sources": [
+    {
+      "title": "Carracosta — Unified Minds 45/236",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/sm-series/sm11/45/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English card database entry",
+      "verification": "Ancient Custom says Pokémon Tool cards attached to the opponent's Pokémon have no effect.",
+      "supportsZh": "用于 disable_tools 的“保留附着、抑制印刷工具效果”通用机制；不启用该卡的持续范围或完整整卡。"
+    },
+    {
+      "title": "Team Rocket’s Watchtower — Ascended Heroes 210/217",
+      "url": "https://www.pokemon.com/uk/pokemon-tcg/pokemon-cards/series/me2pt5/210",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English card database entry",
+      "verification": "The Stadium text says Colorless Pokémon in play have no Abilities.",
+      "supportsZh": "用于 disable_abilities 的“印刷特性仍可见但效果不结算”通用机制；属性筛选、全场持续来源和真实卡时序仍须单独审核。"
+    }
+  ],
+  "retrievalLimitations": [
+    "No PTCG Live behavior, community ruling, Japanese local ruling or Chinese translation is used as an international rules authority.",
+    "These sources demonstrate effect families only and do not certify the full wording, date, legal format or implementation readiness of either real card."
+  ],
+  "implementationLimits": [
+    "disable_abilities and disable_tools each target one server-verified public in-play Pokémon and expire at the source controller's next turn start. Unknown duration, nested text and unverified target data are rejected.",
+    "Before applying either suppression, the server rechecks effect protection. Tools stay attached when disabled; active, passive and triggered Ability resolution is suppressed while an ability lock exists.",
+    "Ability suppression invokes the shared live-HP/Knock-Out checkpoint, so removal of an Ability-derived HP modifier cannot strand an illegal damaged Pokémon in play.",
+    "Global/Stadium source scopes, type or Rule Box filters, exceptions, replacement effects and unaudited real-card bindings remain unsupported. Automatic triggered sources are limited to the reviewed single-target components and bind duration to the printed source controller."
+  ]
+}

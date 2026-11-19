@@ -1,0 +1,40 @@
+import com.google.gson.JsonParser;
+import dev.hua.ptcglive.ai.*;
+import dev.hua.ptcglive.engine.*;
+import dev.hua.ptcglive.engine.effect.*;
+import dev.hua.ptcglive.engine.field.*;
+import dev.hua.ptcglive.rules.*;
+import java.util.*;
+
+public final class NonPokemonBatch67Test {
+    static final UUID A=GeneratedRuleBatch8Test.A,B=GeneratedRuleBatch8Test.B;
+    static final List<String> IDS=List.of("sm10_en_178","sm11-5_en_060","swsh7-5r_en_012");
+    static void check(boolean ok,String why){if(!ok)throw new AssertionError(why);}
+    static CardInstance hand(ServerMatch m,UUID p,String id){return DynamicPassiveModifierTest.hand(m,p,id);}
+    static ServerMatch fixture(String id){return GeneratedRuleBatch23Test.fixture(NonPokemonBatch2Test.DATA.trainer(id).orElseThrow(),0,EnergyType.GRASS,DeckDiscardTriggeredAbilityTest.trainer("SUPPORTER","{\"type\":\"draw\",\"target\":\"SELF\",\"amount\":3}"));}
+    static void settle(ServerMatch m){AiCardOperationTest.settle(MatchSession.multiplayer(m,A,B),AiDifficulty.NORMAL);}
+    static UUID other(UUID p){return p.equals(A)?B:A;}
+    static void prize(ServerMatch m,UUID winner){UUID victim=other(winner);m.knockOutPokemonByEffect(m.currentPlayer(),victim,m.benchPokemonView(victim).getFirst().pokemonId());check(UnrestrictedAttackPrizeTest.take(m,winner)==1,"Prize setup failed");}
+    static ServerMatch aiGame(String id){var m=fixture(id);if(!id.equals(IDS.getLast()))prize(m,B);return m;}
+    static void reuse(ServerMatch m,UUID p,CardInstance card){m.recoverDiscardCardsByEffect(p,p,new ServerMatch.CardSelectionPolicy(1,1,null,null,false,Set.of()),List.of(card.instanceId()),CardEffectDestination.HAND);}
+    public static void main(String[] args){surge();admin();schema();System.out.println("NonPokemonBatch67Test passed: strictly behind Prizes, exactly three total Supporters including Surge, repeated setting cannot stack/reset, normal rules restored on each player's next turn; both hands shuffled before owner-first independent zero-through-Prize draw choices, short/empty decks, hidden identity and stale/wrong-player rejection");}
+    static void surge(){for(String id:IDS.subList(0,2))for(UUID p:List.of(A,B))for(String mode:List.of("behind","equal","ahead","repeat")){
+        var m=fixture(id);if(p.equals(B))m.endTurn(A);if(mode.equals("ahead"))prize(m,p);else if(!mode.equals("equal"))prize(m,other(p));var source=hand(m,p,"trainer");var before=m.privateView(p);boolean allowed=Set.of("behind","repeat").contains(mode);check(m.canPlayTrainer(p,source.instanceId(),null)==allowed,"Surge prize gate wrong");if(!allowed){GeneratedRuleBatch8Test.reject(()->m.playTrainer(p,source.instanceId(),null));check(m.privateView(p).equals(before)&&m.mayPlaySupporter(p),"Rejected Surge consumed source/Supporter");continue;}
+        m.playTrainer(p,source.instanceId(),null);settle(m);check(m.mayPlaySupporter(p),"Surge consumed all three allowances "+id+" "+p+" "+mode+" "+m.phase()+" "+m.currentPlayer()+" "+m.replayTranscript().subList(Math.max(0,m.replayTranscript().size()-8),m.replayTranscript().size()));
+        var normal=hand(m,p,"supporter");for(int n=2;n<=3;n++){CardInstance next=mode.equals("repeat")?source:normal;if(m.privateView(p).discard().contains(next))reuse(m,p,next);check(m.canPlayTrainer(p,next.instanceId(),null),"Surge failed remaining allowance "+n);m.playTrainer(p,next.instanceId(),null);settle(m);check(m.mayPlaySupporter(p)==(n<3),"Surge allowance accumulated or reset");}
+        reuse(m,p,source);GeneratedRuleBatch8Test.reject(()->m.playTrainer(p,source.instanceId(),null));check(m.privateView(p).hand().contains(source),"Fourth Supporter consumed despite rejection");
+        m.endTurn(p);UUID opp=other(p);var theirs=hand(m,opp,"supporter");m.playTrainer(opp,theirs.instanceId(),null);settle(m);check(!m.mayPlaySupporter(opp),"Surge leaked to opponent");m.endTurn(opp);if(m.privateView(p).discard().contains(normal))reuse(m,p,normal);m.playTrainer(p,normal.instanceId(),null);settle(m);check(!m.mayPlaySupporter(p)&&!m.canPlayTrainer(p,source.instanceId(),null),"Surge persisted next own turn or allowed after ordinary Supporter");
+    }}
+    static void choose(ServerMatch m,UUID p,int amount,int maximum){var q=m.effectChoicePrompt(p);check(q.optionsZh().size()==maximum+1,"Incorrect optional draw range");int index=amount==0?maximum:amount-1;var before=m.privateView(p);GeneratedRuleBatch8Test.reject(()->m.effectChoicePrompt(other(p)));GeneratedRuleBatch8Test.reject(()->m.chooseEffectOption(other(p),q.resolutionId(),q.step(),index));GeneratedRuleBatch8Test.reject(()->m.chooseEffectOption(p,q.resolutionId(),q.step(),maximum+1));check(m.privateView(p).equals(before),"Invalid optional draw moved cards");m.chooseEffectOption(p,q.resolutionId(),q.step(),index);GeneratedRuleBatch8Test.reject(()->m.chooseEffectOption(p,q.resolutionId(),q.step(),index));}
+    static void admin(){for(UUID p:List.of(A,B))for(int ownDraw:List.of(0,1,3,6))for(int oppDraw:List.of(0,2,6))for(boolean unequal:List.of(false,true)){
+        var m=fixture(IDS.getLast());if(p.equals(B))m.endTurn(A);UUID opp=other(p);if(unequal)prize(m,opp);int ownPrizes=m.privateView(p).prizes().size(),oppPrizes=m.privateView(opp).prizes().size();int a=Math.min(ownDraw,ownPrizes),b=Math.min(oppDraw,oppPrizes);var source=hand(m,p,"trainer");var ownPool=new HashSet<>(m.privateView(p).deck());ownPool.addAll(m.privateView(p).hand());ownPool.remove(source);var oppPool=new HashSet<>(m.privateView(opp).deck());oppPool.addAll(m.privateView(opp).hand());var oldPrizes=m.privateView(p).prizes();m.playTrainer(p,source.instanceId(),null);
+        check(m.privateView(p).hand().isEmpty()&&m.privateView(opp).hand().isEmpty()&&new HashSet<>(m.privateView(p).deck()).equals(ownPool)&&new HashSet<>(m.privateView(opp).deck()).equals(oppPool),"Admin must shuffle both hands before either draw and exclude resolving card");check(m.effectCardReveal()==null&&m.clientView(opp).effectSelection()==null,"Admin exposed private shuffled cards");choose(m,p,a,ownPrizes);check(m.privateView(p).hand().size()==a&&m.privateView(opp).hand().isEmpty(),"Admin drew opponent first");choose(m,opp,b,oppPrizes);settle(m);check(m.privateView(p).hand().size()==a&&m.privateView(opp).hand().size()==b&&m.privateView(p).discard().contains(source)&&m.privateView(p).prizes().equals(oldPrizes),"Admin ignored independent quantities/disposition");
+    }
+        for(UUID p:List.of(A,B))for(int own:List.of(0,1,3))for(int opponent:List.of(0,2,3)){
+            var m=fixture(IDS.getLast());if(p.equals(B))m.endTurn(A);UUID opp=other(p);var source=hand(m,p,"trainer");for(UUID q:List.of(p,opp)){int count=q.equals(p)?own:opponent;m.drawCardsByEffect(p,q,Math.max(0,m.privateView(q).deck().size()-count));var ids=m.privateView(q).hand().stream().filter(c->!c.equals(source)).map(CardInstance::instanceId).toList();m.discardHandCardsByEffect(p,q,ids);}check(m.canPlayTrainer(p,source.instanceId(),null)==(own+opponent>0),"Admin empty-zone preflight wrong");if(own+opponent==0)continue;m.playTrainer(p,source.instanceId(),null);if(own>0)choose(m,p,own,own);if(opponent>0)choose(m,opp,opponent,opponent);settle(m);check(m.privateView(p).hand().size()==own&&m.privateView(opp).hand().size()==opponent&&m.phase()==MatchPhase.TURN,"Admin failed short deck or caused deck-out");
+        }
+    }
+    static void schema(){String draw="{\"type\":\"draw\",\"target\":\"SELF\",\"amount\":1,\"count_type\":\"PRIZE_COUNT\",\"count_target\":\"SELF\",\"up_to\":true}";for(String bad:List.of(draw.replace("\"up_to\":true","\"up_to\":false"),draw.replace("PRIZE_COUNT","HAND_SIZE"),draw.replace("\"count_target\":\"SELF\"","\"count_target\":\"OPPONENT_ACTIVE\""),draw.replace("\"amount\":1","\"amount\":2")))GeneratedRuleBatch8Test.reject(()->EffectRegistry.standard().parse(JsonParser.parseString(bad).getAsJsonObject()));
+        for(int n:List.of(0,2,4))GeneratedRuleBatch8Test.reject(()->EffectRegistry.standard().parse(JsonParser.parseString("{\"type\":\"turn_supporter_limit\",\"target\":\"SELF\",\"amount\":"+n+"}").getAsJsonObject()));
+    }
+}

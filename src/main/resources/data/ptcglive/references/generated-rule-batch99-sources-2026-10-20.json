@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-20",
+  "cardIds": [
+    "me4_en_069",
+    "me4_en_096"
+  ],
+  "ruleReferences": [
+    {
+      "url": "https://asia.pokemon-card.com/my/card-search/detail/25287/",
+      "supports": "Actual English printed Target Together: choose one opposing Pokemon, flips equal own in-play name-containing Tauros count,50perheads, Bench ignores W/R.",
+      "kind": "ACTUAL_CARD"
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50151/regu/all",
+      "supports": "JP067/083 same attack/card; Basic130.",
+      "kind": "ACTUAL_CARD"
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50193/regu/all",
+      "supports": "JP094/083 alternate illustration same rules.",
+      "kind": "ACTUAL_CARD"
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%82%B1%E3%83%B3%E3%82%BF%E3%83%AD%E3%82%B9&regulation_faq_main_item1=all",
+      "supports": "Direct actual attack FAQs at lines85-93: choose opponent Pokemon first, then flip; benched Paldean Tauros counts as name containing Tauros.",
+      "kind": "DIRECT_ACTUAL_FAQ",
+      "answersParaphrased": [
+        "Target must be chosen before the attack coins.",
+        "Paldean Tauros qualifies."
+      ]
+    }
+  ],
+  "rawScope": {
+    "databases": 109,
+    "rows": 25598,
+    "attackAbilityEntries": 42100,
+    "exactRaw": [
+      "me4_69",
+      "me4_69_ph",
+      "me4_96"
+    ],
+    "promoMatches": [],
+    "scan": "batch99-raw-scan.json",
+    "sha256": "b8fae04e4321ef6baf772b540d5e6e692087a9fad968a5f80d7045219e849386",
+    "sameRulePromoConclusion": "No other same-rule print in scanned109 databases; three exact raw rows map to twoME4 canonical IDs. This is corpus scope, not a claim about unreleased external cards."
+  },
+  "implementation": [
+    "Exact CC/blank-base/full-text contract declares one opposing target before RNG, then counts own current printed names containing Tauros.",
+    "Coin policy forwards one mutually exclusive exact-name or substring filter through the shared validated current-top name query.",
+    "Only single OPPONENT_ANY gains ordinary coin/per-head damage; multi-target coin damage stays rejected. Existing non-Active calculation token is retained; actual recipient determines Weakness/Resistance.",
+    "Existing coin planner and actual retry Tool preserve declared target; zero count is no RNG/no retry."
+  ],
+  "evidenceLimits": [
+    "Official research from2026-10-18 reused unchanged. Direct FAQs cover target-before-coins and Paldean Tauros.",
+    "Tauros-GX and copied no-Tauros zero outcomes follow printed substring/arithmetic; not claimed as distinct official FAQs.",
+    "Synthetic high-HP damage-layer/evolution fixtures are not new supported card definitions."
+  ]
+}

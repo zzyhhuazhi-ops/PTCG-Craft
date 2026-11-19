@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "version": "single-bench-attack-components-v1",
+  "checkedDate": "2026-10-04",
+  "implementationVersion": "0.6.3-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Pokémon Trading Card Game Rules — Paradox Rift Rulebook",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/par_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "PAR English rulebook; official search-index excerpt checked 2026-10-04",
+      "supportsZh": "攻击步骤只对对方战斗宝可梦检查弱点与抵抗；备战宝可梦不适用弱点和抵抗；攻击可影响多只宝可梦，随后检查所有受影响宝可梦是否被击倒。"
+    },
+    {
+      "title": "Wellspring Mask Ogerpon ex — Prismatic Evolutions 27",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv8pt5/27/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database SV8PT5 27; indexed text checked 2026-10-04",
+      "supportsZh": "作为机制实例：攻击可对指定一只对方备战宝可梦追加伤害，并明确备战位不适用弱点／抵抗。"
+    },
+    {
+      "title": "Minun — Black & White—Dark Explorers 40",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/bw5/40/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database BW5 40; indexed text checked 2026-10-04",
+      "supportsZh": "作为机制实例：攻击可同时伤害对方多只宝可梦，并重申备战位不适用弱点／抵抗。"
+    }
+  ],
+  "dataContractZh": "攻击的ON_ATTACK组件在damageTarget为OPPONENT_BENCH或ALL_OPPONENT_BENCH时，可用OPPONENT_BENCH表示本次服务器已验证的每一个备战伤害目标。DamageEffect和基于该目标的能量／伤害指示物／备战数计数都在统一攻击伤害阶段按实际受击对象分别计算。",
+  "serverAuthorityZh": "客户端仅提交服务器已公开的目标实例；服务器先验证攻击、目标、入场身份和组件语法，再掷硬币或改变场面。多目标组件逐目标读取公开事实，继续经过攻击来源、防伤、减伤、击倒、奖赏和替补检查点。",
+  "limitations": [
+    "多目标／全体备战组件只接受确定性DamageEffect、DamageMultiplier、DamagePerEnergy、DamagePerDamageCounter、DamagePerBench及其条件／固定重复容器；攻击阶段内CoinFlip、RepeatPerHeads和独立选目标会在随机或场面变更前明确拒绝。",
+    "不因该通用语义自动启用任何真实卡；真实攻击文字、费用、时序、合法性和关联效果仍须逐卡审核。",
+    "未将日本、亚洲、Pokémon TCG Pocket或社区帖的规则混入国际规则包；没有读取或修改PTCG Live。"
+  ]
+}

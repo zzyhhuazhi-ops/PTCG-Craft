@@ -1,0 +1,506 @@
+{
+ "schemaVersion": 1,
+ "dataVersion": "ptcgcardcn-mealt-2026.10.15",
+ "region": "international",
+ "noteZh": "PTCGCardCN 0.1.0 由 Rainier（PTCG Live 客户端卡牌数据库）自动转换；审核策略 rainier-db。详见 reports/conversion-report.json。",
+ "cards": [
+  {
+   "id": "mealt_en_001",
+   "kind": "POKEMON",
+   "hitPoints": 140,
+   "retreatCost": 1,
+   "evolvesFromDefinitionId": "me1_en_055",
+   "weakness": {
+    "type": "DARKNESS",
+    "multiplier": 2
+   },
+   "resistance": {
+    "type": "FIGHTING",
+    "amount": 30
+   },
+   "prizeCards": 1,
+   "pokemonName": "Alakazam",
+   "evolvesFromName": "Kadabra",
+   "pokemonType": "PSYCHIC",
+   "attacks": [
+    {
+     "id": "powerful-hand",
+     "nameZh": "手之力量",
+     "energyCost": {
+      "PSYCHIC": 1
+     },
+     "baseDamage": 0,
+     "damageType": "PSYCHIC",
+     "effectSupport": "SUPPORTED",
+     "triggers": [
+      {
+       "trigger": "AFTER_ATTACK",
+       "effects": [
+        {
+         "type": "damage_counter",
+         "target": "OPPONENT_ACTIVE",
+         "amount": 2,
+         "per_hand_card": true
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "abilities": [
+    {
+     "id": "psychic-draw",
+     "nameZh": "精神抽出",
+     "kind": "TRIGGERED",
+     "eventPolicy": {
+      "trigger": "ON_EVOLVE",
+      "watch": "SELF",
+      "source": "HAND",
+      "optional": true,
+      "usage": "NONE"
+     },
+     "triggers": [
+      {
+       "trigger": "ON_EVOLVE",
+       "conditions": [
+        {
+         "type": "TURN_STATE",
+         "target": "SELF",
+         "value": "ACTOR_TURN"
+        }
+       ],
+       "effects": [
+        {
+         "type": "draw",
+         "target": "SELF",
+         "amount": 3
+        }
+       ]
+      }
+     ],
+     "effectSupport": "SUPPORTED"
+    }
+   ]
+  },
+  {
+   "id": "mealt_en_002",
+   "kind": "POKEMON",
+   "hitPoints": 80,
+   "retreatCost": 2,
+   "evolvesFromDefinitionId": null,
+   "weakness": {
+    "type": "PSYCHIC",
+    "multiplier": 2
+   },
+   "resistance": null,
+   "prizeCards": 1,
+   "pokemonName": "Riolu",
+   "pokemonType": "FIGHTING",
+   "attacks": [
+    {
+     "id": "accelerating-stab",
+     "nameZh": "加速突刺",
+     "energyCost": {
+      "FIGHTING": 1
+     },
+     "baseDamage": 30,
+     "damageType": "FIGHTING",
+     "effectSupport": "SUPPORTED",
+     "cannotUseSameAttackDuringNextTurn": true
+    }
+   ]
+  },
+  {
+   "id": "mealt_en_003",
+   "kind": "POKEMON",
+   "hitPoints": 80,
+   "retreatCost": 2,
+   "evolvesFromDefinitionId": null,
+   "weakness": {
+    "type": "FIRE",
+    "multiplier": 2
+   },
+   "resistance": null,
+   "prizeCards": 1,
+   "pokemonName": "Bulbasaur",
+   "pokemonType": "GRASS",
+   "attacks": [
+    {
+     "id": "bind-down",
+     "nameZh": "束缚",
+     "energyCost": {
+      "GRASS": 1
+     },
+     "baseDamage": 10,
+     "damageType": "GRASS",
+     "effectSupport": "SUPPORTED",
+     "triggers": [
+      {
+       "trigger": "AFTER_ATTACK",
+       "effects": [
+        {
+         "type": "prevent_retreat",
+         "target": "OPPONENT_ACTIVE"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mealt_en_004",
+   "kind": "POKEMON",
+   "hitPoints": 70,
+   "retreatCost": 2,
+   "evolvesFromDefinitionId": null,
+   "weakness": {
+    "type": "WATER",
+    "multiplier": 2
+   },
+   "resistance": null,
+   "prizeCards": 1,
+   "pokemonName": "Charcadet",
+   "pokemonType": "FIRE",
+   "attacks": [
+    {
+     "id": "gather-strength",
+     "nameZh": "集力",
+     "energyCost": {
+      "FIRE": 1
+     },
+     "baseDamage": 0,
+     "damageType": "FIRE",
+     "effectSupport": "SUPPORTED",
+     "triggers": [
+      {
+       "trigger": "AFTER_ATTACK",
+       "effects": [
+        {
+         "type": "search_deck",
+         "target": "DECK",
+         "amount": 2,
+         "minimum": 0,
+         "card_category": "ENERGY",
+         "basic_energy_only": true,
+         "reveal": "true"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "chop",
+     "nameZh": "劈击",
+     "energyCost": {
+      "FIRE": 1
+     },
+     "baseDamage": 10,
+     "damageType": "FIRE",
+     "effectSupport": "SUPPORTED"
+    }
+   ]
+  },
+  {
+   "id": "mealt_en_005",
+   "kind": "POKEMON",
+   "hitPoints": 130,
+   "retreatCost": 2,
+   "evolvesFromDefinitionId": null,
+   "weakness": null,
+   "resistance": null,
+   "prizeCards": 1,
+   "pokemonName": "N's Zekrom",
+   "pokemonType": "DRAGON",
+   "attacks": [
+    {
+     "id": "shred",
+     "nameZh": "撕裂",
+     "energyCost": {
+      "COLORLESS": 3
+     },
+     "baseDamage": 70,
+     "damageType": "DRAGON",
+     "effectSupport": "SUPPORTED",
+     "ignoresActiveDefenderDamageEffects": true
+    },
+    {
+     "id": "rampaging-thunder",
+     "nameZh": "乱暴闪电",
+     "energyCost": {
+      "FIRE": 1,
+      "LIGHTNING": 2,
+      "COLORLESS": 1
+     },
+     "baseDamage": 250,
+     "damageType": "DRAGON",
+     "effectSupport": "SUPPORTED",
+     "triggers": [
+      {
+       "trigger": "AFTER_ATTACK",
+       "effects": [
+        {
+         "type": "prevent_attack",
+         "target": "SELF",
+         "duration": "SOURCE_NEXT_TURN_END"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mealt_en_007",
+   "kind": "POKEMON",
+   "hitPoints": 100,
+   "retreatCost": 3,
+   "evolvesFromDefinitionId": "me3_en_068",
+   "weakness": {
+    "type": "GRASS",
+    "multiplier": 2
+   },
+   "resistance": null,
+   "prizeCards": 1,
+   "pokemonName": "Tyrunt",
+   "evolvesFromName": "Antique Jaw Fossil",
+   "pokemonType": "FIGHTING",
+   "attacks": [
+    {
+     "id": "get-angry",
+     "nameZh": "勃然大怒",
+     "energyCost": {
+      "FIGHTING": 1,
+      "COLORLESS": 1
+     },
+     "baseDamage": 0,
+     "damageType": "FIGHTING",
+     "effectSupport": "SUPPORTED",
+     "damageModifiers": [
+      {
+       "basis": "ATTACKER_DAMAGE_COUNTERS",
+       "amountPerUnit": 20
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mealt_en_008",
+   "kind": "POKEMON",
+   "hitPoints": 70,
+   "retreatCost": 1,
+   "evolvesFromDefinitionId": null,
+   "weakness": {
+    "type": "WATER",
+    "multiplier": 2
+   },
+   "resistance": null,
+   "prizeCards": 1,
+   "pokemonName": "Fennekin",
+   "pokemonType": "FIRE",
+   "attacks": [
+    {
+     "id": "call-for-family",
+     "nameZh": "呼朋引伴",
+     "energyCost": {
+      "COLORLESS": 1
+     },
+     "baseDamage": 0,
+     "damageType": "FIRE",
+     "effectSupport": "SUPPORTED",
+     "triggers": [
+      {
+       "trigger": "AFTER_ATTACK",
+       "effects": [
+        {
+         "type": "search_deck",
+         "target": "DECK",
+         "amount": 2,
+         "minimum": 0,
+         "card_category": "POKEMON",
+         "basic_pokemon_only": true,
+         "destination": "BENCH"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "steady-firebreathing",
+     "nameZh": "吐火",
+     "energyCost": {
+      "FIRE": 1
+     },
+     "baseDamage": 10,
+     "damageType": "FIRE",
+     "effectSupport": "SUPPORTED"
+    }
+   ]
+  },
+  {
+   "id": "mealt_en_009",
+   "kind": "POKEMON",
+   "hitPoints": 130,
+   "retreatCost": 2,
+   "evolvesFromDefinitionId": null,
+   "weakness": {
+    "type": "GRASS",
+    "multiplier": 2
+   },
+   "resistance": null,
+   "prizeCards": 1,
+   "pokemonName": "Zarude",
+   "pokemonType": "DARKNESS",
+   "attacks": [
+    {
+     "id": "overhead-throw",
+     "nameZh": "后投",
+     "energyCost": {
+      "DARKNESS": 1
+     },
+     "baseDamage": 30,
+     "damageType": "DARKNESS",
+     "effectSupport": "SUPPORTED",
+     "triggers": [
+      {
+       "trigger": "AFTER_ATTACK",
+       "effects": [
+        {
+         "type": "bench_damage",
+         "target": "SELECT_OWN_POKEMON",
+         "amount": 30
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "shadowy-whip",
+     "nameZh": "暗影鞭打",
+     "energyCost": {
+      "DARKNESS": 3
+     },
+     "baseDamage": 100,
+     "damageType": "DARKNESS",
+     "effectSupport": "SUPPORTED",
+     "effects": [
+      {
+       "type": "damage",
+       "target": "OPPONENT_ACTIVE",
+       "amount": 70,
+       "conditions": [
+        {
+         "type": "ENERGY_COUNT",
+         "target": "OWN_BENCH",
+         "count_mode": "CARDS",
+         "definition_ids": "me5_en_083",
+         "value": 1,
+         "comparison": ">="
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mealt_en_010",
+   "kind": "POKEMON",
+   "hitPoints": 120,
+   "retreatCost": 1,
+   "evolvesFromDefinitionId": null,
+   "weakness": null,
+   "resistance": null,
+   "prizeCards": 1,
+   "pokemonName": "Rayquaza",
+   "pokemonType": "DRAGON",
+   "attacks": [
+    {
+     "id": "breakthrough-assault",
+     "nameZh": "进击破坏",
+     "energyCost": {
+      "LIGHTNING": 1,
+      "COLORLESS": 1
+     },
+     "baseDamage": 20,
+     "damageType": "DRAGON",
+     "effectSupport": "SUPPORTED",
+     "effects": [
+      {
+       "type": "conditional",
+       "conditions": [
+        {
+         "type": "BECAME_ACTIVE_THIS_TURN",
+         "target": "SELF"
+        }
+       ],
+       "effects": [
+        {
+         "type": "damage",
+         "target": "OPPONENT_ACTIVE",
+         "amount": 90
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "dragon-claw",
+     "nameZh": "龙爪",
+     "energyCost": {
+      "FIRE": 1,
+      "LIGHTNING": 1,
+      "COLORLESS": 1
+     },
+     "baseDamage": 130,
+     "damageType": "DRAGON",
+     "effectSupport": "SUPPORTED"
+    }
+   ]
+  },
+  {
+   "id": "mealt_en_011",
+   "kind": "POKEMON",
+   "hitPoints": 90,
+   "retreatCost": 2,
+   "evolvesFromDefinitionId": "me5-5_en_087",
+   "weakness": {
+    "type": "FIGHTING",
+    "multiplier": 2
+   },
+   "resistance": null,
+   "prizeCards": 1,
+   "pokemonName": "Nidorina",
+   "evolvesFromName": "Nidoran♀",
+   "pokemonType": "DARKNESS",
+   "attacks": [
+    {
+     "id": "bite",
+     "nameZh": "咬住",
+     "energyCost": {
+      "COLORLESS": 2
+     },
+     "baseDamage": 30,
+     "damageType": "DARKNESS",
+     "effectSupport": "SUPPORTED"
+    }
+   ],
+   "abilities": [
+    {
+     "id": "share-happiness",
+     "nameZh": "幸福分享",
+     "kind": "ACTIVATED_ONCE_PER_TURN",
+     "effects": [
+      {
+       "type": "heal",
+       "target": "SELECT_OWN_POKEMON",
+       "amount": 30
+      }
+     ],
+     "effectSupport": "SUPPORTED"
+    }
+   ]
+  }
+ ]
+}

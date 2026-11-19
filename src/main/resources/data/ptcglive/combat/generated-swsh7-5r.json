@@ -1,0 +1,916 @@
+{
+  "schemaVersion": 1,
+  "dataVersion": "ptcgcardcn-swsh7-5r-2026.10.14",
+  "region": "international",
+  "noteZh": "PTCGCardCN 0.1.0 由 Rainier（PTCG Live 客户端卡牌数据库）自动转换；审核策略 rainier-db。详见 reports/conversion-report.json。",
+  "cards": [
+    {
+      "id": "swsh7-5r_en_001",
+      "kind": "POKEMON",
+      "hitPoints": 100,
+      "retreatCost": 3,
+      "evolvesFromDefinitionId": "sm10_en_034",
+      "weakness": null,
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Blastoise",
+      "evolvesFromName": "Wartortle",
+      "pokemonType": "WATER",
+      "attacks": [
+        {
+          "id": "rain-dance",
+          "nameZh": "求雨",
+          "energyCost": {},
+          "baseDamage": 0,
+          "damageType": "WATER",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：as often as you like during your turn, you may attach 1 {water} energy card to 1 of your {water} pokemon. this power can't be used if blastoise is asleep, confused, or paralyzed"
+        },
+        {
+          "id": "hydro-pump",
+          "nameZh": "水炮",
+          "energyCost": {
+            "WATER": 3
+          },
+          "baseDamage": 40,
+          "damageType": "WATER",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "印刷伤害 40+ 带 +，但没有识别出加成来源；未识别的效果：does 40 damage plus 10 more damage for each {water} energy attached to blastoise but not used to pay for this attack's energy cost. extra {water} energy after the 2nd doesn't count"
+        }
+      ]
+    },
+    {
+      "id": "swsh7-5r_en_002",
+      "kind": "POKEMON",
+      "hitPoints": 120,
+      "retreatCost": 3,
+      "evolvesFromDefinitionId": "me2-5_en_021",
+      "weakness": null,
+      "resistance": {
+        "type": "FIGHTING",
+        "amount": 30
+      },
+      "prizeCards": 1,
+      "pokemonName": "Charizard",
+      "evolvesFromName": "Charmeleon",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "energy-burn",
+          "nameZh": "能量烈焰",
+          "energyCost": {},
+          "baseDamage": 0,
+          "damageType": "FIRE",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：as often as you like during your turn, you may turn all energy attached to charizard into {fire} energy for the rest of the turn. this power can't be used if charizard is asleep, confused, or paralyzed"
+        },
+        {
+          "id": "fire-spin",
+          "nameZh": "火焰旋涡",
+          "energyCost": {
+            "FIRE": 4
+          },
+          "baseDamage": 100,
+          "damageType": "FIRE",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：discard 2 energy cards attached to charizard in order to use this attack"
+        }
+      ]
+    },
+    {
+      "id": "swsh7-5r_en_003",
+      "kind": "POKEMON",
+      "hitPoints": 100,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "me1_en_002",
+      "weakness": null,
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Venusaur",
+      "evolvesFromName": "Ivysaur",
+      "pokemonType": "GRASS",
+      "attacks": [
+        {
+          "id": "energy-trans",
+          "nameZh": "能量移转",
+          "energyCost": {},
+          "baseDamage": 0,
+          "damageType": "GRASS",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：as often as you like during your turn, you may take 1 {grass} energy card attached to 1 of your pokemon and attach it to a different one. this power can't be used if venusaur is asleep, confused, or paralyzed"
+        },
+        {
+          "id": "solarbeam",
+          "nameZh": "日光束",
+          "energyCost": {
+            "GRASS": 4
+          },
+          "baseDamage": 60,
+          "damageType": "GRASS",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "swsh7-5r_en_005",
+      "kind": "POKEMON",
+      "hitPoints": 70,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "sm11-5_en_015",
+      "weakness": null,
+      "resistance": {
+        "type": "FIGHTING",
+        "amount": 30
+      },
+      "prizeCards": 1,
+      "pokemonName": "Dark Gyarados",
+      "evolvesFromName": "Magikarp",
+      "pokemonType": "WATER",
+      "attacks": [
+        {
+          "id": "final-beam",
+          "nameZh": "终期光束",
+          "energyCost": {},
+          "baseDamage": 0,
+          "damageType": "WATER",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：when dark gyarados is knocked out by an attack, flip a coin. if heads, this power does 20 damage for each {water} energy attached to dark gyarados to the pokemon that knocked out dark gyarados. apply weakness and resistance. this power doesn't work if dark gyarados is asleep, confused, or paralyzed"
+        },
+        {
+          "id": "ice-beam",
+          "nameZh": "冰冻光束",
+          "energyCost": {
+            "WATER": 3
+          },
+          "baseDamage": 30,
+          "damageType": "WATER",
+          "effectSupport": "SUPPORTED",
+          "conditions": [
+            {
+              "target": "DEFENDER",
+              "condition": "PARALYZED",
+              "coinCondition": {
+                "flips": 1,
+                "requiredHeads": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "swsh7-5r_en_007",
+      "kind": "POKEMON",
+      "hitPoints": 70,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": null,
+      "resistance": {
+        "type": "FIGHTING",
+        "amount": 30
+      },
+      "prizeCards": 1,
+      "pokemonName": "Rocket's Zapdos",
+      "pokemonType": "LIGHTNING",
+      "attacks": [
+        {
+          "id": "plasma",
+          "nameZh": "等离子",
+          "energyCost": {
+            "LIGHTNING": 1
+          },
+          "baseDamage": 20,
+          "damageType": "LIGHTNING",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：if there are any {lightning} energy cards in your discard pile, attach 1 of them to rocket's zapdos"
+        },
+        {
+          "id": "electroburn",
+          "nameZh": "电子烈焰",
+          "energyCost": {
+            "LIGHTNING": 3,
+            "COLORLESS": 1
+          },
+          "baseDamage": 70,
+          "damageType": "LIGHTNING",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：rocket's zapdos does damage to itself equal to 10 times the number of {lightning} energy cards attached to it"
+        }
+      ]
+    },
+    {
+      "id": "swsh7-5r_en_008",
+      "kind": "POKEMON",
+      "hitPoints": 50,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": null,
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "_____'s Pikachu",
+      "pokemonType": "LIGHTNING",
+      "attacks": [
+        {
+          "id": "birthday-surprise",
+          "nameZh": "生日",
+          "energyCost": {
+            "LIGHTNING": 2
+          },
+          "baseDamage": 30,
+          "damageType": "LIGHTNING",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "印刷伤害 30+ 带 +，但没有识别出加成来源；未识别的效果：if it's not your birthday, this attack does 30 damage. if it is your birthday, flip a coin. if heads, this attack does 30 damage plus 50 more damage; if tails, this attack does 30 damage"
+        }
+      ]
+    },
+    {
+      "id": "swsh7-5r_en_009",
+      "kind": "POKEMON",
+      "hitPoints": 30,
+      "retreatCost": 0,
+      "evolvesFromDefinitionId": null,
+      "weakness": null,
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Cleffa",
+      "pokemonType": "COLORLESS",
+      "attacks": [
+        {
+          "id": "eeeeeeek",
+          "nameZh": "皮皮皮",
+          "energyCost": {
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "COLORLESS",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：shuffle your hand into your deck, then draw 7 cards"
+        }
+      ]
+    },
+    {
+      "id": "swsh7-5r_en_010",
+      "kind": "POKEMON",
+      "hitPoints": 30,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": null,
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Shining Magikarp",
+      "pokemonType": "WATER",
+      "attacks": [
+        {
+          "id": "gold-scale",
+          "nameZh": "金色鳞片",
+          "energyCost": {
+            "WATER": 1
+          },
+          "baseDamage": 0,
+          "damageType": "WATER",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：your opponent may draw 2 cards. either way, you may draw 2 cards"
+        },
+        {
+          "id": "dragon-bond",
+          "nameZh": "龙之牵绊",
+          "energyCost": {
+            "PSYCHIC": 1
+          },
+          "baseDamage": 0,
+          "damageType": "WATER",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：search your deck for a card named gyarados, dark gyarados, or shining gyarados. show it to your opponent and put it into your hand. shuffle your deck afterward"
+        }
+      ]
+    },
+    {
+      "id": "swsh7-5r_en_013",
+      "kind": "POKEMON",
+      "hitPoints": 90,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": null,
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Mew ex",
+      "pokemonType": "PSYCHIC",
+      "attacks": [
+        {
+          "id": "versatile",
+          "nameZh": "十项全能",
+          "energyCost": {},
+          "baseDamage": 0,
+          "damageType": "PSYCHIC",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：mew ex can use the attacks of all pokemon in play as its own. (you still need the necessary energy to use each attack.)"
+        },
+        {
+          "id": "power-move",
+          "nameZh": "力量游移",
+          "energyCost": {
+            "PSYCHIC": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 0,
+          "damageType": "PSYCHIC",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：search your deck for an energy card and attach it to mew ex. shuffle your deck afterward. then, you may switch mew ex with 1 of your benched pokemon"
+        }
+      ]
+    },
+    {
+      "id": "swsh7-5r_en_014",
+      "kind": "POKEMON",
+      "hitPoints": 150,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "me1_en_059",
+      "weakness": null,
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Gardevoir ex",
+      "evolvesFromName": "Kirlia",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "imprison",
+          "nameZh": "封印",
+          "energyCost": {},
+          "baseDamage": 0,
+          "damageType": "FIRE",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：once during your turn, if gardevoir ex is your active pokemon, you may put an imprison marker on 1 of your opponent's pokemon. any pokemon that has any imprison markers on it can't use any poke-powers or poke-bodies. this power can't be used if gardevoir ex is affected by a special condition"
+        },
+        {
+          "id": "flame-ball",
+          "nameZh": "火焰宝珠",
+          "energyCost": {
+            "FIRE": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 80,
+          "damageType": "FIRE",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：you may move a {fire} energy card attached to gardevoir ex to 1 of your benched pokemon"
+        }
+      ]
+    },
+    {
+      "id": "swsh7-5r_en_015",
+      "kind": "POKEMON",
+      "hitPoints": 70,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": null,
+      "resistance": {
+        "type": "PSYCHIC",
+        "amount": 30
+      },
+      "prizeCards": 1,
+      "pokemonName": "Umbreon ☆",
+      "pokemonType": "DARKNESS",
+      "attacks": [
+        {
+          "id": "dark-ray",
+          "nameZh": "暗黑之光",
+          "energyCost": {},
+          "baseDamage": 0,
+          "damageType": "DARKNESS",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：once during your turn, when you put umbreon ☆ from your hand onto your bench, you may choose 1 card from your opponent's hand without looking and discard it"
+        },
+        {
+          "id": "feint-attack",
+          "nameZh": "出奇一击",
+          "energyCost": {
+            "DARKNESS": 2
+          },
+          "baseDamage": 0,
+          "damageType": "DARKNESS",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：choose 1 of your opponent's pokemon. this attack does 30 damage to that pokemon. this attack's damage isn't affected by weakness, resistance, poke-powers, poke-bodies, or any other effects on that pokemon"
+        }
+      ]
+    },
+    {
+      "id": "swsh7-5r_en_016",
+      "kind": "POKEMON",
+      "hitPoints": 80,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": "me4_en_046",
+      "weakness": null,
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Claydol",
+      "evolvesFromName": "Baltoy",
+      "pokemonType": "FIGHTING",
+      "attacks": [
+        {
+          "id": "cosmic-power",
+          "nameZh": "宇宙力量",
+          "energyCost": {},
+          "baseDamage": 0,
+          "damageType": "FIGHTING",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：once during your turn, you may choose up to 2 cards from your hand and put them on the bottom of your deck in any order. if you do, this power can't be used if claydol is affected by a special condition"
+        },
+        {
+          "id": "spinning-attack",
+          "nameZh": "回转攻击",
+          "energyCost": {
+            "FIGHTING": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 40,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "swsh7-5r_en_017",
+      "kind": "POKEMON",
+      "hitPoints": 110,
+      "retreatCost": 0,
+      "evolvesFromDefinitionId": "swsh7-5r_en_017",
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "METAL",
+        "amount": 20
+      },
+      "prizeCards": 1,
+      "pokemonName": "Luxray GL",
+      "evolvesFromName": "Luxray GL",
+      "pokemonType": "LIGHTNING",
+      "attacks": [
+        {
+          "id": "bright-look",
+          "nameZh": "光辉目光",
+          "energyCost": {},
+          "baseDamage": 0,
+          "damageType": "LIGHTNING",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：once during your turn, when you put luxray gl lv.x from your hand onto your active luxray gl, you may switch the defending pokemon with 1 of your opponent's benched pokemon"
+        },
+        {
+          "id": "flash-impact",
+          "nameZh": "闪光冲击",
+          "energyCost": {
+            "LIGHTNING": 1,
+            "COLORLESS": 1
+          },
+          "baseDamage": 60,
+          "damageType": "LIGHTNING",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：does 30 damage to 1 of your pokemon, and don't apply weakness and resistance to this damage"
+        }
+      ]
+    },
+    {
+      "id": "swsh7-5r_en_018",
+      "kind": "POKEMON",
+      "hitPoints": 110,
+      "retreatCost": 0,
+      "evolvesFromDefinitionId": "swsh7-5r_en_018",
+      "weakness": {
+        "type": "COLORLESS",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Garchomp C",
+      "evolvesFromName": "Garchomp C",
+      "pokemonType": "COLORLESS",
+      "attacks": [
+        {
+          "id": "healing-breath",
+          "nameZh": "治愈气息",
+          "energyCost": {},
+          "baseDamage": 0,
+          "damageType": "COLORLESS",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：once during your turn, when you put garchomp c lv.x from your hand onto your active garchomp c, you may remove all damage counters from each of your pokemon sp"
+        },
+        {
+          "id": "dragon-rush",
+          "nameZh": "龙之俯冲",
+          "energyCost": {
+            "COLORLESS": 3
+          },
+          "baseDamage": 0,
+          "damageType": "COLORLESS",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：discard 2 energy attached to garchomp c. choose 1 of your opponent's pokemon. this attack does 80 damage to that pokemon. garchomp c can't use dragon rush during your next turn"
+        }
+      ]
+    },
+    {
+      "id": "swsh7-5r_en_019",
+      "kind": "POKEMON",
+      "hitPoints": 120,
+      "retreatCost": 4,
+      "evolvesFromDefinitionId": "me4_en_044",
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "LIGHTNING",
+        "amount": 20
+      },
+      "prizeCards": 1,
+      "pokemonName": "Donphan",
+      "evolvesFromName": "Phanpy",
+      "pokemonType": "FIGHTING",
+      "attacks": [
+        {
+          "id": "exoskeleton",
+          "nameZh": "坚硬身躯",
+          "energyCost": {},
+          "baseDamage": 0,
+          "damageType": "FIGHTING",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：any damage done to donphan by attacks is reduced by 20"
+        },
+        {
+          "id": "earthquake",
+          "nameZh": "地震",
+          "energyCost": {
+            "FIGHTING": 1
+          },
+          "baseDamage": 60,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "bench_damage",
+                  "target": "OWN_BENCH",
+                  "amount": 10
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "heavy-impact",
+          "nameZh": "重磅冲击",
+          "energyCost": {
+            "FIGHTING": 3
+          },
+          "baseDamage": 90,
+          "damageType": "FIGHTING",
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "id": "swsh7-5r_en_020",
+      "kind": "POKEMON",
+      "hitPoints": 130,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "WATER",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Reshiram",
+      "pokemonType": "FIRE",
+      "attacks": [
+        {
+          "id": "outrage",
+          "nameZh": "逆鳞",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 20,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "damageModifiers": [
+            {
+              "basis": "ATTACKER_DAMAGE_COUNTERS",
+              "amountPerUnit": 10
+            }
+          ]
+        },
+        {
+          "id": "blue-flare",
+          "nameZh": "青焰",
+          "energyCost": {
+            "FIRE": 2,
+            "COLORLESS": 1
+          },
+          "baseDamage": 120,
+          "damageType": "FIRE",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "discard_energy",
+                  "target": "SELF",
+                  "amount": 2,
+                  "minimum": 2,
+                  "energy_type": "FIRE",
+                  "count_mode": "UNITS"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "swsh7-5r_en_021",
+      "kind": "POKEMON",
+      "hitPoints": 130,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "FIGHTING",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 1,
+      "pokemonName": "Zekrom",
+      "pokemonType": "LIGHTNING",
+      "attacks": [
+        {
+          "id": "outrage",
+          "nameZh": "逆鳞",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 20,
+          "damageType": "LIGHTNING",
+          "effectSupport": "SUPPORTED",
+          "damageModifiers": [
+            {
+              "basis": "ATTACKER_DAMAGE_COUNTERS",
+              "amountPerUnit": 10
+            }
+          ]
+        },
+        {
+          "id": "bolt-strike",
+          "nameZh": "雷击",
+          "energyCost": {
+            "LIGHTNING": 2,
+            "COLORLESS": 1
+          },
+          "baseDamage": 120,
+          "damageType": "LIGHTNING",
+          "effectSupport": "SUPPORTED",
+          "selfDamage": 40
+        }
+      ]
+    },
+    {
+      "id": "swsh7-5r_en_022",
+      "kind": "POKEMON",
+      "hitPoints": 170,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "PSYCHIC",
+        "multiplier": 2
+      },
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Mewtwo-EX",
+      "pokemonType": "PSYCHIC",
+      "attacks": [
+        {
+          "id": "x-ball",
+          "nameZh": "谜幻球",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 0,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED",
+          "effects": [
+            {
+              "type": "damage_per_energy",
+              "target": "SELF",
+              "amount": 20
+            },
+            {
+              "type": "damage_per_energy",
+              "target": "OPPONENT_ACTIVE",
+              "amount": 20
+            }
+          ]
+        },
+        {
+          "id": "psydrive",
+          "nameZh": "精神驱动",
+          "energyCost": {
+            "PSYCHIC": 2,
+            "COLORLESS": 1
+          },
+          "baseDamage": 120,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED",
+          "discardSelectedAttachedEnergyAfterAttack": 1
+        }
+      ]
+    },
+    {
+      "id": "swsh7-5r_en_023",
+      "kind": "POKEMON",
+      "hitPoints": 170,
+      "retreatCost": 2,
+      "evolvesFromDefinitionId": null,
+      "weakness": {
+        "type": "METAL",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "DARKNESS",
+        "amount": 20
+      },
+      "prizeCards": 2,
+      "pokemonName": "Xerneas-EX",
+      "pokemonType": "FAIRY",
+      "attacks": [
+        {
+          "id": "break-through",
+          "nameZh": "突围",
+          "energyCost": {
+            "FAIRY": 1,
+            "COLORLESS": 2
+          },
+          "baseDamage": 60,
+          "damageType": "FAIRY",
+          "effectSupport": "SUPPORTED",
+          "triggers": [
+            {
+              "trigger": "AFTER_ATTACK",
+              "effects": [
+                {
+                  "type": "bench_damage",
+                  "amount": 30,
+                  "target": "SELECT_OPPONENT_POKEMON"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "x-blast",
+          "nameZh": "爆破X",
+          "energyCost": {
+            "FAIRY": 2,
+            "COLORLESS": 2
+          },
+          "baseDamage": 140,
+          "damageType": "FAIRY",
+          "effectSupport": "SUPPORTED",
+          "cannotUseSameAttackDuringNextTurn": true
+        }
+      ]
+    },
+    {
+      "id": "swsh7-5r_en_024",
+      "kind": "POKEMON",
+      "hitPoints": 220,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": "xy6_en_075",
+      "weakness": {
+        "type": "LIGHTNING",
+        "multiplier": 2
+      },
+      "resistance": {
+        "type": "FIGHTING",
+        "amount": 20
+      },
+      "prizeCards": 2,
+      "pokemonName": "M Rayquaza-EX",
+      "evolvesFromName": "Rayquaza-EX",
+      "pokemonType": "COLORLESS",
+      "attacks": [
+        {
+          "id": "evolution",
+          "nameZh": "Δ进化",
+          "energyCost": {},
+          "baseDamage": 0,
+          "damageType": "COLORLESS",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：you may play this card from your hand to evolve a pokemon during your first turn or the turn you play that pokemon"
+        },
+        {
+          "id": "emerald-break",
+          "nameZh": "绿宝石破坏",
+          "energyCost": {
+            "COLORLESS": 3
+          },
+          "baseDamage": 0,
+          "damageType": "COLORLESS",
+          "effectSupport": "SUPPORTED",
+          "damageModifiers": [
+            {
+              "basis": "ATTACKER_BENCH_SIZE",
+              "amountPerUnit": 30
+            }
+          ]
+        }
+      ],
+      "printedRules": "EVOLUTION_ENDS_TURN"
+    },
+    {
+      "id": "swsh7-5r_en_025",
+      "kind": "POKEMON",
+      "hitPoints": 170,
+      "retreatCost": 1,
+      "evolvesFromDefinitionId": null,
+      "weakness": null,
+      "resistance": null,
+      "prizeCards": 2,
+      "pokemonName": "Tapu Lele-GX",
+      "pokemonType": "PSYCHIC",
+      "attacks": [
+        {
+          "id": "energy-drive",
+          "nameZh": "能量驱动",
+          "energyCost": {
+            "COLORLESS": 2
+          },
+          "baseDamage": 0,
+          "damageType": "PSYCHIC",
+          "effectSupport": "SUPPORTED",
+          "ignoresWeaknessAndResistance": true,
+          "effects": [
+            {
+              "type": "damage_per_energy",
+              "target": "SELF",
+              "amount": 20
+            },
+            {
+              "type": "damage_per_energy",
+              "target": "OPPONENT_ACTIVE",
+              "amount": 20
+            }
+          ]
+        },
+        {
+          "id": "tapu-cure-gx",
+          "nameZh": "卡璞治愈GX",
+          "energyCost": {
+            "PSYCHIC": 1
+          },
+          "baseDamage": 0,
+          "damageType": "PSYCHIC",
+          "effectSupport": "UNSUPPORTED",
+          "unsupportedReasonZh": "未识别的效果：heal all damage from 2 of your benched pokemon"
+        }
+      ],
+      "abilities": [
+        {
+          "id": "wonder-tag",
+          "nameZh": "奇迹触摸",
+          "kind": "TRIGGERED",
+          "eventPolicy": {
+            "trigger": "ON_ENTER_PLAY",
+            "watch": "SELF",
+            "source": "HAND",
+            "optional": true,
+            "usage": "NONE"
+          },
+          "triggers": [
+            {
+              "trigger": "ON_ENTER_PLAY",
+              "conditions": [
+                {
+                  "type": "TURN_STATE",
+                  "target": "SELF",
+                  "value": "ACTOR_TURN"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "search_deck",
+                  "target": "DECK",
+                  "amount": 1,
+                  "minimum": 0,
+                  "card_category": "TRAINER",
+                  "reveal": true,
+                  "trainer_category": "SUPPORTER"
+                }
+              ]
+            }
+          ],
+          "effectSupport": "SUPPORTED"
+        }
+      ]
+    }
+  ]
+}

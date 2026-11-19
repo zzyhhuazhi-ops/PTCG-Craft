@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "version": "effect-origin-protection-v1",
+  "checkedDate": "2026-10-03",
+  "implementationVersion": "0.6.0-development",
+  "sources": [
+    {
+      "title": "Mist Energy — official English card database",
+      "url": "https://asia.pokemon-card.com/my/card-search/detail/12251/",
+      "region": "Malaysia English; illustrative wording only",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "official card database snapshot checked 2026-10-03",
+      "retrievalStatus": "official card body read",
+      "supportsZh": "攻击效果防护与伤害防护不同；新增防护不移除已经存在的效果。",
+      "limitationsZh": "本轮仅实现临时目标防护，不实现附着特殊能量的连续生效和失效；不启用本卡，不用马来西亚资料推断国际或简中合法性。"
+    },
+    {
+      "title": "Pokémon TCG: Sword & Shield—Brilliant Stars Cards to Watch For",
+      "url": "https://www.pokemon.com/uk/strategy/pokemon-tcg-sword-shield-brilliant-stars-cards-to-watch-for",
+      "region": "international; official UK strategy",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "official strategy search snapshot checked 2026-10-03",
+      "retrievalStatus": "official indexed excerpt read; direct page iframe only",
+      "supportsZh": "Manaphy 的备战保护明确针对对手攻击伤害，并依赖来源仍在场；提示伤害、防护对象与持续来源须分离。",
+      "limitationsZh": "没有新增 Manaphy 真实卡绑定，也没有将临时防护冒充动态场上特性。"
+    },
+    {
+      "title": "Rapid Strike Urshifu VMAX Deck Strategy: Sword & Shield—Battle Styles",
+      "url": "https://www.pokemon.com/us/strategy/rapid-strike-urshifu-vmax-deck-strategy-sword-shield-battle-styles",
+      "region": "international; official US strategy",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "official strategy search snapshot checked 2026-10-03",
+      "retrievalStatus": "official indexed excerpt read; direct page iframe only",
+      "supportsZh": "Stealthy Hood 的特性效果保护与 Bench Barrier 的攻击伤害保护须区分来源及作用范围。",
+      "limitationsZh": "不把该例子当作完整卡文审核，不启用新工具或其动态失效交互。"
+    },
+    {
+      "title": "February 2026 Rule Book Updates - What you need to know!",
+      "url": "https://professorprogram.pokemon.com/news/11473085",
+      "region": "international",
+      "publishedDate": "2026-02-26",
+      "effectiveDate": null,
+      "documentVersion": "February 2026 official Professor Community update",
+      "retrievalStatus": "official article body reread 2026-10-03",
+      "dateNoteZh": "正文 yesterday (February 20th) 与发布日期冲突，不推断精确生效日。",
+      "supportsZh": "原卡效果结束后才处理其它卡引发的效果；被防护阻止的附着没有实际附能，不应产生附能触发。"
+    }
+  ],
+  "implementationZh": [
+    "服务器入口归属 ATTACK/ABILITY/TRAINER/RULE；客户端和卡牌 JSON 不能声明自己的执行来源。参数中的 source 仅是防护过滤器。",
+    "ProtectionEffect 复用 prevent_effects/prevent_damage，严格要求 source/from/scope/duration；过滤己对方、来源类别以及仅伤害/仅其它效果/两者。",
+    "共享连续效果保存临时目标防护，按来源回合到期、换至备战或进化等既有清除规则移除；不影响已经施加的异常状态。",
+    "攻击逐目标应用防护；首个备战免伤不取消其它目标伤害；指示物不是攻击伤害，但要经过实际来源的其它效果防护。",
+    "续接中的指示物分配和能量附着保留来源；被阻止的目标不取消后续抽牌或其它目标。牌库附能检索的独立洗牌仍执行，能量留原区，不产生附能事件。",
+    "上述牌库洗牌与分配的精细交互是共用引擎契约的回归验证，未声称有官方针对每个组合的个别裁定或真实卡完成审核。"
+  ],
+  "limitationsZh": [
+    "尚未统一所有旧效果入口：能量移除/部分离场/进化/工具/行动锁等仍需逐路审核。新组合程序仅允许本轮已接通范围，未批量放开真实卡。",
+    "未实现动态防护特性、工具和特殊能量附着来源的连续生命周期，也未实现按攻击者 ex/Basic 等细分过滤及递归失效冲突。",
+    "攻击中的选择续接、玩家目标与宝可梦目标的完整区分、全无效果可用性检查和最后已知状态仍待完善。",
+    "没有读取或运行 PTCG Live，没有真实双客户端可视/断线/重启验收；已审核真实卡绑定仍39张。",
+    "当前安装0.5.19不变；本轮只更新0.6.0源码及报告，不交付零散小版本。"
+  ]
+}

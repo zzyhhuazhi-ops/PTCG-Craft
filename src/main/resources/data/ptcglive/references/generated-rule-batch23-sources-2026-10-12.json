@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-12",
+  "scope": "60 newly recognized Trainer components, 60 fully supported additional cards; no previous supported program or metadata changes.",
+  "sources": [
+    {
+      "title": "Drasna",
+      "url": "https://asia.pokemon-card.com/sg/card-search/detail/16796/",
+      "checkedFacts": "Shuffle own hand before flipping once and drawing eight or three."
+    },
+    {
+      "title": "Ultra Prism official translation card texts, Mars",
+      "url": "https://assets.pokemon.com/assets/cms2-ru-ru/pdf/trading-card-game/tcg_sun_moon_5_card_translation.pdf",
+      "checkedFacts": "Draw two, and only if cards were drawn discard one random opponent hand card."
+    },
+    {
+      "title": "Unified Minds official translation card texts, Stadium Nav",
+      "url": "https://assets.pokemon.com/assets/cms2-ru-ru/pdf/trading-card-game/tcg_sun_moon_11_card_translation.pdf",
+      "checkedFacts": "Flip two coins and search one Stadium per heads, with public reveal and deck shuffle."
+    },
+    {
+      "title": "Bede",
+      "url": "https://asia.pokemon-card.com/ph/card-search/detail/3593/",
+      "checkedFacts": "Attach a Basic Energy from hand to one own Benched Pokemon."
+    }
+  ],
+  "boundaries": [
+    "Existing supported Trainer programs are unchanged; fallback applies only to previously unsupported whole texts.",
+    "Only reviewed rule IDs and atomic player actions are shared; before-attack timing, damage metadata, Pokemon SELF and unknown conditions remain excluded.",
+    "Hidden deck searches allow failure-to-find; public recovery keeps a mandatory minimum clamped to eligible cards.",
+    "Forced switch belongs to the affected player; gust belongs to the effect controller.",
+    "Draw condition binds actual cards drawn, including partial draw, and cannot fire with an empty deck.",
+    "Coin-driven searches and attachments retain their original result and ownership; no ordinary Energy attachment is consumed.",
+    "Resolving Trainer is excluded from its own shuffle or discard search."
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "version": "rule-box-condition-v1",
+  "checkedDate": "2026-10-04",
+  "implementationVersion": "0.6.0-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Poké Pad — Perfect Order 81 official card text",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/me03/81",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official card database page, retrieved 2026-10-04",
+      "verification": "The Item searches for a Pokémon without a Rule Box and explicitly identifies Pokémon ex and Pokémon V as examples with Rule Boxes.",
+      "supportsZh": "用于 Rule Box 作为可审核卡牌筛选事实的资料例子；不表示该真实卡已完成完整效果、地区或合法性审核。"
+    },
+    {
+      "title": "Pokémon TCG Rules — Sword & Shield—Brilliant Stars",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/swsh10_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official historical English rulebook PDF",
+      "verification": "The Radiant Pokémon appendix states that a Radiant Pokémon is considered a Pokémon with a Rule Box.",
+      "supportsZh": "说明 Rule Box 可以是印刷规则事实；历史规则书不被当作当前格式、每个家族或所有整卡的完整裁定。"
+    },
+    {
+      "title": "Play! Pokémon Competitive Pokémon Rules and Formats",
+      "url": "https://play.pokemon.com/en-us/resources/rules/?category=tcg",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official resources index, retrieved 2026-10-04",
+      "verification": "The official index provides maintained entry points for rulebooks, tournament rules, legality notices and errata.",
+      "supportsZh": "用于持续核验当前规则包，索引页本身不被解释为某个历史单卡的完整时序裁定。"
+    }
+  ],
+  "retrievalLimitations": [
+    "No PTCG Live behavior, Chinese translation, image or community source is used as rule authority.",
+    "No card family or name is automatically inferred to have a Rule Box.",
+    "Every real card remains unavailable until its complete official text, timing and legality are audited."
+  ],
+  "implementationLimits": [
+    "Supports an explicit, audited RULE_BOX marker on a Pokémon card definition, both for in-play conditions and for reviewed private-zone search filters.",
+    "Does not implement default family inference, non-Pokémon Rule Boxes, card-specific suppression, format bans or any real card binding.",
+    "Batch card data must supply traceable Rule Box metadata before a condition or search filter may affect a playable real card."
+  ]
+}

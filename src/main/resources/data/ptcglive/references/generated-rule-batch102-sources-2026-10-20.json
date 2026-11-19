@@ -1,0 +1,35 @@
+{
+  "batch": 102,
+  "checkedAt": "2026-10-20",
+  "cards": [
+    "me4_en_075",
+    "me4_en_080",
+    "me4_en_111"
+  ],
+  "officialSources": [
+    "https://www.pokemon-card.com/card-search/details.php/card/48484",
+    "https://github.com/PokemonTCG/pokemon-tcg-data"
+  ],
+  "reuseDecision": {
+    "accepted": [
+      "existing stadium passive hit point modifiers",
+      "existing stadium once-per-player-turn activation",
+      "existing optional choice and discard cost"
+    ],
+    "rejected": [
+      "BREAK combat behavior"
+    ]
+  },
+  "implementation": {
+    "angeFloette": "hit_points_modifier +150 on both sides with MEGA_EVOLUTION_EX and NAME_CONTAINS Floette; play gate requires same-turn Prism Tower 080/111",
+    "prismTower": "ONCE_PER_PLAYER_TURN optional choice: discard exactly 2 hand cards then draw 1"
+  },
+  "validation": {
+    "conversion": "3 targets generated SUPPORTED and TRAINER combat entries",
+    "javaCompile": "passed",
+    "tests": "deferred by user until all cards are complete",
+    "realCardRegression": "deferred",
+    "jarBuilt": false,
+    "sourcePushed": false
+  }
+}

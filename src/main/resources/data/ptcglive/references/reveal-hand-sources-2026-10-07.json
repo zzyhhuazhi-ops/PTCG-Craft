@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "version": "reveal-hand-v1",
+  "checkedDate": "2026-10-07",
+  "implementationVersion": "0.6.7-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Hand Scope（Rainier 卡号 xy4_en_096）",
+      "url": "https://limitlesstcg.com/cards/PHF/96",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Limitless card page used by PTCGCardCN for this card's English image (Rainier xy4 → Limitless PHF); English card text from the Rainier card database 2026-10-07",
+      "supportsZh": "物品 “Your opponent reveals his or her hand.”：整张卡只有公开对手手牌这一个效果；对手没有手牌时不会产生任何效果。"
+    },
+    {
+      "title": "Hoothoot（Rainier 卡号 sv5_en_126，招式 Silent Wing）",
+      "url": "https://limitlesstcg.com/cards/TEF/126",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Limitless card page used by PTCGCardCN for this card's English image (Rainier sv5 → Limitless TEF); English card text from the Rainier card database 2026-10-07",
+      "supportsZh": "招式 20 点伤害并 “Your opponent reveals their hand.”：伤害后公开对手手牌。"
+    },
+    {
+      "title": "Banette ex（Rainier 卡号 sv1_en_088，招式 Poltergeist）",
+      "url": "https://limitlesstcg.com/cards/SVI/88",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Limitless card page used by PTCGCardCN for this card's English image (Rainier sv1 → Limitless SVI); English card text from the Rainier card database 2026-10-07",
+      "supportsZh": "“Your opponent reveals their hand. This attack does 60 damage for each Trainer card you find there.”：先公开，再按对手手牌里训练家卡的张数计算伤害（印刷 60×）。"
+    },
+    {
+      "title": "Simipour（Rainier 卡号 swsh8_en_069，招式 Circus Soaking）",
+      "url": "https://limitlesstcg.com/cards/FST/69",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Limitless card page used by PTCGCardCN for this card's English image (Rainier swsh8 → Limitless FST); English card text from the Rainier card database 2026-10-07",
+      "supportsZh": "“… This attack does 60 damage for each Supporter card you find there.”：只数支援者卡。"
+    }
+  ],
+  "dataContractZh": "新效果 reveal_hand（目标 OPPONENT_ACTIVE＝对手、SELF/HAND＝自己，不接受参数）：卡牌结算在这一步暂停，把那位玩家当前手牌的卡面（不含卡牌实例编号）放进公开展示，效果的使用者确认后才继续；手牌为空时什么都不公开，直接继续。新伤害组件 damage_per_hand_card（amount 10 的倍数、card_category 必填、trainer_category 可选；目标 OPPONENT_ACTIVE 数对手手牌、SELF 数自己的）只能在伤害计算阶段（ON_ATTACK）用于对方战斗宝可梦，配合伤害前（BEFORE_ATTACK）的 reveal_hand 表达 “Your opponent reveals their hand. This attack does N damage for each Trainer card you find there.”。",
+  "serverAuthorityZh": "公开的卡面由服务器从当前手牌读取并排序，双方客户端都看到同一份公开展示（对战桌中间弹层，标题“对手公开手牌 N 张”），只有效果的使用者能确认；确认不移动任何卡。回放记录“公开手牌：卡号…”和“已查看公开的手牌”。按张数计算的伤害在伤害计算时读服务器的手牌，不信任客户端。",
+  "limitations": [
+    "“Discard a Trainer card you find there”“Choose a card you find there and put it on the bottom of their deck” 等要从公开的手牌里选卡的写法还没有接入（需要以对手手牌为来源的选牌）。",
+    "“Each player reveals their hand … the number of Item cards revealed” 这种同时数双方手牌的写法没有接入。"
+  ]
+}

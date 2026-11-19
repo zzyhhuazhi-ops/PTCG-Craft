@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "version": "checkup-trigger-checkpoint-v1",
+  "checkedDate": "2026-10-03",
+  "implementationVersion": "0.6.0-development",
+  "sources": [
+    {
+      "title": "February 2026 Rule Book Updates — What you need to know!",
+      "url": "https://professorprogram.pokemon.com/news/11473085",
+      "region": "international Play! Pokémon",
+      "publishedDate": "2026-02-26",
+      "effectiveDate": null,
+      "documentVersion": "official Professor Community article 11473085",
+      "retrievalStatus": "official full article body reread 2026-10-03",
+      "supportsZh": "回合间多个效果由下一回合的玩家决定顺序；官方举雪妖女添加指示物和盐石巨灵回复的互动。原卡效果完成后再处理其它触发。",
+      "dateNoteZh": "页首发布日期与正文昨天2月20日有冲突，未猜测精确生效日期。"
+    },
+    {
+      "title": "Pokémon Card Game Advanced Player’s Rulebook Ver. 3.4",
+      "url": "https://asia.pokemon-card.com/sg/wp-content/uploads/sites/6/2025/10/EN_advanced_manual-2025.pdf",
+      "region": "Singapore / Malaysia / Philippines English; cross-check of mechanics only",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Ver.3.4; printed date 01/08/2025; section F page 14",
+      "retrievalStatus": "official PDF text inspected; screenshot request did not return a viewable image in this environment",
+      "supportsZh": "回合间不属于双方的回合；异常状态依次中毒、灼伤、睡眠、麻痹作为完整步骤；各回合间卡牌效果可安排在完整状态步骤之前或之后，最后检查击倒。",
+      "regionNoteZh": "只交叉核对机制，不导入该地区卡池、轮替或赛事规则。国际顺序决定者以同上2026国际官方更新为依据。"
+    },
+    {
+      "title": "Pokémon Trading Card Game Rules — Paradox Rift historical rulebook",
+      "url": "https://www.pokemon.com/static-assets/content-assets/cms2/pdf/trading-card-game/rulebook/par_rulebook_en.pdf",
+      "region": "international English; historical rulebook",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "2023 copyright; page 16 Other Effects",
+      "retrievalStatus": "direct URL currently iframe-only; previously cached PDF page 16 rendered image inspected locally",
+      "sha256": "CD526F74614ECFC8AA09C641B03ABC53AAD2F261F028EFAA5B402811FDB86B23",
+      "supportsZh": "旧版也明确写有回合间文字的特性和训练家效果在此处理，举卡比兽回复示例。此历史页不被称为最新2026规则全文。"
+    }
+  ],
+  "implementationZh": [
+    "AbilityEventPolicy把原附能事件与新Checkup事件分离；卡牌仍使用Trigger/Condition/Effect组件，不为单卡写Java类。旧附能JSON保持兼容。",
+    "独立POKEMON_CHECKUP阶段，双方普通回合意图被拒绝；TURN_STATE的三个回合谓词均为false。规则包时序未核验时拒绝自动特性。",
+    "下一玩家在双方特性和一项完整异常状态步骤间排序。特性是否使用由拥有者决定，不由排序者替代。共享GAME组防止整局资格被来源重建刷新；拒绝回合间TURN次数。",
+    "回合间统一延后击倒，对双方战斗位和备战区扫描。随后复用奖赏选择、替补和胜负，正常情况下只进入下一回合并抽牌一次。",
+    "复用来源免疫、隐藏区域、服务器随机及回放；固定全场回复和每目标指示物复用现有组件。公开排序步骤不携带隐藏卡牌。"
+  ],
+  "limitationsZh": [
+    "本阶段只有已支持的同步触发组件；回合间私有检索、Choice、目标分配、中途离场与新事件链明确拒绝，不假装支持。",
+    "训练家／场地／特殊能量的回合间持续来源及复杂动态过滤仍未接入。没有因此启用雪妖女或盐石巨灵等真实卡牌，审核绑定仍39。",
+    "未接入完整ON_DAMAGE/ON_KNOCKOUT、来源最后已知状态和跨进程回合间续局。",
+    "无PTCG Live日志或实机对照；真实Fabric无窗口消息测试不等于双登录客户端可视化验收。"
+  ]
+}

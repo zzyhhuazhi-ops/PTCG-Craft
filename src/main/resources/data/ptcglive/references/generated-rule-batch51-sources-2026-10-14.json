@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-14",
+  "scope": "3 newly recognized Ability components, 3 fully supported current ME5-5 Mew ex prints. Prior supported programs and metadata unchanged.",
+  "source": "Rainier English card text included verbatim per component; conversion input matched by stable card ID.",
+  "ruleReferences": [
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%95%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3&regulation_faq_main_item1=all",
+      "usedFor": "Official Memory Helix Bench Mew can use Dimensional Hand from a Benched Alakazam ex; actual Mew is still the attack source."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%9F%E3%83%A5%E3%82%A6EX&page=2",
+      "usedFor": "Night Mine tests actual Mew Tera status, not the provider; Tool/Ability granted attacks are not owned printed attacks and cannot be borrowed."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%82%AC%E3%83%81%E3%82%B0%E3%83%9E+%E3%82%A2%E3%82%AB%E3%83%84%E3%82%ADex&regulation_faq_main_item1=all",
+      "usedFor": "Memory Helix does not inherit Bloodmoon Ursaluna ex provider Ability cost reduction; actual Mew pays the selected printed cost."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%82%AD%25E&page=143&regulation=all",
+      "usedFor": "Analogous All-Mighty ruling permits payable borrowing of Zoroark Foul Play, then normal secondary copy selection without paying the final attack cost. Memory Helix uses the same printed payable-attack semantics; unrelated unimplemented recursive-copy behavior remains explicitly gated."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%82%AC%E3%83%9E%E3%82%B2%E3%83%AD%E3%82%B2&regulation_faq_main_item1=all",
+      "usedFor": "Official Memory Helix Round ruling: borrowing usability never makes Mew own the printed attack for attack-name counting. Regression uses the actual current Round-40 component with one printed provider and two Mew; damage remains 40."
+    }
+  ],
+  "evidence": [
+    {
+      "cardId": "me5-5_en_066",
+      "component": "ability",
+      "name": "Memory Helix",
+      "textEn": "This Pokémon can use the attacks of any of your Benched Pokémon. <i>(You still need the necessary Energy to use each attack.)</i>",
+      "textZh": "这只宝可梦可以使用自己备战宝可梦所拥有的全部招式。<i>[需要满足使用招式所需能量。]</i>",
+      "mapping": {
+        "rules": [
+          "own-bench-printed-payable-attacks"
+        ],
+        "fields": {
+          "abilityKind": "PASSIVE"
+        },
+        "program": [
+          {
+            "type": "borrow_attacks",
+            "target": "SELF",
+            "source_scope": "OWN_BENCH",
+            "cost_policy": "SELECTED_ATTACK"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_152",
+      "component": "ability",
+      "name": "Memory Helix",
+      "textEn": "This Pokémon can use the attacks of any of your Benched Pokémon. <i>(You still need the necessary Energy to use each attack.)</i>",
+      "textZh": "这只宝可梦可以使用自己备战宝可梦所拥有的全部招式。<i>[需要满足使用招式所需能量。]</i>",
+      "mapping": {
+        "rules": [
+          "own-bench-printed-payable-attacks"
+        ],
+        "fields": {
+          "abilityKind": "PASSIVE"
+        },
+        "program": [
+          {
+            "type": "borrow_attacks",
+            "target": "SELF",
+            "source_scope": "OWN_BENCH",
+            "cost_policy": "SELECTED_ATTACK"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_158",
+      "component": "ability",
+      "name": "Memory Helix",
+      "textEn": "This Pokémon can use the attacks of any of your Benched Pokémon. <i>(You still need the necessary Energy to use each attack.)</i>",
+      "textZh": "这只宝可梦可以使用自己备战宝可梦所拥有的全部招式。<i>[需要满足使用招式所需能量。]</i>",
+      "mapping": {
+        "rules": [
+          "own-bench-printed-payable-attacks"
+        ],
+        "fields": {
+          "abilityKind": "PASSIVE"
+        },
+        "program": [
+          {
+            "type": "borrow_attacks",
+            "target": "SELF",
+            "source_scope": "OWN_BENCH",
+            "cost_policy": "SELECTED_ATTACK"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    }
+  ]
+}

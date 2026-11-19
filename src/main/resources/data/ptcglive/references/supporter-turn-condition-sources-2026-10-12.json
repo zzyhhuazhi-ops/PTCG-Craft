@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-12",
+  "sources": [{
+    "title": "Silvally-GX — Cosmic Eclipse 262/236",
+    "url": "https://www.pokemon.com/uk/pokemon-tcg/pokemon-cards/series/sm12/262/",
+    "accessStatus": "Official English card text retrieved from indexed page",
+    "supportsZh": "Brave Buddies 只有在本回合从手牌使用过支援者时才追加伤害。手牌持有、弃置、失败或未完成的使用不算；对手使用过也不算。"
+  }],
+  "implementation": "CARD_PLAYED_THIS_TURN with trainer_category:SUPPORTER; reads server-owned completed hand-play history, mutually exclusive with definition_ids",
+  "regressions": ["tests/SupporterTurnConditionTest.java", "tests/StarterDeck100TurnHistoryTest.java"],
+  "limitations": ["按名称限定的支援者仍需单独匹配；本组件没有放宽为任意训练家使用。"]
+}

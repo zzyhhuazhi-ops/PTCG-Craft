@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "version": "group-bench-damage-v1",
+  "checkedDate": "2026-10-07",
+  "implementationVersion": "0.6.7-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Pokémon Trading Card Game Rules — Scarlet & Violet Rulebook（Weakness and Resistance; damage to Benched Pokémon）",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/pal_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English rulebook PDF; checked 2026-10-07",
+      "supportsZh": "攻击对备战宝可梦造成的伤害不计算弱点和抵抗力（卡上也印着 “Don't apply Weakness and Resistance for Benched Pokémon.”），但仍是攻击伤害：防止伤害、减伤等效果照常适用，HP 归零时照常击倒并拿奖赏。"
+    },
+    {
+      "title": "Crabominable — Sun & Moon 43/149（Avalanche）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm1/43/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-07 (pokemon.com page blocked automated reading)",
+      "supportsZh": "招式印刷伤害 80，卡文 “This attack does 10 damage to each of your opponent's Benched Pokémon.”：80 点打对方战斗宝可梦，另外对方每只备战宝可梦各受 10 点。新写法带 “also”（Rainier 中 Cetoddle sv2 53 等 “This attack also does 10 damage to each of your opponent's Benched Pokémon.”），意思相同。"
+    },
+    {
+      "title": "Gastrodon — Sun & Moon Crimson Invasion 54/111（Earthquake）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm4/54/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-07 (pokemon.com page blocked automated reading)",
+      "supportsZh": "“This attack does 10 damage to each of your Benched Pokémon.”：攻击方自己的每只备战宝可梦各受 10 点攻击伤害（不计弱点抵抗）。带 “also” 的同义写法见 Rainier 中 Diggersby me3 65 等。"
+    }
+  ],
+  "dataContractZh": "bench_damage 新增固定群体目标：target OWN_BENCH（己方全部备战宝可梦）或 OPPONENT_BENCH（对方全部备战宝可梦），只接受 amount（10–1000，10 的倍数），只能在攻击的 AFTER_ATTACK 结算。原来的 SELECT_OWN_POKEMON / SELECT_OPPONENT_POKEMON（选 1 只）不变。",
+  "serverAuthorityZh": "服务器在结算时取该备战区当前的全部宝可梦，逐只走与单只备战伤害相同的攻击伤害流程（攻击方持续修正、防止伤害、减伤、受伤触发、击倒与奖赏都在同一个攻击检查点），没有任何选择。备战区为空时什么都不发生。",
+  "limitations": [
+    "“对对方 2 只备战宝可梦各造成伤害”（互不重复的多选）不在本组件内。",
+    "群体目标不能用在训练家、特性或伤害前（BEFORE_ATTACK）。"
+  ]
+}

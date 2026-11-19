@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "version": "typed-energy-search-v1",
+  "checkedDate": "2026-10-07",
+  "implementationVersion": "0.6.7-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Magnemite — Sun & Moon Ultra Prism 80/156（Searching Magnet）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm5/80/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-07 (pokemon.com page blocked automated reading)",
+      "supportsZh": "“Search your deck for up to 3 {M} Energy cards, reveal them, and put them into your hand. Then, shuffle your deck.”：只能拿钢属性的基本能量卡（牌库里的特殊能量没有属性），可以一张都不拿（招式的 up to，且牌库是非公开区域）。"
+    },
+    {
+      "title": "Pokémon Trading Card Game Rules — Scarlet & Violet Rulebook（Basic Energy and Special Energy）",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/pal_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English rulebook PDF; checked 2026-10-07",
+      "supportsZh": "特殊能量只在附着时提供能量；在牌库、手牌、弃牌区时它不是任何属性的能量卡，所以 “{T} Energy card” 指的是该属性的基本能量卡（与 attach_energy 的 energy_type 同一口径）。"
+    }
+  ],
+  "dataContractZh": "search_deck / search_discard_pile 新增可选参数 energy_type（能量属性），必须同时有 basic_energy_only true（并限定 card_category ENERGY）。",
+  "serverAuthorityZh": "服务器用已审核的 combat 能量数据判断候选卡的属性，客户端不能提交其它卡；筛选在发出候选和提交时都会检查。",
+  "limitations": []
+}

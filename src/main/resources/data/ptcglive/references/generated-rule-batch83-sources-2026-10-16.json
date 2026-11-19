@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-16",
+  "scope": "ME4 Avalugg; no artwork, BREAK or JAR.",
+  "cardIds": [
+    "me4_en_024"
+  ],
+  "ruleReferences": [
+    {
+      "url": "https://asia.pokemon-card.com/sg/card-search/detail/25215/",
+      "kind": "official_printed_card",
+      "verified": true,
+      "facts": [
+        "Avalugg Stage 1 from Bergmite, 160 HP, Water; Metal weakness x2, no resistance, retreat four.",
+        "Iceberg Breaker costs W, discards the top six own-deck cards, and multiplies the number of Basic Water Energy among those cards by 60.",
+        "Frost Stamp costs WWCC and deals 160."
+      ]
+    },
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50108",
+      "kind": "official_japanese_printed_card",
+      "verified": true,
+      "facts": [
+        "M4 024/083 Japanese Avalugg matches the two attack names, HP, evolution stage and six-card discard multiplier.",
+        "Water energy symbols are absent from web text extraction; English official page explicitly renders {W}."
+      ]
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%82%AF%E3%83%AC%E3%83%99%E3%83%BC%E3%82%B9&regulation_faq_main_item1=all",
+      "kind": "official_analogous_faq",
+      "verified": true,
+      "facts": [
+        "Six Avalugg Q&A results found. None is specific to Iceberg Breaker.",
+        "An older Avalugg attack is expressly legal with only two cards left: discard the remaining cards and count matching Water Energy among them. This supports partial-deck handling by analogy, not a new-card-specific ruling."
+      ]
+    },
+    {
+      "url": "https://www.pokemon-card.com/assets/document/advanced_manual.pdf",
+      "kind": "official_general_rules",
+      "verified": true,
+      "version": "3.4",
+      "sections": [
+        "Attack steps, printed pages 4-6",
+        "Card text A, printed page 17",
+        "B-02, printed page 18",
+        "C-01, printed page 23"
+      ],
+      "facts": [
+        "Unfulfillable portions are skipped and fewer available objects use the closest possible count; do not voluntarily discard fewer when six are present.",
+        "A multiplication result of zero stops damage calculation before ordinary damage boosts.",
+        "Discarded cards go to their owners discard piles. Attack-attempt and Confusion checks precede attack resolution.",
+        "Damage instructions determine damage before ordinary after-damage text. The new attack explicitly counts cards discarded in this operation."
+      ]
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E6%AC%A1%E3%81%AE%E8%87%AA%E5%88%86%E3%81%AE%E7%95%AA&regulation_faq_main_item1=XY",
+      "kind": "official_deckout_faq",
+      "verified": true,
+      "facts": [
+        "Emptying a deck does not itself lose the game; taking the last prize or leaving the opponent without a Pokemon can win that turn. The draw failure at the start of a later own turn causes deck-out."
+      ]
+    }
+  ],
+  "reviewedSemantics": [
+    "Extend existing discard_top_deck counting with optional energy_type only when bind+ENERGY+Basic Energy identity are explicit. Count physical Basic Water identities rather than attached energy supply.",
+    "Preserve synchronous top-card movement for all requested available cards. Count the exact newly added discard slice, excluding old discard and untouched seventh card; absent/short decks resolve as far as possible.",
+    "Iceberg Breaker exact name/text and60x guard sets baseDamage0, BEFORE_ATTACK mill6+count binding, ON_ATTACK60 per count. No optional cost, reveal window or randomness.",
+    "Retain Stage1 named Bergmite evolution,160HP Water,Metal weakness2,retreat4,one prize,W Iceberg Breaker and WWCC160 Frost Stamp."
+  ],
+  "evidenceLimitations": [
+    "Direct Japanese attack-name FAQ queries and the English card Q&A link were inaccessible via the web tool. Do not claim a specific Iceberg Breaker FAQ was found."
+  ],
+  "validationAtReview": {
+    "pythonTests": 587,
+    "catalogLoad": "passed",
+    "actualCardAndComponentRegressions": "passed",
+    "fullCheck": "pending; see final batch83 docs for terminal result"
+  }
+}

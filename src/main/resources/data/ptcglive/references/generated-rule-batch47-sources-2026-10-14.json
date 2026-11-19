@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-14",
+  "scope": "2 newly recognized components, 2 fully supported card printings. Prior supported programs and metadata unchanged.",
+  "source": "Rainier English card text included verbatim per component; conversion input matched by stable card ID.",
+  "ruleReferences": [
+    {
+      "url": "https://www.pokemon.com/uk/pokemon-tcg/pokemon-cards/series/30th/108/",
+      "usedFor": "Official printed Celebration text and Metal Energy cost, Stage 1 Gholdengo profile."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%82%B5%E3%83%BC%E3%83%95%E3%82%B4%E3%83%BC&regulation_faq_main_item1=all",
+      "usedFor": "Exactly 30 hand cards, not 31 or more; newly taken Prize cards are also shuffled back with the hand."
+    },
+    {
+      "url": "https://www.pokemon-card.com/assets/document/advanced_manual.pdf",
+      "usedFor": "Section E: perform the win check when the opponent has taken all Prizes. Applying this general rule makes taking the last Prize end the match before later text. This is a general-rule inference, not a card-specific last-Prize FAQ. Section II A uses the closest available number when fewer targets exist; attack text resolves in order."
+    }
+  ],
+  "evidence": [
+    {
+      "cardId": "me5-5_en_108",
+      "component": "attack",
+      "name": "Celebration",
+      "textEn": "If you have exactly 30 cards in your hand, take 2 Prize cards. If you do, shuffle your hand into your deck.",
+      "textZh": "如果自己的手牌为30张的话，则拿取自己的2张奖赏卡。然后，将自己的手牌全部放回牌库并重洗牌库。",
+      "mapping": {
+        "rules": [
+          "exact-thirty-hand-take-prizes-and-shuffle"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "conditional",
+                "conditions": [
+                  {
+                    "type": "HAND_SIZE",
+                    "target": "SELF",
+                    "value": 30,
+                    "comparison": "=="
+                  }
+                ],
+                "effects": [
+                  {
+                    "type": "take_prize_cards",
+                    "target": "SELF",
+                    "amount": 2,
+                    "bind": "celebration"
+                  },
+                  {
+                    "type": "conditional",
+                    "conditions": [
+                      {
+                        "type": "BOUND_COUNT",
+                        "bind": "celebration",
+                        "value": 1
+                      }
+                    ],
+                    "effects": [
+                      {
+                        "type": "shuffle_hand",
+                        "target": "SELF"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5-5_en_142",
+      "component": "attack",
+      "name": "Celebration",
+      "textEn": "If you have exactly 30 cards in your hand, take 2 Prize cards. If you do, shuffle your hand into your deck.",
+      "textZh": "如果自己的手牌为30张的话，则拿取自己的2张奖赏卡。然后，将自己的手牌全部放回牌库并重洗牌库。",
+      "mapping": {
+        "rules": [
+          "exact-thirty-hand-take-prizes-and-shuffle"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "conditional",
+                "conditions": [
+                  {
+                    "type": "HAND_SIZE",
+                    "target": "SELF",
+                    "value": 30,
+                    "comparison": "=="
+                  }
+                ],
+                "effects": [
+                  {
+                    "type": "take_prize_cards",
+                    "target": "SELF",
+                    "amount": 2,
+                    "bind": "celebration"
+                  },
+                  {
+                    "type": "conditional",
+                    "conditions": [
+                      {
+                        "type": "BOUND_COUNT",
+                        "bind": "celebration",
+                        "value": 1
+                      }
+                    ],
+                    "effects": [
+                      {
+                        "type": "shuffle_hand",
+                        "target": "SELF"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    }
+  ]
+}

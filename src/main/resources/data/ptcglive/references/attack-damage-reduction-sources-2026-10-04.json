@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "version": "attack-damage-reduction-v1",
+  "checkedDate": "2026-10-04",
+  "implementationVersion": "0.6.3-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Dubwool — Sword & Shield 154/202",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/swsh1/154/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; indexed text checked 2026-10-04",
+      "supportsZh": "Cotton Guard 的英文卡文是“在对手下个回合，该宝可梦从攻击受到的伤害减少30（在套用弱点与抵抗后）”，是固定数值、自己、下个对手回合攻击减伤的机制例。"
+    },
+    {
+      "title": "Pokémon Trading Card Game Rules — Scarlet & Violet Rulebook",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/pal_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English rulebook; official indexed text checked 2026-10-04",
+      "supportsZh": "攻击先处理对方战斗宝可梦的弱点和抵抗，攻击文字要求的其它事项随后完成；本组件将减伤置于实际攻击伤害层，在弱点／抵抗之后而不是把它误当作基础伤害修改。"
+    }
+  ],
+  "dataContractZh": "reduce_damage(amount) 当前只表示攻击 AFTER_ATTACK 中“攻击者在下个对手回合受到的攻击伤害减少 amount”。目标固定 SELF，amount 为10至1000的10倍数；不接受任意来源、任意目标、条件时限或其它文本的猜测性默认值。",
+  "serverAuthorityZh": "服务器在宣告前核对时机、目标及数值；结算时再次核对同一攻击者入场身份与攻击来源效果防护，然后将已验证的每位对手减伤状态写入战场。实际受伤方的攻击伤害结算从该战场状态读取减伤，客户端不能声明、延长、伪造或跳过到期。",
+  "limitations": [
+    "本轮仅覆盖固定数值的“下个对手回合受到的攻击伤害减少”语义；来自特性、工具、场地、能量的常驻减伤继续由 attack_damage_modifier 被动层处理。",
+    "减伤只影响攻击伤害，不影响伤害指示物、特殊状态、普通卡牌效果或自伤；复杂伤害替代、伤害转移、按条件或按能量动态减伤仍待逐项抽象。",
+    "未因机制例自动启用 Dubwool 或任何真实整卡；真实文本、版本、合法性和关联效果仍须逐卡审核。",
+    "未将 PTCG Live、社区、日本、亚洲或 Pocket 行为混入国际规则包。"
+  ]
+}

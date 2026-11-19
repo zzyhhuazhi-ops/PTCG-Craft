@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "version": "pokemon-type-condition-v1",
+  "checkedDate": "2026-10-07",
+  "implementationVersion": "0.6.7-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Spearow — Sun & Moon 97/149（Peck Bugs）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm1/97/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-07 (pokemon.com page blocked automated reading)",
+      "supportsZh": "招式印刷伤害 10+，“If your opponent's Active Pokémon is a {G} Pokémon, this attack does 30 more damage.”：对方战斗宝可梦是草属性时追加 30 点（与印刷伤害相加后再算弱点抵抗）。"
+    },
+    {
+      "title": "Pokémon Trading Card Game Rules — Scarlet & Violet Rulebook（Pokémon type; Pokémon with more than one type）",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/pal_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English rulebook PDF; checked 2026-10-07",
+      "supportsZh": "宝可梦的属性看卡面左上角的属性标记；有两个属性的宝可梦同时是这两种属性，所以“是 {T} 宝可梦”对双属性宝可梦的任一属性都成立。"
+    }
+  ],
+  "dataContractZh": "新条件 IS_TYPE：参数 target（单只公开宝可梦）与 pokemon_type（宝可梦属性，同 EnergyType 写法），不接受其他参数，也不接受群体目标。",
+  "serverAuthorityZh": "服务器读目标宝可梦当前最上面那张卡的 cards 数据 pokemonTypes（印刷属性，双属性两个都算）；早期手工审核卡没有 pokemonTypes 标记时，退回到 combat 数据的 pokemonType。",
+  "limitations": [
+    "特性、道具改变属性（“在场时是 {T} 和 {T} 属性”“附着的宝可梦是 {T} 属性”）还没有组件，条件只读印刷属性。"
+  ]
+}

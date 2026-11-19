@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-16",
+  "scope": "ME4 Delphox plus identical Mega promo074; no artwork, BREAK or JAR.",
+  "cardIds": [
+    "me4_en_013",
+    "mebsp_en_074"
+  ],
+  "ruleReferences": [
+    {
+      "url": "https://asia.pokemon-card.com/my/card-search/detail/25204/",
+      "facts": "Delphox Stage2 from Braixen,160HP,Fire,Water weakness2,retreat2,one prize. Flaring Magic discards a Basic Fire from hand before drawing until7 once per turn. Energized Storm RR30x all Pokemon Energy."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%9E%E3%83%95%E3%82%A9%E3%82%AF%E3%82%B7%E3%83%BC&regulation_faq_main_item1=all",
+      "facts": "Official Energized Storm FAQ explicitly counts one Ignition Energy attached to Delphox as3 Energy."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%83%96%E3%83%AD%E3%83%AD%E3%83%AD%E3%83%BC%E3%83%A0&regulation_faq_main_item1=all",
+      "facts": "Analogous Rumbling Engine discard-cost draw-until FAQ disallows empty deck and hand7 for draw-until6. Applying the same rule to Flaring Magic is an inference: deck must have a card and post-cost hand must be below7; actual hand7 is legal, hand8 is not."
+    }
+  ],
+  "reviewedSemantics": [
+    "Use existing typed Basic hand cost with requires_effect:true and draw_until7. No new engine component. All candidates and quota remain authoritative; cost checked before quota/reward, actual selected card discarded first.",
+    "Energized Storm uses two existing damage_per_energy UNITS read-only group queries (both owners) summed before weakness/resistance. Includes attacker and every Bench, dynamic and Special Energy; flexible one-unit supply counted once. No Energy consumption from count query.",
+    "Preserve actual evolution, printed costs/stats. Actual Ignition Energy must count3 on evolved Delphox and still discard on its owner turn end. Test whole-card Ability from Active and Bench, size7/8/empty/short deck, type/kind filtering, two sources and turn quota, copied attack controller, live sums and weakness/resistance."
+  ],
+  "reprintAudit": "The same-era promo has identical combat text/statistics apart from id and representative evolution id. Its printed Braixen evolution name remains authoritative; actual tests must evolve it from ME4 Braixen. Official expansion page supports the common printed rules; promo identity/text comes from repository/Rainier data, not a separately found official promo page.",
+  "validationAtReview": {
+    "pythonTests": 570,
+    "catalogLoad": "passed",
+    "actualCardAndComponentRegressions": "passed",
+    "fullCheck": "pending; see final batch79 docs for terminal result"
+  }
+}

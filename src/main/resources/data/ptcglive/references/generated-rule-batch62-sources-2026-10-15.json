@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "scope": "Newest-first ME5: both Thievul prints, copy opponent field only with no cards in actual actor Hand; artwork and true BREAK excluded.",
+  "ruleReferences": [
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50309",
+      "facts": "Thievul SkillThief: only if own Hand empty choose one attack of opponent in-play Pokemon and use it as this attack."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?page=15&regulation=all&sc_group_id=849%2F1000",
+      "facts": "SkillThief copied MatchaSpin uses actual actor discard; copied NinjaSpinner additional damage can be chosen without Water Energy."
+    }
+  ],
+  "evidence": [
+    {
+      "cardId": "me5_en_054",
+      "name": "Skill Thief",
+      "textEn": "If you have no cards in your hand, choose an attack from 1 of your opponent's Pokémon in play and use it as this attack.",
+      "textZh": "如果自己1张手牌都没有的话，则选择1个对手的场上宝可梦持有的招式，作为这个招式使用。",
+      "mapping": {
+        "rules": [
+          "copy-opponent-field-if-own-hand-empty"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [
+          {
+            "type": "copy_attack",
+            "target": "ALL_OPPONENT_POKEMON",
+            "cost_policy": "DECLARED_ATTACK",
+            "conditions": [
+              {
+                "type": "HAND_SIZE",
+                "target": "SELF",
+                "value": 0,
+                "comparison": "=="
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    },
+    {
+      "cardId": "me5_en_092",
+      "name": "Skill Thief",
+      "textEn": "If you have no cards in your hand, choose an attack from 1 of your opponent's Pokémon in play and use it as this attack.",
+      "textZh": "如果自己1张手牌都没有的话，则选择1个对手的场上宝可梦持有的招式，作为这个招式使用。",
+      "mapping": {
+        "rules": [
+          "copy-opponent-field-if-own-hand-empty"
+        ],
+        "fields": {
+          "baseDamage": 0
+        },
+        "program": [
+          {
+            "type": "copy_attack",
+            "target": "ALL_OPPONENT_POKEMON",
+            "cost_policy": "DECLARED_ATTACK",
+            "conditions": [
+              {
+                "type": "HAND_SIZE",
+                "target": "SELF",
+                "value": 0,
+                "comparison": "=="
+              }
+            ]
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    }
+  ]
+}

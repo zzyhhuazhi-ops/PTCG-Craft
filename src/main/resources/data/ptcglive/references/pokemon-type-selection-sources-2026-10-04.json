@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "version": "pokemon-type-selection-v1",
+  "checkedDate": "2026-10-04",
+  "implementationVersion": "0.6.0-development",
+  "region": "international historical reference",
+  "sources": [
+    {
+      "title": "Pokémon TCG Rules — Sword & Shield—Fusion Strike",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/swsh8_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English historical rulebook PDF",
+      "verification": "The V-UNION appendix gives a deck-search example for a Psychic Pokémon and explains that printed type is a characteristic that may be referenced on an individual private-zone card piece.",
+      "supportsZh": "用于“检索指定属性宝可梦”应读取审核印刷属性、并区分私有区域与场上特征的通用数据建模。"
+    },
+    {
+      "title": "Play! Pokémon Competitive Pokémon Rules and Formats",
+      "url": "https://play.pokemon.com/en-us/resources/rules/?category=tcg",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official resources index, retrieved 2026-10-04",
+      "verification": "The official index provides maintained entry points for rulebooks, legality notices and errata.",
+      "supportsZh": "用于后续逐卡、逐规则包核验；索引页不被解释为完整单卡裁定。"
+    }
+  ],
+  "retrievalLimitations": [
+    "No PTCG Live behavior, translated card name, artwork, energy-cost symbol or community source is used to infer a Pokémon type.",
+    "Cards without audited pokemonTypes metadata never match a typed selection."
+  ],
+  "implementationLimits": [
+    "Supports an ANY-of list of explicit Pokémon types for private-zone selection only.",
+    "The filter requires card_category POKEMON and cannot make a card playable without complete text, timing and legality review."
+  ]
+}

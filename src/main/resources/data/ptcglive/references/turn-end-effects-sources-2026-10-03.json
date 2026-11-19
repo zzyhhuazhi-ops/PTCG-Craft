@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "version": "turn-end-effects-v1",
+  "checkedDate": "2026-10-03",
+  "implementationVersion": "0.6.0-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Pokémon TCG Errata — Leftovers, Lum Berry, Sitrus Berry",
+      "url": "https://play.pokemon.com/en-us/resources/documents/tcg-errata/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "lastUpdatedDate": "2024-11-07",
+      "documentVersion": "Official international HTML errata, displayed last update 2024-11-07",
+      "verification": "Full HTML opened; Leftovers and Berry corrections inspected",
+      "supportsZh": "回合末独立于回合间；剩饭为己方回合末回复，树果勘误明确每个回合末而非回合间，可先回复再弃置自身。仅核对通用触发与组合能力，未启用整卡；不能把页面旧的up to说明覆盖2026更新。"
+    },
+    {
+      "title": "Triple Acceleration Energy — Unbroken Bonds 190",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm10/190/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database UNB190",
+      "verification": "Official indexed card text retrieved",
+      "supportsZh": "仅提供回合末来源能量弃置与宿主限制的通用需求，不将其描述为实体卡包玩法或完整卡牌审核。"
+    },
+    {
+      "title": "Pokémon TCG: Scarlet & Violet—Black Bolt and White Flare Top Competitive Cards to Watch For",
+      "url": "https://www.pokemon.com/us/features/pokemon-tcg-scarlet-violet-black-bolt-and-white-flare-top-competitive-cards-to-watch-for",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international strategy, Ignition Energy section",
+      "verification": "Official indexed text retrieved; direct open returned iframe wrapper",
+      "supportsZh": "点火能量在己方回合末弃置，支持显式OWN与ANY区分；此策略文章不是完整卡文或额外裁定。"
+    },
+    {
+      "title": "February 2026 Rule Book Updates — What you need to know!",
+      "url": "https://professorprogram.pokemon.com/news/11473085",
+      "publishedDate": "2026-02-26",
+      "effectiveDate": "2026-02-20",
+      "documentVersion": "Official Professor Program update, February 2026",
+      "verification": "Official indexed article; publication header and body effective date retained separately",
+      "supportsZh": "一张卡的完整文本先完成，再处理其它卡的触发；回合内附能／击倒和回合间的排序说明不等同于所有回合末交互的完整裁定。"
+    }
+  ],
+  "implementationNotesZh": [
+    "ON_TURN_END使用显式OWN/OPPONENT/ANY，来源是当前控制者，而最终弃牌仍归原所有者。",
+    "TURN_END是当前玩家回合的关闭操作阶段，之后才进入POKEMON_CHECKUP；共享次数与卡牌身份沿用统一核心。",
+    "同时回合末事件暂沿用规则包AFTER_CARD_ACTIVE_PLAYER_V1的当前玩家排序策略；跨双方复杂交互、条件再次满足／到期与触发之间的精确优先级尚未完成国际裁定核验，不能据此启用相关整卡。",
+    "discard_source仅允许持续卡自动上下文，以来源实例和入场序号追踪实体；不是宝可梦离场或击倒替代。",
+    "未新增真实卡绑定；未读PTCG Live、未采用亚洲／日本／Pocket规则；无新PDF读取。"
+  ],
+  "changeLog": [{"date":"2026-10-03","version":"turn-end-effects-v1","summaryZh":"新增独立回合末自动效果阶段、数据化回合归属策略与持续来源自弃组件。"}]
+}

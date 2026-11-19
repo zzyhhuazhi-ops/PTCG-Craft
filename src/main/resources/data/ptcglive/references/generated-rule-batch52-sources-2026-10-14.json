@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-14",
+  "scope": "1 newly recognized attack component, 1 fully supported current ME5-5 Seismitoad. Prior supported programs and metadata unchanged.",
+  "source": "Rainier English card text included verbatim per component; conversion input matched by stable card ID.",
+  "ruleReferences": [
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%82%AC%E3%83%9E%E3%82%B2%E3%83%AD%E3%82%B2&regulation_faq_main_item1=all",
+      "usedFor": "Official Quaking Fist FAQ: roll before Ultra Ball discard cost and before replacing a Stadium. Tails is not use, does not satisfy Supporter hand-play history, consumes no Supporter or Stadium quota, and permits another attempt including the same Stadium name. A simultaneous paired Trainer play is one declaration and one flip; those paired card adapters are not currently enabled and must use one grouped gate when implemented."
+    },
+    {
+      "url": "https://www.pokemon-card.com/rules/faq/search.php?freeword=%E3%82%AC%E3%83%9E%E3%82%B2%E3%83%AD%E3%82%B2&page=2&regulation=all&regulation_faq_main_item1=all",
+      "usedFor": "Analogous Seismitoad EX player-effect rulings distinguish restrictions on the player from effects on the Defending Pokemon: protection or Defender retreat does not remove a player restriction. Printed Quaking Fist explicitly applies to opposing player declarations."
+    }
+  ],
+  "evidence": [
+    {
+      "cardId": "me5-5_en_084",
+      "component": "attack",
+      "name": "Quaking Fist",
+      "textEn": "During your opponent's next turn, whenever they try to use a Trainer card from their hand, they flip a coin. If tails, your opponent discards that Trainer card instead of using it.",
+      "textZh": "在下一个对手的回合，每当对手从手牌使出训练家时，在使用前抛掷1次硬币。如果为反面，则那张卡牌不视作被使用过，将其放于弃牌区。",
+      "mapping": {
+        "rules": [
+          "opponent-next-turn-trainer-attempt-coin"
+        ],
+        "fields": {
+          "baseDamage": 60
+        },
+        "program": [],
+        "triggers": [
+          {
+            "trigger": "AFTER_ATTACK",
+            "effects": [
+              {
+                "type": "trainer_attempt_coin_gate",
+                "target": "OPPONENT_ACTIVE",
+                "scope": "PLAYER",
+                "source": "HAND",
+                "on_tails": "DISCARD_INSTEAD_OF_USE",
+                "duration": "OPPONENT_NEXT_TURN"
+              }
+            ]
+          }
+        ],
+        "opcode": null
+      }
+    }
+  ]
+}

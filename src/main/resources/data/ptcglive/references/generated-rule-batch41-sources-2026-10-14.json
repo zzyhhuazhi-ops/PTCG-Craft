@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-14",
+  "scope": "1 newly recognized component, 1 fully supported card. Prior supported programs and metadata unchanged.",
+  "source": "Rainier English card text included verbatim per component; conversion input matched by stable card ID.",
+  "ruleReferences": [
+    {
+      "url": "https://www.pokemon-card.com/card-search/details.php/card/50707/regu/all",
+      "usedFor": "Official Snorlax Good Sleep text: heal all HP only when this Pokemon did not recover from sleep during Checkup."
+    },
+    {
+      "url": "https://www.pokemon-card.com/assets/document/advanced_manual.pdf",
+      "usedFor": "Checkup F: ordered indivisible status checks, other Checkup effects can occur before/after that block, and KOs are checked after all Checkup effects."
+    }
+  ],
+  "evidence": [
+    {
+      "cardId": "me5-5_en_119",
+      "component": "ability",
+      "name": "Good Sleep",
+      "textEn": "If this Pokémon remains Asleep during Pokémon Checkup, heal all damage from this Pokémon.",
+      "textZh": "当这只宝可梦处于睡眠状态时，在宝可梦检查中，如果这只宝可梦没有从睡眠状态恢复的话，则回复这只宝可梦的全部HP。",
+      "mapping": {
+        "rules": [
+          "failed-sleep-recovery-heal-all"
+        ],
+        "fields": {
+          "abilityKind": "TRIGGERED",
+          "abilityEventPolicy": {
+            "trigger": "ON_POKEMON_CHECKUP",
+            "optional": false,
+            "usage": "NONE",
+            "afterFailedSleepRecovery": true
+          },
+          "abilityTriggerConditions": []
+        },
+        "program": [
+          {
+            "type": "heal",
+            "target": "SELF",
+            "mode": "ALL"
+          }
+        ],
+        "triggers": [],
+        "opcode": null
+      }
+    }
+  ]
+}

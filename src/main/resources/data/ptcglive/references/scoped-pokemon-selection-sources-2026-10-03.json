@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "version": "scoped-pokemon-selection-v2",
+  "checkedDate": "2026-10-03",
+  "implementationVersion": "0.6.0-development",
+  "sources": [
+    {
+      "title": "February 2026 Rule Book Updates - What you need to know!",
+      "url": "https://professorprogram.pokemon.com/news/11473085",
+      "region": "international Play! Pokémon",
+      "publishedDate": "2026-02-26",
+      "effectiveDate": null,
+      "documentVersion": "official Professor Community 11473085",
+      "retrievalStatus": "full official body read 2026-10-03",
+      "dateNoteZh": "发布日期与正文昨天2月20日冲突，不自行推定生效日期。",
+      "supportsZh": "原效果的整段结算完成后再处理它产生的其它触发；嵌套选择仍属于原效果的结算。"
+    }
+  ],
+  "implementationZh": [
+    "select_pokemon是通用数据容器，不是单卡实现；明确选择己方或对方及ANY、ACTIVE、BENCH范围。子效果通过CHOSEN_POKEMON引用该次服务器核验的对象。",
+    "作用域采用最近一层绑定，内层选择完成后恢复外层。不同作用域、重复迭代不共享目标；硬币与方案选择保留各自上下文。",
+    "条件读取选定对象的当前公开状态，而非来源的状态。对象离场后不凭缺失值或NOT制造成功条件；同一张实体卡重新登场不能接收旧作用域效果。",
+    "身份和登场序号只在服务器保存；状态效果要求明确ACTIVE选择且执行时仍在战斗位，伤害、免疫、击倒与奖赏继续走原规则层。",
+    "v2将同一容器接入主动特性、组合训练家和攻击伤害后的续接。子上下文保留真实效果来源、旧版明确预选目标及训练家手牌投影，不赋予主动效果跨回合权限。",
+    "出牌或消耗特性次数前以只读候选上下文分析是否可能产生效果；不实际掷币、不移动区域，嵌套候选共用8192步预算。攻击全文结束后才统一处理击倒、拿奖和回合推进。"
+  ],
+  "limitationsZh": [
+    "本记录说明工程语义，并非从这篇文章推导全部单卡文本裁定。只有审核卡文确实表示同一对象的后续效果才能使用容器，不得自动猜测。",
+    "容器已启用四类既有自动特性入口、主动特性、组合训练家与AFTER_ATTACK。攻击伤害前选择、未接入原子效果及未核验卡文仍明确拒绝，不因注册容器而自动放行。",
+    "未实现任意命名变量或跨作用域引用、完整离场最后已知状态、离场替代、动态工具场地能量来源和跨进程续局；未新增真实卡绑定。",
+    "没有读取或修改PTCG Live，无新增实机行为对照；Fabric正式消息验证不等于真实双网络客户端验收。"
+  ]
+}

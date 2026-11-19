@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "version": "tool-capacity-resolution-v1",
+  "checkedDate": "2026-10-03",
+  "implementationVersion": "0.6.0-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Genesect-GX - Lost Thunder 224/214, Double Drive",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm8/224/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "official international card database SM8 224",
+      "verification": "official indexed card text, title and printing number obtained on 2026-10-03",
+      "supportsZh": "允许附着两张工具的特性明确包含失去该特性后弃到只剩一张的处理，不能仅限制之后附着新工具。此证据未用于新增整卡审核或历年合法性。"
+    }
+  ],
+  "implementationZh": [
+    "将当前可保留工具容量与禁止附着新工具分离。使用现有已支持被动特性及动态数值来源计算当前容量；后者不把禁止新附工具错误解释为弃掉已有工具。",
+    "ToolOverflowPrompt仅含已公开附着卡，拥有者选择每次弃置一张，服务器随后重新计算所有宿主。提示ID由对局、宿主入场身份、容量和工具实体/附着入场身份确定，刷新不改变随机序列。",
+    "普通动作、其它效果选择、触发排序、拿奖和替补入口在强制清理前拒绝。当前玩家不能代替对方选择，旁观者无意图权限；界面用现有卡图选择区呈现。",
+    "可续接程序的已提交步骤遇到规则选择时暂停，限次包装层转发暂停状态；选择后恢复剩余步骤而不重复前缀。所有组合训练家均使用同一游标，即使卡文没有显式Choice。",
+    "攻击、受伤触发、回合间和回合推进保留当前检查点；独立规则清理不作为对手卡牌效果，不被宝可梦卡牌效果免疫阻止。弃置进入原主弃牌区并记录公开回放。"
+  ],
+  "interpretationZh": "公开提示、拥有者逐卡选择、确定性提示标识和内部暂停游标是服务端实现约定，不冒充官方原文。测试容量条件与场地/能量扩容为合成组合，不代表所有这些真实卡均已存在、合法或审核。",
+  "limitationsZh": [
+    "仍未完成来源失效完整依赖图、互相关闭/任意覆盖优先级、动态HP和因HP变化的所有复合检查点。",
+    "未实现任意卡文的离场替代、完整最后已知状态、剩余自动事件、攻击前续接或复制攻击。",
+    "底层executeEffectProgramByRule等同步服务器专用执行钩子仍在整段检查点处理；未宣称它们可自动恢复任意跨步骤规则选择。实际组合卡牌的主动/自动特性、训练家及已接入攻击续接使用服务器游标。",
+    "真实审核卡仍39张，无新增CustomEffect。未读取PTCG Live或使用社区用户讨论作为裁定，暂无本轮Live实测差异结论。",
+    "未核验的地区/年份继续由原规则包审核门槛限制，本阶段不是历年规则包或全卡数据完成。"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "version": "attack-self-damage-v1",
+  "checkedDate": "2026-10-04",
+  "implementationVersion": "0.6.3-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Pokémon Trading Card Game Rules — Scarlet & Violet Rulebook",
+      "url": "https://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/pal_rulebook_en.pdf",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official English rulebook; official indexed page checked 2026-10-04",
+      "supportsZh": "攻击在伤害步骤后仍须执行攻击文本；攻击可影响不止一只宝可梦，也可以伤害攻击宝可梦，攻击完成后统一检查所有受影响宝可梦是否被击倒。"
+    },
+    {
+      "title": "Naclstack — Scarlet & Violet: Paradox Rift 103/182",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv04/103",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; indexed text checked 2026-10-04",
+      "supportsZh": "Rocky Tackle 是“此宝可梦也对自己造成30点伤害”的现代英文卡文机制例，用于参数化 self_damage/recoil 组件，不代表该整卡已经审核为可玩。"
+    },
+    {
+      "title": "Dubwool — Sword & Shield 154/202",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/swsh1/154/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; indexed text checked 2026-10-04",
+      "supportsZh": "Double-Edge 是同样的“this Pokémon also does 30 damage to itself”机制例，说明数值应为卡牌数据参数而不是每张卡的 Java 类。"
+    }
+  ],
+  "dataContractZh": "self_damage(amount) 与 recoil(amount) 仅可写在攻击的 AFTER_ATTACK 程序中，目标固定 SELF。它们对已声明攻击者的当前入场身份造成攻击来源伤害；数值必须为10的倍数。",
+  "serverAuthorityZh": "攻击宣告时服务器预检阶段、目标、数值与完整程序。实际结算再次验证攻击检查点、攻击者仍为同一当前战斗宝可梦及来源防护；客户端不能提交伤害值、目标或击倒结果。自伤不套用对手弱点／抵抗，和其它攻击文本一起结束后才统一检查击倒、奖赏和替补。",
+  "limitations": [
+    "本轮只实现固定数值、攻击后、攻击者自身的通用自伤／反冲；条件、硬币、重复容器可复用既有 Effect 组合，但特殊替代、伤害转移和不寻常文字仍须逐项抽象或审核。",
+    "攻击者已离场、被替换或以同一实例重新入场时，旧攻击文本不会替代为新对象；该步安全跳过。伤害前离场重绑定及完整替代效果仍未完成。",
+    "没有据此自动启用 Naclstack、Dubwool 或其它真实整卡；所有真实卡仍需逐字核验文本、版本、合法性及相关联效果。",
+    "未将 PTCG Live、社区、日本、亚洲或 Pocket 行为混入国际规则包。"
+  ]
+}

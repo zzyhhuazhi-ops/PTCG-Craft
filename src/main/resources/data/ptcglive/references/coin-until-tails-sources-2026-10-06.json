@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "version": "coin-until-tails-v1",
+  "checkedDate": "2026-10-06",
+  "implementationVersion": "0.6.4-development",
+  "region": "international",
+  "sources": [
+    {
+      "title": "Pyukumuku — Sun & Moon 47/149（Continuous Tumble）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm1/47/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-06 (pokemon.com page blocked automated reading)",
+      "supportsZh": "招式文字“Flip a coin until you get tails. This attack does 30 damage for each heads.”：一直掷硬币，出现反面就停，按正面次数计算伤害。同类写法还有“N more damage for each heads”（Mega Kangaskhan ex 等）与“N damage times the number of heads”（Honedge、Steelix-EX 等），合计约 112 张。"
+    },
+    {
+      "title": "Stakataka — Sun & Moon Unbroken Bonds 106/214（Top Down）",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sm10/106/",
+      "publishedDate": null,
+      "effectiveDate": null,
+      "documentVersion": "Official international card database; English card text cross-checked against the Rainier card database 2026-10-06 (pokemon.com page blocked automated reading)",
+      "supportsZh": "招式文字“Flip a coin until you get tails. For each heads, discard the top card of your opponent's deck.”：同一组硬币结果驱动伤害之外的效果（每个正面弃置对手牌库上方 1 张）。"
+    }
+  ],
+  "dataContractZh": "coin_flip 新增参数 until:\"TAILS\"（可与 bind 同用），不能再声明 flips、flips_from、reroll 等次数参数。结果的 flips = 实际掷的次数（含最后那个反面），heads = 正面次数，供 repeat_per_heads 与硬币条件读取。",
+  "serverAuthorityZh": "服务器逐枚掷硬币，每一枚都是独立记录的随机操作；第一个反面结束。卡文没有次数上限，服务器为防止单个动作无限循环设上限 20 枚（与单次硬币结果的既有上限一致，连续 20 个正面的概率约百万分之一），到上限即停止并按 20 个正面结算。",
+  "limitations": [
+    "只支持“直到反面”；“直到正面”等写法目前没有卡需要，未开放。",
+    "硬币伤害的旧字段 coinDamage 仍只表示固定次数；直到反面的伤害写成 ON_ATTACK 的 coin_flip + repeat_per_heads + damage。"
+  ]
+}
